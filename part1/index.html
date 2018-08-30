@@ -1,0 +1,4292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin perusteet ja Ohjelmoinnin jatkokurssi, syksy 2018 | Osa 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-bde0c626.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://riot.im/app/#/room/#mooc.fi:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Ensimmäisen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Osaat kirjoittaa ohjelmia, jotka lukevat käyttäjältä syötettä ja tekevät laskentaa syötteen perusteella. Tunnet käsitteet muuttuja, ehtolause ja toistolause, ja osaat käyttää näitä ohjelmissasi. Ymmärrät ohjelman suorituksen lineaarisena ja deterministisenä prosessina. Tiedät mitä lohkot ovat ja tunnet lohkojen merkityksen muuttujien näkyvyyden ja olemassaolon kannalta.
+  </p>
+
+
+  </div>
+</div>
+
+<h1 class="material-heading">
+    Johdanto
+
+</h1>
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+
+    <li>
+      Tiedät muutamia esimerkkejä ...
+    </li>
+    <li>
+      Tunnet käsitteet ohjelma, ohjelmointikieli ja lähdekoodi
+    </li>
+    <li>
+      Tiedät, että lähdekoodi koostuu lauseista ja lausekkeista.
+    </li>
+
+  </ul>
+  
+
+  </div>
+</div>
+
+<h1>
+  TODO: grit-kysely, taustakysely, mitä muita kyselyitä? kts andrewn maili, 12.8.
+</h1>
+
+<h1>
+  TODO: 75% pisteistä jos tekee myöhässä?
+</h1>
+
+
+<p>
+  Ohjelmoinnin opiskelua harkitseva tietää harvoin kuinka riippuvainen yhteiskuntamme on ohjelmoijien tuottamista ohjelmistoista. Ilman ohjelmistoja yhteydenpito, kaupankäynti, matkustaminen ja niin edelleen olisi monimutkaisempaa. Puhelimet eivät toimisi tai niitä olisi vain muutamia, verkkopankkeja saatikka pankki- tai luottokortteja ei olisi, matkojen varaaminen ja henkilöasiakirjojen käyttäminen ei onnistuisi verkon yli, ja terveydenhuoltopalveluissa sähköisistä palveluista kuten e-reseptistä tai potilastietojen nopeasta siirtämisestä osastojen ja sairaaloiden välillä voisi vain unelmoida. Wikipediaa tai hakukoneita ei myöskään olisi ja tiedon hakeminen tapahtuisi sana- ja tietokirjoista.
+</p>
+
+<p>
+  Digitalisaatio -- eli digitaalisen tietotekniikan yleistyminen arkielämässä -- muuttaa ihmisten arkea. Fyysiset tuotteet muuttuvat sähköisiksi, jolloin esimerkiksi uutisten jakaminen on nopeampaa ja edullisempaa. Digitaaliset palvelut eivät ole paikkasidonnaisia, jolloin niitä voidaan viedä kansainvälisille markkinoille ja toisaalta digitaalista työtä tekevien työntekijöiden ei tarvitse aina olla fyysisesti samassa paikassa. Perinteistä tuotantoa voidaan myös tehostaa, sillä erilaiset digitaaliset seurantamekanismit kuten varastonhallinta ja niistä kertyvän tiedon analyysi mahdollistavat tuotannon kohdentamisen tarveperustaisesti.
+</p>
+
+<p>
+  Tämä on johtanut tilanteeseen, missä työnkuvia katoaa ja työnkuvia syntyy. Samalla tieto siitä, mitä digitalisoituvien tehtävien suorittaminen vaatii katoaa järjestelmien syövereihin. Joitakin vuosikymmeniä sitten puhelujen yhdistämiseen tarvittiin ihmistä, kun nykyään puhelujen yhdistämisen hoitavat ohjelmistot. Joitakin vuosikymmeniä sitten toisaalta mobiilisovellusten kehittäjiä, data-analyytikkoja tai vaikkapa bloggaajia ei ollut lainkaan. Palveluiden muuttuminen sähköiseksi myös piilottaa niihin liittyvää monimutkaisuutta. Kun olet esimerkiksi lähdössä lentomatkalle ja teet lähtöselvitystä verkossa olevalla lomakkeella, lomakkeen lähettäminen aiheuttaa kymmenten järjestelmien välisen vuoropuhelun. Nimeesi ja henkilötietoihisi liittyvät merkinnät käydään läpi, passisi tilanne ja mahdollisten viisumien voimassaolo tarkistetaan, lentosi tilanne tarkastetaan, aiemmat lentosi käydään läpi, paikkavarauksesi menee paikkavarauksia hallinnoivaan järjestelmään, lentoyhtiöihin liittyvät kanta-asiakkuutesi käydään läpi, lentokoneeseen tankattavan polttoaineen määrää päivitetään ja niin edelleen.
+</p>
+
+<p>
+  Vaikka digitalisaatio voi tehostaa toimintaa muunmuassa vapauttamalla työntekijän helposti automatisoitavista tehtävistä, on digitalisaatiossa myös haasteita. Sähköisten järjestelmien käytön oppiminen ei ole aina helppoa ja työnkuvien muutoksen vaatima jatkuva uudelleenkouluttautuminen on uudenlainen koulutukseen liittyvä haaste. Innokkuus sähköisten palveluiden käyttöönotossa vähentää myös perinteisiä palveluita --  kukapa ei esimerkiksi olisi kuullut pankkipalveluiden digitalisoitumisen ja kassapalveluiden vähentymisen sivuvaikutuksena tuomista pitkistä pankkijonoista. Sähköiset palvelut ovat ihmisten tekemiä ja harvoin virheettömiä. Harva ei ole kuullut huonosti toimivista ohjelmistoista.
+</p>
+
+<p>
+  Tietojenkäsittelytieteilijät ja laajemmin ohjelmistotekniikan ammattilaiset ovat digitaalisten palveluiden arkkitehtejä. Vastuullamme on näiden järjestelmien toteutus siten, että ne toimivat mahdollisimman hyvin järjestelmien kohdeyleisölle -- myös niille, jotka eivät ole tottuneet käyttämään vastaavia järjestelmiä. Järjestelmien loppukäyttäjät harvoin tietävät kuka tai ketkä ovat toteuttaneet kyseiset järjestelmät -- harva on kuullut esimerkiksi <a href="https://en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)" target="_blank" norel>Margaret Hamilton</a>ista, joka kirjoitti avaruuteen pääsemisessä ja kuulennossa auttaneen ohjelman.
+</p>
+
+<p>
+  Ohjelmointia voidaan ajatella nykyajan käsityöläistaitona, ja ohjelmistoalan työläisiä on maailmassa kymmeniä miljoonia. Tälle modernille käsityöläistaidolle on myös kysyntää -- esimerkiksi Tivi uutisoi vuonna 2016 aiheesta otsikolla "<a href="http://www.tivi.fi/Kaikki_uutiset/it-osaaja-paasee-toihin-vaikka-heti-6555159" target="_blank" norel>It-osaaja pääsee töihin vaikka heti</a>". Ohjelmistojen ja digitaalisten järjestelmien ymmärryksen tarve näkyy myös nykyään kaikkialla -- ohjelmoinnin alkeita opetetaan jo peruskoulussa, ja samalla esimerkiksi moderni tiede hyödyntää enemmän ja enemmän tiedon analysoinnissa käytettäviä ohjelmistoja sekä ohjelmistoalan innovaatioita. Esimerkiksi meteorologit, fyysikot ja kemistit käyttävät ohjelmistoja ja ohjelmoivat työssään. Myös kasvatustiede ja opetusala hyödyntää digitalisaation tuomia mahdollisuuksia yhä enemmän.
+</p>
+  
+<p>
+  Tällä kurssilla otat ensiaskeleet ohjelmointiin. Opit kirjoittamaan ohjelmia ja ymmärtämään niiden toimintaa. Tulet jäsentämään ohjelmissa olevia osakokonaisuuksia pieniksi paloiksi ja esittämään ohjelmissa esiintyviä käsitteitä yhteistoiminnassa toimivina palasina. Käsitteet kuten <em>muuttuja</em>, <em>ehtolause</em>, <em>toistolause</em>, <em>luokka</em> ja <em>olio</em> ovat kurssin lopuksi hyvin tuttuja, ja tiedät myös hieman algoritmiikasta sekä ohjelmistojen testaamisesta. Kurssin jälkeen saatat myös ajatella yhteiskunnan palveluita ohjelmoijan näkökulmasta ja pohdit niiden toimintaa (tai toimimattomuutta) ohjelmistojen tarjoamien mahdollisuuksien ja rajoitteiden näkökulmasta. 
+</p>
+
+<p>
+  Kurssi on tarkoitettu ohjelmoinnin alkeiskurssiksi kohdeyleisöä sen laajemmin rajoittamatta. Kurssi on samalla yksi ensiaskelista tietojenkäsittelytieteen opintoihin. Kurssin jälkeen ja kurssin aikaan kannattaa harkita muunmuassa kursseja Tietokantojen perusteet, Ohjelmistotekniikan menetelmät, Tietorakenteet ja algoritmit, sekä Johdatus yliopistomatematiikkaan.
+</p>
+
+
+<h2 class="material-heading">
+    Ohjelmoija kirjoittaa lähdekoodia
+
+</h2>
+
+<p>
+  Ohjelmointi on ohjelmistojen suunnittelua ja toteutusta. Toteutettava toiminnallisuus määräytyy ohjelmiston tilaajien ja käyttäjien toiveiden ja vaatimusten perusteella. Ohjelmia toteutetaan (eli kirjoitetaan tai "koodataan") tyypillisesti ihmisten kirjoitettavaksi ja luettavaksi tarkoitetulla ohjelmointikielellä. Ohjelmointikieliä on satoja ja tällä kurssilla keskitytään näistä kielistä yhteen. Kurssin kielenä on <a href="https://en.wikipedia.org/wiki/Java_(programming_language)" target="_blank" rel="noopener">Java</a>, joka on yksi maailman eniten käytetyistä ohjelmointikielistä. Javaa tuntevan on myös helppo oppia uusia ohjelmointikieliä.
+</p>
+
+<p>
+  Ohjelmointikielet kuten Java tarjoavat suuren määrän valmiita komentoja, joita ohjelmoija käyttää ohjelmistoja luodessa. Tämä helpottaa ohjelmointia, sillä aivan kaikkea ei tarvitse toteuttaa alusta lähtien. Esimerkiksi graafisia käyttöliittymiä toteutettaessa ohjelmointikielillä on tyypillisesti valmiita toiminnallisuuksia erilaisten valikoiden ja näkymien luomiseen. Iso osa ohjelmoinnista onkin ohjelmointikielen valmiiksi tarjoamien komentojen soveltamista ongelmien ratkaisuissa.
+</p>  
+
+<p>
+  Kirjoitettua "koodia" kutsutaan <strong>lähdekoodiksi</strong>. Lähdekoodi koostuu lauseista (statement) ja lausekkeista (expression), joita yleensä voidaan lukea rivi riviltä ylhäältä alaspäin ja vasemmalta oikealle. Esimerkiksi tekstin "Hei maailma" tulostuksessa käytetään Java-ohjelmointikielellä valmista komentoa <code>System.out.println()</code>, jolle kerrotaan sulkujen sisälle tulostettava teksti.
+</p>
+
+<pre class="sh_java code-highlight"><code>System.out.println("Hei maailma");
+</code></pre>
+
+<p>
+  Lause <code>System.out.println</code> on Java-ohjelmointikielen valmiiksi tarjoama komento, jota käytetään merkkijonon tulostamiseen. Komento käytännössä käskee tietokonetta tulostamaan sille sulkeiden sisällä hipsuissa annetun merkkijonon. Komennon pääte <code>ln</code> on lyhenne sanasta <em>line</em>, eli komentoa käyttämällä merkkijonon jälkeen tulostetaan myös rivinvaihto. Lauseen loppuun kirjoitetaan puolipiste <code>;</code>.
+</p>
+
+<p>
+  Java-ohjelmat vaativat toimiakseen kurssin aikana tutuksi tulevan rungon. Ohjelman runko on seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Esimerkki {
+    public static void main(String[] args) {
+
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        System.out.println("Tulostettava teksti");
+
+    }
+}
+</code></pre>
+
+
+<p>
+  Yhdenkin merkin puuttuminen voi johtaa ohjelmoidessa virhetilanteeseen. Ohjelmoija saattaa vahingossa esimerkiksi syöttää pilkun pisteen sijaan, kirjoittaa vaikkapa <code>printin</code> sanan <code>println</code> sijaan, jättää tulostettavasta merkkijonosta hipsut pois, tai unohtaa komentoa seuraavan puolipisteen. Jokainen edelläolevista esimerkeistä johtaa virhetilanteeseen, missä ohjelman suoritus ei onnistu.
+</p>
+
+<p>
+  Ohjelmien kirjoittaminen on siis hyvin tarkkaa. Alla on annettuna esimerkkiohjelma ja osittain valmis ohjelma. Täydennä osittain valmista ohjelmaa siten, että se vastaa esimerkkiohjelmaa merkki merkiltä.
+</p>
+
+<div class="typonator-widget">
+  <div class="typonator-model-source">
+public class Esimerkki {
+    public static void main(String[] args) {
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        System.out.println("Tulostettava teksti");
+    }
+}
+  </div>
+  <div class="typonator-template-source">
+public class Esimerkki {
+    public static void main(String[] args) {
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        // MARK
+    }
+}
+  </div>
+</div>
+
+
+<p>
+  Mikäli yllä oleva ohjelma olisi toteutettu ohjelmointiympäristössä, voisi ohjelman suorittaa. Tällöin tietokone tulostaisi merkkijonon "Tulostettava teksti".
+</p>
+
+
+<h2 class="material-heading">
+    Tietokone suorittaa ohjelman
+
+</h2>
+
+<p>
+  Kun ohjelmoija haluaa kokeilla toimiiko hänen kirjoittamansa lähdekoodi, hän suorittaa ohjelman. Ohjelman suorittamiseen tarvittavat askeleet riippuvat käytetystä ohjelmointikielestä, mutta pääpiirteisesti askeleita on kaksi. Ensin lähdekoodi käännetään konekieliseen muotoon, jonka jälkeen ohjelma suoritetaan.
+</p> 
+
+<p>
+  Lähdekoodin kääntäminen konekieliseen muotoon tapahtuu ohjelmointikielikohtaisella kääntäjällä, joka on myös ohjelma. Tämän jälkeen konekielinen ohjelma käynnistetään, eli siinä olevat käskyt suoritetaan yksi kerrallaan tietokoneen sisällä olevalla konekielisten käskyjen suorittamiseen erikoistuneella yksiköllä eli prosessorilla. 
+</p>
+
+<p>
+  Ohjelman suorittamiseen liittyvät askeleet ovat ohjelmointikielikohtaisia. Edellä kuvattu lähdekoodin kääntäminen konekieliseen muotoon tapahtuu esimerkiksi C-ohjelmointikielessä, kun taas Java-ohjelmointikielessä ohjelma käännetään Java-ohjelmointikielen tavukoodiksi, jonka Java-kielen tulkki sitten suorittaa. Jotkut ohjelmointikielet kuten PHP ja Python ovat toisaalta sellaisia, että niitä ei käännetä lainkaan, vaan vaan ohjelmointikielen tulkki suorittaa komennot yksi kerrallaan.
+</p>
+
+<p>
+  Nämä askeleet vaikuttavat siihen, miten ja milloin ohjelmien virheet ilmenevät. Mikäli ohjelma käännetään ennen suoritusta, kääntämiseen käytettävä ohjelma voi etsiä tyypillisiä virheitä. Mikäli ohjelma tulkataan ilman käännöstä, virheet nousevat esiin vasta suorituksen aikana tai suorituksen epäonnistuessa. Tämä vaikuttaa myös ohjelmoinnissa käytetyn ohjelmointiympäristön tarjoamiin vinkkeihin -- jotkut ohjelmointiympäristöt kääntävät kirjoitettavaa ohjelmaa jatkuvasti konekielelle, jolloin ohjelmoija saa palautetta ohjelmassa olevista virheistä heti. Toisissa ohjelmointikielissä tätä mahdollisuutta taas ei ole, jolloin ohjelmointiympäristöjen tarjoamat vinkit ovat vähäisemmät.
+</p>
+
+<p>
+  Mitä tahansa ohjelmia voidaan kirjoittaa tekstieditorissa, joka ei muotoile tekstiä. Tällaisia tekstieditoreita ovat esimerkiksi <a href="https://en.wikipedia.org/wiki/Microsoft_Notepad" target="_blank">Notepad</a>. Ohjelmia kirjoitetaan kuitenkin tyypillisemmin ohjelmointiympäristöissä, jotka ovat ohjelmien kirjoittamisen tukemiseen erikoistuneita ohjelmia. Nämä mahdollistavat muunmuassa käännösvirheiden automaatisen näyttämisen käyttäjälle sekä ohjelman suorittamisen ohjelmointiympäristön sisällä. Tällä kurssilla käytetään ohjelmointiympäristöä nimeltä <a href="https://en.wikipedia.org/wiki/NetBeans" target="_blank">NetBeans</a>, jota varten on kehitetty tehtävien lataamiseen, testaamiseen ja lähettämiseen käytettävä liitännäinen. 
+</p>
+
+
+<h2 class="material-heading">
+    Kurssilla käytetty ohjelmointiympäristö
+
+</h2>
+
+<p>
+  TODO: tehtävä, missä muokataan matopeliä ihan hieman
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Matopeli</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on totetettuna matopeli, jonka toiminnan ymmärrät pääpiirteittäin kurssien Ohjelmoinnin perusteet (TKT-10002) ja Ohjelmoinnin jatkokurssi (TKT-10003) jälkeen. Kun matopelin käynnistää, käyttäjälle näkyy seuraavanlainen ruutu. 
+  </p>
+
+  <p>
+    Ruudun vasemmassa yläkulmassa oleva pistelukema on virheellinen. Pistelukemaa kuvaava teksti on muotoa Pistet, vaikka sen pitäisi olla muotoa Pisteet -- etsi ohjelmasta kohta, missä teksti on määritelty, ja korjaa se. 
+  </p>
+
+  <p>
+    Huomaat, että monimutkaisemmissakin ohjelmissa on joitakin palasia, joita ymmärrät ja voit muokata ilman aiempaa ohjelmointikokemusta. Kokeileminen ja sen kautta oppiminen tulee olemaan avainasemassa tälläkin kurssilla.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Polku ylläolevan matopelin toteuttamiseen on pitkä. Aloitamme ohjelmoinnin perusrakenteista ja tekstuaalisista käyttöliittymistä. Graafisten käyttöliittymien toteuttamiseen tutustumme vasta Ohjelmoinnin jatkokurssilla.
+</p> 
+
+<h1 class="material-heading">
+    Tulostaminen ja lukeminen
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Osaat kirjoittaa ohjelman, joka tulostaa tekstiä.
+    </li>
+    <li>
+      Tutustut pinnallisesti käsitteeseen muuttuja
+    </li>
+    <li>
+      Osaat luoda merkkijonomuuttujan (String) ja käyttää merkkijonomuuttujaa osana tekstiä tulostavaa ohjelmaa.
+    </li>
+    <li>
+      Osaat luoda uuden merkkijonomuuttujan useampia merkkijonoja yhdistelemällä.
+    </li>
+    <li>
+      Osaat kirjoittaa ohjelman, joka pyytää käyttäjältä tekstimuotoista syötettä.
+    </li>
+    <li>
+      Osaat käyttää kurssilla käytetyn ohjelmointiympäristön TMC:n perustoiminnallisuuksia, eli osaat..
+      <ul>
+	      <li>ladata tehtävät TMC:n avulla</li>
+	      <li>suorittaa tehtävän TMC:n avulla</li>
+	      <li>testata tehtävää TMC:n avulla</li>
+	      <li>palauttaa tehtävän arvostelua varten TMC:n avulla</li>
+      </ul>
+    </li>
+
+  </ul>
+  
+
+  </div>
+</div>
+
+<h2 class="material-heading">
+    Ohjelmarunko
+
+</h2>
+
+<p>
+  Java-ohjelmat vaativat toimiakseen ohjelmarungon. Ohjelmarunko on seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Esimerkki {
+    public static void main(String[] args) {
+
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+
+    }
+}
+</code></pre>
+
+<p>
+  TODO: käy läpi oleelliset palat, kerro miten sijaitsee tiedostossa. TODO: kerro että kutsutaan luokaksi "class". TODO: kerro Miten tiedoston nimi vaikuttaa luokan nimeen.
+</p>
+
+<p>
+  Materiaalin esimerkeissä ei käytetä aina ohjelmarunkoa, mutta voit olettaa, että se tarvitaan aina. Esimerkit voivat siis olla esimerkiksi yhden rivin mittaisia kuten alla oleva tulostusesimerkki.
+</p>
+
+<pre class="sh_java code-highlight"><code>System.out.println("Hei maailma!");
+</code></pre>
+
+<p>
+  Todellisuudessa yllä oleva esimerkki näyttää Java-kielisellä ohjelmalla kuitenkin seuraavalta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Esimerkki {
+    public static void main(String[] args) {
+
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        System.out.println("Hei maailma!");
+    }
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Tulostuskomento
+
+</h2>
+
+
+<p>
+  Yhden rivin tulostaminen, yksi komento
+</p>  
+
+
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+
+    public static void main(String[] args) {
+        System.out.println("Hei maailma!");    
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Hei maailma!
+</pre>
+
+
+<p>
+  Ohjelman rakenne
+</p>
+
+<p>
+  Useamman rivin tulostaminen, yksi komento
+</p>  
+
+
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+
+    public static void main(String[] args) {
+        System.out.println("Hei maailma!");
+        System.out.println("... ja maailmankaikkeus!")
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Hei maailma!
+... ja maailmankaikkeus!
+</pre>
+
+<p>
+  Ohjelma suoritetaan askel askeleelta, eli tulostus tapahtuu aina edellä mainitussa järjestyksessä.
+</p>
+
+
+<p>
+  Ohjelman suoritus askeleittain, visu
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Ohjelmoinnin aloittaminen
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Ohjelmoinnin aloittamiseen tarvitset seuraavat asiat.
+  </p>
+
+  <ol>
+    <li>
+      Käyttäjätunnuksen kurssilla käytettyyn TMC-järjestelmään.
+    </li>
+    <li>
+      Javan (Java JDK).
+    </li>
+    <li>
+      NetBeans with TMC-ohjelmointiympäristön.
+    </li>
+  </ol>
+
+  <p>
+    Ohjeistus oleellisten työvälineiden asentamiseen sekä kurssilla tarvittavan käyttäjätunnuksen luomiseen löytyy osoitteesta <a href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">https://materiaalit.github.io/tmc-asennus/netbeans/</a>.
+  </p>
+
+  <div class="text-center text-xs-center">
+    <p>
+      <a class="btn btn-success btn-xs" href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">
+	Ohjeisiin!
+      </a>
+    </p>
+  </div>
+
+
+  </div>
+</div>
+
+<p>
+  Alla on kurssin ensimmäinen ohjelmointitehtävä. Ohjelmointitehtävien tehtävänannot löytyvät kurssimateriaalista (eli materiaalista mitä juuri luet). Tehtävänannon saa auki klikkaamalla tehtävänannon otsikkoa (alla "Ada Lovelace"). Tehtäväpohjat löytyvät TMC:stä (asennusohjeet yllä kohdassa "Ohjelmoinnin aloittaminen").
+</p>
+
+<p>
+  Voit katsoa ohjeet tehtävän tekemiseen myös seuraavalta videolta.
+</p>
+
+<p>
+  TODO: video
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Ada Lovelace</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on seuraavanlainen ohjelmarunko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Nimi {
+
+    public static void main(String[] args) {
+        // Kirjoita ohjelmasi tähän alle
+
+    }
+}
+</code></pre>
+
+  <p>
+    Rivi "// Kirjoita ohjelmasi tähän alle" on <em>kommenttirivi</em>, jota tietokone ei ota huomioon ohjelmaa suoritettaessa. Lisää kommenttirivin alle lause, joka tulostaa merkkijonon "Ada Lovelace" ja suorita ohjelma. Ohjelman tulostuksen tulee olla seuraavanlainen:
+  </p>
+
+<pre class="sample-output">Ada Lovelace
+</pre>
+
+  <p>
+    Kun olet tehnyt tehtävän ja huomaat, että ohjelma tulostaa halutun merkkijonon, palauta tehtävä TMC:lle. Tutustu tämän jälkeen halutessasi lisää <a href="https://en.wikipedia.org/wiki/Ada_Lovelace" target="_blank" rel="noopener">Ada Lovelaceen</a>, joka oli yksi ensimmäisistä ohjelmoijista.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Tehtävänannoissa olevat toiveet tulostusmuodosta ovat tarkkoja. Jos tehtävänannossa toivotaan esimerkiksi että ohjelma tulostaa sulun toisen rivin ensimmäiseksi merkiksi, ei sulkua saa jättää tulostamatta.
+</p>
+
+<p>
+  TODO: esimerkki, missä tulostetaan tekstiä neljälle riville (tarina). Maininta, että komento <code>println</code> tulostaa rivinvaihdon -- ohjelman tulee siis tulostaa aina myös rivinvaihto, mikäli tulostuksen tulee näyttää siltä, että riviä vaihdetaan.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Olipa kerran</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on seuraavanlainen ohjelmarunko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class OlipaKerran {
+
+    public static void main(String[] args) {
+
+    }
+}
+</code></pre>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelman suoritus tulostaa seuraavanlaisen tekstin. Käytä tekstin tulostamiseen kuutta <code>System.out.println</code> komentoa.
+  </p>
+
+<pre class="sample-output">Olipa kerran... on ranskalainen opetusanimaatiosarjojen kokoelma. 
+Kokoelmaan kuuluu seitsemän erillistä sarjaa, jotka käsittelevät
+eri tiedonaloja. Useimmat sarjoista liittyvät historiaan; Olipa 
+kerran ihminen keskittyy ihmiskunnan historiaan ja kehitykseen, 
+kun muut kertovat erityisistä historian alueista, kuten 
+löytöretkeilijöistä tai keksijöistä.
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Rivinvaihdon voi tulostaa myös erikoismerkillä "\n". Esimerkki.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Olipa kerran maa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on seuraavanlainen ohjelmarunko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class OlipaKerranMaa {
+
+    public static void main(String[] args) {
+
+    }
+}
+</code></pre>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelman suoritus tulostaa seuraavanlaisen tekstin. Käytä tekstin tulostamiseen yhtä <code>System.out.println</code> komentoa.
+  </p>
+
+<pre class="sample-output">Olipa kerran maa valmistui vuonna 2008. Sarja käsittelee 
+luontoympäristön suojelemista ja varoittaa maailmanlaajuisesta 
+ilmastonlämpenemisestä, kasvihuoneilmiöstä, saasteista ja 
+niin edelleen.
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Komento <code>System.out.print</code> -- ei tulosta rivinvaihtoa loppuun.
+</p>
+
+
+<h2 class="material-heading">
+    Merkkijonon tulostaminen
+
+</h2>
+
+
+<p>
+
+</p>
+
+<p>
+literaali eli arvo (?) -- annetaan arvo -- arvon voi asettaa myös muuttujaan, josta sen löytää myöhemmin
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+  
+    public static void main(String[] args) {
+        String viesti = "Hei maailma!";
+
+        System.out.println(viesti);
+        System.out.println("... ja maailmankaikkeus!")
+    }
+}
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Passi ja hammasharja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on seuraavanlainen ohjelmarunko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class PassiJaHammasharja {
+
+    public static void main(String[] args) {
+      String viesti = "Passi ja hammaslanka";
+
+      System.out.println(viesti);
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman suorittaminen tulostaa seuraavan tekstin.
+  </p>  
+
+<pre class="sample-output">Passi ja hammaslanka
+</pre>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelman suoritus tulostaa seuraavanlaisen tekstin. Huom! Älä muokkaa riviä <code>System.out.println(viesti);</code>.
+  </p>
+
+<pre class="sample-output">Passi ja hammasharja
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+<p>
+  merkkijonon voi liittää osaksi tulostusta, TODO: + merkin käyttö. mitä tapahtuu?
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+  
+    public static void main(String[] args) {
+        String viesti = "Hei maailma!";
+
+        System.out.println(viesti + "\n... ja maailmankaikkeus!")
+    }
+}
+</code></pre>
+
+<p>
+  esimerkki, "bla " + muuttuja, sekä muuttuja + " bla". lisäksi molemmalla puolella.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Hei Ada Lovelace!</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on seuraavanlainen ohjelma.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class HeiAdaLovelace {
+    
+    public static void main(String[] args) {
+        String nimi = "Ada Lovelace";
+  
+    }
+}
+</code></pre>
+
+  <p>
+    Muokkaa ohjelmaa siten, että ohjelmassa tulostetaan muuttujan <code>nimi</code> sisältö, ja että ohjelman tulostus on kokonaisuudessaan muotoa:
+  </p>
+
+<pre class="sample-output">Hei Ada Lovelace!
+</pre>
+  
+  <p>
+    Huom! Kun käytät <code>System.out.println</code>-komentoa, älä kirjoita komentoon merkkijonoa "Ada Lovelace", vaan hyödynnä tulostuksessa olemassaolevaa muuttujaa <code>nimi</code>.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  esimerkki, voidaan myös yhdistää.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+  
+    public static void main(String[] args) {
+        String luvut = "yksi" + "\n" + "kaksi" + "\n" + "kolme";
+
+        System.out.println(luvut)
+    }
+}
+</code></pre>
+
+<pre class="sample-output">yksi
+kaksi
+kolme
+</pre>
+  
+
+
+
+<h2 class="material-heading">
+    Merkkijonon lukeminen käyttäjältä
+
+</h2>
+
+<p>
+  Lukemiseen käytetään Javan Scanner-apuvälinettä. 
+</p>
+
+<p>
+
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.println("Syötä viesti: ");
+
+        String viesti = lukija.nextLine();
+
+        System.out.println(viesti);
+    }
+}
+</code></pre>
+
+
+<p>
+  Alla sama esimerkki, mutta siten, että kun käyttäjän merkkijono tulostetaan ohjelma merkkijonon tulostuksen yhteydessä tekstin "Viestisi oli ", jota seuraa käyttäjän syöttämä merkkijono.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.println("Syötä viesti: ");
+
+        String viesti = lukija.nextLine();
+
+        System.out.println("Viestisi oli " + viesti);
+    }
+}
+</code></pre>
+
+
+
+<p>
+  kerro suoritusjärjestys askel askeleelta
+</p>
+
+<p>
+  vinkki: tyypillinen virhe -- kysytään eka viestiä, jolloin tulostusta ei näy -- TODO: tästä myös video.
+</p>
+
+<p>
+  TODO: näin luet tulostusesimerkkejä
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Viesti</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Kun käyttäjä on syöttänyt merkkijonon (eli kirjoittanut tekstin sekä painanut enter-näppäintä), ohjelma tulostaa käyttäjän syöttämän merkkijonon.
+  </p>
+
+  <p>
+    Tehtäväpohjan mukana tulee runko, joka sisältää Scanner-apuvälineen luomisen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+    
+public class Viesti {
+    
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.println("Kirjoita merkkijono!");
+        // toteuta ohjelma tänne
+    }
+}
+</code></pre>
+
+  <p>
+    Huom! Tulostusesimerkeissä käyttäjän kirjoittama syöte näytetään punaisella...
+  </p>
+
+  <p>
+    Tulostusesimerkki kun käyttäjä syöttää merkkijonon "Heippa".
+  </p>
+  
+<pre class="sample-output">Kirjoita merkkijono!
+<font color="red">Heippa</font>
+Heippa
+</pre>
+
+  <p>
+    Tulostusesimerkki kun käyttäjä syöttää merkkijonon "Olipa kerran...".
+  </p>
+
+<pre class="sample-output">Kirjoita merkkijono!
+<font color="red">Olipa kerran...</font>
+Olipa kerran...
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Viesti kolmesti</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka pyytää käyttäjää kirjoittamaan merkkijonon. Kun käyttäjä on syöttänyt merkkijonon (eli kirjoittanut tekstin sekä painanut enter-näppäintä), ohjelma tulostaa käyttäjän syöttämän kolme kertaa.
+  </p>
+
+  <p>
+    Tehtäväpohjan mukana tulee runko, joka sisältää Scanner-apuvälineen luomisen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+    
+public class ViestiKolmesti {
+    
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.println("Kirjoita merkkijono!");
+        // toteuta ohjelma tänne
+    }
+}
+</code></pre>
+
+  <p>
+    Huom! Tulostusesimerkeissä käyttäjän kirjoittama syöte näytetään punaisella...
+  </p>
+
+  <p>
+    Tulostusesimerkki kun käyttäjä syöttää merkkijonon "Heippa".
+  </p>
+  
+<pre class="sample-output">Kirjoita merkkijono!
+<font color="red">Heippa</font>
+Heippa
+Heippa
+Heippa
+</pre>
+
+  <p>
+    Tulostusesimerkki kun käyttäjä syöttää merkkijonon "Olipa kerran...".
+  </p>
+
+<pre class="sample-output">Kirjoita merkkijono!
+<font color="red">Olipa kerran...</font>
+Olipa kerran...
+Olipa kerran...
+Olipa kerran...
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  TODO: Ota kantaa siihen, että viesti mikä on nimesi tulee tulostaa ennen kuin käyttäjältä kysytään tekstiä.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Nimi</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä nimeä käyttäen tekstiä "Mikä on nimesi?". Kun käyttäjä syöttää nimen, ohjelma tulostaa käyttäjälle merkkijonon "Hei ", jota seuraa käyttäjän nimi.
+  </p>
+
+  <p>
+    Tehtäväpohjan mukana tulee runko, joka sisältää Scanner-apuvälineen luomisen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+    
+public class Nimi {
+    
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // toteuta ohjelma tänne
+    }
+}
+</code></pre>
+
+  <p>
+    Huom! Tulostusesimerkeissä käyttäjän kirjoittama syöte näytetään punaisella...
+  </p>
+
+  <p>
+    Tulostusesimerkki kun käyttäjä syöttää nimeksi Ada.
+  </p>
+  
+<pre class="sample-output">Mikä on nimesi?
+<font color="red">Ada</font>
+Hei Ada
+</pre>
+
+  <p>
+    Tulostusesimerkki kun käyttäjä syöttää nimeksi Lilja.
+  </p>
+
+<pre class="sample-output">Mikä on nimesi?
+<font color="red">Lilja</font>
+Hei Lilja
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Ohjelma voi kysyä käyttäjältä myös monta riviä.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.println("Syötä kolme riviä, tulostan ne sen jälkeen: ");
+
+        String eka = lukija.nextLine();
+        String toka = lukija.nextLine();
+        String kolmas = lukija.nextLine();
+
+        System.out.println(eka);
+        System.out.println(toka);
+        System.out.println(kolmas);
+    }
+}
+</code></pre>
+
+<p>
+  Käänteinen järjestys
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        System.out.println("Syötä kolme riviä, tulostan ne käänteisessä järjestyksessä: ");
+
+        String eka = lukija.nextLine();
+        String toka = lukija.nextLine();
+        String kolmas = lukija.nextLine();
+
+        System.out.println(kolmas);
+        System.out.println(toka);
+        System.out.println(eka);
+    }
+}
+</code></pre>
+
+<p>
+  TODO: ohjelman suoritus kun kysytään käyttäjältä syötettä..
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Keskustelu</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka toimii seuraavalla tavalla.
+  </p>
+
+<pre class="sample-output">Hyvää päivää! Mitä kuuluu?
+<font color="red">Kiitos hyvää!</font>
+No mutta sepäs kiinnostavaa, kerro lisää!
+<font color="red">Noh, eipä tässä muuta.</font>
+Kiitos kertomastasi!
+</pre>
+
+
+<pre class="sample-output">Hyvää päivää! Mitä kuuluu?
+<font color="red">Mitäs tässä, ritari ässä!</font>
+No mutta sepäs kiinnostavaa, kerro lisää!
+<font color="red">tulin juuri kaupasta.</font>
+Kiitos kertomastasi!
+</pre>
+
+  <p>
+    Tehtäväpohjan mukana tulee runko, joka sisältää Scanner-apuvälineen luomisen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+    
+public class Keskustelu {
+    
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // toteuta ohjelma tänne
+    }
+}
+</code></pre>
+  
+  <p>
+    TODO: toteuta ohjelma siten, että tulostus ja kysyminen tapahtuu vuorotellen.
+  </p>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Tarina</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka toimii seuraavalla tavalla.
+  </p>
+
+<pre class="sample-output">Kerron kohta tarinan, mutta tarvitsen siihen hieman tietoja.
+Minkä niminen tarinassa esiintyvä hahmo on?
+<font color="red">Nauriskala</font>
+Mikä hahmon ammatti on?
+<font color="red">kalastaja</font>
+Tässä tarina:
+Olipa kerran Nauriskala, joka oli ammatiltaan kalastaja.
+Matkatessaan töihin, Nauriskala mietti arkeaan. Kun työnä 
+on kalastaja, tekemistä riittää välillä hyvin paljon ja
+välillä ei lainkaan. Ehkäpä Nauriskala ei olekaan koko
+elämäänsä kalastaja.    
+</pre>
+
+  <p>
+    Tehtäväpohjan mukana tulee runko, joka sisältää Scanner-apuvälineen luomisen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+    
+public class Tarina {
+    
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // toteuta ohjelma tänne
+    }
+}
+</code></pre>
+
+  <p>
+    Alla vielä toinen esimerkki.
+  </p>
+
+
+<pre class="sample-output">Kerron kohta tarinan, mutta tarvitsen siihen hieman tietoja.
+Minkä niminen tarinassa esiintyvä hahmo on?
+<font color="red">Ada</font>
+Mikä hahmon ammatti on?
+<font color="red">datatieteilijä</font>
+Tässä tarina:
+Olipa kerran Ada, joka oli ammatiltaan datatieteilijä.
+Matkatessaan töihin, Ada mietti arkeaan. Kun työnä 
+on datatieteilijä, tekemistä riittää välillä hyvin paljon ja
+välillä ei lainkaan. Ehkäpä Ada ei olekaan koko
+elämäänsä datatieteilijä.    
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+- TODO: crowdsorcerer, kokonaan lukittu tehtäväboksi, 
+opiskelija kirjoittaa esimerkkisyötteitä ja tulosteita
+- esim: tulostuksen tulee olla muotoa
+- esim: tulostuksen ei tule olla muotoa
+
+<h1 class="material-heading">
+    Muuttujat ja ohjelmien kielellistäminen
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+
+    <li>
+      Tunnet käsitteen muuttuja. Tiedät mitä ovat muuttujan tyyppi, muuttujan nimi, ja muuttujan arvo.
+    </li>
+    <li>
+      Osaat luoda ja käsitellä merkkijono-, kokonaisluku-, liukuluku-, ja totuusarvomuuttujia.
+    </li>
+
+  </ul>
+  
+
+  </div>
+</div>
+
+String, int, boolean
+
+- täällä sanotaan mikä on lause ja mikä on lauseke???
+
+- todo: muuttujan esittely
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">TODO: Muuttuvat muuttujat</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    kopioi vanha tehtävänanto tänne
+  </p> 
+
+  <p>
+    Tehtäväpohjan mukana tulee runko, joka sisältää Scanner-apuvälineen luomisen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+    
+public class Tarina {
+    
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+
+        // toteuta ohjelma tänne
+    }
+}
+</code></pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+- todo: muuttujan arvon uudelleenasettaminen, ei tarvitse kertoa muuttujan tyyppiä
+
+<h2 class="material-heading">
+    Muuttujan tyyppi kertoo muuttujan mahdollisista arvoista
+
+</h2>
+
+<p>
+Tyyppi ei voi muuttua
+</p>
+
+<p>
+  TODO: myöhemmin viittaus- ja alkeistyyppinen muuttuja
+</p>
+
+
+<h2 class="material-heading">
+    Muuttujan nimi kertoo muuttujan tarkoituksesta
+
+</h2>
+
+<p>
+  TODO: esimerkki ohjelmasta, missä muuttujan nimentä on huono.
+</p>
+
+<p>
+  TODO: esimerkki ohjelmasta, missä muuttujan nimentä on fiksumpi.
+</p>
+
+
+<h2 class="material-heading">
+    Erityyppisten muuttujien lukeminen käyttäjältä
+
+</h2>
+
+
+<p>
+  TODO: käyttäjän kirjoittaman syötteen lukeminen tapahtuu aina merkkijonona. merkkijono voidaan muuntaa muuhun muotoon Javan valmiilla apuvälineillä.
+</p>
+
+<h3 class="material-heading">
+    Kokonaisluvun lukeminen
+
+</h3>
+
+<pre class="sh_java code-highlight"><code>TODO: Integer.valueOf(String s) -esimerkki
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kokonaisluku</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä lukua. Tämän jälkeen ohjelma tulostaa käyttäjän syöttämän luvun.
+  </p>
+
+  <p>
+    Alla on annettuna ohjelman esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Syötä luku!
+<font color="red">3</font>
+Syötit luvun 3
+</pre>
+
+<pre class="sample-output">Syötä luku!
+<font color="red">42</font>
+Syötit luvun 42
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Liukuluvun lukeminen
+
+</h3>
+
+<pre class="sh_java code-highlight"><code>TODO: Double.valueOf(String s) -esimerkki
+</code></pre>
+
+<p>
+voi lukea myös kokonaisluvun, jolloin luku muotoa esim 3.0
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Liukuluku</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä liukulukua. Tämän jälkeen ohjelma tulostaa käyttäjän syöttämän luvun.
+  </p>
+
+  <p>
+    Alla on annettuna ohjelman esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Syötä luku!
+<font color="red">3.14</font>
+Syötit luvun 3.14
+</pre>
+
+<pre class="sample-output">Syötä luku!
+<font color="red">2.718</font>
+Syötit luvun 2.718
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Totuusarvon lukeminen
+
+</h3>
+
+<pre class="sh_java code-highlight"><code>TODO: Boolean.valueOf(String s) -esimerkki -- true jos "true" (ignorecase)
+</code></pre>
+
+<p>
+voi lukea myös kokonaisluvun
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Totuusarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä totuusarvoa. Tämän jälkeen ohjelma tulostaa käyttäjän syöttämän luvun.
+  </p>
+
+  <p>
+    Alla on annettuna ohjelman esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Syötä luku: 
+<font color="red">3.14</font>
+Syötit luvun 3.14
+</pre>
+
+<pre class="sample-output">Syötä luku: 
+<font color="red">2.718</font>
+Syötit luvun 2.718
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+<h3 class="material-heading">
+    Yhteenveto
+
+</h3>
+
+<p>
+  TODO: kaikki yhdessä
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Muuttujat yhdessä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonoa, kokonaislukua, liukulukua ja totuusarvoa. Tämän jälkeen ohjelma tulostaa käyttäjän syöttämät arvot.
+  </p>
+
+  <p>
+    Alla on annettuna ohjelman esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Syötä merkkijono!
+<font color="red">heippa</font>
+Syötä kokonaisluku!
+<font color="red">11</font>
+Syötä liukuluku!
+<font color="red">4.2</font>
+Syötä totuusarvo!
+<font color="red">true</font>
+Syötit merkkijonon heippa
+Syötit kokonaisluvun 11
+Syötit liukuluvun 4.2
+Syötit totuusarvon true
+</pre>
+
+
+<pre class="sample-output">Syötä merkkijono!
+<font color="red">oho!</font>
+Syötä kokonaisluku!
+<font color="red">-4</font>
+Syötä liukuluku!
+<font color="red">3200.1</font>
+Syötä totuusarvo!
+<font color="red">false</font>
+Syötit merkkijonon oho!
+Syötit kokonaisluvun -4
+Syötit liukuluvun 3200.1
+Syötit totuusarvon false
+</pre>
+  
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<h1 class="material-heading">
+    Laskentaa luvuilla
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      perusaritmetiikka
+    </li>
+    <li>
+      muistellaan uudelleen miten muuttujan arvo uudelleenasetetaan
+    </li>
+
+  </ul>
+  
+
+  </div>
+</div>
+
+
+
+
+<p>
+  voiko int-arvoon lisätä doublen tai toisinpäin?
+</p>
+
+
+<p>
+  Laskuoperaatiot ovat tuttuja ja suoraviivaisia: yhteenlasku <code>+</code>, erotus <code>-</code>, kertolasku <code>*</code> ja jakolasku <code>/</code>. Laskentajärjestys on myös tuttu: laskenta tehdään vasemmalta oikealle sulut huomioon ottaen. Kuitenkin <code>*</code> ja <code>/</code> lasketaan ennen <code>+</code> ja <code>-</code> operaatioita, samoin kuin perus- tai kansakoulumatematiikassa on tullut tutuksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 2;
+System.out.println(eka); // tulostaa 2
+int toka = 4;
+System.out.println(toka); // tulostaa 4
+
+int summa = eka + toka; // muuttujaan summa asetetaan muuttujien eka ja toka arvojen summa
+System.out.println(summa); // tulostaa 6
+</code></pre>
+
+
+<h2 class="material-heading">
+    Laskujärjestys ja sulut
+
+</h2>
+
+<p>
+  Laskujärjestykseen voi vaikuttaa sulkujen avulla. Sulkujen sisällä olevat laskuoperaatiot suoritetaan ennen niiden ulkopuolella olevia laskuoperaatioita.
+</p>
+
+<pre class="sh_java code-highlight"><code>int laskuSuluilla = (1 + 1) + 3 * (2 + 5);
+System.out.println(laskuSuluilla); // tulostaa 23
+
+int laskuSuluitta = 1 + 1 + 3 * 2 + 5;
+System.out.println(laskuSuluitta); // tulostaa 13
+</code></pre>
+
+
+<p>
+  Yllä olevan esimerkin voi jakaa myös osiin.
+</p>
+
+<pre class="sh_java code-highlight"><code>int laskuSuluilla = (1 + 1);
+System.out.println(laskuSuluilla); // tulostaa 2
+laskuSuluilla = laskuSuluilla + 3 * (2 + 5);
+System.out.println(laskuSuluilla); // tulostaa 23
+
+int laskuSuluitta = 1 + 1;
+laskuSuluitta = laskuSuluitta + 3 * 2;
+laskuSuluitta = laskuSuluitta + 5;
+System.out.println(laskuSuluitta); // tulostaa 13
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Sekunnit vuorokaudessa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta tehtäväpohjaan ohjelma, joka kysyy käyttäjältä vuorokausien lukumäärää. Tämän jälkeen ohjelma tulostaa sekuntien määrän annetuissa vuorokausissa.
+  </p>
+
+  <p>
+    Esimerkkitulostuksia:
+  </p>
+  
+<pre class="sample-output">Kuinka monen vuorokauden sekunnit tulostetaan?
+<font color="red">3</font>
+259200
+</pre>
+
+<pre class="sample-output">Kuinka monen vuorokauden sekunnit tulostetaan?
+<font color="red">7</font>
+604800
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="quiznator-plugin" data-quiz-id="5a57bcce574f0b000439a32b"></div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Lauseke ja lause
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Lauseke (expression) on arvojen yhdistelmä, joka muuntuu arvoksi laskuoperaation tai evaluaation yhteydessä. Alla oleva lause sisältää lausekkeen <code>1 + 1 + 3 * 2 + 5</code>, joka evaluoidaan ennen arvon asetusta muuttujaan.
+  </p>
+
+<pre class="sh_java code-highlight"><code>int laskuSuluitta = 1 + 1 + 3 * 2 + 5;
+</code></pre>
+
+  <p>
+    Lausekkeen evaluaatio tapahtuu aina ennen muuttujan arvon asetusta, eli yllä lasku "1 + 1 + 3 * 2 + 5" suoritetaan ennen tuloksen asetusta muuttujaan.
+  </p>
+
+
+  </div>
+</div>
+
+<p>
+  Lausekkeen evaluointi tapahtuu ohjelmakoodissa siinä kohtaa, missä lauseke on. Evaluointi onnistuu siis esimerkiksi myös tulostuslauseen yhteydessä, jos lauseketta käytetään tulostuslauseen parametrin arvon laskemisessa.
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 2;
+int toka = 4;
+
+System.out.println(eka + toka); // tulostaa 6
+System.out.println(2 + toka - eka - toka); // tulostaa 0
+</code></pre>
+
+
+<p>
+  Lauseke ei muuta muuttujassa olevaa arvoa, ellei lausekkeen lopputulosta aseteta muuttujan arvoksi tai anneta parametrina esimerkiksi tulostukselle.
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 2;
+int toka = 4;
+
+// alla oleva lauseke ei edes toimi, sillä lauseketta
+// ei aseteta minkään muuttujan arvoksi tai anneta parametrina
+// tulostuslauseelle
+eka + toka;
+</code></pre>
+
+
+<div class="quiznator-plugin" data-quiz-id="5878a0b579db890004df0d1d"></div>
+
+
+
+<h2 class="material-heading">
+    Laskentaa ja tulostamista
+
+</h2>
+
+<p>
+  Muuttujan arvon voi tulostaa komennolla <code>System.out.println</code>. Tulostettavaan hipsuilla merkittyyn merkkijonoon, esim. "Pituus ", voidaan lisätä muuta tulostettavaa operaation <code>+</code> avulla.
+</p>
+
+<pre class="sh_java code-highlight"><code>int pituus = 42;
+System.out.println("Pituus " + pituus);
+</code></pre>
+
+<pre class="sample-output">Pituus 42
+</pre>
+
+<pre class="sh_java code-highlight"><code>System.out.println("tuossa on kokonaisluku --&gt; " + 2);
+System.out.println(2 + " &lt;-- tuossa on kokonaisluku");
+</code></pre>
+
+<pre class="sample-output">tuossa on kokonaisluku --&gt; 2
+2 &lt;-- tuossa on kokonaisluku
+</pre>
+
+<p>
+  Jos toinen operaation <code>+</code> kohteista on merkkijono, muutetaan myös toinen operaation kohteista merkkijonoksi ohjelman suorituksen yhteydessä. Alla olevassa esimerkissä kokonaisluku <code>2</code> on muutettu merkkijonoksi "2", ja siihen on yhdistetty merkkijono.
+</p>
+
+<p>
+  Aiemmin esitellyt laskusäännöt pätevät täälläkin:
+</p>
+
+<pre class="sh_java code-highlight"><code>System.out.println("Neljä: " + (2 + 2));
+System.out.println("Mutta! kaksikymmentäkaksi: " + 2 + 2);
+</code></pre>
+
+<pre class="sample-output">Neljä: 4
+Mutta! kaksikymmentäkaksi: 22
+</pre>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        System.out.println(\"Neljä: \" + (2 + 2));\n        System.out.println(\"Mutta! kaksikymmentäkaksi: \" + 2 + 2);\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Neljä: 4\n","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"5","frame_id":5}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Neljä: 4\nMutta! kaksikymmentäkaksi: 22\n","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Neljä: 4\nMutta! kaksikymmentäkaksi: 22\n","event":"return","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"__return__":["VOID"]},"ordered_varnames":["__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kahden luvun summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä kahta lukua. Tämän jälkeen ohjelma tulostaa käyttäjän syöttämien lukujen summan.
+  </p>
+
+  <p>
+    Alla on annettuna ohjelman esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">8</font>
+Syötä toinen luku!
+<font color="red">3</font>
+Lukujen summa on 11
+</pre>
+
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">3</font>
+Syötä toinen luku!
+<font color="red">-1</font>
+Lukujen summa on 2
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kolmen luvun summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä kolmea lukua. Tämän jälkeen ohjelma tulostaa käyttäjän syöttämien lukujen summan.
+  </p>
+
+  <p>
+    Alla on annettuna ohjelman esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">8</font>
+Syötä toinen luku!
+<font color="red">3</font>
+Syötä kolmas luku!
+<font color="red">3</font>
+Lukujen summa on 14
+</pre>
+
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">3</font>
+Syötä toinen luku!
+<font color="red">-1</font>
+Syötä kolmas luku!
+<font color="red">2</font>
+Lukujen summa on 4
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Edellistä tietoa soveltamalla voimme luoda lausekkeen, joka sisältää tekstiä ja muuttujan, ja joka evaluoidaan tulostuksen yhteydessä:
+</p>
+
+<pre class="sh_java code-highlight"><code>int x = 10;
+
+System.out.println("muuttujan x arvo on: " + x);
+
+int y = 5;
+int z = 6;
+
+System.out.println("y on " + y + " ja z on " + z);
+</code></pre>
+
+<p>
+  Tulostus:
+</p>
+
+<pre class="sample-output">muuttujan x arvo on: 10
+y on 5 ja z on 6
+</pre>
+
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Yhteenlasku</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, jonka avulla voidaan laskea kahden kokonaisluvun summa. Ohjelman alussa kysytään kahta kokonaislukua, jotka sisältävät summattavat luvut. Tämän jälkeen ohjelma tulostaa lukujen summausta kuvaavan kaavan.
+  </p>
+
+  <p>
+    Tulostusesimerkkejä:
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">5</font>
+Syötä toinen luku!
+<font color="red">4</font>
+5 + 4 = 9
+</pre>
+
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">73457</font>
+Syötä toinen luku!
+<font color="red">12888</font>
+73457 + 12888 = 86345
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kertolasku</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee edellistä ohjelmaa vastaava ohjelma, joka laskee kahden kokonaislukumuuttujaan sijoitetun arvon kertolaskun.
+  </p>
+
+  <p>
+    Esimerkiksi jos syötetyt luvut ovat 2 ja 8, ohjelman suoritus on seuraava:
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">2</font>
+Syötä toinen luku!
+<font color="red">8</font>
+2 * 8 = 16
+</pre>
+
+  <p>
+    Jos taas syötetyt luvut ovat 277 ja 111, ohjelman suoritus on seuraava:
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">277</font>
+Syötä toinen luku!
+<font color="red">111</font>
+277 * 111 = 30747
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Kun olet saanut edellisen tehtävän toteutettua, kokeile mikä on suurin mahdollinen kertolasku minkä saat laskettua. Huomaamasi ilmiön taustalla on se, että kokonaislukumuuttujan arvo voi olla korkeintaan 2<sup>31</sup>-1 eli 2147483647. Tämä johtuu siitä, että kokonaislukumuuttujat esitetään tietokoneen muistissa rajatulla määrällä muistia, eli bittejä. Tähän tutustutaan tarkemmin muunmuassa kurssilla Tietokoneen toiminta.
+</p>
+
+
+<h2 class="material-heading">
+    Jakolasku
+
+</h2>
+
+
+<p>
+  Kokonaislukujen jakolasku on hieman hankalampi operaatio. Jakolausekkeessa käytettyjen muuttujien tyyppi määrää evaluaation tuloksena saatavan arvon tyypin. Jos kaikki jakolausekkeessa olevat muuttujat ovat kokonaislukuja, on tulos myös kokonaisluku.
+</p>
+
+<pre class="sh_java code-highlight"><code>int tulos = 3 / 2;
+System.out.println(tulos); // Huom! tulostaa 1 (kokonaisluku), sillä 3 ja 2 ovat myös kokonaislukuja
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>int eka = 3:
+int toka = 2;
+double tulos = eka / toka;
+System.out.println(tulos); // nytkin tulostus on 1, sillä eka ja toka ovat kokonaislukuja
+</code></pre>
+
+<p>
+  Jos jakolaskun jakaja tai jaettava (tai molemmat!) ovat liukulukuja, tulee tulokseksi myös liukuluku.
+</p>
+
+<pre class="sh_java code-highlight"><code>double kunJaettavaOnLiukuluku = 3.0 / 2;
+System.out.println(kunJaettavaOnLiukuluku); // tulostaa 1.5
+
+double kunJakajaOnLiukuluku = 3 / 2.0;
+System.out.println(kunJakajaOnLiukuluku); // tulostaa 1.5
+</code></pre>
+
+<p>
+  Kokonaisluku voidaan tarvittaessa muuttaa liukuluvuksi lisäämällä sen eteen tyyppimuunnosoperaatio <code>(double)</code>:
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 3;
+int toka = 2;
+
+double tulos1 = (double) eka / toka;
+System.out.println(tulos1); // tulostaa 1.5
+
+double tulos2 = eka / (double) toka;
+System.out.println(tulos2); // tulostaa 1.5
+
+double tulos3 = (double) (eka / toka);
+System.out.println(tulos3); // tulostaa 1.0
+</code></pre>
+
+<p>
+  Jälkimmäisessä esimerkissä tulos pyöristyy väärin sillä laskuoperaatio kokonaisluvuilla suoritetaan ennen tyyppimuunnosta.
+</p>
+
+<p>
+  Jos jakolausekkeen tulos asetetaan kokonaislukutyyppiseen muuttujaan, on tulos automaattisesti kokonaisluku.
+</p>
+
+<pre class="sh_java code-highlight"><code>// tulos automaattisesti kokonaisluku: 1
+int tulosKokonaislukuKoskaTyyppiKokonaisluku = 3.0 / 2;
+</code></pre>
+
+<p>
+  Seuraava esimerkki tulostaa "1.5", sillä jaettavasta tehdään liukuluku kertomalla se liukuluvulla (1.0 * 3 = 3.0) ennen jakolaskua.
+</p>
+
+<pre class="sh_java code-highlight"><code>int jaettava = 3;
+int jakaja = 2;
+
+double tulos = 1.0 * jaettava / jakaja;
+System.out.println(tulos);
+</code></pre>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Keskiarvon laskeminen
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Seuraavissa tehtävissä pyydetään laskemaan syötettyjen lukujen keskiarvo. Kerrataan peruskoulu- tai kansakoulumatematiikasta tutun keskiarvon käsite pikaisesti.
+  </p>
+
+  <p>
+    Keskiarvolla tarkoitetaan lukujen summaa jaettuna niiden lukumäärällä. Esimerkiksi, jos haluaisimme lukujen 5 ja 3 keskiarvon, laskettaisiin keskiarvo kaavalla (5+3)/2. Vastaavasti, mikäli haluaisimme laskea lukujen 1, 2 ja 4 keskiarvon, laskettaisiin keskiarvo kaavalla (1+2+4)/3.
+  </p>
+
+  <p>
+    Ohjelmoinnissa tähän liittyy muutamia asioita, jotka tulee muistaa. Ensiksi, nollalla jakaminen ei tyypillisesti ole sallittua. Tämä tarkoittaa sitä, että nollan luvun keskiarvon laskeminen ei onnistu. Toiseksi, mikäli ohjelma käsittelee lukujen lukumäärän ja summan kokonaislukumuuttujina, tulee muuttujista jompikumpi (tai kummatkin) muuntaa liukulukumuuttujaksi kertomalla luku arvolla 1.0 ennen jakolaskua. 
+  </p>
+ 
+
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kahden luvun keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä kahta lukua ja tulostaa lukujen keskiarvon. 
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">8</font>
+Syötä toinen luku!
+<font color="red">2</font>
+Syötettyjen lukujen keskiarvo on 5.0
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kolmen luvun keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä kolme lukua ja tulostaa lukujen keskiarvon. 
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">8</font>
+Syötä toinen luku!
+<font color="red">2</font>
+Syötä kolmas luku!
+<font color="red">3</font>
+Syötettyjen lukujen keskiarvo on 5.5
+</pre>
+
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">9</font>
+Syötä toinen luku!
+<font color="red">5</font>
+Syötä kolmas luku!
+<font color="red">-1</font>
+Syötettyjen lukujen keskiarvo on 5.5
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="quiznator-plugin" data-quiz-id="5878a2b179db890004df0d1e"></div>
+
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Nelilaskin</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Bla
+  </p>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">8</font>
+Syötä toinen luku!
+<font color="red">2</font>
+8 + 2 = 10
+8 - 2 = 6
+8 * 2 = 16
+8 / 2 = 4.0
+</pre>
+
+<pre class="sample-output">Syötä ensimmäinen luku!
+<font color="red">9</font>
+Syötä toinen luku!
+<font color="red">2</font>
+9 + 2 = 11
+9 - 2 = 7
+9 * 2 = 18
+9 / 2 = 4.5
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Muuttujan arvoon liittyviä väärinkäsityksiä
+
+</h2>
+
+<p>
+  Kun tietokone suorittaa ohjelmakoodia, suorittaa se sitä käsky kerrallaan, edeten aina täsmälleen siten, kuin ohjelmakoodissa sanotaan. Kun muuttujaan asetetaan arvo, tapahtuu aina sama asia, eli yhtäsuuruusmerkin oikealla puolella oleva arvo kopioidaan yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi, eli muuttujan nimeämään paikkaan.
+</p>
+
+<p>
+  On tärkeää, että ohjelmoija ymmärtää, että arvon asettaminen muuttujaan tekee aina saman asian.
+</p>
+
+<p>
+  Kolme yleistä väärinkäsitystä, jotka liittyvät muuttujan arvon asettamiseen ovat seuraavat:
+</p>
+
+<ul>
+  <li>Muuttujan asettamisen näkeminen siirtona kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että muuttujan <code>toka</code> arvo on siirtynyt muuttujan <code>eka</code> arvoksi, jonka jälkeen muuttujalla <code>toka</code> ei ole enää arvoa, tai sen arvo on esimerkiksi nolla. Tämä ei pidä paikkansa, sillä ohjelmakoodin <code>eka = toka</code> suorituksessa muuttujan <code>toka</code> nimeämässä paikassa oleva arvo kopioidaan muuttujan <code>eka</code> nimeämään paikkaan. Muuttujan <code>toka</code> arvo ei siis muutu.<br/></li>
+  <li>Muuttujan asettamisen näkeminen riippuvuutena kopioimisen sijaan: ohjelmakoodin <code>eka = toka</code> suorituksen jälkeen ajatellaan, että mikä tahansa muutos muuttujaan <code>toka</code> vaikuttaa automaattisesti myös muuttujaan <code>eka</code>. Tämä ei pidä paikkansa, sillä asetus -- kopiointi -- on yksittäinen tapahtuma. Se tapahtuu vain silloin, ohjelmakoodi <code>eka = toka</code> suoritetaan.<br/></li>
+  <li>Kolmas väärinkäsitys liittyy kopioimisen suuntaan: ohjelmakoodin <code>eka = toka</code> suorituksessa ajatellaan, että muuttujan <code>toka</code> arvoksi kopioidaan muuttujan <code>eka</code> arvo. Tämä näkyy myös tilanteina, missä ohjelmoija voi vahingossa kirjoittaa esimerkiksi <code>42 = arvo</code> -- onneksi ohjelmointiympäristöt tukevat myös tässä.</li>
+</ul>
+
+<p>
+  Ehkäpä paras tapa tietokoneen ohjelmakoodin suorittamisen ymmärtämiseen on paperin ja kynän käyttäminen. Kun luet ohjelmakoodia, kirjoita paperille uusien muuttujien nimet, sekä kirjoita ylös rivi riviltä, miten ohjelmakoodissa olevien muuttujien arvot muuttuvat. Havainnollistetaan suoritusta seuraavalla ohjelmakoodilla:
+</p>
+
+<pre class="sh_java code-highlight"><code>rivi 1: int eka = (1 + 1);
+rivi 2: int toka = eka + 3 * (2 + 5);
+rivi 3:
+rivi 4: eka = 5;
+rivi 5:
+rivi 6: int kolmas = eka + toka;
+rivi 7: System.out.println(eka);
+rivi 8: System.out.println(toka);
+rivi 9: System.out.println(kolmas);
+</code></pre>
+
+<p>
+  Alla on kirjoitettu yllä olevan ohjelmakoodin suoritus auki.
+</p>
+
+<pre class="sample-output">rivi 1: luodaan muuttuja eka
+rivi 1: kopioidaan muuttujan eka arvoksi laskun 1 + 1 tulos
+rivi 1: muuttujan eka arvo on 2
+
+rivi 2: luodaan muuttuja toka
+rivi 2: lasketaan 2 + 5, 2 + 5 ->  7
+rivi 2: lasketaan 3 * 7, 3 * 7 -> 21
+rivi 2: lasketaan eka + 21
+rivi 2: kopioidaan muuttujan eka arvo laskuun, muuttujan eka arvo on 2
+rivi 2: lasketaan 2 + 21, 2 + 21 -> 23
+rivi 2: kopioidaan muuttujan toka arvoksi 23
+rivi 2: muuttujan toka arvo on 23
+
+rivi 3: (tyhjä, ei tehdä mitään)
+
+rivi 4: kopioidaan muuttujan eka arvoksi 5
+rivi 4: muuttujan eka arvo on 5
+
+rivi 5: (tyhjä, ei tehdä mitään)
+
+rivi 6: luodaan muuttuja kolmas
+rivi 6: lasketaan eka + toka
+rivi 6: kopioidaan muuttujan eka arvo laskuun, muuttujan eka arvo on 5
+rivi 6: lasketaan 5 + toka
+rivi 6: kopioidaan muuttujan toka arvo laskuun, muuttujan toka arvo on 23
+rivi 6: lasketaan 5 + 23 -> 28
+rivi 6: kopioidaan muuttujan kolmas arvoksi 28
+rivi 6: muuttujan kolmas arvo on 28
+
+rivo 7: tulostetaan muuttuja eka
+rivi 7: kopioidaan muuttujan eka arvo tulostettavaksi, muuttujan eka arvo on 5
+rivi 7: tulostetaan arvo 5
+
+rivi 8: tulostetaan muuttuja toka
+rivi 8: kopioidaan muuttujan toka arvo tulostettavaksi, muuttujan toka arvo on 23
+rivi 8: tulostetaan arvo 23
+
+rivi 9: tulostetaan muuttuja kolmas
+rivi 9: kopioidaan muuttujan kolmas arvo tulostettavaksi, muuttujan kolmas arvo on 28
+rivi 9: tulostetaan arvo 28
+</pre>
+
+
+<p>
+  Alla edellinen ohjelma askeleittain visualisoituna. Käytössä oleva askeleittainen visualisointi käsittelee ohjelmakoodia riveittäin -- pohdi askeleiden kohdalla miten ohjelma päätyy sen tulostamaan lopputulokseen.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class LaskentaAskeleittain {\n  public static void main(String[] args) {\n    int eka = (1 + 1);\n    int toka = eka + 3 * (2 + 5);\n\n    eka = 5;\n\n    int kolmas = eka + toka;\n    System.out.println(eka);\n    System.out.println(toka);\n    System.out.println(kolmas);\n  }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"eka":2},"ordered_varnames":["eka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"eka":2,"toka":23},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"eka":5,"toka":23},"ordered_varnames":["eka","toka"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"eka":5,"toka":23,"kolmas":28},"ordered_varnames":["eka","toka","kolmas"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"5\n","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"eka":5,"toka":23,"kolmas":28},"ordered_varnames":["eka","toka","kolmas"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"5\n23\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"eka":5,"toka":23,"kolmas":28},"ordered_varnames":["eka","toka","kolmas"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"24","frame_id":24}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"5\n23\n28\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"eka":5,"toka":23,"kolmas":28},"ordered_varnames":["eka","toka","kolmas"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"5\n23\n28\n","event":"return","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"eka":5,"toka":23,"kolmas":28,"__return__":["VOID"]},"ordered_varnames":["eka","toka","kolmas","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+<div class="quiznator-plugin" data-quiz-id="5878a3ee79db890004df0d1f"></div>
+
+
+
+
+<h1 class="material-heading">
+    Ehtolauseet ja vaihtoehtoinen toiminta
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tunnet käsitteen ehtolause ja osaat luoda ohjelmaan vaihtoehtoista toimintaa ehtolauseen avulla.
+    </li>
+    <li>
+      Tunnet yleisimmät vertailuoperaatiot (yhtäsuuruus ==, suurempi kuin >, suurempi tai yhtäsuuri kuin >=, pienempi kuin <, pienempi tai yhtäsuuri kuin <=) ja osaat käyttää niitä kokonaislukujen ja liukulukujen vertailuun osana ehtolausetta.
+    </li>
+    <li>
+      Osaat käyttää totuusarvomuuttujia osana ehtolausetta. 
+    </li>
+    <li>
+      Osaat vertailla merkkijonoja merkkijonoihin liittyvän equals-komennon avulla. 
+    </li>
+    
+  </ul>
+  
+
+  </div>
+</div>
+
+<p>
+  Ohjelmamme ovat tähän mennessä olleet lineaarisia eli ohjelmien suoritus on tapahtunut ylhäältä alaspäin ilman suuria yllätyksiä tai vaihtoehtoja. Ohjelmiin halutaan kuitenkin usein vaihtoehtoista toiminnallisuutta, eli toiminnallisuutta joka riippuu tavalla tai toisella ohjelmassa olevien muuttujien tilasta.
+</p> 
+
+<p>
+  Jotta ohjelman suoritus voisi <em>haarautua</em> esimerkiksi käyttäjän antaman syötteen perusteella, tarvitsemme käyttöömme <strong>ehtolauseen</strong>. Yksinkertaisin ehtolause on seuraavanlainen.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>System.out.println("Hei maailma!");
+
+if (true) {
+    System.out.println("Et voi välttää tätä koodia!");
+}
+</code></pre>
+  
+<pre class="sample-output">Hei maailma!
+Et voi välttää tätä koodia!
+</pre>
+
+<p>
+  Ehtolause alkaa avainsanalla <code>if</code>, jota seuraa sulut. Sulkujen sisälle asetetaan lauseke, joka evaluoidaan kun ehtolause saavutetaan. Evaluoinnin tulos on totuusarvo, yllä evaluointia ei tehty, vaan ehtolauseessa käytettiin suoraan totuusarvoa.
+</p>
+
+<p>
+  Sulkuja seuraa lohko, joka määritellään avaavan aaltosulun <code>{</code> ja sulkevan aaltosulun <code>}</code> sisään. Lohkon sisällä oleva lähdekoodi mikäli sulkujen sisälle asetettu lauseke evaluoidaan todeksi (true).
+</p>
+
+<p>
+  Tarkastellaan esimerkkiä, missä ehtolauseen lausekkeessa vertaillaan lukuja.
+</p>
+
+<pre class="sh_java code-highlight"><code>int luku = 11;
+
+if (luku &gt; 10) {
+    System.out.println("Luku oli suurempi kuin 10");
+}
+</code></pre>
+
+<p>
+  Jos ehtolauseen lauseke evaluoidaan todeksi, yllä "jos muuttujassa luku oleva arvo on suurempi kuin 10", ohjelman suoritus siirtyy ehtolauseen määrittelemään lohkoon. Jos taas lauseke on epätotta, ohjelman suoritus siirtyy ehtolauseeseen liittyvän lohkon päättävän aaltosulun jälkeiseen lauseeseen.
+</p>
+
+<p>
+  Huomaa, että <code>if</code> -lauseen perään ei tule puolipistettä, sillä lause ei lopu ehto-osan jälkeen.
+</p>
+
+
+
+<div class="typonator-widget">
+  <div class="typonator-model-source">
+public class Esimerkki {
+    public static void main(String[] args) {
+        int luku = 11;
+        if (luku > 10) {
+            System.out.println("Luku oli suurempi kuin 10");
+        }
+    }
+}
+  </div>
+  <div class="typonator-template-source">
+public class Esimerkki {
+    public static void main(String[] args) {
+        // MARK
+    }
+}
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Ohjelmakoodin sisennys
+  </div>
+
+  <div class="hint__body">
+    
+
+  <p>
+    Lohkojen sisällä oleva koodi sisennetään. Esimerkiksi ehtolauseeseen liittyvän lohkon sisältämä lähdekoodi sisennetään neljä välilyöntiä sisemmälle kuin ehtolauseen aloittava <code>if</code>-komento. Neljä merkkiä saa myös tabulaattorimerkillä (q:n vasemmalla puolella oleva näppäin). Kun lohko sulkeutuu, eli tulee }-merkki, sisennys loppuu. }-merkki on samalla tasolla kuin ehtolauseen aloittanut <code>if</code>-komento.
+  </p>
+
+  <table class="table">
+    <thead>
+      <tr><th>Väärin</th><th>Oikein</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+	<td>
+<pre class="sh_java code-highlight"><code>if (luku &gt; 10) {
+luku = 9;
+}
+</code></pre>
+	</td>
+	<td>
+<pre class="sh_java code-highlight"><code>if (luku &gt; 10) {
+    luku = 9;
+}
+</code></pre>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Huom! Jos et sisennä ohjelmakoodiasi edellä kuvatulla tavalla, tyylitarkastaja valittaa "Line xx: '}' should be on the same line."
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Ylinopeussakko</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Ylinopeussakko!" jos luku on suurempi kuin 120.
+  </p>
+
+<pre class="sample-output">Kerro nopeus: <font color="red">15</font>
+</pre>
+
+<pre class="sample-output">Kerro nopeus: <font color="red">135</font>
+
+Ylinopeussakko!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Vertailuoperaattorit
+
+</h2>
+
+
+<p>
+  Vertailuoperaattoreita ovat seuraavat:
+</p>
+
+<ul>
+  <li><code>&gt;</code>suurempi kuin</li>
+  <li><code>&gt;=</code>suurempi tai yhtä suuri kuin</li>
+  <li><code>&lt;</code>pienempi kuin</li>
+  <li><code>&lt;=</code> pienempi tai yhtä suuri kuin</li>
+  <li><code>==</code> yhtä suuri kuin</li>
+  <li><code>!=</code> erisuuri kuin</li>
+</ul>
+
+<pre class="sh_java code-highlight"><code>int luku = 55;
+
+if (luku != 0) {
+    System.out.println("Luku oli erisuuri kuin 0");
+}
+
+if (luku &gt;= 1000) {
+    System.out.println("Luku oli vähintään 1000");
+}
+</code></pre>
+
+<pre class="sample-output">Luku oli erisuuri kuin 0
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Orwell</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja tulostaa merkkijonon "Orwell" jos luku on täsmälleen 1984.
+  </p>
+
+<pre class="sample-output">Anna luku: <font color="red">1983</font>
+</pre>
+
+<pre class="sample-output">Anna luku: <font color="red">1984</font>
+
+Orwell
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Wanha</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä vuosilukua. Jos käyttäjä syöttää luvun, joka on pienempi kuin 2015, ohjelma tulostaa merkkijonon "Wanha!".
+  </p>
+
+<pre class="sample-output">Anna vuosiluku: <font color="red">2017</font>
+</pre>
+
+<pre class="sample-output">Anna vuosiluku: <font color="red">2013</font>
+
+Wanha!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Muulloin eli else
+
+</h2>
+
+<p>
+  Jos ehtolauseen sulkujen sisällä oleva lauseke evaluoituu epätodeksi, ohjelmakoodin suoritus siirtyy ehtolauseen lohkon lopettavan aaltosulun seuraavaan lauseeseen. Tämä ei aina ole toivottua, vaan usein halutaan luoda vaihtoehtoinen toiminta tilanteeseen, missä ehtolauseen lauseke on epätotta.
+</p>
+
+<p>
+  Tämä onnistuu <code>if</code>-komennon yhteydessä käytettävän <code>else</code>-komennon avulla.
+</p>
+
+<pre class="sh_java code-highlight"><code>int luku = 4;
+
+if (luku &gt; 5) {
+    System.out.println("Lukusi on suurempi kuin viisi!");
+} else {
+    System.out.println("Lukusi on viisi tai alle!");
+}
+</code></pre>
+
+<pre class="sample-output">Lukusi on viisi tai alle!
+</pre>
+
+<p>
+  Jos ehtolauseeseen on määritelty <code>else</code>-haara, suoritetaan else-haaran määrittelemä lohko jos ehtolauseen ehto ei ole totta. Komento <code>else</code> tulee samalle riville <code>if</code>-komennon määrittelemän lohkon lopettavan aaltosulun kanssa.
+</p>
+
+<p>
+  Huom! Jos et sisennä em. tavalla, tyylitarkastaja valittaa "Line xx: '}' should be on the same line."
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Positiivinen luku</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja kertoo, onko se positiivinen (eli suurempi kuin nolla) vai ei.
+  </p>
+
+<pre class="sample-output">Anna luku: <font color="red">5</font>
+
+Luku on positiivinen.
+</pre>
+
+<pre class="sample-output">Anna luku: <font color="red">-2</font>
+
+Luku ei ole positiivinen.
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Täysi-ikäisyys</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>Tee ohjelma, joka kysyy käyttäjän ikää ja kertoo, onko tämä täysi-ikäinen (eli 18-vuotias tai vanhempi).</p>
+
+<pre class="sample-output">Kuinka vanha olet? <font color="red">12</font>
+
+Et ole täysi-ikäinen!
+</pre>
+
+<pre class="sample-output">Kuinka vanha olet? <font color="red">32</font>
+
+Olet täysi-ikäinen!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Lisää vaihtoehtoja: else if
+
+</h2>
+
+<p>
+  Jos vaihtoehtoja on useampia käytetään <code>else if</code>-komentoa. Komento <code>else if</code> on kuin <code>else</code>, mutta lisäehdolla. <code>else if</code> tulee <code>if</code>-ehdon jälkeen, ja niitä voi olla useita.
+</p>
+
+<pre class="sh_java code-highlight"><code>int luku = 3;
+
+if (luku == 1) {
+    System.out.println("Luku on yksi");
+} else if (luku == 2) {
+    System.out.println("Lukuna on kaksi");
+} else if (luku == 3) {
+    System.out.println("Kolme lienee lukuna!");
+} else {
+    System.out.println("Jotain muuta!");
+}
+</code></pre>
+
+<pre class="sample-output">Kolme lienee lukuna!
+</pre>
+
+
+<p>
+  Luetaan yllä oleva esimerkki: 'Jos luku on yksi, tulosta "Luku on yksi", muuten jos luku on kaksi, tulosta "Lukuna on kaksi", muuten jos lukuna on kolme, tulosta "Kolme lienee lukuna!".  Muulloin, tulosta "Jotain muuta!"'.
+</p>
+
+<p>
+  Yllä olevan ohjelman askeleittainen visualisointi:
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n  public static void main(String[] args) {\n    int luku = 3;\n    \n    if (luku == 1) {\n      System.out.println(\"Luku on yksi\");\n    } else if (luku == 2) {\n      System.out.println(\"Lukuna on kaksi\");\n    } else if (luku == 3) {\n      System.out.println(\"Kolme lienee lukuna!\");\n    } else {\n      System.out.println(\"Jotain muuta!\");\n    }\n  }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"main:10","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"16","frame_id":16}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Kolme lienee lukuna!\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"20","frame_id":20}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Kolme lienee lukuna!\n","event":"return","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"luku":3,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"21","frame_id":21}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Suurempi tai yhtäsuuri</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja tulostaa niistä suuremman. Jos luvut ovat yhtä suuret, ohjelma huomaa myös tämän.
+  </p>
+
+  <p>
+    Esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Anna ensimmäinen luku: <font color="red">5</font>
+Anna toinen luku: <font color="red">3</font>
+
+Suurempi luku: 5
+</pre>
+
+<pre class="sample-output">Anna ensimmäinen luku: <font color="red">5</font>
+Anna toinen luku: <font color="red">8</font>
+
+Suurempi luku: 8
+</pre>
+
+<pre class="sample-output">Anna ensimmäinen luku: <font color="red">5</font>
+Anna toinen luku: <font color="red">5</font>
+
+Luvut ovat yhtä suuret!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Vertailujen suoritusjärjestys
+
+</h2>
+
+<p>
+  Vertailut suoritetaan järjestyksessä ylhäältä alaspäin. Kun suorituksessa päästään ehtolauseeseen, jonka ehto on totta, suoritetaan lohko ja lopetetaan vertailu.
+</p>
+
+<pre class="sh_java code-highlight"><code>int luku = 5;
+
+if (luku == 0) {
+    System.out.println("Luku on nolla.");
+} else if (luku &gt; 0) {
+    System.out.println("Luku on suurempi kuin nolla.");
+} else if (luku &gt; 2) {
+    System.out.println("Luku on suurempi kuin kaksi.");
+} else {
+    System.out.println("Luku on pienempi kuin nolla.");
+}
+</code></pre>
+
+<pre class="sample-output">Luku on suurempi kuin nolla.
+</pre>
+
+<p>
+  Yllä oleva esimerkki tulostaa merkkijonon "Luku on suurempi kuin nolla." vaikka myös ehto <code>luku &gt; 2</code> on totta. Vertailu lopetetaan ensimmäiseen valintakäskyyn, jonka ehto on totta.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Arvosanat ja pisteet</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Alla oleva taulukko kuvaa erään kurssin arvosanan muodostumista. Tee ohjelma, joka ilmoittaa kurssiarvosanan annetun taulukon mukaisesti.
+  </p>
+
+  <table class="table">
+    <tr>
+      <th>pistemäärä</th>
+      <th>arvosana</th>
+    </tr>
+    <tr>
+      <td>&lt; 0</td>
+      <td>mahdotonta!</td>
+    </tr>
+    <tr>
+      <td>0-49</td>
+      <td>hylätty</td>
+    </tr>
+    <tr>
+      <td>50-59</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>60-69</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>70-79</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>80-89</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>90-100</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>&gt; 100</td>
+      <td>uskomatonta!</td>
+    </tr>
+  </table>
+
+  <p>
+    Esimerkkitulostuksia:
+  </p>
+
+<pre class="sample-output">Anna pisteet [0-100]: <font color="red">37</font>
+
+Arvosana: hylätty
+</pre>
+
+<pre class="sample-output">Anna pisteet [0-100]: <font color="red">76</font>
+
+Arvosana: 3
+</pre>
+
+<pre class="sample-output">Anna pisteet [0-100]: <font color="red">95</font>
+
+Arvosana: 5
+</pre>
+
+
+<pre class="sample-output">Anna pisteet [0-100]: <font color="red">-3</font>
+
+Arvosana: mahdotonta!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Ehtolauseen lauseke ja totuusarvomuuttuja
+
+</h2>
+
+
+<p>
+  Ehtolauseen sulkuihin asetettavan arvon tulee olla lausekkeen evaluoinnin jälkeen totuusarvotyyppinen. Totuusarvomuuttujan tyyppi on <code>boolean</code> ja arvo <em>true</em> tai <em>false</em>.
+</p>
+
+<pre class="sh_java code-highlight"><code>boolean onkoTotta = true;
+System.out.println("Totuusarvomuuttujan arvo on " + onkoTotta);
+</code></pre>
+
+<pre class="sample-output">Totuusarvomuuttujan arvo on true
+</pre>
+
+<p>
+  Ehtolauseen voi suorittaa myös seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>boolean onkoTotta = true;
+
+if (onkoTotta) {
+    System.out.println("Aika vinhaa!");
+}
+</code></pre>
+
+<pre class="sample-output">Aika vinhaa!
+</pre>
+
+
+<p>
+  Vertailuoperaattoreita voi käyttää myös ehtojen ulkopuolella. Tällöin vertailun tuloksena saatu totuusarvo asetetaan talteen totuusarvomuuttujaan myöhempää käyttöä varten.
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 1;
+int toka = 3;
+
+boolean onkoSuurempi = eka &gt; toka;
+</code></pre>
+
+<p>
+  Yllä olevassa esimerkissä totuusarvomuuttuja <code>onkoSuurempi</code> sisältää nyt totuusarvon <em>false</em>. Yllä olevaa esimerkkiä voi myös jatkaa ja ottaa siihen mukaan ehtolauseen.</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 1;
+int toka = 3;
+
+boolean onkoPienempi = eka &lt; toka;
+
+if (onkoPienempi) {
+    System.out.println("1 on pienempi kuin 3!");
+}
+</code></pre>
+
+<img class="naytto" src="../img/drawings/boolean-muuttuja-9124b5d4.png"/>
+
+<p>
+  Yllä olevassa kuvassa ohjelmakoodia on suoritettu niin pitkään, että ohjelman muuttujat on luotu ja niihin on asetettu arvot. Muuttujassa <code>onkoPienempi</code> on arvona <code>true</code>. Seuraavana suoritetaan vertailu <code>if (onkoPienempi) </code> -- muuttujaan <code>onkoPienempi</code> liittyvä arvo löytyy sen lokerosta, ja lopulta ohjelma tulostaa:
+</p>
+
+
+<pre class="sample-output">1 on pienempi kuin 3!
+</pre>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Jakojäännös
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Jakojäännös on hieman harvemmin käytetty operaatio, joka on kuitenkin varsin näppärä kun halutaan tarkistaa esimerkiksi luvun jaollisuutta. Jakojäännösoperaation merkki on <code>%</code>.
+  </p>
+
+<pre class="sh_java code-highlight"><code>int jakojaannos = 7 % 2;
+System.out.println(jakojaannos); // tulostaa 1
+
+System.out.println(5 % 3); // tulostaa 2
+System.out.println(7 % 4); // tulostaa 3
+System.out.println(8 % 4); // tulostaa 0
+System.out.println(1 % 2); // tulostaa 1
+</code></pre>
+
+  <p>
+    Jos haluamme tietää onko käyttäjän syöttämä luku jaollinen neljälläsadalla, tarkastamme onko syötetyn luvun jakojäännös neljänsadan suhteen nolla.
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+int luku = Integer.valueOf(lukija.nextLine());
+int jakojaannos = luku % 400;
+
+if (jakojaannos == 0) {
+    System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
+} else {
+    System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
+}
+</code></pre>
+
+  <p>
+    Koska jakojäännös on samanlainen operaatio kuin muutkin laskut, voi sen asettaa osaksi valintakäskyä.
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+int luku = Integer.valueOf(lukija.nextLine());
+
+if (luku % 400 == 0) {
+    System.out.println("Luku " + luku + " on jaollinen neljälläsadalla.");
+} else {
+    System.out.println("Luku " + luku + " ei ole jaollinen neljälläsadalla.");
+}
+</code></pre>
+
+
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Pariton vai parillinen</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä luvun ja ilmoittaa, onko syötetty luku parillinen vai pariton.
+  </p>
+
+<pre class="sample-output">Anna luku: <font color="red">2</font>
+Luku 2 on parillinen.
+</pre>
+
+<pre class="sample-output">Anna luku: <font color="red">7</font>
+Luku 7 on pariton.
+</pre>
+
+  <p>
+    Vihje: Luvun jakojäännös 2:lla kertoo, onko luku parillinen vai pariton. Jakojäännös taas saadaan <code>%</code>-operaattorilla, tehtäväpohjassa on lisää ohjeita miten parittomuustarkastus hoituu jakojäännöksen avulla.
+  </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Ehtolauseet ja merkkijonojen vertailu
+
+</h2>
+
+<p>
+  Siinä missä kokonaislukujen, liukulukujen, ja totuusarvojen samuutta voi verrata kahdella yhtäsuuruusmerkillä (<code>muuttuja1 == muuttuja2</code>), ei merkkijonojen samuuden vertailu kahdella yhtäsuuruusmerkillä onnistu. 
+</p>
+
+<p>
+  Voit kokeilla tätä seuraavalla ohjelmalla:
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+System.out.println("Syötä ensimmäinen merkkijono");
+String eka = lukija.nextLine();
+System.out.println("Syötä toinen merkkijono");
+String toka = lukija.nextLine();
+
+if (eka == toka) {
+    System.out.println("Merkkijonot olivat samat!");
+} else {
+    System.out.println("Merkkijonot olivat eri!");
+}
+</code></pre>
+
+
+<pre class="sample-output">Syötä ensimmäinen merkkijono
+<font color="red">sama</font>
+<font color="red">sama</font>
+Merkkijonot olivat eri!
+</pre>
+  
+
+<pre class="sample-output">Syötä ensimmäinen merkkijono
+<font color="red">sama</font>
+<font color="red">eri</font>
+Merkkijonot olivat eri!
+</pre>
+
+<p>
+  Tämä liittyy merkkijonojen sisäiseen toimintaan sekä siihen, miten muuttujien vertailu on Javassa toteutettu. Käytännössä vertailun toimintaan vaikuttaa se, kuinka paljon tietoa muuttuja voi sisältää -- merkkijonot voivat sisältää äärettömän määrän merkkejä, kun taas kokonaisluvut, liukuluvut ja totuusarvot sisältävät aina yhden luvun tai arvon. Muuttujia, jotka sisältävät aina vain yhden luvun tai arvon voi verrata yhtäsuuruusmerkillä, kun taas enemmän tietoa sisältävillä muuttujille tällainen vertailu ei toimi.  Palaamme tähän tarkemmin myöhemmin tällä kurssilla.
+</p>
+
+<p>
+  Merkkijonojen vertailussa käytetään merkkijonomuuttujiin liittyvää <code>equals</code>-komentoa. Komento toimii seuraavalla tavalla:
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+System.out.println("Syötä merkkijono");
+String syote = lukija.nextLine();
+
+if (syote.equals("merkkijono")) {
+    System.out.println("Luit ohjeet oikein, hyvä!");
+} else {
+    System.out.println("Metsään meni!");
+}
+</code></pre>
+
+
+<pre class="sample-output">Syötä merkkijono
+<font color="red">ok!</font>
+Metsään meni!
+</pre>
+  
+
+<pre class="sample-output">Syötä merkkijono
+<font color="red">merkkijono</font>
+Luit ohjeet oikein, hyvä!
+</pre>
+  
+<p>
+  Komento equals kirjoitetaan merkkijonomuuttujan jälkeen siten, että se kiinnitetään pisteellä vertailtavaan muuttujaan. Komennolle annetaan parametrina merkkijono, johon muuttujaa vertaillaan. Mikäli merkkijonomuuttujaa vertaillaan suoraan merkkijonoon, voi merkkijonon asettaa hipsuilla merkittynä equals-komennon sulkujen sisään. Muulloin sulkujen sisään asetetaan sen merkkijonomuuttujan nimi, johon merkkijonomuuttujan sisältämää merkkijonoa verrataan.
+</p>
+
+<p>
+  Alla olevassa esimerkissä luetaan käyttäjältä kaksi merkkijonoa. Ensin tarkastetaan ovatko syötetyt merkkijonot samat, jonka jälkeen tarkastetaan onko syötettyjen merkkijonojen arvo "kaksi merkkijonoa".
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+System.out.println("Syötä kaksi merkkijonoa");
+String eka = lukija.nextLine();
+String toka = lukija.nextLine();
+
+if (eka.equals(toka)) {
+    System.out.println("Merkkijonot olivat samat!");
+} else {
+    System.out.println("Merkkijonot olivat eri!");
+}
+
+if (eka.equals("kaksi merkkijonoa")) {
+    System.out.println("Nokkelaa!");
+}
+
+if (toka.equals("kaksi merkkijonoa")) {
+    System.out.println("Ovelaa!");
+}
+</code></pre>
+
+
+<pre class="sample-output">Syötä kaksi merkkijonoa
+<font color="red">hei</font>
+<font color="red">maailma</font>
+Merkkijonot olivat eri!
+</pre>
+
+
+<pre class="sample-output">Syötä kaksi merkkijonoa
+<font color="red">kaksi merkkijonoa</font>
+<font color="red">maailma</font>
+Merkkijonot olivat eri!
+Ovelaa!
+</pre>
+
+
+<pre class="sample-output">Syötä kaksi merkkijonoa
+<font color="red">samat</font>
+<font color="red">samat</font>
+Merkkijonot olivat samat!
+</pre>
+  
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Tunnussana</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä tunnussanaa. Mikäli tunnussana on "Caput Draconis", ohjelma tulostaa "Tervetuloa!". Muulloin ohjelman tulostus on "Hus siitä!".
+  </p>
+
+
+<pre class="sample-output">Tunnussana?
+<font color="red">Wattlebird</font>
+Hus siitä!
+</pre>
+
+
+<pre class="sample-output">Tunnussana?
+<font color="red">Caput Draconis</font>
+Tervetuloa!
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Samat sanat</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tee ohjelma, joka kysyy käyttäjältä kahta merkkijonoa. Mikäli merkkijonot ovat samat, ohjelma tulostaa "Samat sanat", muulloin ohjelma tulostaa "Ei sitten".
+  </p>
+
+
+<pre class="sample-output">Syötä ensimmäinen merkkijono: <font color="red">hei</font>
+Syötä toinen merkkijono: <font color="red">hei</font>
+Samat sanat
+</pre>
+
+<pre class="sample-output">Syötä ensimmäinen merkkijono: <font color="red">hei</font>
+Syötä toinen merkkijono: <font color="red">maailma</font>
+Ei sitten
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- 
+TODO: crowdsorcerer, kokonaan lukittu tehtäväboksi, 
+opiskelija kirjoittaa esimerkkisyötteitä ja tulosteita
+-->
+
+
+<h1 class="material-heading">
+    Toiminnallisuuden toistaminen: toistolauseet
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+
+    <li>
+      Tunnet käsitteen toistolause ja osaat luoda ohjelman, joka sisältää toistolauseen.
+    </li>
+    <li>
+      Osaat käyttää <code>break</code>-komentoa toistolauseen suorituksen lopettamiseen ja toistolausetta seuraavaan käskyyn siirtymiseen.
+    </li>
+    <li>
+      Osaat käyttää <code>continue</code>-komentoa toistolauseen alkuun palaamiseen.
+    </li>
+    <li>
+      Osaat luoda ohjelman, joka lukee käyttäjältä syötettä kunnes käyttäjä syöttää tietynlaisen syötteen -- esim luku 0 tai merkkijono "loppu", jonka jälkeen ohjelma kertoo ennen lopettamista syötetyistä syötteistä (esim. syötteiden lukumäärä, lukujen tapauksessa summa ja keskiarvo).
+    </li>
+    
+  </ul>
+  
+
+  </div>
+</div>
+
+<p>
+  Tietokoneen sisältämä käskyjen suorittamiseen erikoistunut prosessori pystyy -- moderneissa tietokoneissa -- suorittamaan yli miljardi konekielistä käskyä sekunnissa. Tässä osassa tutustumme toistolauseiden toteuttamiseen. Toistolauseita käytetään toistettavan ohjelmakoodin määrittelyyn.
+</p>
+
+<p>
+  Motivoidaan toistolauseiden käyttöä hieman. Alla on esimerkki ohjelmasta, missä kysytään käyttäjältä kymmenen lukua ja lasketaan niiden summa.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+int summa = 0;
+
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Syötä luku");
+summa = summa + Integer.valueOf(lukija.nextLine());
+  
+System.out.println("Lukujen summa on " + summa);
+</code></pre>
+
+<p>
+  Hoitaa asian, mutta ei kovin tyylikkäästi. Entä jos ohjelman pitäisi lukea sata tai vaikkapa tuhat lukua ja tulostaa niiden summa? Yllä olevasta ohjelmasta voisi ottaa mallia, mutta se olisi järjetöntä. 
+</p>
+
+<p>
+  Saman ongelman voi ratkaista toistolauseella, joka pitää kirjaa sekä summasta että lukemiskerroista. Kymmenen luvun summan tulostava toistolauseella toteutettava ohjelma näyttää seuraavalta.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+int luettujaLukuja = 0;
+int summa = 0;
+
+while (true) {
+    if (luettujaLukuja == 10) {
+        break;
+    }
+
+    System.out.println("Syötä luku");
+    summa = summa + Integer.valueOf(lukija.nextLine());
+
+    luettujaLukuja = luettujaLukuja + 1;
+}
+
+System.out.println("Lukujen summa on " + summa);
+</code></pre>
+
+<p>
+  Tutustutaan seuraavaksi toistolauseisiin.
+</p>
+
+<h2 class="material-heading">
+    Toistolause ja ikuinen toisto
+
+</h2>
+
+<p>
+  Toistolause sisältää lausekkeen, jonka perusteella päätellään jatketaanko toistoa, sekä lohkon, joka sisältää toistettavan lähdekoodin. Toistolauseen muoto on seuraava.
+</p>
+
+<pre class="sh_java code-highlight"><code>while (<em>lauseke</em>) {
+    // aaltosuluilla rajatun lohkon sisältö
+    // lohkossa voi olla käytännössä
+    // rajaton määrä sisälötä
+}
+</code></pre>
+
+<p>
+  Käytämme toistaiseksi lausekkeena <code>true</code>-arvoa, eli boolean-tyyppista arvoa "totta". Tämä tarkoittaa sitä, että toistolauseen toistamista jatketaan aina kun ohjelma on tilantessa, missä selvitetään tuleeko toistolauseen suoritusta jatkaa. Tämä tapahtuu sekä silloin kun ohjelman suoritus päätyy toistolauseeseen ensimmäistä kertaa että silloin kun ohjelman suoritus päätyy toistolauseen lohkon loppuun. 
+</p>
+
+<p>
+  Toistolauseen suoritus etenee askeleittain lause kerrallaan. Seuraava ohjelma tulostaa merkkijonoa <em>osaan ohjelmoida!</em> ikuisesti eli "äärettömän monta kertaa":
+</p>
+
+<pre class="sh_java code-highlight"><code>while (true) {
+    System.out.println("osaan ohjelmoida!");
+}
+</code></pre>
+
+<p>
+  Ikuisen toiston sisältävä ohjelma ei sammu itsestään. Ohjelman sammutus tapahtuu NetBeansissa tulostusikkunan vasemmalla puolella olevaa punaista nappia painamalla.
+</p>
+
+<div class="typonator-widget">
+  <div class="typonator-model-source">
+public class Esimerkki {
+    public static void main(String[] args) {
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        while (true) {
+            System.out.println("Uudestaan!");
+        }
+    }
+}
+  </div>
+  <div class="typonator-template-source">
+public class Esimerkki {
+    public static void main(String[] args) {
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        // MARK
+    }
+}
+  </div>
+</div>
+
+<h2 class="material-heading">
+    Toistolauseen päättäminen
+
+</h2>
+
+<p>
+  Toistolauseen saa päätettyä komennolla <code>break</code>. Kun tietokone suorittaa komennon <code>break</code>, siirtyy se toistolauseeseen määriteltyä lohkoa seuraavan komennon suorittamiseen.
+</p>
+
+<p>
+  Toistolause päätetään tyypillisesti mikäli käyttäjä syöttää tietynlaisen syötteen tai mikäli toistolauseessa tehtävä laskenta päätyy haluttuun lopputulokseen. Tällaiset ohjelmat sisältävät sekä toistolauseen, jota käytetään toistettavan ohjelman määrittelyyn, että toistolauseen sisällä olevan ehtolauseen, jota käytetään toistolauseesta poistumiseen käytettävän ehdon tarkasteluun.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on ohjelma, joka tulostaa luvut yhdestä viiteen. Ohjelmassa määritellään toistolauseen sisällä käsiteltävä luku ennen toistolauseen lohkoa. Tällöin muuttujan kasvatus onnistuu. 
+</p>
+
+
+<pre class="sh_java code-highlight"><code>int luku = 1;
+while (true) {
+    System.out.println(luku);
+    if (luku &gt; 5) {
+        break;
+    }
+
+    luku = luku + 1;
+}
+
+System.out.println("Valmista!");
+</code></pre>
+
+<pre class="sample-output">1
+2
+3
+4
+5
+Valmista!
+</pre>
+
+<p>
+  Mikäli luku määritellään toistolauseen sisällä, kuten alla, ei toistolauseen suoritus pääty koskaan koska luku määritellään toistolauseen lohkossa, ja sen arvoksi asetetaan aina yksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>while (true) {
+    int luku = 1;
+    System.out.println(luku);
+    if (luku &gt; 5) {
+        break;
+    }
+
+    luku = luku + 1;
+}
+
+System.out.println("Valmista!");
+</code></pre>
+
+<pre class="sample-output">1
+1
+1
+... (ohjelma ei pääty koskaan)
+</pre>
+
+<p>
+  Toistolauseessa voidaan myös kysyä käyttäjältä syötettä. Kuten edellä, toistolauseessa käytettävät muuttujat kuten Scanner-lukija määritellään ennen toistolausetta. Alla olevassa esimerkissä ohjelma kysyy käyttäjältä mikäli ohjelman suoritusta pitäisi jatkaa. Mikäli käyttäjä syöttää merkkijonon "ei", ohjelman suoritus lopetetaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.println("Jatketaanko suoritusta? (ei lopettaa)");
+    String syote = lukija.nextLine();
+
+    if(syote.equals("ei")) {
+        break;
+    }
+
+    System.out.println("Ok! Jatketaan!");
+}
+
+System.out.println("Valmista!");
+</code></pre>
+
+<p>
+  Ohjelma toimii esimerkiksi seuraavasti. Alla käyttäjän syötteet ovat merkitty punaisella.
+</p>
+
+
+<pre class="sample-output">Jatketaanko suoritusta? (ei lopettaa)
+<font color="red">kyllä</font>
+Ok! Jatketaan!
+Jatketaanko suoritusta? (ei lopettaa)
+<font color="red">joo</font>
+Ok! Jatketaan!
+Jatketaanko suoritusta? (ei lopettaa)
+<font color="red">ei</font>
+Valmista!
+</pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Poistutaanko</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita edellä olevaa toistolause-esimerkkiä mukaillen ohjelma, joka kysyy käyttäjältä "Poistutaanko?" kunnes käyttäjä syöttää merkkijonon "kyllä".
+  </p>
+
+  <p>
+    Huomaa, että alla olevassa esimerkissä on käytetty komentoa <code>System.out.print</code> syötteen pyytämisen kehotuksessa komennon <code>System.out.println</code> sijaan.
+  </p>
+
+<pre class="sample-output">Poistutaanko? <font color="red">ei</font>
+Poistutaanko? <font color="red">eeei</font>
+Poistutaanko? <font color="red">nej</font>
+Poistutaanko? <font color="red">kyllä</font>
+</pre>
+
+<pre class="sample-output">Poistutaanko? <font color="red">joo</font>
+Poistutaanko? <font color="red">kyl</font>
+Poistutaanko? <font color="red">kylä</font>
+Poistutaanko? <font color="red">yes</font>
+Poistutaanko? <font color="red">kyllä</font>
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Edellisessä esimerkissä ohjelma lukee käyttäjältä merkkijonomuotoisia syötteitä. Vastaavanlaisen ohjelman toteutus onnistuu myös muilla muuttujatyypeillä. Alla olevassa esimerkissä käyttäjältä pyydetään lukuja kunnes käyttäjä syöttää luvun nolla. 
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.println("Syötä numeromuotoinen komento, 0 lopettaa");
+    int komento = Integer.valueOf(lukija.nextLine());
+    if (komento == 0) {
+        break;
+    }
+
+    System.out.println("Syötit " + komento)
+
+}
+
+System.out.println("Valmista, kiitos!");
+</code></pre>
+
+<p>
+  Ohjelman suoritus on esimerkiksi seuraavanlainen.
+</p>
+
+<pre class="sample-output">Syötä numeromuotoinen komento, 0 lopettaa 
+<font color="red">5</font>
+Syötit 5
+Syötä numeromuotoinen komento, 0 lopettaa 
+<font color="red">-2</font>
+Syötit -2
+Syötä numeromuotoinen komento, 0 lopettaa 
+<font color="red">0</font>
+Valmista, kiitos!
+</pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Uudestaan</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita edellä olevaa esimerkkiä mukaillen ohjelma, joka kysyy käyttäjältä lukuja kunnes käyttäjä syöttää luvun 4.
+  </p>
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+Syötä luku <font color="red">744</font>
+Syötä luku <font color="red">22</font>
+Syötä luku <font color="red">-1</font>
+Syötä luku <font color="red">4</font>
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Toistolauseen alkuun palaaminen
+
+</h2>
+
+<p>
+  Toistolauseen alkuun palataan silloin kun suoritus päätyy toistolauseen lohkon loppuun eli kaikki toistolauseen lohkossa olevat komennot on suoritettu. Toistolauseen alkuun voi palata myös muualta kuin toistolauseen lopusta erillisellä <code>continue</code>-komennolla. Kun tietokone suorittaa komennon <code>continue</code>, siirtyy ohjelman suoritus toistolauseen alkuun.
+</p>
+
+
+<p>
+  Alla olevassa esimerkissä esitellään <code>continue</code>-komennon käyttöä. Ohjelma pyytää käyttäjää syöttämään positiivisia lukuja. Mikäli käyttäjä syöttää negativiisen luvun tai nollan, ohjelma tulostaa viestin "Epäkelpo luku! Yritä uudelleen.", jonka jälkeen suoritus palaa toistolauseen alkuun. Edellisessä esimerkissä ohjelma lukee käyttäjältä merkkijonomuotoisia syötteitä. Vastaavanlaisen ohjelman toteutus onnistuu myös muilla muuttujatyypeillä. Alla olevassa esimerkissä käyttäjältä pyydetään lukuja kunnes käyttäjä syöttää luvun nolla. 
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.println("Syötä positiivisia lukuja.");
+    int luku = Integer.valueOf(lukija.nextLine());
+
+    if (luku &lt;= 0) {
+        System.out.println("Epäkelpo luku! Yritä uudelleen.")
+        continue;
+    }
+
+    System.out.println("Syötit " + luku)
+
+}
+</code></pre>
+
+<p>
+  Ohjelman suoritus toistuu yllä olevassa esimerkissä ikuisesti, sillä toistolauseesta poistumiseen käytettävää <code>break</code>-komentoa ei ohjelmassa ole. Mikäli haluamme, että toistolauseesta voi poistua, tulee ohjelmaan lisätä <code>break</code>-komento.
+</p>
+
+<p>
+  Alla olevassa esimerkissä ohjelmaa on muokattu siten, että käyttäjältä pyydetään positiivisia lukuja. Mikäli käyttäjä syöttää negatiivisen luvun, kerrotaan että luku oli epäkelpo ja palataan toistolauseen alkuun. Mikäli käyttäjä syöttää nollan, toistolauseesta poistutaan.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.println("Syötä positiivisia lukuja.");
+    int luku = Integer.valueOf(lukija.nextLine());
+
+    if (luku == 0) {
+        break;
+    }
+
+    if (luku &lt; 0) {
+        System.out.println("Epäkelpo luku! Yritä uudelleen.")
+        continue;
+    }
+
+    System.out.println("Syötit " + luku)
+
+}
+</code></pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Syötteiden rajaus</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä lukuja. Mikäli luku on negatiivinen (eli pienempi kuin nolla), käyttäjälle tulostetaan viesti "Epäkelpo luku" ja käyttäjältä kysytään uutta lukua. Jos taas luku on nolla, lukujen lukeminen lopetetaan ja ohjelma poistuu toistolauseesta. Mikäli luku on positiivinen, ohjelma tulostaa luvun toisen potenssin.
+  </p>
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+25
+Syötä luku <font color="red">4</font>
+16
+Syötä luku <font color="red">-3</font>
+Epäkelpo luku
+Syötä luku <font color="red">1</font>
+1
+Syötä luku <font color="red">0</font>
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Edellisessä tehtävässä toteutettiin ohjelma, joka lukee käyttäjältä lukuja. Mikäli käyttäjä syöttää negatiivisen luvun, ohjelma ilmoittaa että luku oli epäkelpo, ja mikäli käyttäjä syöttää nollan, ohjelmasta poistutaan. Eräs ratkaisu tehtävään on seuraavanlainen.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.print("Syötä luku");
+    int luku = Integer.valueOf(lukija.nextLine());
+
+    if (luku == 0) {
+        break;
+    }
+
+    if (luku &lt; 0) {
+        System.out.println("Epäkelpo luku")
+        continue;
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelman voisi toteuttaa myös muotoilemalla ehtolauseet toisella tavalla. Alla olevassa esimerkissä erillisten ehtolauseiden sijaan ehtolauseet on yhdistetty.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.print("Syötä luku");
+    int luku = Integer.valueOf(lukija.nextLine());
+
+    if (luku == 0) {
+        break;
+    } else if (luku &lt; 0) {
+        System.out.println("Epäkelpo luku")
+        continue;
+    }
+}
+</code></pre>
+
+<p>
+  Kumpi edellä olevista vaihtoehdoista on selkeämpi?
+</p>
+
+<p>
+  Tarkastellaan edellisten ohjelmien selkeyttä toisen esimerkin kautta. Alla oleva ohjelma kysyy käyttäjältä lukua. Mikäli luku on negatiivinen, käyttäjälle kerrotaan että luku on epäkelpo ja siirrytään toistolauseen alkuun. Mikäli luku on nolla, toistolauseesta poistutaan. Muissa tilanteissa käyttäjälle tulostetaan syötetyn luvun neliö, eli syötetty luku kerrottuna itsellään.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+while (true) {
+    System.out.print("Syötä luku ");
+    int luku = Integer.valueOf(lukija.nextLine());
+
+    if (luku < 0) {
+        System.out.println("Epäkelpo luku");
+        continue;
+    }
+
+    if (luku == 0) {
+        break;
+    }
+
+    System.out.println(luku * luku);
+}
+</code></pre>
+
+<p>
+  Myös tämän ohjelman voi toteuttaa yhdistämällä ehtolauseet. Tällöin toteutus olisi seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+  
+while (true) {
+    System.out.print("Syötä luku ");
+    int luku = Integer.valueOf(lukija.nextLine());
+  
+    if (luku &lt; 0) {
+        System.out.println("Epäkelpo luku");
+    } else if (luku == 0) {
+        break;
+    } else {
+        System.out.println(luku * luku);
+    }
+}
+</code></pre>
+
+<p>
+  Tarkastellaan edellisiä ohjelmia kommentoituna. Jokaista palaa edeltää kommentit, jotka pyrkivät selittämään mitä ohjelmassa tapahtuu. Alla erillisillä ehtolauseilla toteutettu ohjelma.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>// Tehtävänä syötteen lukeminen käyttäjältä
+Scanner lukija = new Scanner(System.in);
+  
+// Tehtävänä lohkon toistaminen kunnes lohkosta poistutaan
+while (true) {
+    // Tehtävänä luvun syöttämisen kehottaminen
+    System.out.print("Syötä luku ");
+    // Tehtävänä luvun lukeminen käyttäjältä
+    int luku = Integer.valueOf(lukija.nextLine());
+  
+    // Tehtävänä vartiointi, estetään epäkelpojen lukujen
+    // jatkokäsittely
+    if (luku < 0) {
+        System.out.println("Epäkelpo luku");
+        continue;
+    }
+
+    // Tehtävänä toistolauseesta poistumisen tarkastaminen
+    if (luku == 0) {
+        break;
+    }
+  
+    // Tehtävänä syötetyn luvun neliön tulostaminen
+    System.out.println(luku * luku);
+}
+</code></pre>
+
+<p>
+  Huomaat, että yllä jokaisella ehtolauseella on ohjelmassa yksi selkeä tehtävä. 
+</p>
+
+<p>
+  Kun kommentoimme ohjelman, joka sisältää ehtolauseet yhdistettynä, kommentit ovat seuraavat.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>// Tehtävänä syötteen lukeminen käyttäjältä
+Scanner lukija = new Scanner(System.in);
+  
+// Tehtävänä lohkon toistaminen kunnes lohkosta poistutaan
+while (true) {
+    // Tehtävänä luvun syöttämisen kehottaminen
+    System.out.print("Syötä luku ");
+    // Tehtävänä luvun lukeminen käyttäjältä
+    int luku = Integer.valueOf(lukija.nextLine());
+  
+    // if-else if-else -kokonaisuuden tehtävä? 
+    // Tehtävänä luvun käsittely?
+    if (luku &lt; 0) {
+        System.out.println("Epäkelpo luku");
+    } else if (luku == 0) {
+        break;
+    } else {
+        System.out.println(luku * luku);
+    }
+}
+</code></pre>
+
+<p>
+  Huomaamme, että <code>if-else if-else</code>-rakenteelle on vaikea määritellä yksi selkeä tehtävä. Ohjelmia suunniteltaessa ja toteuttaessa kannattaakin pyrkiä tilanteeseen, missä jokaisella ohjelman osalla on yksi selkeä tehtävä. Tämä teema tulee toistumaan kurssilla.
+</p>
+
+<h2 class="material-heading">
+    Laskentaa toistolauseiden avulla
+
+</h2>
+
+<p>
+  Toistolauseita hyödynnetään usein asioiden laskemisessa. Esimerkiksi ohjelmat, joissa käsitellään määrittelemätöntä määrää käyttäjän syöttämiä lukuja perustuvat toistolauseseen. Tällaisissa ohjelmissa tulostetaan tyypillisesti jonkinlaisia tilastoja luetuista luvuista tai muista syötteistä toistolauseen jälkeen.
+</p>
+
+<p>
+  Jotta ohjelma voi tulostaa toistolauseen jälkeen tietoja toistolauseen suorituksesta, tulee tietoa säilöä ja muokata toistolauseen aikana. Tämä tarkoittaa käytännössä aina sitä, että toistolausetta ennen tulee esitellä muuttuja, jota toistolauseessa käytetään. 
+</p>
+
+<p>
+  Alla olevassa esimerkissä ohjelma laskee syötettyjen ykkösten lukumäärän. Syötteitä luetaan kunnes käyttäjä syöttää luvun 0, jonka jälkeen tulostetaan luettujen ykkösten lukumäärä. Ohjelmassa käytetään muuttujaa <code>ykkosia</code> ykkösten lukumäärän ylläpitoon. 
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+// Tehtävänä ykkösten lukumäärän säilöminen
+int ykkosia = 0;
+
+// Tehtävänä lukujen lukemisen toistaminen
+while (true) {
+    System.out.print("Syötä luku (0 lopettaa): ");
+    // Tehtävänä yksittäisen luvun lukeminen
+    int luku = Integer.valueOf(lukija.nextLine());
+
+    // Tehtävänä toistolauseesta poistuminen kun
+    // käyttäjä syöttää luvun nolla
+    if (luku == 0) {
+        break;
+    }
+
+    // Tehtävänä ykkösten lukumäärän kasvattaminen
+    // yhdellä kun käyttäjä syöttää luvun yksi
+    if (luku == 1) {
+        ykkosia = ykkosia + 1;
+    }
+}
+
+// Tehtävänä havainnoitujen ykkösten lukumäärän tulostaminen
+System.out.println("Ykkösiä yhteensä: " + ykkosia);
+</code></pre>
+
+<p>
+  Alla on esimerkki ohjelman toiminnasta.
+</p>
+
+<pre class="sample-output">Syötä luku <font color="red">1</font>
+Syötä luku <font color="red">2</font>
+Syötä luku <font color="red">1</font>
+Syötä luku <font color="red">-1</font>
+Syötä luku <font color="red">0</font>
+Ykkösiä yhteensä: 2
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen lukumäärä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä lukuja kunnes käyttäjä syöttää luvun 0. Tämän jälkeen ohjelman tulee tulostaa syötettyjen lukujen lukumäärän. Syötteen loppumisesta kertovaa nollaa ei tule laskea osaksi lukujen lukumäärää.
+  </p>
+
+  <p>
+    Ohjelman tulostusesimerkki:
+  </p>
+
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+Syötä luku <font color="red">22</font>
+Syötä luku <font color="red">9</font>
+Syötä luku <font color="red">-2</font>
+Syötä luku <font color="red">0</font>
+Lukuja yhteensä 4
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Negatiivisten lukujen lukumäärä</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä lukuja kunnes käyttäjä syöttää luvun 0. Tämän jälkeen ohjelman tulee tulostaa syötteessä olleiden negatiivisten lukujen lukumäärän. Syötteen loppumisesta kertovaa nollaa ei tule laskea osaksi lukujen lukumäärää.
+  </p>
+
+  <p>
+    Ohjelman tulostusesimerkki:
+  </p>
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+Syötä luku <font color="red">22</font>
+Syötä luku <font color="red">9</font>
+Syötä luku <font color="red">-2</font>
+Syötä luku <font color="red">0</font>
+Negatiivisia lukuja yhteensä 1
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä lukuja kunnes käyttäjä syöttää luvun 0. Tämän jälkeen ohjelman tulee tulostaa syötettyjen lukujen summan. Syötteen loppumisesta kertovaa nollaa ei tarvitse osaksi lukujen summaa, vaikkei siitä tässä tapauksessa oikeastaan haittaakaan ole.
+  </p>
+
+  <p>
+    Ohjelman tulostusesimerkki:
+  </p>
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+Syötä luku <font color="red">22</font>
+Syötä luku <font color="red">9</font>
+Syötä luku <font color="red">-2</font>
+Syötä luku <font color="red">0</font>
+Lukujen summa 34
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen lukumäärä ja summa</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä lukuja kunnes käyttäjä syöttää luvun 0. Tämän jälkeen ohjelman tulee tulostaa syötettyjen lukujen lukumäärä ja summan. Syötteen loppumisesta kertovaa nollaa ei tule ottaa huomioon lukumäärässä tai summassa.
+  </p>
+
+  <p>
+    <em>
+      Tarvitset tässä kaksi muuttujaa tiedon säilömiseen. Käytä toista muuttujaa lukujen lukumäärän säilömiseen ja toista muuttujaa lukujen summan laskemiseen.
+    </em>
+  </p>
+
+  <p>
+    Ohjelman tulostusesimerkki:
+  </p>
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+Syötä luku <font color="red">22</font>
+Syötä luku <font color="red">9</font>
+Syötä luku <font color="red">-2</font>
+Syötä luku <font color="red">0</font>
+Lukuja yhteensä 4
+Lukujen summa 34
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lukujen keskiarvo</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä lukuja kunnes käyttäjä syöttää luvun 0. Tämän jälkeen ohjelman tulee tulostaa syötettyjen lukujen keskiarvo. Syötteen loppumisesta kertovaa nollaa ei tule ottaa huomioon keskiarvon laskemisessa. Voit olettaa, että käyttäjä syöttää aina vähintään yhden luvun.
+  </p>
+
+  <p>
+    Ohjelman tulostusesimerkki:
+  </p>
+
+<pre class="sample-output">Syötä luku <font color="red">5</font>
+Syötä luku <font color="red">22</font>
+Syötä luku <font color="red">9</font>
+Syötä luku <font color="red">-2</font>
+Syötä luku <font color="red">0</font>
+Lukujen keskiarvo 8.5
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Yhteenveto
+
+</h1>
+
+
+<p>
+  Ensimmäinen osa käsitteli ohjelmoinnin ja tietokoneiden toiminnan kannalta oleellisia ydinasioita. Näitä ovat muuttujat ja tieto, laskeminen, syötteen käsittely ja lukeminen, vertailu ja päätösten tekeminen sekä toistaminen.
+</p>
+
+
+- TODO: crowdsorcerer, kokonaan lukittu tehtäväboksi, 
+opiskelija kirjoittaa esimerkkisyötteitä ja tulosteita
+ - rivinvaihdot
+
+<p>
+  TODO: quiznator: mikä fiilis näistä tehtävistä ja kuinka paljon aikaa meni tehtävien tekemiseen
+</p>
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+    <div class="improvement">
+<a href="../report_issue/" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    Ilmoita virhe
+</a><a href="../edit_page/?path=part1.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil" aria-hidden="true"></i>
+    Muokkaa sivua
+</a>  <a href="https://github.com/materiaalit/ohjelmointi-s18" class="footer__github-link" target="_blank" rel="noopener">
+    <i class="fa fa-github"></i>
+  </a>
+</div>
+
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-k18">
+                Ohjelmoinnin jatkokurssi, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-23c0b51d.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+  </body>
+</html>
