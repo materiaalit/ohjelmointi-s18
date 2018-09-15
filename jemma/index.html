@@ -52,6 +52,9 @@
       <li class="nav-item ">
         <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
       </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
   </ul>
 
   <div class="float-xs-right navbar__buttons">
@@ -104,6 +107,68 @@
   Jatkossa tehtävän juurikansiossa on tiedosto pom.xml, joka kuvaa tehtäväpohjan rakenteen. Kansio <code>src</code> sisältää kansiot <code>main</code> ja <code>test</code>, jotka sisältävät lähdekooditiedostot sekä testitiedostot.
 
 </p>
+
+
+<h2 class="material-heading">
+    Metodit ja ohjelman nimentä
+
+</h2>
+
+<p>
+  Tarkastellaan ohjelman nimentää ja selventämistä vielä metodien avulla. 
+</p>
+
+<p>
+  <em>
+    Vuosi on karkausvuosi, jos se on jaollinen 4:llä. Kuitenkin jos vuosi on jaollinen 100:lla, se on karkausvuosi vain silloin, kun se on jaollinen myös 400:lla.
+  </em>
+</p>
+
+
+
+<p>
+  TODO: muutama esimerkki eri ääripäistä -- yhdessä ohjelmassa ei ole lainkaan metodeja, toisessa ohjelma koostuu pelkistä metodeista.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static boolean jaollinen(int luku, int luvulla) {
+    return luku % luvulla == 0;
+
+    // tai 
+    if (luku % luvulla == 0) {
+      return true;
+    }
+
+    return false;
+}
+</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>public static boolean ei(boolean arvo) {
+    return !arvo;
+
+    // tai 
+    if (arvo == true) {
+      return false;
+    }
+
+    return true;
+
+    // tai
+    if (arvo) {
+      return false;
+    }
+
+    return true;
+}
+</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>if(ei(jaollinen(luku, 400))) {
+  // heh
+}
+</code></pre>
+
+
 
 <pre>
 $/Osa08_01.SamaPaivays$ tree
