@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
     <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
     <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/pdf-slideshow-cdn/app.css" />
 
       <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -107,8 +108,7 @@
 </div>
 
 
-          
-<div class="hint">
+          <div class="hint">
   <div class="hint__header">
     <i class="fa fa-info-circle hint__icon"></i>Neljännen osan tavoitteet
   </div>
@@ -175,7 +175,7 @@ while (true) {
         break;
     }
 
-    // lisää luettu rivi listalle myöhempää käsittelyä 
+    // lisää luettu rivi listalle myöhempää käsittelyä
     // varten tai käsittele rivi heti
 
 }
@@ -238,16 +238,16 @@ while (true) {
 
 
 <pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
-  
+
 while (true) {
     String rivi = lukija.nextLine();
-  
+
     if (rivi.equals("loppu")) {
         break;
     }
 
     int luku = Integer.valueOf(rivi);
-    System.out.println(luku);  
+    System.out.println(luku);
 }
 
 </code></pre>
@@ -312,11 +312,11 @@ while (true) {
 <p>
   Tiedostot voivat sijaita käytännössä missä tahansa kovalevyn kohdassa, jopa niin, että tiedosto on pilkottuna useampaan osaan. Tietokoneen <strong>tiedostojärjestelmän</strong> vastuulla on pitää kirjaa tiedostojen sijainnista kovalevyllä sekä tarjota mahdollisuus uusien tiedostojen luomiseen sekä näiden muokkaamiseen. Tärkein tiedostojärjestelmän toiminnallisuus on kuitenkin kovalevyn todellisen rakenteen abstrahointi: tiedostoja käyttävän henkilön tai ohjelman ei tarvitse välittää siitä, miten ja minne tiedosto on oikeasti tallennettu.
 </p>
-  
+
 <p>
-  Tietokoneissa on useampia ohjelmia tiedostojen selaamiseen ja nämä ohjelmistot ovat käyttöjärjestelmäkohtaisia. Kaikki tiedostojen selaamiseen käytettävistä ohjelmista käyttävät tavalla tai toisella tietokoneen tiedostojärjestelmää. 
+  Tietokoneissa on useampia ohjelmia tiedostojen selaamiseen ja nämä ohjelmistot ovat käyttöjärjestelmäkohtaisia. Kaikki tiedostojen selaamiseen käytettävistä ohjelmista käyttävät tavalla tai toisella tietokoneen tiedostojärjestelmää.
 </p>
-  
+
 <p>
   Myös käyttämämme ohjelmointiympäristö tarjoaa mahdollisuuden ohjelmointiympäristössä olevien projektien sisältämien tiedostojen selaamiseen. Voit käydä tarkastelemassa NetBeansissa kaikkia projektiin liittyviä tiedostoja valitsemalla <code>Files</code>-välilehden, joka löytyy <code>Projects</code>-välilehden kanssa samasta paikasta. Mikäli <code>Files</code>-välilehteä ei löydy, saa sen auki myös <code>Window</code>-valikosta. Klikkaamalla projektin auki, näet kaikki siihen liittyvät tiedostot.
 </p>
@@ -366,10 +366,10 @@ import java.io.File;
 
 
 // ohjelmassa:
-  
+
 // luodaan lukija tiedoston lukemista varten
 try (Scanner tiedostonLukija = new Scanner(new File("tiedosto.txt"))) {
-  
+
     // luetaan tiedostoja kunnes kaikki rivit on luettu
     while (tiedostonLukija.hasNextLine()) {
         // luetaan yksi rivi
@@ -699,7 +699,7 @@ Lukuja: 4
 </h2>
 
 <p>
-  Edellisissä esimerkeissä ja ohjelmissa luettu tieto on ollut pääosin melko yksinkertaista. Todellisuudessa maailma on täynnä tietoa, joka liittyy muuhun tietoon -- tieto muodostaa kokonaisuuksia. Esimerkiksi henkilön tietoihin kuuluu nimi, syntymäaika, puhelinnumero, osoitetietoihin kuuluu maa, kaupunki, katuosoite, postinumero ja niin edelleen. 
+  Edellisissä esimerkeissä ja ohjelmissa luettu tieto on ollut pääosin melko yksinkertaista. Todellisuudessa maailma on täynnä tietoa, joka liittyy muuhun tietoon -- tieto muodostaa kokonaisuuksia. Esimerkiksi henkilön tietoihin kuuluu nimi, syntymäaika, puhelinnumero, osoitetietoihin kuuluu maa, kaupunki, katuosoite, postinumero ja niin edelleen.
 </p>
 
 <p>
@@ -710,11 +710,11 @@ Lukuja: 4
 
 int vanhinIka = -1;
 String vanhin = "";
-  
+
 while (true) {
     System.out.print("Syötä nimi: ");
     String nimi = lukija.nextLine();
-  
+
     if (nimi.equals("")) {
         break;
     }
@@ -727,10 +727,10 @@ while (true) {
       vanhinIka = ika;
     }
 }
-  
+
 System.out.println("Vanhin henkilö oli " + vanhin + " (ikä " + vanhinIka + ")");
 </code></pre>
-  
+
 <p>
   Yllä olevassa esimerkissä ja tehtävässä käsiteltävä tieto kysyttiin pala kerrallaan. Toinen vaihtoehto on kysyä tieto määrätynlaisessa muodossa, missä kaikki tiedon osat ovat esimerkiksi samalla rivillä. Eräs tällainen muoto on comma-separated values (CSV)-muoto, eli pilkuilla erotetut tiedot. Alla olevassa esimerkissä on toteutettuna yllä oleva ohjelma siten, että nimi ja ikä syötetään samalla rivillä pilkuilla erotettuna.
 </p>
@@ -740,11 +740,11 @@ System.out.println("Vanhin henkilö oli " + vanhin + " (ikä " + vanhinIka + ")"
 
 int vanhinIka = -1;
 String vanhin = "";
-  
+
 while (true) {
     System.out.print("Syötä nimi: ");
     String rivi = lukija.nextLine();
-  
+
     if (rivi.equals("")) {
         break;
     }
@@ -758,7 +758,7 @@ while (true) {
       vanhinIka = ika;
     }
 }
-  
+
 System.out.println("Vanhin henkilö oli " + vanhin + " (ikä " + vanhinIka + ")");
 </code></pre>
 
@@ -769,7 +769,7 @@ System.out.println("Vanhin henkilö oli " + vanhin + " (ikä " + vanhinIka + ")"
 <pre class="sample-output"><font color="red">virpi,19</font>
 <font color="red">jenna,21</font>
 <font color="red">ada,20</font>
-  
+
 Vanhin henkilö oli jenna (ikä 21 vuotta)
 </pre>
 
@@ -813,7 +813,7 @@ try (Scanner tiedostonLukija = new Scanner(new File("henkilot.csv"))) {
         int vuosi = Integer.valueOf(osat[1]);
 
         System.out.println(nimi + " on syntynyt vuonna " + vuosi)
-        
+
     }
 } catch (Exception e) {
     System.out.println("Virhe: " + e.getMessage());
@@ -847,7 +847,7 @@ urho on syntynyt vuonna 1900
   <p>
     Kirjoita ohjelma, joka lukee käyttäjältä henkilöiden nimiä ja ikiä. Kunkin henkilön nimi ja ikä syötetään samalla rivillä. Nimi ja ikä on pilkulla erotettu. Kun käyttäjä syöttää merkkijonon "loppu", lukeminen lopetetaan. Tämän jälkeen ohjelma tulostaa nuorimman henkilön nimen. Voit olettaa, että nuorin henkilö on yksikäsitteinen, eli syötteessä ei ole useampia saman ikäisiä (nuorimpia) henkilöitä.
   </p>
-  
+
   <p>
     Alla on ohjelman suoritusesimerkki.
   </p>
@@ -889,14 +889,14 @@ Nuorin oli: aamu
   </p>
 
   <hr/>
-  
+
   <pre>
 lilja,3
 anton,5
 leevi,4
 aamu,1
   </pre>
-  
+
   <hr/>
 
   <p>
@@ -946,7 +946,7 @@ Vanhin oli: anton
   </div>
 </div>
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTi3npCfWrmPM2TdfyTCYYlzskVEYZZt7gi1pTUjkx1JjAgfF-ab9o1Koz5JlxenjuORHoX_5m0GNmQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="770" height="462" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<div class="pdf-slideshow-widget" data-pdf='../slideshows/johdatus-olio-ohjelmointiin.pdf'></div>
 
 
 <h1 class="material-heading">
@@ -970,7 +970,7 @@ Vanhin oli: anton
       Ymmärrät että luokka määrää olion muuttujat ja metodit, ja tiedät että oliomuuttujien arvot ovat oliokohtaisia.
     </li>
     <li>
-      Osaat luoda luokkia ja olioita ja osaat käyttää olioita osana ohjelmia. 
+      Osaat luoda luokkia ja olioita ja osaat käyttää olioita osana ohjelmia.
     </li>
     <li>
       Osaat käsitellä listalla olevia olioita.
@@ -1124,7 +1124,7 @@ System.out.println(artonSveitsilainenTili);
   <p>
     Tässäkin tehtävässä on käytössä edellisessä tehtävässä mukana ollut luokka <code>Tili</code>.
   </p>
-  
+
   <p>
     Tee ohjelma joka:
   </p>
@@ -1136,7 +1136,7 @@ System.out.println(artonSveitsilainenTili);
     <li>Panee omalle tilille 100.0</li>
     <li>Tulostaa molemmat tilit</li>
   </ol>
-  
+
 
 
         <hr/>
@@ -1415,7 +1415,7 @@ System.out.println(artonSveitsilainenTili);
   <p>
     Mikäli ohjelmoija ei tee luokalle konstruktoria, tekee Java automaattisesti luokalle oletuskonstruktorin. Oletuskonstruktori on konstruktori joka ei tee mitään muuta kuin luo olion. Olion muuttujat jäävät alustamattomiksi (yleisesti ottaen viittaustyyppisten muuttujien arvoksi tulee <code>null</code>, eli ei viitettä mihinkään, ja alkeistyyppisten muuttujien arvoksi <code>0</code>).
   </p>
-  
+
   <p>
     Esimerkiksi alla olevasta luokasta voidaan luoda olio kutsulla <code>new Henkilo()</code>.
   </p>
@@ -1909,7 +1909,7 @@ arvo: 0
         VahenevaLaskuri laskuri = new VahenevaLaskuri(100);
 
         laskuri.tulostaArvo();
- 
+
         laskuri.nollaa();
         laskuri.tulostaArvo();
 
@@ -1999,11 +1999,11 @@ arvo: 100
   <p>
     Luo luokka <code>Velka</code>, jolla on double-tyyppiset oliomuuttujat <code>saldo</code> ja <code>korkokerroin</code>. Saldo ja korkokerroin annetaan konstruktorin parametrina <code>public Velka(double saldoAlussa, double korkokerroinAlussa)</code>.
   </p>
-  
+
   <p>
     Luo luokalle myös metodit <code>public void tulostaSaldo()</code> sekä <code>public void odotaVuosi()</code>. Metodi tulostaSaldo tulostaa tämän hetkisen saldon, ja metodi odotaVuosi kasvattaa velan määrää.
   </p>
-  
+
   <p>
     Velan määrän kasvattaminen tapahtuu kertomalla saldo korkokertoimella.
   </p>
@@ -2151,7 +2151,7 @@ arvo: 100
 }
 </code></pre>
   </li>
-    
+
   <li>Metodilla, joka palauttaa liukulukutyyppisen muuttujan, on <code>double</code>-määre palautettavan muuttujan tyyppinä.
 <pre class="sh_java code-highlight"><code>public double metodiJokaPalauttaaLiukuluvun() {
     // metodin runko, tarvitsee return-komennon
@@ -2232,7 +2232,7 @@ Pekka ja Antti yhteensä 3 vuotta
 
   <div class="collapse">
     <div class="exercise__body">
-        
+      
   <p>
     Luo luokka Henkilo (ei öötä!). Luokan Henkilo tulee sisältää seuraavan luokkakaavion määrittelemät ominaisuudet.
   </p>
@@ -3273,10 +3273,10 @@ neljallaKertoja.kerro(1): 4
 
 <pre class="sample-output">Määrä: 4
 </pre>
-  
-  
+
+
   <h2>Summa ja keskiarvo</h2>
-  
+
   <p>
     Laajenna luokkaa seuraavilla toiminnoilla:
   </p>
@@ -3367,9 +3367,9 @@ Keskiarvo: 2.75
 Summa: 15
 </pre>
 
-  
+
   <h2>Monta summaa</h2>
-  
+
   <p>
     Muuta edellistä ohjelmaa niin, että ohjelma laskee myös parillisten ja parittomien lukujen summaa.
   </p>
@@ -3599,7 +3599,7 @@ while (true) {
 System.out.println();
 System.out.println("Henkilöitä yhteensä: " + henkilot.size());
 System.out.println("Henkilöt: ");
-  
+
 for (Henkilo henkilo: henkilot) {
     System.out.println(henkilo);
 }
@@ -3783,15 +3783,15 @@ KonMari
   <p>
     Tee tehtävään valmiiksi lista tai listoja, jotka sisältävät oman valintasi mukaan joko merkkijonoja, kokonaislukuja tai liukulukuja. Täytä listan arvot valmiiksi.
   </p>
-  
+
   <p>
     Ohjeista tulevaa tehtävän ratkaisijaa kysymään käyttäjältä komentoa, jonka jälkeen listalta haetaan komennon perusteella jotakin tietoa, joka sen jälkeen tuolostetaan. Jos annettu käsky ei ole sallittujen listalla, tulee ohjelman tulostaa jokin virheviesti.
   </p>
-  
+
   <p>
     Esimerkiksi yksi tälläinen tehtävä voisi sisältää listan kokonaislukuja, ja käskyt voisivat olla: "suurin", "pienin" ja "keskiarvo". Kun tuleva tehtävän ratkaisija antaa käskyn "keskiarvo", ohjelma tulostaa listan lukujen keskiarvon ja niin edelleen. Keksi kuitenkin tehtävällesi omat sallitut käskyt.
   </p>
-  
+
   <p>
     Muista merkitä ainakin käskyyn reagointiin liittyvät rivit malliratkaisuriveiksi -- näin ratkaisu ei tule suoraan tehtäväpohjaan. Vastaavasti älä merkitse listan luontia tai sen arvoja lisäävää koodia malliratkaisuriveiksi, sillä se on tarkoitus jättää tehtäväpohjaan.
   </p>
@@ -3808,7 +3808,7 @@ KonMari
   </div>
 </div>
 
-<div class='crowdsorcerer-widget' data-assignment='11'></div> 
+<div class='crowdsorcerer-widget' data-assignment='11'></div>
 
 <h1 class="material-heading">
     Yhteenveto
@@ -3944,8 +3944,12 @@ KonMari
     <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
     <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
     <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script src='https://materiaalit.github.io/pdf-slideshow-cdn/app.js'></script>
       <script>
         window.loadYoutube()
       </script>
+    <script>
+      window.initPdfSlideshow('../pdf.worker.min-7be35925.js');
+    </script>
   </body>
 </html>
