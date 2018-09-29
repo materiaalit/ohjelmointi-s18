@@ -1,0 +1,4179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin perusteet ja Ohjelmoinnin jatkokurssi, syksy 2018 | Osa 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9fe27d3a.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/pdf-slideshow-cdn/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://t.me/ohjelmointi_18" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-comments hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Viidennen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tiedät mitä alkeis- ja viittaustyyppiset muuttujat ovat ja ymmärrät miten niiden toiminta eroaa toisistaan (muuttujan arvon asetus, metodin parametrina käyttö). Osaat luoda luokkaan useita konstruktoreja sekä useita samannimisiä metodeja. Osaat vertailla olioiden samankaltaisuutta sekä määritellä samankaltaisuuden vertailuun käytettävän metodin. Osaat määritellä luokkaan viittaustyyppisiä oliomuuttujia, käyttää olioita metodin paluuarvona, sekä käyttää listoja oliomuuttujina.
+  </p>
+  
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Mistä olio-ohjelmoinnissa oikein on kyse: katsaus taaksepäin
+
+</h1>
+
+<p>
+  Tarkastellaan digitaalisen kellon toimintaa. Kellossa on kolme viisaria: tunnit, minuutit ja sekunnit. Sekuntiviisari kasvaa kerran sekunnissa. Minuuttiviisari kerran kuudessakymmenessä sekunnissa. Tuntiviisari kerran kuudessakymmenessä minuutissa. Kun sekuntiviisarin arvo on 60, sen arvoksi asetetaan nolla ja minuuttiviisarin arvoa kasvatetaan yhdellä. Kun minuuttiviisarin arvo on 60, sen arvoksi asetetaan nolla ja tuntiviisarin arvoa kasvatetaan yhdellä. Kun tuntiviisarin arvo on 24, sen arvoksi asetetaan nolla.
+</p>
+
+<p>
+  Ajan tulostus tapahtuu aina muodossa "tunnit:minuutit:sekunnit", missä tunnit on merkitään kahdella numerolla (esim. 01 tai 12), minuutit kahdella numerolla, ja sekunnit kahdella numerolla.
+</p>
+
+<p>
+  Alla on kuvattuna kellon toteutus kokonaislukutyyppisillä muuttujilla (tulostamisen voisi eriyttää omaan metodiin, mutta tässä sitä ei ole tehty).
+</p>
+
+<pre class="sh_java code-highlight"><code>int tunnit = 0;
+int minuutit = 0;
+int sekunnit = 0;
+
+while (true) {
+    // 1. Ajan tulostaminen
+    if (tunnit &lt; 10) {
+        System.out.print("0");
+    }
+    System.out.print(tunnit);
+
+    System.out.print(":");
+
+    if (minuutit &lt; 10) {
+        System.out.print("0");
+    }
+    System.out.print(minuutit);
+
+    System.out.print(":");
+
+    if (sekunnit &lt; 10) {
+        System.out.print("0");
+    }
+    System.out.print(sekunnit);
+    System.out.println();
+
+    // 2. Sekuntiviisarin eteneminen
+    sekunnit = sekunnit + 1;
+
+    // 3. Muiden viisarien eteneminen mikäli tarve
+    if (sekunnit &gt; 59) {
+        minuutit = minuutit + 1;
+        sekunnit = 0;
+
+        if (minuutit &gt; 59) {
+            tunnit = tunnit + 1;
+            minuutit = 0;
+
+            if (tunnit &gt; 23) {
+                tunnit = 0;
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Kuten yllä olevaa esimerkkiä luettaessa huomataan, kolmesta <code>int</code>-muuttujasta koostuvan kellon toiminnallisuus ei ole lähdekoodin lukijalle kovin selkeä. Lähdekoodista on vaikea "nähdä" mistä on kysymys. Eräs <a href="https://en.wikipedia.org/wiki/Kent_Beck" target="_blank" rel="noopener">kuuluisa ohjelmoija</a> on sanonut <em>"Any fool can write code that a computer can understand.  Good programmers write code that humans can understand"</em>.
+</p>
+
+<p>
+  Pyritään tilanteeseen, missä ohjelma olisi ymmärrettävämpi.
+</p>
+
+<p>
+  Koska viisari on oma selkeä käsitteensä, kannattaa ohjelman ymmärrettävyyden parantamiseksi tehdä siitä oma luokka. Luodaan viisaria kuvaava luokka <code>Viisari</code>, joka sisältää tiedon arvosta, viisarin ylärajasta (eli kohdasta missä viisarin arvo palaa nollaan), sekä tarjoaa metodit viisarin etenemiseen, viisarin arvon tarkastelemiseen sekä viisarin tulostamiseen arvon tulostamiseen merkkijonomuodossa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Viisari {
+    private int arvo;
+    private int ylaraja;
+
+    public Viisari(int ylaraja) {
+        this.ylaraja = ylaraja;
+        this.arvo = 0;
+    }
+
+    public void etene() {
+        this.arvo = this.arvo + 1;
+
+        if (this.arvo &gt;= this.ylaraja) {
+            this.arvo = 0;
+        }
+    }
+
+    public int arvo() {
+        return this.arvo;
+    }
+
+    public String toString() {
+        if (this.arvo &lt; 10) {
+            return "0" + this.arvo;
+        }
+          
+        return "" + this.arvo;
+    }
+}
+</code></pre>
+
+<p>
+  Kun olemme luoneet luokan Viisari, muuttuu kellomme selkeämmäksi. Nyt kellon -- eli viisarien -- tulostaminen on suoraviivaista, jonka lisäksi viisarin eteneminen on piilotettu luokkaan Viisari. Koska viisarin palaaminen alkuun tapahtuu automaattisesti Viisari-luokkaan määritellyn yläraja-muuttujan avulla, on viisarien yhteistoiminta hieman erilaista kuin kokonaisluvuilla toteutetussa ohjelmassa. Kokonaisluvuilla toteutetussa ohjelmassa tarkasteltiin ylittääkö viisaria kuvaavan kokonaisluvun arvo ylärajan, jonka jälkeen arvo asetettiin nollaksi ja seuraavaa viisaria kuvaavan kokonaisluvun arvoa kasvatettiin. Viisari-olioita käytettäessä minuuttiviisarin eteneminen tapahtuu kun sekuntiviisarin arvo on nolla, ja tuntiviisarin eteneminen tapahtuu kun minuuttiviisarin arvo on nolla. 
+</p>
+
+<pre class="sh_java code-highlight"><code>Viisari tunnit = new Viisari(24);
+Viisari minuutit = new Viisari(60);
+Viisari sekunnit = new Viisari(60);
+  
+while (true) {
+    // 1. Ajan tulostaminen
+    System.out.println(tunnit + ":" + minuutit + ":" + sekunnit);
+      
+    // 2. Sekuntiviisarin eteneminen
+    sekunnit.etene();
+      
+    // 3. Muiden viisarien eteneminen mikäli tarve
+    if (sekunnit.arvo() == 0) {
+        minuutit.etene();
+
+        if (minuutit.arvo() == 0) {
+            tunnit.etene();
+        }
+    }
+}
+</code></pre>
+
+<p>
+  <strong>Olio-ohjelmoinnissa on kyse pitkälti käsitteiden eristämisestä omiksi kokonaisuuksikseen tai toisin ajatellen abstraktioiden muodostamisesta</strong>. Edellisestä esimerkistä huolimatta, joku voisi ajatella, että on turhaa luoda oliota jonka sisällä on ainoastaan luku, sillä saman voisi tehdä suoraan <code>int</code>-muuttujilla. Asia ei kuitenkaan ole aina näin.
+</p>
+
+<p>
+  Käsitteen erottaminen omaksi luokaksi on monellakin tapaa hyvä idea. Ensinnäkin tiettyjä yksityiskohtia (esim. viisarin pyörähtäminen) saadaan piilotettua luokan sisään (eli <strong>abstrahoitua</strong>). Sen sijaan että kirjoitetaan if-lause ja sijoitusoperaatio, riittää, että viisarin käyttäjä kutsuu selkeästi nimettyä metodia <code>etene()</code>. Aikaansaatu viisari sopii kellon lisäksi ehkä muidenkin ohjelmien rakennuspalikaksi -- luokan nimi voisi olla <code>YlhaaltaRajoitettuLaskuri</code> --, eli selkeästä käsitteestä tehty luokka voi olla monikäyttöinen. Suuri etu saavutetaan myös sillä, että koska viisarin toteutuksen yksityiskohdat eivät näy viisarin käyttäjille, voidaan yksityiskohtia tarvittaessa muuttaa.
+</p>
+
+<p>
+  Totesimme että kello sisältää kolme viisaria, eli koostuu kolmesta käsitteestä. Oikeastaan kello on itsekin käsite, eli voimme luoda sillekin oman luokkansa. Tehdään seuraavaksi luokka <code>Kello</code>, joka piilottaa viisarit sisäänsä.
+</p>
+<pre class="sh_java code-highlight"><code>public class Kello() {
+    private Viisari tunnit;
+    private Viisari minuutit;
+    private Viisari sekunnit;
+      
+    public Kello() {
+        this.tunnit = new Viisari(24);
+        this.minuutit = new Viisari(60);
+        this.tunnit = new Viisari(60);
+    }
+
+    public void etene() {
+        this.sekunnit.etene();
+      
+        if (this.sekunnit.arvo() == 0) {
+            this.minuutit.etene();
+  
+            if (this.minuutit.arvo() == 0) {
+                this.tunnit.etene();
+            }
+        }
+    }
+
+    public String toString() {
+        return tunnit + ":" + minuutit + ":" + sekunnit;
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelman toiminta muuttu yhä selkeämmäksi. Kun vertaat alla olevaa ohjelmaa alkuperäiseen kokonaisluvuista koostuneeseen ohjelmaan, huomaat että ohjelman luettavuus on aivan eri luokkaa. 
+</p>
+  
+
+<pre class="sh_java code-highlight"><code>Kello kello = new Kello();
+  
+while (true) {
+    System.out.println(kello);
+    kello.etene();
+}
+</code></pre>
+
+<p>
+  Edellä toteuttamamme kello on olio, jonka toiminta perustuu "yksinkertaisimpiin" olioihin eli viisareihin. Tämä on juuri <strong>olio-ohjelmoinnin suuri idea: ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista</strong>.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Sekuntikello</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee edellä kuvattu luokka <code>Viisari</code>. Toteuta materiaalin <code>Kello</code>-luokkaa mukaillen luokka <code>Sekuntikello</code>.
+  </p>
+
+  <p>
+    Sekuntikellossa on kaksi viisaria. Yksi sadasosasekunneille ja yksi sekunneille. Sekuntikellon edetessä sadasosasekuntien määrä kasvaa yhdellä. Kun sadasosasekunteja vastaava viisari saavuttaa arvon sata, viisarin arvo nollaantuu ja sekuntien määrä kasvaa yhdellä. Vastaavasti, kun sekunteja vastaava viisari saavuttaa arvon kuusikymmentä, viisarin arvo nollaantuu. 
+  </p>
+
+  <ul>
+    <li>
+      <code>public Sekuntikello()</code> luo uuden sekuntikellon.
+    </li>
+    <li>
+      <code>public String toString()</code> palauttaa sekuntikellon merkkijonoesityksen. Merkkijonoesityksen tulee olla muotoa "sekunnit:sadasosasekunnit", missä sekä sekunnit että sadasosasekunnit esitetään kahdella numerolla. Esimerkiksi merkkijono "19:83" kuvastaisi aikaa 19 sekuntia, 83 sadasosasekuntia.
+    </li>
+    <li>
+      <code>public void etene()</code> siirtää kelloa yhden sadasosasekunnin eteenpäin.
+    </li>
+  </ul>
+
+  <p>
+    Kun olet saanut tehtävän tehtyä, palauta se palvelimelle.
+  </p>
+  
+  <p>
+    Voit halutessasi kokeilla kellon toimintaa pääohjelmassa. Alla olevalla esimerkkikoodilla saat aikaan ohjelman, missä kello tulostetaan ja kello etenee kerran sadasosasekunnissa. 
+  </p>
+
+<pre class="sh_java code-highlight"><code>Sekuntikello sekuntikello = new Sekuntikello();
+  
+while (true) {
+    System.out.println(sekuntikello);
+    sekuntikello.etene();
+
+    try {
+        Thread.sleep(10);
+    } catch (Exception e) {
+
+    }
+}
+</code></pre>
+
+<p>
+  Huom! Yllä kuvatun ohjelman suoritus ei lopu itsestään ikinä. Saat sammutettua ohjelman tulostusikkunan vasemmassa laidassa olevaa punaista neliötä painamalla.
+</p>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Kerrataan seuraavaksi aihealueen termistöä.
+</p>
+
+<h2 class="material-heading">
+    Olio
+
+</h2>
+
+<p>
+  <strong>Olio</strong> on itsenäinen kokonaisuus, johon liittyy tietoa (oliomuuttujat) sekä käyttäytymistä (metodit). Oliot voivat olla hyvin erilaisia rakenteeltaan ja toiminnaltaan: jotkut voivat kuvata ongelma-alueen käsitteitä, ja jotkut voivat koordinoida olioiden välistä toimintaa. Olioiden kommunikointi tapahtuu metodikutsujen avulla -- metodikutsuilla sekä kysytään tietoa olioita että annetaan olioille käskyjä.
+</p>
+
+<p>
+  Yleisesti ottaen jokaisella oliolla on selkeästi määritellyt rajat ja toiminnallisuudet, jonka lisäksi jokainen olio tietää vain niistä muista olioista, joita se tarvitsee tehtävänsä tekemiseen. Toisin sanoen, olio piilottaa oman sisäisen toimintansa ja tarjoaa pääsyn toiminnallisuuksiin selkeästi määriteltyjen metodien kautta. Tämän lisäksi olio on riippumaton niistä olioista, joita se ei tehtäväänsä tarvitse.
+</p>
+
+<p>
+  Edellisessä osassa käsiteltiin henkilöitä kuvaavia olioita, joiden rakenne määriteltiin luokkaan <code>Henkilo</code>. Kertauksen vuoksi on hyvä muistella luokan tehtävää: <strong>luokka</strong> sisältää olioiden tekemiseen tarvittavat rakennuspiirrustukset sekä määrittelee olioiden muuttujat ja metodit. Olio luodaan luokassa olevan konstruktorin perusteella.
+</p>
+
+<p>
+  Henkilö-olioihimme liittyi nimi, ikä, paino ja pituus sekä muutamia metodeja. Jos mietimme henkilö-oliomme rakennetta tarkemmin, keksisimme varmaankin lisää henkilöihin liittyviä muuttujia kuten henkilöturvatunnus, puhelinnumero, osoite ja silmien väri.
+</p>
+
+<p>
+  Todellisuudessa henkilöihin voi liittyä hyvin monia erilaisia asioita ja tietoja, mutta henkilöitä käsittelevää sovellusta rakennettaessa henkilöön liittyvät <strong>toiminnallisuudet ja ominaisuudet kerätään sovelluksen käyttökohteen perusteella</strong>. Esimerkiksi elämänhallintaan tarkoitettu sovellus voisi pitää kirjaa edellä mainituista iästä, painosta ja pituudesta, sekä tarjota mahdollisuuden painoindeksin ja maksimisykkeen laskemiseen. Toisaalta yhteydenpitoon keskittyvään sovellukseen tallennettaisiin henkilöiden sähköpostiosoitteet ja puhelinnumerot, mutta se ei tarvitsisi tietoa esimerkiksi painosta tai pituudesta.
+</p>
+
+<p>
+  <strong>Olion tila</strong> on sen oliomuuttujien arvo kullakin ajanhetkellä. 
+</p>
+
+<p>
+  Java-ohjelmointikielellä Henkilö-olion, joka pitää kirjaa nimestä, iästä, painosta ja pituudesta, sekä tarjoaa mahdollisuuden painoindeksin ja maksimisykkeen laskemiseen näyttäisi esimerkiksi seuraavalta. Alla pituus ja paino ilmaistaan doubleina -- pituuden yksikkö on metri.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int ika;
+    private double paino;
+    private double pituus;
+
+    public Henkilo(String nimi, int ika, double paino, double pituus) {
+        this.nimi = nimi;
+        this.ika = ika;
+        this.paino = paino;
+        this.pituus = pituus;
+    }
+
+    public double painoindeksi() {
+        return this.paino / (this.pituus * this.pituus);
+    }
+
+    public double maksimisyke() {
+        return 206.3 - (0.711 * this.ika);
+    }
+
+    public String toString() {
+        return this.nimi + ", BMI: " + this.painoindeksi()
+            + ", maksimisyke: " + this.maksimisyke();
+    }
+}
+</code></pre>
+
+<p>
+  Annetun henkilön maksimisykkeen ja painoindeksin selvittäminen on suoraviivaista edellä kuvatun Henkilo-luokan avulla.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+System.out.println("Mikä on nimesi?");
+String nimi = lukija.nextLine();
+System.out.println("Mikä on ikäsi?");
+int ika = Integer.valueOf(lukija.nextLine());
+System.out.println("Mikä on painosi?");
+double paino = Double.valueOf(lukija.nextLine());
+System.out.println("Mikä on pituutesi?");
+double pituus = Double.valueOf(lukija.nextLine());
+
+Henkilo henkilo = new Henkilo(nimi, ika, paino, pituus);
+System.out.println(henkilo);
+</code></pre>
+
+<pre class="sample-output">Mikä on nimesi?
+<font color="red">Napoleone Buonaparte</font>
+Mikä on ikäsi?
+<font color="red">51</font>
+Mikä on painosi?
+<font color="red">80</font>
+Mikä on pituutesi?
+<font color="red">1.70</font>
+Napoleone Buonaparte, BMI: 27.68166089965398, maksimisyke: 170.03900000000002
+</pre>
+
+
+
+<h2 class="material-heading">
+    Luokka
+
+</h2>
+
+<p>
+  Luokka määrittelee minkälaisia olioita siitä voidaan luoda. Se sisältää olion tietoa kuvaavat oliomuuttujat, olion luomiseen käytettävän konstruktorin tai konstruktorit, sekä olion käyttäytymisen määrittelevät metodit. Alla on kuvattuna luokka Suorakulmio, joka määrittelee eräänlaisen suorakulmion toiminnallisuuden-
+</p>
+
+<pre class="sh_java code-highlight"><code>// luokka
+public class Suorakulmio {
+
+    // oliomuuttujat
+    private int leveys;
+    private int korkeus;
+
+    // konstruktori
+    public Suorakulmio(int leveys, int korkeus) {
+        this.leveys = leveys;
+        this.korkeus = korkeus;
+    }
+
+    // metodit
+    public void levenna() {
+        this.leveys = this.leveys + 1;
+    }
+
+    public void kavenna() {
+        if (this.leveys &gt; 0) {
+            this.leveys = this.leveys - 1;
+        }
+    }
+
+    public int pintaAla() {
+        return this.leveys * this.korkeus;
+    }
+
+    public String toString() {
+        return "(" + this.leveys + ", " + this.korkeus + ")";
+    }
+}
+</code></pre>
+
+<p>
+  Osa edellä määritellyistä metodeista ei palauta arvoa (metodit, joiden määrittelyssä käytetään avainsanaa void), ja osa metodeista palauttaa arvon (metodit, joiden määrittelyssä kerrotaan palautettavan muuttujan tyyppi). Yllä olevassa luokassa on määriteltynä myös metodi toString, joka palauttaa olion tulostamisessa käytettävän merkkijonon.
+</p>
+
+<p>
+  Luokasta luodaan olioita konstruktorin avulla new-komennolla. Alla luodaan kaksi suorakulmiota ja tulostaan niihin liittyvää tietoa.
+</p>
+
+<pre class="sh_java code-highlight"><code>Suorakulmio eka = new Suorakulmio(40, 80);
+Suorakulmio nelio = new Suorakulmio(10, 10);
+System.out.println(eka);
+System.out.println(nelio);
+
+eka.kavenna();
+System.out.println(eka);
+System.out.println(eka.pintaAla());
+</code></pre>
+
+<pre class="sample-output">(40, 80)
+(10, 10)
+(39, 80)
+3920
+</pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kirja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo kirjaa esittävä luokka <code>Kirja</code>. Jokaisella kirjalla on kirjailija, nimi ja sivujen lukumäärä.
+  </p>
+  
+  <p>
+    Tee luokalle:
+  </p>
+  
+  <ul>
+    <li>
+      Konstruktori <code>public Kirja(String kirjailija, String nimi, int sivuja)</code>
+    </li>
+    <li>
+      Metodi <code>public String getKirjailija()</code> joka palauttaa kirjan kirjailijan nimen.
+    </li>
+    <li>
+      Metodi <code>public String getNimi()</code> joka palauttaa kirjan nimen.
+    </li>
+    <li>
+      Metodi <code>public int getSivuja()</code> joka palauttaa kirjan sivujen lukumäärän.
+    </li>
+    <li>
+      Tee kirjalle lisäksi <code>public String toString()</code>-metodi, jota käytetään kirja-olion tulostamiseen. Metodin kutsun tulee tuottaa esimerkiksi seuraavanlainen tulostus:
+      
+<pre class="sample-output">J. K. Rowling, Harry Potter ja viisasten kivi, 223 sivua
+</pre>
+      
+    </li>
+  </ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kuutio</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo kuutiota (eli säännöllistä kuusitahokasta) esittävä luokka <code>Kuutio</code>. Luo luokalle konstruktori <code>public Kuutio(int sarmanPituus)</code>, joka saa parametrinaan kuution särmän pituuden.
+  </p>
+  
+  <p>
+    Tee kuutiolle metodi <code>public int tilavuus()</code>, joka laskee ja palauttaa kuution tilavuuden. Kuution tilavuus lasketaan kaavalla <code>sarmanPituus<sup>3</sup></code>. Tee tämän jälkeen kuutiolle vielä metodi <code>public String toString()</code>, joka palauttaa kuutiota kuvaavan merkkijonoesityksen. Merkkijonoesityksen tulee olla muotoa "<code>Kuution särmän pituus on <em>pituus</em>, tilavuus on <em>tilavuus</em></code>", missä <em>pituus</em> ja <em>tilavuus</em> ovat kokonaislukuja. 
+  </p>
+
+  <p>
+    Alla esimerkkejä
+  </p>
+  
+<pre class="sh_java code-highlight"><code>Kuutio oSheaJackson = new Kuutio(4);
+System.out.println(oSheaJackson.tilavuus());
+System.out.println(oSheaJackson);
+
+System.out.println();
+
+Kuutio suola = new Kuutio(2);
+System.out.println(suola.tilavuus());
+System.out.println(suola);
+</code></pre>
+  
+<pre class="sample-output">64
+Kuution särmän pituus on 4, tilavuus on 64
+
+8
+Kuution särmän pituus on 2, tilavuus on 8    
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Harjoitusapuri</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <a href="https://fi.wikipedia.org/wiki/Karvosen_kaava" target="_blank" norel>Karvosen kaavan</a> avulla voidaan laskea tavoitesyke fyysistä harjoittelua varten. Tavoitesykkeen laskeminen perustuu kaavaan <code>(maksimisyke - leposyke) * (tavoitesykeprosentti) + leposyke</code>, missä tavoitesyke annetaan prosenttina maksimisykkeestä.
+  </p>
+
+  <p>
+    Esimerkiksi, jos henkilön maksimisyke on 200, leposyke 50, ja tavoitesyke 75% maksimisykkeestä, on tavoiteltava sydämen syke noin ((200-50) * (0.75) + 50) eli 162.5 lyöntiä minuutissa.
+  </p>
+
+  <p>
+    Luo luokka <code>Harjoitusapuri</code>, jolle annetaan konstruktorin parametrina ikä ja leposyke. Harjoitusapurin tulee tarjota metodi tavoitesyke, jolle annetaan parametrina prosentuaalista maksimisykkeen osuutta kuvaava double-tyyppinen luku. Osuus annetaan lukuna nollan ja yhden välillä. Luokalla tulee olla:
+  </p>
+
+  <ul>
+    <li>Konstruktori <code>public Harjoitusapuri(int ika, int leposyke)</code></li>
+    <li>Metodi <code>public double tavoitesyke(double prosenttiaMaksimista)</code>, joka laskee ja palauttaa tavoiteltavan sykkeen.</li>
+  </ul>
+
+  <p>
+    Käytä maksimisykkeen laskemiseen kaavaa <code>206.3 - (0.711 * ikä)</code>.
+  </p>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+  
+  
+<pre class="sh_java code-highlight"><code>Harjoitusapuri apuri = new Harjoitusapuri(30, 60);
+
+double prosenttiosuus = 0.5;
+
+while (prosenttiosuus &lt; 1.0) {
+    double tavoite = apuri.tavoitesyke(prosenttiosuus);
+    System.out.println("Tavoite " + (prosenttiosuus * 100) + "% maksimista: " + tavoite);
+    prosenttiosuus = prosenttiosuus + 0.1;
+}
+</code></pre>
+  
+<pre class="sample-output">Tavoite 50.0% maksimista: 122.48500000000001
+Tavoite 60.0% maksimista: 134.98200000000003
+Tavoite 70.0% maksimista: 147.479
+Tavoite 80.0% maksimista: 159.976
+Tavoite 89.99999999999999% maksimista: 172.473
+Tavoite 99.99999999999999% maksimista: 184.97000000000003
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+<h1 class="material-heading">
+    Alkeis- ja viittaustyyppiset muuttujat
+
+</h1>
+
+<p>
+  Javan muuttujat jaetaan alkeis- ja viittaustyyppisiin muuttujiin. Ohjelmoijan näkökulmasta alkeistyyppisten muuttujien tieto on tallennettu muuttujan arvoksi, kun taas viittaustyyppisten muuttujien arvona on viite muuttujaan liittyvään tietoon. Viittaustyyppiset muuttujat ovat Java-kielessä käytännössä aina olioita. Tarkastellaan näitä muuttujatyyppejä kahden esimerkin kautta.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>int arvo = 10;
+System.out.println(arvo);  
+</code></pre>
+
+<pre class="sample-output">10
+</pre>
+
+<pre class="sh_java code-highlight"><code>public Nimi {
+    private String nimi;
+
+    public Nimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Nimi leevi = new Nimi("Leevi");
+System.out.println(leevi);
+</code></pre>
+
+
+<pre class="sample-output">Nimi@4aa298b7
+</pre>
+
+<p>
+  Ensimmäisessä esimerkissä luodaan alkeistyyppinen <code>int</code>-muuttuja, jonka arvoksi kopioidaan luku 10. Kun muuttuja annetaan System.out.println-metodille tulostettavaksi, tulostuu arvo 10. Toisessa esimerkissä luodaan viittaustyyppinen Nimi-muuttuja, jonka arvoksi kopioidaan Nimi-luokassa määritellyn konstruktorin kutsun palauttama viite olioon. Kun muuttuja tulostetaan, tulostuu merkkijono Nimi@4aa298b7. Mistä tässä oikein on kyse?
+</p>
+
+<p>
+  Metodikutsu System.out.println tulostaa muuttujan arvon. Alkeistyyppistien muuttujien arvo on konkreettinen, kun taas viittaustyyppisten muuttujien arvo on viite. Kun viittaustyyppinen muuttuja tulostetaan, tulostuksena on muuttujan tyyppi sekä Javan muuttujalle luoma tunniste: merkkijono <code>Nimi@4aa298b7</code> kertoo, että kyse on <code>Nimi</code>-tyyppisestä muuttujasta, jonka tunniste on <code>4aa298b7</code>.
+</p>
+
+<p>
+  Edellinen esimerkki pätee silloin, jos ohjelmoija ei ole muuttanut olion oletustulostusmuotoa. Tulostusmuodon voi muuttaa määrittelemällä olion luokkaan metodi <code>toString</code>, jossa kerrotaan miltä olion tulostuksen tulee näyttää. Alla olevassa esimerkissä luokalle <code>Nimi</code> on määritelty metodi <code>public String toString()</code>, joka palauttaa oliomuuttujan <code>nimi</code>. Nyt, kun luokasta luotu olio tulostetaan <code>System.out.println</code>-komennolla, tulostustettava tieto on metodin <code>toString</code> palauttama merkkijono.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public Nimi {
+    private String nimi;
+
+    public Nimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String toString() {
+        return this.nimi;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Nimi leevi = new Nimi("Leevi");
+System.out.println(leevi); // sama kuin System.out.println(leevi.toString());
+</code></pre>
+
+<pre class="sample-output">Leevi
+</pre>
+
+
+<h2 class="material-heading">
+    Alkeistyyppiset muuttujat
+
+</h2>
+
+<p>
+  Javassa on kahdeksan alkeistyyppistä muuttujaa. Nämä ovat <code>boolean</code> (totuusarvo, joko <code>true</code> tai <code>false</code>), <code>byte</code> (8 bittiä sisältävä tavu, välillä <code>-128</code> ja <code>127</code>), <code>char</code> (yhtä kirjainmerkkiä kuvaava 16-bittiä sisältävä kirjainarvo), <code>short</code> (pientä kokonaislukua kuvaava 16 bittiä sisältävä arvo, välillä <code>-32768</code> ja <code>32767</code>), <code>int</code> (keskikokoista kokonaislukua kuvaava 32 bittiä sisältävä arvo, välillä <code>-2<sup>31</sup></code> ja <code>2<sup>31</sup>-1</code>), <code>long</code> (isohkoa kokonaislukua kuvaava 64 bittiä sisältävä arvo, välillä <code>-2<sup>63</sup></code> ja <code>2<sup>63</sup>-1</code>), <code>float</code> (32-bittiä käyttävä liukuluku) ja <code>double</code> (64-bittiä käyttävä liukuluku). 
+</p>
+
+<p>
+  Olemme käyttäneet näistä ensisijaisesti totuusarvomuuttujia (<code>boolean</code>), kokonaislukumuuttujia (<code>int</code>), ja liukulukumuuttujia (<code>double</code>).
+</p>
+
+
+<pre class="sh_java code-highlight"><code>boolean totuusarvo = false;
+int kokonaisluku = 42;
+double liukuluku = 4.2;
+
+System.out.println(totuusarvo);
+System.out.println(kokonaisluku);
+System.out.println(liukuluku);
+</code></pre>
+
+
+<pre class="sample-output">false
+42
+4.2
+</pre>
+
+<p>
+  Alkeistyyppisillä muuttujilla muuttujan esittely varaa muistista muuttujan tyypin kokoisen muistipaikan, johon muuttujaan asetettava arvo kopioidaan. Alla olevassa esimerkissä luodaan kolme muuttujaa. Jokaisella muuttujalla on erillinen paikka muistissa, johon asetettava arvo kopioidaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>int eka = 10;
+int toka = eka;
+int kolmas = toka;
+System.out.println(eka + " " + toka + " " + kolmas);
+toka = 5;
+System.out.println(eka + " " + toka + " " + kolmas);
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>10 10 10
+10 5 10
+</code></pre>
+
+<p>
+  Muuttujan nimi kertoo paikan, missä muuttujan arvo sijaitsee. Muuttujan arvon asetus yhtäsuuruusmerkillä aiheuttaa arvon kopioimisen muuttujan nimen perusteella tunnistettavaan muistipaikkaan. Esimerkiksi lause <code>int eka = 10</code> varaa muuttujalle paikan nimeltä <code>eka</code> ja kopioi arvon <code>10</code> siihen. 
+</p>
+
+<p>
+  Vastaavasti lause <code>int toka = eka;</code> varaa luotavalle muuttujalle paikan nimeltä <code>toka</code> ja kopioi siihen muuttujan <code>eka</code> paikan sisältämän arvon. 
+</p>
+
+<p>
+  Muuttujien arvot kopioituvat myös metodikutsujen yhteydessä. Käytännössä tämä tarkoittaa sitä, että metodikutsun yhteydessä metodin parametriksi annetun muuttujan arvo ei muutu metodia kutsuvassa metodissa. Alla olevassa esimerkissä main-metodissa esitellään muuttuja luku, jonka arvo kopioidaan metodin kutsu parametriksi. Metodissa kutsu parametrina saatu arvo tulostetaan, jonka jälkeen arvoa kasvatetaan yhdellä, jonka jälkeen arvo tulostetaan vielä kerran. Lopulta metodin kutsu suoritus loppuu, ja palataan main-metodiin. Main-metodissa olevan luku-muuttujan arvo ei ole muuttunut, sillä se ei liity millään tavalla kutsu-metodin parametriksi määriteltyyn muuttujaan luku.
+</p>
+
+<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int luku = 1;\n        kutsu(luku);\n       \n        System.out.println(\"Luku vieläkin: \" + luku);\n    }\n   \n    public static void kutsu(int luku) {\n        System.out.println(\"Luku aluksi: \" + luku);\n        luku = luku + 1;\n        System.out.println(\"Luku lopuksi: \" + luku);\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"call","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"8","frame_id":8}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"","event":"step_line","line":10,"stack_to_render":[{"func_name":"kutsu:10","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"9","frame_id":9},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"10","frame_id":10}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"kutsu:11","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"15","frame_id":15},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"16","frame_id":16}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"kutsu:12","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"17","frame_id":17},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"18","frame_id":18}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"27","frame_id":27},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"28","frame_id":28}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"return","line":13,"stack_to_render":[{"func_name":"kutsu:13","encoded_locals":{"luku":2,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"29","frame_id":29},{"func_name":"main:4","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":false,"is_zombie":false,"is_parent":false,"unique_hash":"30","frame_id":30}],"globals":{},"ordered_globals":[],"func_name":"kutsu","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\n","event":"step_line","line":6,"stack_to_render":[{"func_name":"main:6","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"31","frame_id":31}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1},"ordered_varnames":["luku"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"36","frame_id":36}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"Luku aluksi: 1\nLuku lopuksi: 2\nLuku vieläkin: 1\n","event":"return","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"luku":1,"__return__":["VOID"]},"ordered_varnames":["luku","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"37","frame_id":37}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
+
+
+<h2 class="material-heading">
+    Viittaustyyppiset muuttujat
+
+</h2>
+
+<p>
+  Kaikki Javan valmiiksi tarjoamat muuttujat (paitsi edellä kuvatut kahdeksan alkeistyyppistä muuttujaa) ovat viittaustyyppisiä. Ohjelmoija voi myös luoda uusia viittaustyyppisiä muuttujatyyppejä määrittelemällä uusia luokkia. Käytännössä jokainen (mistä tahansa) luokasta luotu olio on viittaustyyppinen muuttuja.
+</p>
+
+<p>
+  Tarkastellaan alussa ollutta esimerkkiä, missä luotiin Nimi-tyyppinen muuttuja leevi.
+</p>
+
+<pre class="sh_java code-highlight"><code>Nimi leevi = new Nimi("Leevi");
+</code></pre>
+
+<p>
+  Kutsun osat ovat seuravat:
+</p>
+
+<ul>
+
+  <li>
+    Mitä tahansa uutta muuttujaa esiteltäessä tulee ensin kertoa esiteltävän muuttujan tyyppi. Alla esitellään muuttuja, jonka tyyppi on <code>Nimi</code>. Jotta ohjelman suorittaminen onnistuu, tulee käytössä olla luokka nimeltä <code>Nimi</code>.
+    
+<pre class="sh_java code-highlight"><code><strong>Nimi</strong> leevi = new Nimi("Leevi");
+</code></pre>
+    
+  </li>
+
+  <li>
+
+    Muuttujan esittelyn yhteydessä kerrotaan muuttujan nimi. Muuttujan arvoon voi myöhemmin viitata muuttujan nimen perusteella. Alla muuttujan nimeksi on määritelty leevi.
+    
+<pre class="sh_java code-highlight"><code>Nimi <strong>leevi</strong> = new Nimi("Leevi");
+</code></pre>
+    
+  </li>
+
+  <li>
+
+    Muuttujaan voidaan asettaa arvo. Luokista luodaan olioita kutsumalla konstruktoria, joka määrittelee luotavan olion oliomuuttujiin asetettavat arvot. Alla oletetaan, että luokassa <code>Nimi</code> on konstruktori, joka saa parametrikseen merkkijonon. 
+    
+<pre class="sh_java code-highlight"><code>Nimi leevi = <strong>new Nimi("Leevi");</strong>
+</code></pre>
+    
+  </li>
+
+  <li>
+
+    Konstruktorikutsu palauttaa arvon, joka on viite luotuun olioon. Yhtäsuuruusmerkki kertoo ohjelmalle, että yhtäsuuruusmerkin oikealla puolella olevan lausekkeen arvo tulee kopioida yhtäsuuruusmerkin vasemmalla puolella olevan muuttujan arvoksi. Konstruktorikutsun palauttama viite juuri luotuun olioon kopioidaan muuttujan <code>leevi</code> arvoksi.
+    
+<pre class="sh_java code-highlight"><code>Nimi leevi <strong>=</strong> new Nimi("Leevi");
+</code></pre>
+
+  </li>
+</ul>
+
+<p>
+  Suurin ero alkeis- ja viittaustyyppisten muuttujien välillä on se, että alkeistyyppiset muuttujat (jotka ovat lähes poikkeuksetta numeroita) ovat muuttumattomia. Viittaustyyppisten muuttujien sisäistä tilaa taas voi tyypillisesti muuttaa. Tämä ilmiö liittyy siihen, että alkeistyyppisten muuttujien arvo on tallennettu suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo on viite muuttujan tietoihin eli sisäiseen tilaan.
+</p>
+
+<p>
+  Alkeistyyppisille muuttujille löytyy laskuoperaatioita kuten plus, miinus, kerto jne -- nämä operaatiot eivät muuta alkuperäisten muuttujien arvoja. Laskuoperaatioiden avulla luodaan uusia arvoja, jotka varastoidaan muuttujiin tarvittaessa. Toisaalta, viittaustyyppisten muuttujien arvoa ei voi muuttaa plus, miinus, kerto ym. laskuoperaatioiden avulla.
+</p>
+
+<p>
+  Viittaustyyppisen muuttujan arvo -- eli viite -- osoittaa paikkaan, joka sisältää viittaustyyppiseen muuttujaan liittyvät tiedot. Oletetaan, että käytössä on luokka Henkilo, jossa on määritelty oliomuuttujaksi ika. Jos luokasta on luotu henkilö-olio, voi henkilö-olion viitettä seuraamalla päästä käsiksi muuttujaan ika, jonka arvoa voi tarvittaessa muuttaa. 
+</p>
+
+
+<h2 class="material-heading">
+    Alkeis- tai viittaustyyppinen muuttuja metodin parametrina
+
+</h2>
+
+<p>
+  Totesimme aiemmin, että alkeistyyppisten muuttujien arvo on tallennettuna suoraan muuttujaan, kun taas viittaustyyppisten muuttujien arvo sisältää viitteen olioon. Totesimme myös, että muuttujan arvon asettaminen yhtäsuuruusmerkillä kopioi oikealla olevan (mahdollisesti muuttujan) arvon vasemmalla olevan muuttujan arvoksi.
+</p>
+  
+<p>
+  Vastaavanlainen kopiointi tapahtuu metodikutsun yhteydessä. Riippumatta siitä, onko muuttuja alkeis- tai viittaustyyppinen, metodikutsun yhteydessä metodille parametrina annettava arvo kopioidaan metodin käyttöön. Alkeistyyppisillä muuttujilla metodin käyttöön tulee muuttujan arvo, viittaustyyppisillä muuttujilla metodin käyttöön tulee viite.
+</p>
+
+<p>
+  Tarkastellaan tätä käytännössä. Oletetaan, että käytössämme on seuraava luokka <code>Henkilo</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int syntymavuosi;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+        this.syntymavuosi = 1970;
+    }
+
+    public int getSyntymavuosi() {
+        return this.syntymavuosi;
+    }
+  
+    public void setSyntymavuosi(int syntymavuosi) {
+        this.syntymavuosi = syntymavuosi;
+    }
+
+    public String toString() {
+        return this.nimi + " (" + this.syntymavuosi + ")";
+    }
+}
+</code></pre>
+
+<p>
+  Tarkastellaan seuraavan ohjelman toimintaa askeleittain.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Esimerkki {
+    public static void main(String[] args) {
+        Henkilo eka = new Henkilo("Eka");
+  
+        System.out.println(eka);
+        nuorenna(eka);
+        System.out.println(eka);
+  
+        Henkilo toka = eka;
+        nuorenna(toka);
+  
+        System.out.println(eka);
+    }
+  
+    public static void nuorenna(Henkilo henkilo) {
+        henkilo.setSyntymavuosi(henkilo.getSyntymavuosi() + 1);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">Eka (1970)
+Eka (1971)
+Eka (1972)
+</pre>
+
+<p>
+  Ohjelman suoritus alkaa main-metodin ensimmäiseltä riviltä. Main-metodin ensimmäisellä rivillä esitellään Henkilo-tyyppinen muuttuja eka, johon kopioidaan Henkilo-luokan konstruktorin palauttama arvo. Konstruktorissa luodaan olio, jonka syntymävuodeksi asetetaan 1970 ja jonka nimeksi asetetaan parametrina saatu arvo. Konstruktori palauttaa viitteen. Rivin suorituksen jälkeen ohjelman tilanne on seuraava -- ohjelman muistiin on luotu Henkilo-olio, johon on viittaus main-metodissa määritellystä eka-muuttujasta.
+</p>
+
+<p>
+  <em>
+    Alla olevissa piirroksissa vasemmalla puolella on kutsupino, oikealla ohjelman muisti.
+  </em>
+</p>
+
+
+<img src="../img/drawings/eka-1-15c25807.png"/>
+
+<p>
+  Main-metodin kolmannella rivillä tulostetaan muuttujan eka arvo. Metodikutsu System.out.println etsii sille parametrina annetulta viittaustyyppiseltä muuttujalta toString-metodia. Henkilo-luokalla on metodi toString, joten metodia kutsutaan eka-muuttujan osoittamalle oliolle. Oliossa olevan muuttujan nimi arvo on "Eka" ja syntymävuoden arvo on 1970. Tulostukseksi tulee "Eka (1970)".
+</p>
+
+<p>
+  Neljännellä rivillä kutsutaan nuorenna-metodia, jolle annetaan parametriksi muuttuja eka. Metodia <code>nuorenna</code> kutsuttaessa sille parametrina annetun muuttujan arvo kopioituu metodin <code>nuorenna</code> käyttöön. Metodin <code>main</code> suoritus jää odottamaan kutsupinoon. Koska muuttuja eka on viittaustyyppinen, kopioituu metodin käyttöön aiemmin luotu viite. Metodin suorituksen lopussa tilanne on seuraava -- metodi kasvattaa parametrina saamansa olion syntymävuotta yhdellä.
+</p>
+
+<img src="../img/drawings/eka-2-3dd68763.png"/>
+
+<p>
+  Kun metodin nuorenna suoritus loppuu, palataan takaisin main-metodiin. Nuorenna-metodin suoritukseen liittyvät tiedot katoavat kutsupinosta. 
+</p>
+
+<img src="../img/drawings/eka-3-65b656ac.png"/>
+
+<p>
+  Metodikutsusta palaamisen jälkeen suoritetaan taas muuttujan eka arvon tulostaminen. Muuttujan eka osoittamaa oliota on muutettu metodikutsun <code>nuorenna</code> yhteydessä: olion <code>syntymavuosi</code>-muuttujaa kasvatettiin yhdellä. Tulostukseksi tulee lopulta "Eka (1971)".
+</p>
+
+<p>
+  Tämän jälkeen ohjelmassa esitellään uusi Henkilo-tyyppinen muuttuja toka. Muuttujaan toka kopioidaan muuttujan eka arvo, eli muuttujan toka arvoksi tulee viite jo olemassaolevaan Henkilo-olioon.
+</p>
+
+<img src="../img/drawings/eka-4-72731898.png"/>
+
+<p>
+  Tämän jälkeen kutsutaan metodia nuorenna, jolle annetaan parametriksi muuttuja toka. Metodia kutsuttaessa parametriksi annetun muuttujan arvo kopioituu metodin arvoksi. Metodi saa siis käyttöönsä muuttujan toka sisältämän viitteen. Metodin suorituksen lopuksi metodin viittaaman olion syntymävuosi on kasvanut yhdellä.
+</p>
+
+<img src="../img/drawings/eka-5-b91a4b87.png"/>
+
+<p>
+  Lopulta metodin suoritus päättyy, ja ohjelman suoritus palaa takaisin main-metodiin. Main-metodissa tulostetaan vielä kerran muuttujan eka arvo. Tulostukseksi tulee lopulta "Eka (1972)".
+</p>
+
+
+<div class="quiznator-plugin" data-quiz-id="59d2aa2945370b0004080777"></div>
+
+
+<div class="quiznator-plugin" data-quiz-id="59d2ab9045370b000408077b"></div>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Muuttujat ja tietokoneen muisti
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tässä oppimateriaalissa oiotaan mutkia muuttujien ja tietokoneen muistin toiminnan kannalta. Materiaalissa käsitellään muistiin liittyviä asioita ohjelmoinnin oppimiseen sopivalla abstraktiotasolla. Esimerkiksi toteamus, lause <code>int luku = 5</code> varaa muuttujalle <code>luku</code> paikan muistista ja kopioi arvon 5 sinne, on tämän kurssin tavoitteiden kannalta sopiva.
+  </p>
+  
+  <p>
+    Tietokoneen toiminnan näkökulmasta lauseen <code>int luku = 5</code> suorituksessa tapahtuu todellisuudessa enemmän. Lausetta suoritettaessa varataan muistista 32-bittinen paikka arvolle <code>5</code>, sekä 32-bittisen paikan muuttujalle luku. Paikan koko määräytyy muuttujan tyypin perusteella. Tämän jälkeen arvon 5 sisältämän muistipaikan sisältö kopioidaan muuttujan <code>luku</code>-muistipaikkaan.
+  </p>
+
+  <p>
+    Tämän lisäksi muuttuja <code>luku</code> ei suoranaisesti ole muistipaikka tai lokero. Muuttujan luku arvo on osoite muistissa -- muuttujaan liitetty tieto sen tyypistä kertoo kuinka paljon tietoa muuttujan osoitteesta luetaan. Esimerkiksi kokonaisluvun tapauksessa tämä määrä on 32 bittiä.
+  </p>
+  
+  <p>
+    Palaamme tähän lyhyesti ohjelmoinnin jatkokurssilla; aihetta käsitellään enemmän kurssilla Tietokoneen toiminta.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Metodien ja konstruktorien kuormittaminen
+
+</h1>
+
+
+<p>
+  Palataan jälleen henkilöitä käsittelevän luokan pariin. Luokka <code>Henkilo</code> näyttää tällä hetkellä seuraavalta:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+
+    private String nimi;
+    private int ika;
+    private int pituus;
+    private int paino;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+        this.ika = 0;
+        this.paino = 0;
+        this.pituus = 0;
+    }
+
+    public void tulostaHenkilo() {
+        System.out.println(this.nimi + " olen " + this.ika + " vuotta vanha");
+    }
+
+    public void vanhene() {
+        this.ika++;
+    }
+
+    public boolean taysiIkainen() {
+        if (this.ika &lt; 18) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public double painoindeksi() {
+        double pituusMetreina = this.pituus / 100.0;
+
+        return this.paino / (pituusMetreina * pituusMetreina);
+    }
+
+    public String toString() {
+        return this.nimi + " olen " + this.ika + " vuotta vanha, painoindeksini on " + this.painoindeksi();
+    }
+
+    public void setPituus(int pituus) {
+        this.pituus = pituus;
+    }
+
+    public int getPituus() {
+        return this.pituus;
+    }
+
+    public int getPaino() {
+        return this.paino;
+    }
+
+    public void setPaino(int paino) {
+        this.paino = paino;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+}
+</code></pre>
+
+<p>
+  Kaikki henkilöoliot ovat luontihetkellä 0-vuotiaita, sillä konstruktori asettaa uuden henkilön ika-oliomuuttujan arvoksi 0:
+</p>
+
+<pre class="sh_java code-highlight"><code>public Henkilo(String nimi) {
+    this.nimi = nimi;
+    this.ika = 0;
+    this.paino = 0;
+    this.pituus = 0;
+}
+</code></pre>
+
+<h2 class="material-heading">
+    Konstruktorin kuormittaminen
+
+</h2>
+
+<p>
+  Haluaisimme luoda henkilöitä myös siten, että konstruktorin parametrina annettaisiin ikä nimen lisäksi. Tämä onnistuu, sillä konstruktoreja voi olla useita. Tehdään vaihtoehtoinen konstruktori. Vanhaa konstruktoria ei tarvise poistaa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public Henkilo(String nimi) {
+    this.nimi = nimi;
+    this.ika = 0;
+    this.paino = 0;
+    this.pituus = 0;
+}
+
+public Henkilo(String nimi, int ika) {
+    this.nimi = nimi;
+    this.ika = ika;
+    this.paino = 0;
+    this.pituus = 0;
+}
+</code></pre>
+
+<p>
+  Nyt olioiden luonti onnistuu kahdella vaihtoehtoisella tavalla:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Henkilo pekka = new Henkilo("Pekka", 24);
+    Henkilo ada = new Henkilo("Ada");
+
+    System.out.println(pekka);
+    System.out.println(ada);
+}
+</code></pre>
+
+<pre class="sample-output">Pekka, ikä 24 vuotta
+Ada, ikä 0 vuotta
+</pre>
+
+<p>
+  Tekniikkaa jossa luokalla on kaksi konstruktoria, kutsutaan <em>konstruktorin kuormittamiseksi</em>. Luokalla voi siis olla useita konstruktoreja, jotka poikkeavat toisistaanparametriensa määrältä tai tyypeiltä. Ei kuitenkaan ole mahdollista tehdä kahta erilaista konstruktoria joilla on täysin saman tyyppiset parametrit. Emme siis voi edellisten lisäksi lisätä konstruktoria <code>public Henkilo(String nimi, int paino)</code> sillä Javan on mahdoton erottaa tätä kaksiparametrisesta konstruktorissa, jossa luku tarkoittaa ikää.
+</p>
+
+
+<h2 class="material-heading">
+    Oman konstruktorin kutsuminen
+
+</h2>
+
+<p>
+  Mutta hetkinen, aiemmin todettiin että "copy-paste"-koodi ei ole hyvä idea. Kun tarkastellaan edellä tehtyjä kuormitettuja konstruktoreita, niissä on aika paljon samaa. Emme ole oikein tyytyväisiä tilanteeseen.
+</p>
+
+<p>
+  Konstruktoreista ylempi, eli nimen parametrinaan saava konstruktori, on oikeastaan alemman, eli nimen ja iän parametrinaan saavan konstruktorin, erikoistapaus. Entä jos ylempi konstruktori voisi "kutsua" alempaa konstruktoria?
+</p>
+
+<p>
+  Tämä onnistuu, sillä konstruktorin sisältä voi kutsua toista konstruktoria juuri tähän olioon liittyvän <code>this</code>-ilmauksen avulla!
+</p>
+
+<p>
+  Muutetaan ylempää konstruktoria siten, että se ei itse tee mitään vaan ainoastaan kutsuu alempaa konstruktoria ja pyytää sitä asettamaan iäksi 0:
+</p>
+
+<pre class="sh_java code-highlight"><code>public Henkilo(String nimi) {
+    this(nimi, 0);  // suorita tässä toisen konstruktorin koodi ja laita ika-parametrin arvoksi 0
+}
+
+public Henkilo(String nimi, int ika) {
+    this.nimi = nimi;
+    this.ika = ika;
+    this.paino = 0;
+    this.pituus = 0;
+}
+</code></pre>
+
+<p>
+  Oman konstruktorin kutsu <code>this(nimi, 0);</code> saattaa vaikuttaa erikoiselta. Asiaa voi vaikka ajatella siten, että kutsun kohdalle tulee "copy-pastena" automaattisesti alemman konstruktorin koodi, siten että ika parametrin arvoksi tulee 0. Huom! Jos konstruktorista kutsutaan toista konstruktoria, tulee konstruktorin kutsun tulee olla ensimmäinen toiminto konstruktorin sisällä.
+</p>
+
+<p>
+  Olioiden luonti onnistuu aivan kuten edellisessä esimerkissä:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Henkilo pekka = new Henkilo("Pekka", 24);
+    Henkilo esko = new Henkilo("Esko");
+
+    System.out.println(pekka);
+    System.out.println(esko);
+}
+</code></pre>
+
+<pre class="sample-output">Pekka, ikä 24 vuotta
+Esko, ikä 0 vuotta
+</pre>
+
+
+<div class="quiznator-plugin" data-quiz-id="5bae770fc68dfe01d43637bc"></div>
+
+
+<h2 class="material-heading">
+    Metodin kuormittaminen
+
+</h2>
+
+<p>
+  Konstruktorien tapaan myös metodeja voi kuormittaa, eli samannimisestä metodista voi olla useita versioita. Jälleen eri versioiden parametrien tyyppien on oltava erilaiset. Tehdään <code>vanhene</code>-metodista toinen versio, joka mahdollistaa henkilön vanhentamisen parametrina olevalla vuosimäärällä:
+</p>
+
+<pre class="sh_java code-highlight"><code>public void vanhene() {
+    this.ika = this.ika + 1;
+}
+
+public void vanhene(int vuodet) {
+    this.ika = this.ika + vuodet;
+}
+</code></pre>
+
+<p>
+  Seuraavassa "Pekka" syntyy 24-vuotiaana, vanhenee ensin vuoden ja sitten 10 vuotta:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Henkilo pekka = new Henkilo("Pekka", 24);
+    System.out.println(pekka);
+
+    pekka.vanhene();
+    System.out.println(pekka);
+
+    pekka.vanhene(10);
+    System.out.println(pekka);
+}
+</code></pre>
+
+<p>
+  Tulostuu:
+</p>
+
+<pre class="sample-output">Pekka, ikä 24 vuotta
+Pekka, ikä 25 vuotta
+Pekka, ikä 35 vuotta
+</pre>
+
+<p>
+  Henkilöllä on nyt siis käytännössä kaksi kappaletta <code>vanhene</code>-nimisiä metodeja. Se kumpi metodeista valitaan suoritettavaksi, riippuu metodikutsussa käytettyjen parametrien määrästä.
+</p>
+
+<p>
+  Ohjelmaa voi muokata myös niin, että parametriton metodi <code>vanhene</code> toteutetaan metodin <code>vanhene(int vuodet)</code> avulla:
+</p>
+
+<pre class="sh_java code-highlight"><code>public void vanhene() {
+    this.vanhene(1);
+}
+
+public void vanhene(int vuodet) {
+    this.ika = this.ika + vuodet;
+}
+</code></pre>
+
+
+<div class="quiznator-plugin" data-quiz-id="5bae75b000b2e30284f440cb"></div>
+
+
+<p>
+  <div class="videoWrapper">
+  <div class="embedded-youtube-video" data-id="b6YmqoQopvs"></div>
+</div>
+
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Monta konstruktoria</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on luokka <code>Esine</code>, joka kuvaa kaupassa olevaa esinettä. Jokaisella esineellä on nimi, sijainti sekä paino.
+  </p>
+
+  <p>
+    Lisää luokkaan <code>Esine</code> seuraavat kolme konstruktoria:
+  </p>
+
+  <ul>
+    <li>
+      <code>public Esine(String nimi)</code> luo esineen annetulla nimellä. Esineen sijainniksi tulee "pientavarahylly" ja painoksi 1.
+    </li>
+    <li>
+      <code>public Esine(String nimi, String sijainti)</code> luo esineen annetulla nimellä ja sijainnilla. Esineen painoksi tulee 1.
+    </li>
+    <li>
+      <code>public Esine(String nimi, int paino)</code> luo esineen annetulla nimellä ja painolla. Esineen sijainniksi tulee "varasto".
+    </li>    
+  </ul>
+  
+  <p>
+    Voit kokeilla ohjelmasi toimintaa seuraavalla koodilla:
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>Esine mitta = new Esine("Mitta");
+Esine laasti = new Esine("Laasti", "remonttitavarat");
+Esine rengas = new Esine("Rengas", 5);
+
+System.out.println(mitta);
+System.out.println(laasti);
+System.out.println(rengas);  
+</code></pre>
+
+<pre class="sample-output">Mitta (1 kg) löytyy sijainnista pientavarahylly
+Laasti (1 kg) löytyy sijainnista remonttitavarat
+Rengas (5 kg) löytyy sijainnista varasto
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kuormitettu laskuri (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <h2>Monta konstruktoria</h2>
+
+  <p>
+    Toteuta luokka <code>Laskuri</code>, joka sisältää luvun, jota voi vähentää ja suurentaa. Luokalla tulee olla seuraavat konstruktorit:
+  </p>
+  
+  <ul>
+    <li>
+      <code>public Laskuri(int alkuarvo)</code> asettaa laskurin alkuarvoksi parametrin <code>alkuarvo</code> arvon.
+    </li>
+    <li>
+      <code>public Laskuri()</code> laskurin alkuarvoksi tulee 0.
+    </li>
+  </ul>
+
+  <p>
+    ja seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>
+      <code>public int arvo()</code> palauttaa laskurin tämänhetkisen arvon
+    </li>
+    <li>
+      <code>public void lisaa()</code> lisää laskurin arvoa yhdellä
+    </li>
+    <li>
+      <code>public void vahenna()</code> vähentää laskurin arvoa yhdellä
+    </li>
+  </ul>
+
+  <h2>Vaihtoehtoiset metodit</h2>
+  
+  <p>
+    Tee laskurin metodeista <code>lisaa</code> ja <code>vahenna</code> myös yksiparametriset versiot:
+  </p>
+
+  <ul>
+    <li>
+      <code>public void lisaa(int lisays)</code> lisää laskurin arvoa parametrina annetun luvun verran. Jos parametrin arvo on negatiivinen, ei laskurin arvo muutu.
+    </li>
+    <li>
+      <code>public void vahenna(int vahennys)</code> vähentää laskurin arvoa parametrina annetun luvun verran. Jos parametrin arvo on negatiivinen, ei laskurin arvo muutu.
+    </li>
+  </ul>
+
+
+    </div>
+  </div>
+</div>
+
+<h1 class="material-heading">
+    Oliot ja viitteet
+
+</h1>
+
+<p>
+  Jatketaan olioiden ja viitteiden parissa. Oletetaan, että käytössämme on alla oleva henkilöä kuvaava luokka. Henkilöllä on oliomuuttujat nimi, ikä, paino ja pituus, jonka lisäksi se tarjoaa metodin mm. painoindeksin laskemiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+
+    private String nimi;
+    private int ika;
+    private int paino;
+    private int pituus;
+
+    public Henkilo(String nimi) {
+        this.nimi = nimi;
+        this.ika = 0;
+        this.paino = 0;
+        this.pituus = 0;
+    }
+
+    // muita konstruktoreja ja metodeja
+  
+    public String getNimi() {
+        return this.nimi;
+    }
+  
+    public int getIka() {
+        return this.ika;
+    }
+  
+    public void vanhene() {
+        this.ika = this.ika + 1;
+    }
+  
+    public void setPituus(int uusiPituus) {
+        this.pituus = uusiPituus;
+    }
+  
+    public void setPaino(int uusiPaino) {
+        this.paino = uusiPaino;
+    }
+  
+    public double painoindeksi() {
+        double pituusPerSata = this.pituus / 100.0;
+        return this.paino / (pituusPerSata * pituusPerSata);
+    }
+  
+    @Override
+    public String toString() {
+        return this.nimi + ", ikä " + this.ika + " vuotta";
+    }
+}
+</code></pre>
+
+<p>
+  Mitä oikein tapahtuu kun olio luodaan?
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+</code></pre>
+
+<p>
+  Konstruktorikutsun <code>new</code> yhteydessä tapahtuu monta asiaa. Ensin tietokoneen muistista varataan tila oliomuuttujille. Tämän jälkeen oliomuuttujiin asetetaan oletus- tai alkuarvot (esimerkiksi int-tyyppisten muuttujien arvoksi tulee 0). Lopulta suoritetaan konstruktorissa oleva lähdekoodi.
+</p>
+
+<p>
+  Konstruktorikutsu palauttaa viitteen olioon. <strong>Viite</strong> on tieto olioon liittyvien tietojen paikasta.
+</p>
+
+<img src="../img/drawings/olio-joan-8a1d16b2.png"/>
+
+<p>
+  Muuttujan arvoksi asetetaan siis viite, eli tieto olioon liittyvien tietojen paikasta. Yllä oleva kuva paljastaa myös sen, että merkkijonot -- kuten henkilömme nimi -- ovat myös olioita.
+</p>
+
+<h2 class="material-heading">
+    Viittaustyyppisen muuttujan arvon asettaminen kopioi viitteen
+
+</h2>
+
+
+<p>
+  Lisätään ohjelmaan <code>Henkilo</code>-tyyppinen muuttuja <code>ball</code> ja annetaan sille alkuarvoksi <code>joan</code>. Mitä nyt tapahtuu?
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+System.out.println(joan);
+
+Henkilo ball = joan;
+</code></pre>
+
+<p>
+  Lause <code>Henkilo ball = joan;</code> luo uuden henkilömuuttujan <code>ball</code>, jonka arvoksi kopioidaan muuttujan <code>joan</code> arvo. Tämä saa aikaan sen, että <code>ball</code> viittaa samaan olioon kuin <code>joan</code>.
+</p>
+
+<img src="../img/drawings/olio-joan-ja-ball-5023b893.png"/>
+
+<p>
+  Tarkastellan samaa esimerkkiä hieman pidemmälle.
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+System.out.println(joan);
+
+Henkilo ball = joan;
+ball.vanhene();
+ball.vanhene();
+
+System.out.println(joan);
+</code></pre>
+
+<pre class="sample-output">Joan Ball, ikä 0 vuotta
+Joan Ball, ikä 2 vuotta
+</pre>
+
+
+<p>
+  Joan Ball -- eli henkilöolio, johon viite muuttujassa <code>joan</code> osoittaa -- on alussa 0-vuotias. Tämän jälkeen muuttujaan <code>ball</code> asetetaan (eli kopioidaan) muuttujan <code>joan</code> arvo. Henkilöoliota <code>ball</code> vanhennetaan kaksi vuotta ja sen seurauksena Joan Ball vanhenee!
+</p>
+
+<p>
+  Olion sisäinen tila ei kopioidu muuttujan arvoa asetettaessa. Lauseessa <code>Henkilo ball = joan;</code> ei luoda uutta oliota -- muuttujan ball arvoksi asetetaan kopio muuttujan joan arvosta, eli viite olioon.
+</p>
+
+<img src="../img/drawings/olio-joan-ja-ball-2-7a10bf06.png"/>
+
+<p>
+  Seuraavassa esimerkkiä on jatkettu siten, että <code>joan</code>-muuttujaa varten luodaan uusi olio, jonka viite asetetaan muuttujan arvoksi. Muuttuja <code>ball</code> viittaa yhä aiemmin luotuun olioon.
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+System.out.println(joan);
+
+Henkilo ball = joan;
+ball.vanhene();
+ball.vanhene();
+
+System.out.println(joan);
+
+joan = new Henkilo("Joan B.");
+System.out.println(joan);
+</code></pre>
+
+<p>
+  Tulostuu:
+</p>
+
+<pre class="sample-output">Joan Ball, ikä 0 vuotta
+Joan Ball, ikä 2 vuotta
+Joan B., ikä 0 vuotta
+</pre>
+
+<p>
+  Muuttujassa <code>joan</code> on siis alussa viite yhteen olioon, mutta lopussa sen arvoksi on kopioitu toisen muuttujan viite. Seuraavassa kuva tilanteesta viimeisen koodirivin jälkeen.
+</p>
+
+<img src="../img/drawings/olio-joan-ja-ball-3-f0b12fa1.png"/>
+
+
+<h2 class="material-heading">
+    Viittaustyyppisen muuttujan arvo <code>null</code>
+
+</h2>
+
+
+<p>
+  Jatketaan vielä esimerkkiä asettamalla viittaustyyppisen muuttujan <code>ball</code> arvoksi <code>null</code>, eli viite "ei mihinkään". Viitteen "ei mihinkään" (eli <code>null</code>-viitteen voi asettaa minkä tahansa viittaustyyppisen muuttujan arvoksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+System.out.println(joan);
+
+Henkilo ball = joan;
+ball.vanhene();
+ball.vanhene();
+
+System.out.println(joan);
+
+joan = new Henkilo("Joan B.");
+System.out.println(joan);
+
+ball = null;
+</code></pre>
+
+<p>
+  Viimeisen rivin jälkeen ohjelman tila on seuraavanlainen.
+</p>
+
+<img src="../img/drawings/olio-joan-ja-ball-null-a95cf90c.png"/>
+
+<p>
+  Olioon, jonka nimi on Joan Ball, ei enää viittaa kukaan. Oliosta on siis tullut "roska". Java-ohjelmointikielessä ohjelmoijan ei tarvitse huolehtia ohjelman käyttämästä muistista. Javan automaattinen roskienkerääjä käy siivoamassa roskaksi joutuneet oliot aika ajoin. Jos automaattista roskien keruuta ei tapahtuisi, jäisivät roskaksi joutuneet oliot varaamaan muistia ohjelman suorituksen loppuun asti.
+</p>
+
+<p>
+  Kokeillaan vielä mitä käy kun yritämme tulostaa muuttujaa, jonka arvona on viite "ei mihinkään" eli <code>null</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+System.out.println(joan);
+
+Henkilo ball = joan;
+ball.vanhene();
+ball.vanhene();
+
+System.out.println(joan);
+
+joan = new Henkilo("Joan B.");
+System.out.println(joan);
+
+ball = null;
+System.out.println(ball);
+</code></pre>
+
+
+<pre class="sample-output">Joan Ball, ikä 0 vuotta
+Joan Ball, ikä 2 vuotta
+Joan B., ikä 0 vuotta
+null
+</pre>
+
+<p>
+  Viitteen <code>null</code> tulostus tulostaa "null". Entäpä jos yritämme kutsua ei mihinkään viittaavan olion metodia, esimerkiksi metodia <code>vanhene</code>:
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo joan = new Henkilo("Joan Ball");
+System.out.println(joan);
+
+joan = null;
+joan.vanhene();
+</code></pre>
+
+
+<p>
+  Tulos:
+</p>
+
+<pre class="sample-output">Joan Ball, ikä 0 vuotta
+<font color="red">Exception in thread "main" java.lang.NullPointerException
+  at Main.main(Main.java:(rivi))
+  Java Result: 1</font>
+</pre>
+
+<p>
+  Käy huonosti. Tämä on ehkä ensimmäinen kerta kun näet tekstin <strong>NullPointerException</strong>. Ohjelmassa tapahtuu virhe, joka liittyy siihen, että olemme kutsuneet ei mihinkään viittaavan muuttujan metodia.
+</p>
+
+<p>
+  Voimme luvata, että tulet näkemään edellisen virheen vielä uudelleen. Tällöin ensimmäinen askel on etsiä muuttujia, joiden arvona saattaisi olla <code>null</code>. Virheilmoitus on onneksi myös hyödyllinen: se kertoo millä rivillä virhe tapahtuu. Kokeile vaikka itse!
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">NullPointerException</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteuta ohjelma, jonka suorittaminen aiheuttaa virheen NullPointerException. Virheen tulee tapahtua heti kun ohjelma suoritetaan -- älä siis esimerkiksi lue käyttäjältä syötettä.
+  </p>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Olio oliomuuttujana
+
+</h2>
+
+
+<p>
+  Oliot voivat sisältää viitteitä olioihin.
+</p>
+
+<p>
+  Jatketaan henkilöiden parissa ja lisätään henkilölle syntymäpäivä. Syntymäpäivä on luonnollista esittää <code>Paivays</code>-luokan avulla:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Paivays {
+    private int paiva;
+    private int kuukausi;
+    private int vuosi;
+
+    public Paivays(int paiva, int kuukausi, int vuosi) {
+        this.paiva = paiva;
+        this.kuukausi = kuukausi;
+        this.vuosi = vuosi;
+    }
+
+    public int getPaiva() {
+        return this.paiva;
+    }
+
+    public int getKuukausi() {
+        return this.kuukausi;
+    }
+
+    public int getVuosi() {
+        return this.vuosi;
+    }
+
+    @Override
+    public String toString() {
+        return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+    }
+}
+</code></pre>
+
+<p>
+  Koska tiedämme syntymäpäivän, henkilön ikää ei tarvitse säilöä erillisenä oliomuuttujana. Henkilön ikä on pääteltävissä syntymäpäivästä. Oletetaan, luokassa <code>Henkilo</code> on nyt seuraavat muuttujat.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private Paivays syntymapaiva;
+    private int paino = 0;
+    private int pituus = 0;
+
+// ...
+</code></pre>
+
+<p>
+  Tehdään henkilölle uusi konstruktori, joka mahdollistaa syntymäpäivän asettamisen:
+</p>
+
+<pre class="sh_java code-highlight"><code>public Henkilo(String nimi, int paiva, int kuukausi, int vuosi) {
+    this.nimi = nimi;
+    this.syntymapaiva = new Paivays(paiva, kuukausi, vuosi);
+    this.paino = 0;
+    this.pituus = 0;
+}
+</code></pre>
+
+
+<p>
+  Konstruktorin parametrina annetaan erikseen päiväyksen osat (päivä, kuukausi, vuosi), niistä luodaan päiväysolio, ja lopulta päiväysolion viite kopioidaan oliomuuttujan <code>syntymapaiva</code> arvoksi.
+</p>
+
+<p>
+  Muokataan Henkilo-luokassa olevaa <code>toString</code>-metodia siten, että metodi palauttaa iän sijaan syntymäpäivän:
+</p>
+
+<pre class="sh_java code-highlight"><code>public String toString() {
+    return this.nimi + ", syntynyt " + this.syntymapaiva;
+}
+</code></pre>
+
+<p>
+  Kokeillaan miten uusittu Henkilöluokka toimii.
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo muhammad = new Henkilo("Muhammad ibn Musa al-Khwarizmi", 1, 1, 780);
+Henkilo pascal = new Henkilo("Blaise Pascal", 19, 6, 1623);
+
+System.out.println(muhammad);
+System.out.println(pascal);
+</code></pre>
+
+
+<pre class="sample-output">Muhammad ibn Musa al-Khwarizmi, syntynyt 1.1.870
+Blaise Pascal, syntynyt 19.6.1623
+</pre>
+
+
+<p>
+  Henkilöoliolla on nyt oliomuuttujat <code>nimi</code> ja <code>syntymapaiva</code>. Muuttuja <code>nimi</code> on merkkijono, joka sekin on siis olio, ja muuttuja <code>syntymapaiva</code> on Päiväysolio.
+</p>
+
+<p>
+  Molemmat muuttujat sisältävät arvon olioon. Henkilöolio sisältää siis kaksi viitettä. Alla olevassa kuvassa paino ja pituus on jätetty huomiotta.
+</p>
+
+
+<img src="../img/drawings/muhammad-ja-pascal-13819c2b.png"/>
+
+<p>&nbsp;</p>
+
+<p>
+  Pääohjelmalla on nyt siis langan päässä kaksi Henkilö-olioa. Henkilöllä on nimi ja syntymäpäivä. Koska molemmat ovat olioita, ovat ne henkilöllä langan päässä.
+</p>
+
+<p>
+  Syntymäpäivä vaikuttaa hyvältä laajennukselta Henkilö-luokkaan. Totesimme aiemmin, että oliomuuttuja <code>ika</code> voidaan laskea syntymäpäivästä, joten siitä hankkiuduttiin eroon.
+</p>
+
+<p>
+  Javassa nykyinen päivä selviää seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.time.LocalDate;
+
+public class Esimerkki {
+
+    public static void main(String[] args) {
+  
+        LocalDate nyt = LocalDate.now();
+        int vuosi = nyt.getYear();
+        int kuukausi = nyt.getMonthValue();
+        int paiva = nyt.getDayOfMonth();
+  
+        System.out.println("tänään on " + paiva + "." + kuukausi + "." + vuosi);
+
+    }
+}
+</code></pre>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Päivämäärien käsittely Java-kielessä
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Käytämme edellä omaa luokkaa <code>Paivays</code> päivämäärän esittämiseen, sillä sen avulla voi havainnollistaa ja harjoitella olioiden toimintaa. Mikäli omissa ohjelmissaan haluaa käsitellä päivämääriä, kannattaa tutustua Javan valmiiseen luokkaan <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html" target="_blank">LocalDate</a>, joka sisältää merkittävän määrän päivämäärien käsittelyyn liittyvää toiminnallisuutta. Tutustumme päivämäärien käsittelyyn valmiiden luokkien avulla Ohjelmoinnin jatkokurssilla.
+  </p>
+
+
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Henkilö ja lemmikki</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee kaksi luokkaa, <code>Henkilo</code> ja <code>Lemmikki</code>. Jokaisella henkilöllä on yksi lemmikki. Täydennä luokan <code>Henkilo</code> metodia <code>public String toString</code> siten, että metodi palauttaa merkkijonon, joka kertoo henkilön nimen lisäksi lemmikin nimen ja rodun.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Lemmikki hulda = new Lemmikki("Hulda", "sekarotuinen koira");
+Henkilo leevi = new Henkilo("Leevi", hulda);
+
+System.out.println(leevi);
+</code></pre>
+
+<pre class="sample-output">Leevi, kaverina Hulda, joka on sekarotuinen koira
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Olio metodin parametrina
+
+</h2>
+
+
+<p>
+  Olemme nähneet että metodien parametrina voi olla alkeis- ja viittaustyyppisiä muuttujia. Koska oliot ovat viittaustyyppisiä muuttujia, voi metodin parametriksi määritellä minkä tahansa tyyppisen olion. Demonstroidaan tätä esimerkillä.
+</p>
+
+<p>
+  Painonvartijoihin hyväksytään jäseniksi henkilöitä, joiden painoindeksi ylittää annetun rajan. Kaikissa painonvartijayhdistyksissä raja ei ole sama. Tehdään painonvartijayhdistystä vastaava luokka. Olioa luotaessa konstruktorille annetaan parametriksi pienin painoindeksi, jolla yhdistyksen jäseneksi pääsee.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class PainonvartijaYhdistys {
+    private double alinPainoindeksi;
+
+    public PainonvartijaYhdistys(double indeksiRaja) {
+        this.alinPainoindeksi = indeksiRaja;
+    }
+}
+</code></pre>
+
+<p>
+  Tehdään seuraavaksi metodi, jonka avulla voidaan tarkastaa hyväksytäänkö tietty henkilö yhdistyksen jäseneksi, eli onko henkilön painoindeksi tarpeeksi suuri. Metodi palauttaa <code>true</code> jos parametrina annettu henkilö hyväksytään, <code>false</code> jos ei.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class PainonvartijaYhdistys {
+    private double alinPainoindeksi;
+
+    public PainonvartijaYhdistys(double indeksiRaja) {
+        this.alinPainoindeksi = indeksiRaja;
+    }
+
+    public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
+        if (henkilo.painoindeksi() &lt; this.alinPainoindeksi) {
+            return false;
+        }
+
+        return true;
+    }
+}
+</code></pre>
+
+<p>
+  Painonvartijayhdistys-olion metodille <code>hyvaksytaanJaseneksi</code> annetaan siis parametrina <code>Henkilo</code>-olio. Kuten aiemmin, muuttujan arvo -- eli tässä viite -- kopioituu metodin käyttöön. Metodissa käsitellään kopioitua viitettä ja kutsutaan parametrina saadun henkilön metodia <code>painoIndeksi</code>.
+</p>
+
+<p>
+  Seuraavassa testipääohjelma jossa painonvartijayhdistyksen metodille annetaan ensin parametriksi henkilöolio <code>matti</code> ja sen jälkeen henkilöolio <code>juhana</code>:
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo matti = new Henkilo("Matti");
+matti.setPaino(86);
+matti.setPituus(180);
+
+Henkilo juhana = new Henkilo("Juhana");
+juhana.setPaino(64);
+juhana.setPituus(172);
+
+PainonvartijaYhdistys kumpulanPaino = new PainonvartijaYhdistys(25);
+
+if (kumpulanPaino.hyvaksytaanJaseneksi(matti)) {
+    System.out.println(matti.getNimi() + " pääsee jäseneksi");
+} else {
+    System.out.println(matti.getNimi() + " ei pääse jäseneksi");
+}
+
+if (kumpulanPaino.hyvaksytaanJaseneksi(juhana)) {
+    System.out.println(juhana.getNimi() + " pääsee jäseneksi");
+} else {
+    System.out.println(juhana.getNimi() + " ei pääse jäseneksi");
+}
+</code></pre>
+
+<p> Ohjelma tulostaa: </p>
+
+<pre class="sample-output">Matti pääsee jäseneksi
+Juhana ei pääse jäseneksi
+</pre>
+
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Konstruktorien, getterien ja setterien automaattinen generointi
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Ohjelmointiympäristöt osaavat auttaa ohjelmoijaa. Jos luokalle on määriteltynä oliomuuttujat, onnistuu konstruktorien, getterien ja setterien generointi automaattisesti.
+  </p>
+
+  <p>
+    Mene luokan koodilohkon sisäpuolelle mutta kaikkien metodien ulkopuolelle ja paina yhtä aikaa ctrl ja välilyönti. Jos luokallasi on esim. oliomuuttuja <code>saldo</code>, tarjoaa NetBeans mahdollisuuden generoida oliomuuttujalle getteri- ja setterimetodit sekä konstruktorin joka asettaa oliomuuttujalle alkuarvon.
+  </p>
+
+  <p>
+    Joillain Linux-koneilla, kuten Kumpulassa olevilla koneilla, tämä saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti.
+  </p>
+
+
+  </div>
+</div>
+
+
+<p>
+  <div class="videoWrapper">
+  <div class="embedded-youtube-video" data-id="aSFT6UnyvE0"></div>
+</div>
+
+</p>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kasvatuslaitos (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassasi on valmiina jo tutuksi tullut luokka <code>Henkilo</code> sekä runko luokalle <code>Kasvatuslaitos</code>. Kasvatuslaitosoliot käsittelevät ihmisiä eri tavalla, esim. punnitsevat ja syöttävät ihmisiä. Rakennamme tässä tehtävässä kasvatuslaitoksen. Luokan Henkilö koodiin ei tehtävässä ole tarkoitus koskea!
+  </p>
+
+
+  <h2>Henkilöiden punnitseminen</h2>
+
+  <p>
+    Kasvatuslaitoksen luokkarungossa on valmiina runko metodille <code>punnitse</code>:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Kasvatuslaitos {
+
+    public int punnitse(Henkilo henkilo) {
+        // palautetaan parametrina annetun henkilön paino
+        return -1;
+    }
+}
+</code></pre>
+
+  <p>
+    Metodi saa parametrina henkilön ja metodin on tarkoitus palauttaa kutsujalleen parametrina olevan henkilön paino. Paino selviää kutsumalla parametrina olevan henkilön <code>henkilo</code> sopivaa metodia. <strong>Eli täydennä metodin koodi!</strong>
+  </p>
+
+  <p>
+    Seuraavassa on pääohjelma jossa kasvatuslaitos punnitsee kaksi henkilöä:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
+
+    Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
+
+    Henkilo eero = new Henkilo("Eero", 1, 110, 7);
+    Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
+
+    System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
+    System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
+}
+</code></pre>
+
+  <p>
+    Tulostuksen pitäisi olla seuraava:
+  </p>
+
+<pre class="sample-output">Eero paino: 7 kiloa
+Pekka paino: 85 kiloa
+</pre>
+
+  <h2>Syöttäminen</h2>
+
+  <p>
+    Parametrina olevan olion tilaa on mahdollista muuttaa. Tee kasvatuslaitokselle metodi <code>public void syota(Henkilo henkilo)</code> joka kasvattaa parametrina olevan henkilön painoa yhdellä.
+  </p>
+
+  <p>
+    Seuraavassa esimerkki, jossa henkilöt ensin punnitaan, ja tämän jälkeen neuvolassa syötetään eeroa kolme kertaa. Tämän jälkeen henkilöt taas punnitaan:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
+
+    Henkilo eero = new Henkilo("Eero", 1, 110, 7);
+    Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
+
+    System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
+    System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
+
+    haaganNeuvola.syota(eero);
+    haaganNeuvola.syota(eero);
+    haaganNeuvola.syota(eero);
+
+    System.out.println("");
+
+    System.out.println(eero.getNimi() + " paino: " + haaganNeuvola.punnitse(eero) + " kiloa");
+    System.out.println(pekka.getNimi() + " paino: " + haaganNeuvola.punnitse(pekka) + " kiloa");
+}
+</code></pre>
+
+  <p>
+    Tulostuksen pitäisi paljastaa että Eeron paino on noussut kolmella:
+  </p>
+
+<pre class="sample-output">Eero paino: 7 kiloa
+Pekka paino: 85 kiloa
+
+Eero paino: 10 kiloa
+Pekka paino: 85 kiloa
+</pre>
+
+  <h2>Punnitusten laskeminen</h2>
+
+  <p>
+    Tee kasvatuslaitokselle metodi <code>public int punnitukset()</code> joka kertoo kuinka monta punnitusta kasvatuslaitos on ylipäätään tehnyt. <em>Huom! Tarvitset uuden oliomuuttujan punnitusten lukumäärän laskemiseen!</em> Testipääohjelma:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    // esimerkkipääohjelma tehtävän ensimmäiseen kohtaan
+
+    Kasvatuslaitos haaganNeuvola = new Kasvatuslaitos();
+
+    Henkilo eero = new Henkilo("Eero", 1, 110, 7);
+    Henkilo pekka = new Henkilo("Pekka", 33, 176, 85);
+
+    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
+
+    haaganNeuvola.punnitse(eero);
+    haaganNeuvola.punnitse(pekka);
+
+    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
+
+    haaganNeuvola.punnitse(eero);
+    haaganNeuvola.punnitse(eero);
+    haaganNeuvola.punnitse(eero);
+    haaganNeuvola.punnitse(eero);
+
+    System.out.println("punnituksia tehty " + haaganNeuvola.punnitukset());
+}
+</code></pre>
+
+  <p>
+    Tulostuu:
+  </p>
+
+<pre class="sample-output">punnituksia tehty 0
+punnituksia tehty 2
+punnituksia tehty 6
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Maksukortti ja Kassapääte (4 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <h2>"Tyhmä" Maksukortti</h2>
+
+  <p>
+    Teimme edellisessä osassa luokan Maksukortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten.
+  </p>
+
+  <p>
+    Edellisen osan tyylillä tehdyssä Maksukortti-luokassa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla.
+  </p>
+
+  <p>
+    Parempi ratkaisu on tehdä kortit "tyhmiksi", hinnoista ja myytävistä tuotteista tietämättömiksi pelkän saldon säilyttäjiksi. Kaikki äly kannattaakin laittaa erillisiin olioihin, kassapäätteisiin.
+  </p>
+
+  <p>
+    Toteutetaan ensin Maksukortista "tyhmä" versio. Kortilla on ainoastaan metodit saldon kysymiseen, rahan lataamiseen ja rahan ottamiseen. Täydennä alla (ja tehtäväpohjassa) olevaan luokkaan metodin <code>public boolean otaRahaa(double maara)</code> ohjeen mukaan:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Maksukortti {
+    private double saldo;
+
+    public Maksukortti(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double saldo() {
+        return this.saldo;
+    }
+
+    public void lataaRahaa(double lisays) {
+        this.saldo = this.saldo + lisays;
+    }
+
+    public boolean otaRahaa(double maara) {
+        // toteuta metodi siten että se ottaa kortilta rahaa vain jos saldo on vähintään maara
+        // onnistuessaan metodi palauttaa true ja muuten false
+    }
+}
+</code></pre>
+
+  <p>
+    Testipääohjelma:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Paaohjelma {
+    public static void main(String[] args) {
+        Maksukortti pekanKortti = new Maksukortti(10);
+
+        System.out.println("rahaa " + pekanKortti.saldo());
+        boolean onnistuiko = pekanKortti.otaRahaa(8);
+        System.out.println("onnistuiko otto: " + onnistuiko);
+        System.out.println("rahaa " + pekanKortti.saldo());
+
+        onnistuiko = pekanKortti.otaRahaa(4);
+        System.out.println("onnistuiko otto: " + onnistuiko);
+        System.out.println("rahaa " + pekanKortti.saldo());
+    }
+}
+</code></pre>
+
+  <p>
+    Tulostuksen kuuluisi olla seuraavanlainen
+  </p>
+
+<pre class="sample-output">rahaa 10.0
+onnistuiko otto: true
+rahaa 2.0
+onnistuiko otto: false
+rahaa 2.0
+</pre>
+
+  
+  <h2>Kassapääte ja käteiskauppa</h2>
+
+  <p>
+    Unicafessa asioidessa asiakas maksaa joko käteisellä tai maksukortilla. Myyjä käyttää kassapäätettä kortin velottamiseen ja käteismaksujen hoitamiseen. Tehdään ensin kassapäätteestä käteismaksuihin sopiva versio.
+  </p>
+
+  <p>
+    Kassapäätteen runko. Metodien kommentit kertovat halutun toiminnallisuuden:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Kassapaate {
+    private double rahaa;  // kassassa olevan käteisen määrä
+    private int edulliset; // myytyjen edullisten lounaiden määrä
+    private int maukkaat;  // myytyjen maukkaiden lounaiden määrä
+
+    public Kassapaate() {
+        // kassassa on aluksi 1000 euroa rahaa
+    }
+
+    public double syoEdullisesti(double maksu) {
+        // edullinen lounas maksaa 2.50 euroa.
+        // kasvatetaan kassan rahamäärää edullisen lounaan hinnalla ja palautetaan vaihtorahat
+        // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
+    }
+
+    public double syoMaukkaasti(double maksu) {
+        // maukas lounas maksaa 4.30 euroa.
+        // kasvatetaan kassan rahamäärää maukkaan lounaan hinnalla ja palautetaan vaihtorahat
+        // jos parametrina annettu maksu ei ole riittävän suuri, ei lounasta myydä ja metodi palauttaa koko summan
+    }
+
+    public String toString() {
+        return "kassassa rahaa " + rahaa + " edullisia lounaita myyty " + edulliset + " maukkaita lounaita myyty " + maukkaat;
+    }
+}
+</code></pre>
+
+  <p>
+    Kassapäätteessä on aluksi rahaa 1000 euroa. Toteuta yllä olevan rungon metodit ohjeen ja alla olevan pääohjelman esimerkkitulosteen mukaan toimiviksi.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Paaohjelma {
+    public static void main(String[] args) {
+        Kassapaate unicafeExactum = new Kassapaate();
+
+        double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+
+        vaihtorahaa = unicafeExactum.syoEdullisesti(5);
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+
+        vaihtorahaa = unicafeExactum.syoMaukkaasti(4.3);
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+
+        System.out.println(unicafeExactum);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">vaihtorahaa jäi 7.5
+vaihtorahaa jäi 2.5
+vaihtorahaa jäi 0.0
+kassassa rahaa 1009.3 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
+</pre>
+
+  
+  <h2>Kortilla maksaminen</h2>
+
+  <p>
+    Laajennetaan kassapäätettä siten että myös kortilla voi maksaa. Teemme kassapäätteelle siis metodit joiden parametrina kassapääte saa maksukortin jolta se vähentää valitun lounaan hinnan. Seuraavassa uusien metodien rungot ja ohje niiden toteuttamiseksi:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Kassapaate {
+    // ...
+
+    public boolean syoEdullisesti(Maksukortti kortti) {
+        // edullinen lounas maksaa 2.50 euroa.
+        // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
+        // muuten palautetaan false
+    }
+
+    public boolean syoMaukkaasti(Maksukortti kortti) {
+        // maukas lounas maksaa 4.30 euroa.
+        // jos kortilla on tarpeeksi rahaa, vähennetään hinta kortilta ja palautetaan true
+        // muuten palautetaan false
+    }
+
+    // ...
+}
+</code></pre>
+
+  <p>
+    <b>Huom:</b> kortilla maksaminen ei lisää kassapäätteessä olevan käteisen määrää.
+  </p>
+
+  <p>
+    Seuraavassa testipääohjelma ja haluttu tulostus:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Paaohjelma {
+    public static void main(String[] args) {
+        Kassapaate unicafeExactum = new Kassapaate();
+
+        double vaihtorahaa = unicafeExactum.syoEdullisesti(10);
+        System.out.println("vaihtorahaa jäi " + vaihtorahaa);
+
+        Maksukortti antinKortti = new Maksukortti(7);
+
+        boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+        System.out.println("riittikö raha: " + onnistuiko);
+        onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+        System.out.println("riittikö raha: " + onnistuiko);
+        onnistuiko = unicafeExactum.syoEdullisesti(antinKortti);
+        System.out.println("riittikö raha: " + onnistuiko);
+
+        System.out.println(unicafeExactum);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">vaihtorahaa jäi 7.5
+riittikö raha: true
+riittikö raha: false
+riittikö raha: true
+kassassa rahaa 1002.5 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
+</pre>
+
+  
+  <h2>Rahan lataaminen</h2>
+
+  <p>
+    Lisätään vielä kassapäätteelle metodi jonka avulla kortille voidaan ladata lisää rahaa. Muista, että rahan lataamisen yhteydessä ladattava summa viedään kassapäätteeseen. Metodin runko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public void lataaRahaaKortille(Maksukortti kortti, double summa) {
+    // ...
+}
+</code></pre>
+
+  <p>
+    Testipääohjelma ja esimerkkisyöte:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Paaohjelma {
+    public static void main(String[] args) {
+        Kassapaate unicafeExactum = new Kassapaate();
+        System.out.println(unicafeExactum);
+
+        Maksukortti antinKortti = new Maksukortti(2);
+
+        System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
+
+        boolean onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+        System.out.println("riittikö raha: " + onnistuiko);
+
+        unicafeExactum.lataaRahaaKortille(antinKortti, 100);
+
+        onnistuiko = unicafeExactum.syoMaukkaasti(antinKortti);
+        System.out.println("riittikö raha: " + onnistuiko);
+
+        System.out.println("kortilla rahaa " + antinKortti.saldo() + " euroa");
+ 
+        System.out.println(unicafeExactum);
+    }
+}
+</code></pre>
+
+<pre class="sample-output">kassassa rahaa 1000.0 edullisia lounaita myyty 0 maukkaita lounaita myyty 0
+kortilla rahaa 2.0 euroa
+riittikö raha: false
+riittikö raha: true
+kortilla rahaa 97.7 euroa
+kassassa rahaa 1100.0 edullisia lounaita myyty 0 maukkaita lounaita myyty 1
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Samantyyppinen olio metodin parametrina
+
+</h2>
+
+<p>
+  Jatkamme luokan <code>Henkilo</code> parissa. Kuten muistamme, henkilöt tietävät syntymäpäivänsä:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+
+    private String nimi;
+    private Paivays syntymapaiva;
+    private int pituus;
+    private int paino;
+
+    // ...
+}
+</code></pre>
+
+
+<p>
+  Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Voisimme esimerkiksi toteuttaa Henkilo-luokkaan metodin <code>public int ikaVuosina()</code>, jolloin kahden henkilön iän vertailu tapauhtuisi tällöin seuraavasti:
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Henkilo muhammad = new Henkilo("Muhammad ibn Musa al-Khwarizmi", 1, 1, 780);
+Henkilo pascal = new Henkilo("Blaise Pascal", 19, 6, 1623);
+
+if (muhammad.ikaVuosina() &gt; pascal.ikaVuosina()) {
+    System.out.println(muhammad.getNimi() + " on vanhempi kuin " + pascal.getNimi());
+}
+</code></pre>
+
+<p>
+  Harjoittelemme tässä kuitenkin hieman "oliohenkisemmän" tavan kahden henkilön ikävertailun tekemiseen.
+</p>
+
+<p>
+  Teemme luokalle Henkilo metodin <code>boolean vanhempiKuin(Henkilo verrattava)</code>, jonka avulla tiettyä henkilö-olioa voi verrata parametrina annettuun henkilöön iän perusteella.
+</p>
+
+<p>
+  Metodia on tarkoitus käyttää seuraavaan tyyliin:
+</p>
+
+<pre class="sh_java code-highlight"><code>Henkilo muhammad = new Henkilo("Muhammad ibn Musa al-Khwarizmi", 1, 1, 780);
+Henkilo pascal = new Henkilo("Blaise Pascal", 19, 6, 1623);
+
+if (muhammad.vanhempiKuin(pascal)) {  //  sama kun muhammad.vanhempiKuin(pascal)==true
+    System.out.println(muhammad.getNimi() + " on vanhempi kuin " + pascal.getNimi());
+} else {
+    System.out.println(muhammad.getNimi() + " ei ole vanhempi kuin " + pascal.getNimi());
+}
+</code></pre>
+
+<p>
+  YLlä oleva ohjelma kysyy onko al-Khwarizmi vanhempi kuin Pascal. Metodi <code>vanhempiKuin</code> palauttaa arvon <code>true</code> jos olio jonka kohdalla metodia kutsutaan (<code>olio.vanhempiKuin(parametrinaAnnettavaOlio)</code>) on vanhempi kuin parametrina annettava olio, ja <code>false</code> muuten.
+</p>
+
+<p>
+  Käytännössä yllä kutsutaan "Muhammad ibn Musa al-Khwarizmia" vastaavan olion, johon muuttuja <code>muhammad</code> viittaa, metodia <code>vanhempiKuin</code>. Metodille annetaan parametriksi "Blaise Pascal" vastaavan olion viite <code>pascal</code>.
+</p>
+
+<p>
+  Ohjelma tulostaa:
+</p>
+
+<pre class="sample-output">Muhammad ibn Musa al-Khwarizmi on vanhempi kuin Blaise Pascal
+</pre>
+
+<p>
+  Metodille <code>vanhempiKuin</code> annetaan parametrina henkilöolio. Tarkemmin sanottuna metodin parametriksi määriteltyyn muuttujaan kopioituu parametrina annettavan muuttujan sisältämä arvo, eli viite olioon.
+</p>
+
+<p>
+  Metodin toteutus näyttää seuraavalta. Huomaa, että <strong>metodi voi palauttaa arvon useammasta kohtaa</strong> -- alla vertailu on pilkottu useampaan osaan vuoden, kuukauden ja päivän kohdalta:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    // ...
+
+    public boolean vanhempiKuin(Henkilo verrattava) {
+        // 1. Verrataan ensin vuosia
+        int omaVuosi = this.getSyntymapaiva().getVuosi();
+        int verrattavanVuosi = verrattava.getSyntymapaiva().getVuosi();
+
+        if (omaVuosi &lt; verrattavanVuosi) {
+            return true;
+        }
+
+        if (omaVuosi &gt; verrattavanVuosi) {
+            return false;
+        }
+
+        // 2. Syntymävuosi on sama, verrataan kuukausia
+        int omaKuukausi = this.getSyntymapaiva().getKuukausi();
+        int verrattavanKuukausi = verrattava.getSyntymapaiva().getKuukausi();
+
+        if (omaKuukausi &lt; verrattavanKuukausi) {
+            return true;
+        }
+
+        if (omaKuukausi &gt; verrattavanKuukausi) {
+            return false;
+        }
+
+        // 3. Syntymävuosi ja kuukausi on sama, verrataan päiviä
+        int omaPaiva = this.getSyntymapaiva().getPaiva();
+        int verrattavanPaiva = verrattava.getSyntymapaiva().getPaiva();
+
+        if (omaPaiva &lt; verrattavanPaiva) {
+            return true;
+        }
+
+        return false;
+    }
+}
+</code></pre>
+
+
+<p>
+  Mietitään hieman olio-ohjelmoinnin periatteiden abstrahointia. Abstrahoinnin ajatuksena on käsitteellistää ohjelmakoodia siten, että kullakin käsitteellä on omat selkeät vastuunsa. Kun pohdimme yllä esitettyä ratkaisua, huomaamme, että päivämäärien vertailutoiminnallisuus kuuluisi mielummin luokkaan <code>Paivays</code> luokan <code>Henkilo</code>-sijaan.
+</p>
+
+<p>
+  Luodaan luokalle <code>Paivays</code> metodi <code>public boolean aiemmin(Paivays verrattava)</code>. Metodi palauttaa arvon <code>true</code>, jos metodille parametrina annettu päiväys on kyseisen olion päiväyksen jälkeen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Paivays {
+    private int paiva;
+    private int kuukausi;
+    private int vuosi;
+
+    public Paivays(int paiva, int kuukausi, int vuosi) {
+        this.paiva = paiva;
+        this.kuukausi = kuukausi;
+        this.vuosi = vuosi;
+    }
+
+    public String toString() {
+        return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+    }
+
+    // metodilla tarkistetaan onko tämä päiväysolio (<code>this</code>) ennen
+    // parametrina annettavaa päiväysoliota (<code>verrattava</code>)
+    public boolean aiemmin(Paivays verrattava) {
+        // ensin verrataan vuosia
+        if (this.vuosi &lt; verrattava.vuosi) {
+            return true;
+        }
+
+        if (this.vuosi &gt; verrattava.vuosi) {
+            return false;
+        }
+
+        // jos vuodet ovat samat, verrataan kuukausia
+        if (this.kuukausi &lt; verrattava.kuukausi) {
+            return true;
+        }
+          
+        if (this.kuukausi &gt; verrattava.kuukausi) {
+            return false;
+        }
+
+        // vuodet ja kuukaudet samoja, verrataan päivää
+        if (this.paiva &lt; verrattava.paiva) {
+            return true;
+        }
+
+        return false;
+    }
+}
+</code></pre>
+
+<p>
+  Vaikka oliomuuttujat <code>vuosi</code>, <code>kuukausi</code> ja <code>paiva</code> ovat olion kapseloimia (<code>private</code>) oliomuuttujia, pystymme lukemaan niiden arvon kirjoittamalla <code>verrattava.<em>muuttujanNimi</em></code>. Tämä johtuu siitä, että <code>private</code>-muuttujat ovat luettavissa kaikissa metodeissa, jotka kyseinen luokka sisältää. Huomaa, että syntaksi (kirjoitusasu) vastaa tässä jonkin olion metodin kutsumista. Toisin kuin metodia kutsuttaessa, viittaamme olion kenttään, jolloin metodikutsun osoittavia sulkeita ei kirjoiteta.
+</p>
+
+<p>
+  Metodin käyttöesimerkki:
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Paivays p1 = new Paivays(14, 2, 2011);
+    Paivays p2 = new Paivays(21, 2, 2011);
+    Paivays p3 = new Paivays(1, 3, 2011);
+    Paivays p4 = new Paivays(31, 12, 2010);
+
+    System.out.println(p1 + " aiemmin kuin " + p2 + ": " + p1.aiemmin(p2));
+    System.out.println(p2 + " aiemmin kuin " + p1 + ": " + p2.aiemmin(p1));
+
+    System.out.println(p2 + " aiemmin kuin " + p3 + ": " + p2.aiemmin(p3));
+    System.out.println(p3 + " aiemmin kuin " + p2 + ": " + p3.aiemmin(p2));
+
+    System.out.println(p4 + " aiemmin kuin " + p1 + ": " + p4.aiemmin(p1));
+    System.out.println(p1 + " aiemmin kuin " + p4 + ": " + p1.aiemmin(p4));
+}
+</code></pre>
+
+<pre class="sample-output">14.2.2011 aiemmin kuin 21.2.2011: true
+21.2.2011 aiemmin kuin 14.2.2011: false
+21.2.2011 aiemmin kuin 1.3.2011: true
+1.3.2011 aiemmin kuin 21.2.2011: false
+31.12.2010 aiemmin kuin 14.2.2011: true
+14.2.2011 aiemmin kuin 31.12.2010: false
+</pre>
+
+<p>
+  Muunnetaan vielä henkilön metodia vanhempiKuin siten, että hyödynnämme jatkossa päivämäärän tarjoamaa vertailutoiminnallisuutta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    // ...
+
+    public boolean vanhempiKuin(Henkilo verrattava) {
+        if (this.syntymapaiva.aiemmin(verrattava.getSyntymapaiva())) {
+            return true;
+        }
+
+        return false;
+
+        // tai suoraan:
+        // return this.syntymapaiva.aiemmin(verrattava.getSyntymapaiva());
+    }
+}
+</code></pre>
+
+<p>
+  Nyt päivämäärän konkreettinen vertailu on toteutettu luokassa, johon se loogisesti (luokkien nimien perusteella) kuuluukin.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Asuntovertailu (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Asuntovälitystoimiston tietojärjestelmässä kuvataan myynnissä olevaa asuntoa seuraavasta luokasta tehdyillä olioilla:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Asunto {
+    private int huoneita;
+    private int nelioita;
+    private int neliohinta;
+
+    public Asunto(int huoneita, int nelioita, int neliohinta) {
+        this.huoneita = huoneita;
+        this.nelioita = nelioita;
+        this.neliohinta = neliohinta;
+    }
+}
+</code></pre>
+
+  <p>
+    Tehtävänä on toteuttaa muutama metodi, joiden avulla myynnissä olevia asuntoja voidaan vertailla.
+  </p>
+
+  <h2>Onko asunto suurempi</h2>
+
+  <p>
+    Tee metodi <code>public boolean suurempi(Asunto verrattava)</code> joka palauttaa true jos asunto-olio, jolle metodia kutsutaan, on pinta-alaltaan suurempi kuin verrattavana oleva asunto-olio.
+  </p>
+
+  <p>
+    Esimerkki metodin toiminnasta:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Asunto eiraYksio = new Asunto(1, 16, 5500);
+Asunto kallioKaksio = new Asunto(2, 38, 4200);
+Asunto jakomakiKolmio = new Asunto(3, 78, 2500);
+
+System.out.println(eiraYksio.suurempi(kallioKaksio));       // false
+System.out.println(jakomakiKolmio.suurempi(kallioKaksio));  // true
+</code></pre>
+
+  <h2>Asuntojen hintaero</h2>
+
+  <p>
+    Tee metodi <code>public int hintaero(Asunto verrattava)</code> joka palauttaa asunto-olion jolle metodia kutsuttiin ja parametrina olevan asunto-olion hintaeron. Hintaero on asuntojen hintojen (=neliöhinta*neliöt) itseisarvo.
+  </p>
+
+  <p>
+    Esimerkki metodin toiminnasta:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Asunto eiraYksio = new Asunto(1, 16, 5500);
+Asunto kallioKaksio = new Asunto(2, 38, 4200);
+Asunto jakomakiKolmio = new Asunto(3, 78, 2500);
+
+System.out.println(eiraYksio.hintaero(kallioKaksio));        // 71600
+System.out.println(jakomakiKolmio.hintaero(kallioKaksio));   // 35400
+</code></pre>
+
+  <h2>Onko asunto kalliimpi</h2>
+
+  <p>
+    Tee metodi <code>public boolean kalliimpi(Asunto verrattava)</code> joka palauttaa true jos asunto-olio, jolle metodia kutsutaan on kalliimpi kuin verrattavana oleva asunto-olio.
+  </p>
+
+  <p>
+    Esimerkki metodin toiminnasta:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Asunto eiraYksio = new Asunto(1, 16, 5500);
+Asunto kallioKaksio = new Asunto(2, 38, 4200);
+Asunto jakomakiKolmio = new Asunto(3, 78, 2500);
+
+System.out.println(eiraYksio.kalliimpi(kallioKaksio));       // false
+System.out.println(jakomakiKolmio.kalliimpi(kallioKaksio));   // true
+</code></pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Olioiden yhtäsuuruuden vertailu
+
+</h2>
+
+<p>
+  Opimme merkkijonojen käsittelyn yhteydessä, että merkkijonojen vertailu tulee toteuttaa <code>equals</code>-metodin avullla. Tämä tapahtuu seuraavasti.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+System.out.println("Syötä kaksi sanaa, kumpikin omalle rivilleen.")
+String eka = lukija.nextLine();
+String toka = lukija.nextLine();
+
+if (eka.equals(toka)) {
+    System.out.println("Sanat olivat samat.");
+} else {
+    System.out.println("Sanat eivät olleet samat.");
+}
+</code></pre>
+
+<p>
+  Alkeistyyppisten muuttujien kuten <code>int</code> kanssa muuttujien vertailu on mahdollista kahden yhtäsuuruusmerkin avulla. Tämä johtuu siitä, että alkeistyyppisten muuttujien arvo sijaitsee "muuttujan lokerossa". Viittaustyyppisten muuttujien arvo on taas osoite viitattavaan olioon, eli viittaustyyppisten muuttujien "lokerossa" on viite muistipaikkaan. Kahden yhtäsuuruusmerkin avulla verrataan "muuttujan lokeron" sisällön yhtäsuuruutta -- viittaustyyppisillä muuttujilla vertailu tarkastelisi siis muuttujien viitteiden yhtäsuuruutta.
+</p>
+
+<p>
+  Metodi <code>equals</code> on samankaltainen metodi kuin <code>toString</code> siinä, että se on käytettävissä vaikkei metodia olisi luokkaan määritelty. Metodin oletustoteutus vertaa viitteiden yhtäsuuruutta. Tarkastellaan tätä aiemmin toteuttamamme <code>Paivays</code>-luokan avulla.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>Paivays eka = new Paivays(1, 1, 2000);
+Paivays toka = new Paivays(1, 1, 2000);
+Paivays kolmas = new Paivays(12, 12, 2012);
+Paivays neljas = eka;
+  
+if (eka.equals(eka)) {
+    System.out.println("Muuttujat eka ja eka ovat samat");
+} else {
+    System.out.println("Muuttujat eka ja eka eivät ole samat");
+}
+
+if (eka.equals(toka)) {
+    System.out.println("Muuttujat eka ja toka ovat samat");
+} else {
+    System.out.println("Muuttujat eka ja toka eivät ole samat");
+}
+
+if (eka.equals(kolmas)) {
+    System.out.println("Muuttujat eka ja kolmas ovat samat");
+} else {
+    System.out.println("Muuttujat eka ja kolmas eivät ole samat");
+}
+
+if (eka.equals(neljas)) {
+    System.out.println("Muuttujat eka ja neljas ovat samat");
+} else {
+    System.out.println("Muuttujat eka ja neljas eivät ole samat");
+}
+</code></pre>
+
+<pre class="sample-output">Muuttujat eka ja eka ovat samat
+Muuttujat eka ja toka eivät ole samat
+Muuttujat eka ja kolmas eivät ole samat
+Muuttujat eka ja neljas ovat samat
+</pre>
+
+<p>
+  Esimerkkiohjelmasta näyttää ongelman. Vaikka kahdella päiväyksellä (eka ja toka) on täsmälleen samat oliomuuttujan arvot, ovat ne metodin <code>equals</code> oleutustoteutuksen näkökulmasta toisistaan poikkeavat.
+</p>
+
+<p>
+  Mikäli haluamme pystyä vertailemaan kahta itse toteuttamaamme oliota equals-metodilla, tulee metodi määritellä luokkaan. Metodi equals määritellään boolean-tyyppisen arvon palauttavana metodina -- palautettu arvo kertoo ovatko oliot samat.
+</p>
+
+<p>
+  Metodi <code>equals</code> toteutetaan siten, että sen avulla voidaan vertailla nykyistä oliota mihin tahansa muuhun olioon. Metodi saa parametrinaan Object-tyyppisen olion -- kaikki oliot ovat oman tyyppinsä lisäksi Object-tyyppisiä. Metodissa ensin vertaillaan ovatko osoitteet samat: jos kyllä, oliot ovat samat. Tämän jälkeen tarkastellaan ovatko olion tyypit samat: jos ei, oliot eivät ole samat. Tämän jälkeen parametrina saatu Object-olio muunnetaan tyyppimuunnoksella tarkasteltavan olion muotoiseksi, ja oliomuuttujien arvoja vertaillaan. Alla vertailu on toteutettu Paivays-oliolle.
+</p>
+
+
+
+<pre class="sh_java code-highlight"><code>public class Paivays {
+    private int paiva;
+    private int kuukausi;
+    private int vuosi;
+
+    public Paivays(int paiva, int kuukausi, int vuosi) {
+        this.paiva = paiva;
+        this.kuukausi = kuukausi;
+        this.vuosi = vuosi;
+    }
+
+    public int getPaiva() {
+        return this.paiva;
+    }
+
+    public int getKuukausi() {
+        return this.kuukausi;
+    }
+
+    public int getVuosi() {
+        return this.vuosi;
+    }
+
+    public boolean equals(Object verrattava) {
+        // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
+        if (this == verrattava) {
+            return true;
+        }
+
+        // jos verrattava olio ei ole Paivays-tyyppinen, oliot eivät ole samat
+        if (!(verrattava instanceof Paivays)) {
+            return false;
+        }
+
+        // muunnetaan Object-tyyppinen verrattava-olio
+        // Paivays-tyyppiseksi verrattavaPaivays-olioksi
+        Paivays verrattavaPaivays = (Paivays) verrattava;
+
+        // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
+        if (this.paiva == verrattavaPaivays.paiva &&
+            this.kuukausi == verrattavaPaivays.kuukausi &&
+            this.vuosi == verrattavaPaivays.vuosi) {
+            return true;
+        }
+
+        // muulloin oliot eivät ole samat
+        return false;
+    }
+  
+    @Override
+    public String toString() {
+        return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+    }
+}
+</code></pre>
+
+<p>
+  Vastaavan vertailutoiminnallisuuden rakentaminen onnistuu myös Henkilö-olioille. Alla vertailu on toteutettu Henkilo-oliolle, jolla ei ole erillista Paivays-oliota. Huomaa, että henkilöiden nimet ovat merkijonoja (eli olioita), joten niiden vertailussa käytetään equals-metodia.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+
+    private String nimi;
+    private int ika;
+    private int paino;
+    private int pituus;
+
+    // konstruktorit ja metodit
+
+
+    public boolean equals(Object verrattava) {
+        // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
+        if (this == verrattava) {
+            return true;
+        }
+
+        // jos verrattava olio ei ole Henkilo-tyyppinen, oliot eivät ole samat
+        if (!(verrattava instanceof Henkilo)) {
+            return false;
+        }
+
+        // muunnetaan olio Henkilo-olioksi
+        Henkilo verrattavaHenkilo = (Henkilo) verrattava;
+
+        // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
+        if (this.nimi.equals(verrattavaHenkilo.nimi) && 
+            this.ika == verrattavaHenkilo.ika &&
+            this.paino == verrattavaHenkilo.paino &&
+            this.pituus == verrattavaHenkilo.pituus) {
+            return true;
+        }
+
+        // muulloin oliot eivät ole samat
+        return false;
+    }
+
+    // .. metodeja
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kappale</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+        
+  <p>
+    Tehtäväpohjassa on luokka <code>Kappale</code>, jonka perusteella voidaan luoda musiikkikappaleita esittäviä olioita. Lisää luokkaan kappale metodi <code>equals</code>, jonka avulla voidaan tarkastella musiikkikappaleiden samankaltaisuutta.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>Kappale jackSparrow = new Kappale("The Lonely Island", "Jack Sparrow", 196);
+Kappale toinenSparrow = new Kappale("The Lonely Island", "Jack Sparrow", 196);
+
+if (jackSparrow.equals(toinenSparrow)) {
+    System.out.println("Kappaleet olivat samat.");
+}
+
+if (jackSparrow.equals("Toinen olio")) {
+    System.out.println("Nyt on jotain hassua.");
+}
+</code></pre>
+
+<pre class="sample-output">Kappaleet olivat samat.
+</pre>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Henkilövertailu</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+        
+  <p>
+    Tehtäväpohjassa on luokka <code>Henkilo</code>, johon liittyy <code>Paivays</code>-olio. Lisää luokalle Henkilo metodi <code>public boolean equals(Object verrattava)</code>, jonka avulla voidaan verrata henkilöiden samuutta. Vertailussa tulee verrata kaikkien henkilön muuttujien yhtäsuuruutta (ml. syntymäpäivä).
+  </p>
+
+  <p>
+    Tehtäväpohjassa ei ole testejä. Keksi erilaisia esimerkkikoodeja, joilla voit testata ohjelman toimintaa. Alla pari esimerkkiä.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Paivays pvm = new Paivays(24, 3, 2017);
+Paivays pvm2 = new Paivays(23, 7, 2017);
+
+Henkilo leevi = new Henkilo("Leevi", pvm, 62, 9);
+Henkilo lilja = new Henkilo("Lilja", pvm2, 65, 8);
+
+if (leevi.equals(lilja)) {
+    System.out.println("Meniköhän nyt ihan oikein?");
+} 
+
+Henkilo leeviEriPainolla = new Henkilo("Leevi", pvm, 62, 10);
+
+if (leevi.equals(leeviEriPainolla)) {
+    System.out.println("Meniköhän nyt ihan oikein?");
+} 
+</code></pre>
+  
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Mikä ihmeen Object?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Jokainen luomamme luokka (ja Javan valmis luokka) perii luokan Object, vaikkei sitä erikseen ohjelmakoodissa näy. Tämän takia mistä tahansa luokasta tehty ilmentymä voidaan asettaa parametriksi metodiin, joka saa parametrina Object-tyyppisen muuttujan. Object-luokan periminen näkyy myös muissa asioissa: esimerkiksi metodi <code>toString</code> on olemassa vaikkei sitä erikseen toteuteta, aivan samalla tavalla kuin metodi <code>equals</code>.
+  </p>
+
+  <p>
+    Esimerkiksi seuraava lähdekoodi kääntyy, sillä <code>equals</code>-metodi löytyy kaikkien luokkien perimästä Object-luokasta.
+  </p>
+  
+<pre class="sh_java code-highlight"><code>public class Lintu {
+    private String nimi;
+
+    public Lintu(String nimi) {
+        this.nimi = nimi;
+    } 
+}
+</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>Lintu red = new Lintu("Red");
+System.out.println(red);
+
+Lintu chuck = new Lintu("Chuck");
+System.out.println(chuck);
+
+if (red.equals(chuck)) {
+    System.out.println(red + " on sama kuin " + chuck);
+}
+</code></pre>
+  
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Olio metodin paluuarvona
+
+</h2>
+
+
+<p>
+  Olemme nähneet metodeja jotka palauttavat totuusarvoja, lukuja ja merkkijonoja. On helppoa arvata, että metodi voi palauttaa minkä tahansa tyyppisen olion.
+</p>
+
+<p>
+  Seuraavassa esimerkissä on yksinkertainen laskuri, jolla on metodi <code>kloonaa</code>. Metodin avulla laskurista voidaan tehdä klooni, eli uusi laskurio-olio, jolla on luomishetkellä sama arvo kuin kloonattavalla laskurilla:
+</p>
+
+<pre class="sh_java code-highlight"><code>public Laskuri {
+    private int arvo;
+
+    // esimerkki useamman konstruktorin käytöstä:
+    // konstruktorista voi kutsua toista konstruktoria this-kutsulla
+    // huomaa tosin, että this-kutsun tulee olla konstruktorin ensimmäisellä rivillä.
+    public Laskuri() {
+        this(0);
+    }
+
+    public Laskuri(int alkuarvo) {
+        this.arvo = alkuarvo;
+    }
+
+    public void kasvata() {
+        this.arvo = this.arvo + 1;
+    }
+
+    public String toString() {
+        return "arvo: " + arvo;
+    }
+
+    public Laskuri kloonaa() {
+        // luodaan uusi laskuriolio, joka saa alkuarvokseen kloonattavan laskurin arvon
+        Laskuri klooni = new Laskuri(this.arvo);
+
+        // palautetaan klooni kutsujalle
+        return klooni;
+    }
+}
+</code></pre>
+
+<p>
+  Seuraavassa käyttöesimerkki:
+</p>
+
+<pre class="sh_java code-highlight"><code>Laskuri laskuri = new Laskuri();
+laskuri.kasvata();
+laskuri.kasvata();
+
+System.out.println(laskuri);         // tulostuu 2
+
+Laskuri klooni = laskuri.kloonaa();
+
+System.out.println(laskuri);         // tulostuu 2
+System.out.println(klooni);          // tulostuu 2
+
+laskuri.kasvata();
+laskuri.kasvata();
+laskuri.kasvata();
+laskuri.kasvata();
+
+System.out.println(laskuri);         // tulostuu 6
+System.out.println(klooni);          // tulostuu 2
+
+klooni.kasvata();
+
+System.out.println(laskuri);         // tulostuu 6
+System.out.println(klooni);          // tulostuu 3
+</code></pre>
+
+<p>
+  Kloonattavan ja kloonin sisältämä arvo on kloonauksen tapahduttua sama. Kyseessä on kuitenkin kaksi erillistä olioa, eli kun toista laskureista kasvatetaan, ei kasvatus vaikuta toisen arvoon millään tavalla.
+</p>
+
+<p>
+  Vastaavasti myös <code>Tehdas</code>-olio voisi luoda ja palauttaa uusia <code>Auto</code>-olioita. Alla on hahmoteltu tehtaan runkoa -- tehdas tietää myös luotavien autojen merkin.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Tehdas {
+    private String merkki;
+
+    public Tehdas(String merkki) {
+        this.merkki = merkki;
+    }
+
+    public Auto tuotaAuto() {
+        return new Auto(this.merkki);
+    }
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Päiväys (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjan mukana tulee luokka <code>Paivays</code>, jossa päivämäärä talletetaan oliomuuttujien <code>vuosi</code>, <code>kuukausi</code>, ja <code>paiva</code> avulla:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Paivays {
+    private int paiva;
+    private int kuukausi;
+    private int vuosi;
+
+    public Paivays(int paiva, int kuukausi, int vuosi) {
+        this.paiva = paiva;
+        this.kuukausi = kuukausi;
+        this.vuosi = vuosi;
+    }
+
+    public String toString() {
+        return this.paiva + "." + this.kuukausi + "." + this.vuosi;
+    }
+
+    public boolean aiemmin(Paivays verrattava) {
+        // ensin verrataan vuosia
+        if (this.vuosi &lt; verrattava.vuosi) {
+            return true;
+        }
+
+        // jos vuodet ovat samat, verrataan kuukausia
+        if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi &lt; verrattava.kuukausi) {
+            return true;
+        }
+
+        // vuodet ja kuukaudet samoja, verrataan päivää
+        if (this.vuosi == verrattava.vuosi &amp;&amp; this.kuukausi == verrattava.kuukausi &amp;&amp;
+            this.paiva &lt; verrattava.paiva) {
+            return true;
+        }
+
+        return false;
+    }
+}
+</code></pre>
+
+  <p>
+    Tässä tehtäväsarjassa laajennetaan luokkaa.
+  </p>
+
+  
+  <h2>Seuraava päivä</h2>
+
+  <p>
+    Toteuta metodi <code>public void etene()</code>, joka siirtää päiväystä yhdellä päivällä. Tässä tehtävässä oletetaan, että jokaisessa kuukaudessa on 30 päivää. Huom! Sinun tulee <em>tietyissä</em> tilanteissa muuttaa kuukauden ja vuoden arvoa.
+  </p>
+
+  
+  <h2>Tietty määrä päiviä eteenpäin</h2>
+
+  <p>
+    Toteuta metodi <code>public void etene(int montakoPaivaa)</code>, joka siirtää päiväystä annetun päivien määrän verran. Käytä apuna edellisessä tehtävässä toteutettua metodia <code>etene()</code>.
+  </p>
+
+  
+  <h2>Ajan kuluminen</h2>
+
+  <p>
+    Lisätään <code>Paivays</code>-olioon mahdollisuus edistää aikaa. Tee oliolle metodi <code>Paivays paivienPaasta(int paivia)</code>, joka luo <strong>uuden</strong> <code>Paivays</code>-olion, jonka päiväys on annetun päivien lukumäärän verran suurempi kuin oliolla, jolle sitä kutsuttiin. Voit edelleen olettaa, että jokaisessa kuukaudessa on 30 päivää. Huomaa, että vanhan päiväysolion on pysyttävä muuttumattomana!
+  </p>
+
+  <p>
+    Koska metodissa on luotava <strong>uusi olio</strong>, tulee rungon olla suunnilleen seuraavanlainen:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public Paivays paivienPaasta(int paivia) {
+    Paivays uusiPaivays = new Paivays( ... );
+
+    // tehdään jotain...
+
+    return uusiPaivays;
+}
+</code></pre>
+
+  <p>
+    Ohessa on esimerkki metodin toiminnasta.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Paivays pvm = new Paivays(13, 2, 2015);
+    System.out.println("Tarkistellun viikon perjantai on " + pvm);
+
+    Paivays uusiPvm = pvm.paivienPaasta(7);
+    int vk = 1;
+    while (vk &lt;= 7) {
+        System.out.println("Perjantai " + vk + " viikon kuluttua on " + uusiPvm);
+        uusiPvm = uusiPvm.paivienPaasta(7);
+
+        vk = vk + 1;
+    }
+
+
+    System.out.println("Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!");
+    //    System.out.println("Kokeile " + pvm.paivienPaasta(790));
+}
+</code></pre>
+
+  <p>
+    Ohjelma tulostaa:
+  </p>
+
+<pre class="sample-output">Tarkistellun viikon perjantai on 13.2.2015
+Perjantai 1 viikon kuluttua on 20.2.2015
+Perjantai 2 viikon kuluttua on 27.2.2015
+Perjantai 3 viikon kuluttua on 4.3.2015
+Perjantai 4 viikon kuluttua on 11.3.2015
+Perjantai 5 viikon kuluttua on 18.3.2015
+Perjantai 6 viikon kuluttua on 25.3.2015
+Perjantai 7 viikon kuluttua on 2.4.2015
+Päivämäärä 790:n päivän päästä tarkistellusta perjantaista on ... kokeile itse!
+</pre>
+
+  <p>
+    <strong>Huom!</strong> Sen sijaan, että muuttaisimme vanhan olion tilaa palautamme uuden olion. Kuvitellaan, että <code>Paivays</code>-luokalle on olemassa metodi <code>edista</code>, joka toimii vastaavasti kuin ohjelmoimamme metodi, mutta se muuttaa vanhan olion tilaa. Tällöin seuraava koodin pätkä tuottaisi ongelmia.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Paivays nyt = new Paivays(13, 2, 2015);
+Paivays viikonPaasta = nyt;
+viikonPaasta.edista(7);
+
+System.out.println("Nyt: " + nyt);
+System.out.println("Viikon päästä: " + viikonPaasta);
+</code></pre>
+
+  <p>
+    Ohjelman tulostus olisi seuraavanlainen:
+  </p>
+
+<pre class="sample-output">Nyt 20.2.2015
+Viikon päästä 20.2.2015
+</pre>
+
+  <p>
+    Tämä johtuu siitä, että tavallinen sijoitus kopioi ainoastaan viitteen olioon. Siis itse asiassa ohjelman oliot <code>nyt</code> ja <code>viikonPaasta</code> viittavaat <strong>yhteen ja samaan</strong> <code>Paivays</code>-olioon.
+  </p>
+  
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Raha (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Maksukortti-tehtävässä käytimme rahamäärän tallettamiseen double-tyyppistä oliomuuttujaa. Todellisissa sovelluksissa näin ei kannata tehdä, sillä kuten jo olemme nähneet, doubleilla laskenta ei ole tarkkaa. Onkin järkevämpää toteuttaa rahamäärän käsittely oman luokkansa avulla. Seuraavassa on luokan runko:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Raha {
+
+    private final int euroa;
+    private final int senttia;
+
+    public Raha(int euroa, int senttia) {
+        this.euroa = euroa;
+        this.senttia = senttia;
+    }
+
+    public int eurot() {
+        return euroa;
+    }
+
+    public int sentit() {
+        return senttia;
+    }
+
+    public String toString() {
+        String nolla = "";
+        if (senttia &lt;= 10) {
+            nolla = "0";
+        }
+
+        return euroa + "." + nolla + senttia + "e";
+    }
+}
+</code></pre>
+
+  <p>
+    Määrittelyssä pistää silmään oliomuuttujien määrittelyn yhteydessä käytetty sana <code>final</code>, tällä saadaan aikaan se, että oliomuuttujien arvoa ei pystytä muuttamaan sen jälkeen kun ne on konstruktorissa asetettu. Raha-luokan oliot ovatkin muuttumattomia eli <em>immutaabeleita</em>, eli jos halutaan esim. kasvattaa rahamäärää, on luotava uusi olio, joka kuvaa kasvatettua rahasummaa.
+  </p>
+
+  <p>
+    Luomme seuraavassa muutaman operaation rahojen käsittelyyn.
+  </p>
+
+
+  <h2>Plus</h2>
+
+  <p>
+    Tee ensin metodi <code>public Raha plus(Raha lisattava)</code>, joka palauttaa uuden raha-olion, joka on arvoltaan yhtä suuri kuin se olio jolle metodia kutsuttiin ja parametrina oleva olio yhteensä.
+  </p>
+
+  <p>
+    Metodin runko on seuraavanlainen:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public Raha plus(Raha lisattava) {
+    Raha uusi = new Raha(...); // luodaan uusi Raha-olio jolla on oikea arvo
+
+    // palautetaan uusi Raha-olio
+    return uusi;
+}
+</code></pre>
+
+  <p>
+    Seuraavassa esimerkkejä metodin toiminnasta
+  </p>
+
+<pre class="sh_java code-highlight"><code>Raha a = new Raha(10,0);
+Raha b = new Raha(5,0);
+
+Raha c = a.plus(b);
+
+System.out.println(a);  // 10.00e
+System.out.println(b);  // 5.00e
+System.out.println(c);  // 15.00e
+
+a = a.plus(c);          // HUOM: tässä syntyy uusi Raha-olio, joka laitataan "a:n langan päähän"
+//       vanha a:n langan päässä ollut 10 euroa häviää ja Javan roskien kerääjä korjaa sen pois
+
+System.out.println(a);  // 25.00e
+System.out.println(b);  // 5.00e
+System.out.println(c);  // 15.00e
+</code></pre>
+
+  
+  <h2>Vähemmän</h2>
+
+  <p>
+    Tee metodi <code>public boolean vahemman(Raha verrattava)</code>, joka palauttaa true jos raha-olio jolle metodia kutsutaan on arvoltaan pienempi kuin raha-olio, joka on metodin parametrina.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Raha a = new Raha(10, 0);
+Raha b = new Raha(3, 0);
+Raha c = new Raha(5, 0);
+
+System.out.println(a.vahemman(b));  // false
+System.out.println(b.vahemman(c));  // true
+</code></pre>
+
+  
+  <h2>Miinus</h2>
+
+  <p>
+    Tee metodi <code>public Raha miinus(Raha vahentaja)</code>, joka palauttaa uuden raha-olion, jonka arvoksi tulee sen olion jolle metodia kutsuttiin ja parametrina olevan olion arvojen erotus. Jos erotus olisi negatiivinen, tulee luotavan raha-olion arvoksi 0.
+  </p>
+
+  <p>
+    Seuraavassa esimerkkejä metodin toiminnasta
+  </p>
+
+<pre class="sh_java code-highlight"><code>Raha a = new Raha(10, 0);
+Raha b = new Raha(3, 50);
+
+Raha c = a.miinus(b);
+
+System.out.println(a);  // 10.00e
+System.out.println(b);  // 3.50e
+System.out.println(c);  // 6.50e
+
+c = c.miinus(a);        // HUOM: tässä syntyy uusi Raha-olio, joka laitataan "c:n langan päähän"
+//       vanha c:n langan päässä ollut 6.5 euroa häviää ja Javan roskien kerääjä korjaa sen pois
+
+System.out.println(a);  // 10.00e
+System.out.println(b);  // 3.50e
+System.out.println(c);  // 0.00e
+</code></pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<h1 class="material-heading">
+    Listakin sisältää viitteitä
+
+</h1>
+
+<p>
+  Tarkastellaan vielä olioiden -- tai viittaustyyppisten muuttujien -- käyttöä listalla. Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon.
+</p>
+
+<p>
+  Alla olevassa esimerkissä luodaan ensin olio <code>juhana</code>, joka lisätään listalle. Tämän jälkeen listalle lisätään kaksi muuta oliota. Seuraavaksi <code>juhana</code>-olion metodia <code>vanhene</code> kutsutaan. Lopulta jokaista listalla olevaa oliota vanhennetaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Henkilo&gt; henkilot = new ArrayList&lt;&gt;();
+
+Henkilo juhana = new Henkilo("Juhana");
+henkilot.add(juhana);
+
+henkilot.add(new Henkilo("Matti"));
+henkilot.add(new Henkilo("Martin"));
+
+// juhana vanhenee 2 vuotta
+juhana.vanhene();
+juhana.vanhene();
+
+for (Henkilo henkilo: henkilot) {
+    henkilo.vanhene();
+}
+
+for (Henkilo henkilo: henkilot) {
+    System.out.println(henkilo);
+}
+</code></pre>
+
+<pre class="sample-output">Juhana, ikä 3 vuotta
+Matti, ikä 1 vuotta
+Martin, ikä 1 vuotta
+</pre>
+
+<p>
+  Listalle on kopioituna viitteet olioihin. Yllä olevassa esimerkissä muuttujan <code>juhana</code> arvona on sama viite kuin listalla, joten "Juhanan" ikä muuttuu myös jos hän vanhenee listan ulkopuolella.
+</p>
+
+<img src="../img/drawings/henkilot-ja-juhana-5aae8cf4.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+
+<h2 class="material-heading">
+    Lista oliomuuttujana
+
+</h2>
+
+<p>
+  Listat ovat olioita, joten oliomuuttujaksi voi asettaa listan. Tarkastellaan tätä seuraavaksi.
+</p>
+
+<p>
+  Olemme aiemmin huomanneet, että listat ovat esimerkiksi näppäriä silloin, silloin kun haluamme pitää kirjaa useammasta erillisestä asiasta. Alla olevassa esimerkissä käsitteelle soittolista on luotu luokka. Soittolista sisältää kappaleita.
+</p>
+
+<pre class="sh_java code-highlight"><code>// importit
+
+public class Soittolista {
+    private ArrayList&lt;String&gt; kappaleet;
+
+    public Soittolista() {
+        this.kappaleet = new ArrayList&lt;&gt;();
+    }
+
+    public void lisaaKappale(String kappale) {
+        this.kappaleet.add(kappale);
+    }
+
+    public void poistaKappale(String kappale) {
+        this.kappaleet.remove(kappale);
+    }
+
+    public void tulostaKappaleet() {
+        for (String kappale: this.kappaleet) {
+            System.out.println(kappale);
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Soittolistojen luominen on edellisen luokan avulla helppoa.
+</p>
+
+<pre class="sh_java code-highlight"><code>Soittolista lista = new Soittolista();
+lista.lisaaKappale("Sorateiden kuningas");
+lista.lisaaKappale("Teuvo, maanteiden kuningas");
+lista.tulostaKappaleet();
+</code></pre>
+
+<pre class="sample-output">Sorateiden kuningas
+Teuvo, maanteiden kuningas
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Ruokalista (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Kumpulan kampuksella Helsingissä toimivaan Unicafe-nimiseen gourmet-ravintolaan tarvitaan uusi ruokalista. Keittiömestari tietää ohjelmoinnista, ja haluaa listan hallinnointiin tietokonejärjestelmän. Toteutetaan tässä tehtävässä järjestelmän sydän, luokka Ruokalista.
+  </p>
+
+  <p>
+    Tehtäväpohjan mukana tulee <code>Main</code>-luokka, jossa voit testata ruokalistan toimintaa. Ruokalistan toteuttamista varten saat seuraavanlaisen tehtäväpohjan:
+  </p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Ruokalista {
+
+    private ArrayList&lt;String&gt; ateriat;
+
+    public Ruokalista() {
+        this.ateriat = new ArrayList&lt;&gt;();
+    }
+
+    // toteuta tänne tarvittavat metodit
+}
+</code></pre>
+
+  <p>
+    Ruokalistaoliolla on oliomuuttujana ArrayList, jonka on tarkoitus tallentaa ruokalistalla olevien ruokalajien nimet. Ruokalistan tulee tarjota seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>
+      <code>public void lisaaAteria(String ateria)</code> lisää aterian ruokalistalle.
+    </li>
+    <li>
+      <code>public void tulostaAteriat()</code> tulostaa ateriat.
+    </li>
+    <li>
+      <code>public void tyhjennaRuokalista()</code> tyhjentää ruokalistan.
+    </li>    
+  </ul>
+
+
+  <h2>Aterian lisääminen</h2>
+
+  <p>
+    Toteuta metodi <code>public void lisaaAteria(String ateria)</code>, joka lisää uuden aterian listalle <code>ateriat</code>. Jos lisättävä ateria on jo listalla, sitä ei tule lisätä uudelleen. Jos et muista miten listalla olemassaoloa tarkastellaan, lue edellisestä osasta kohta "Onko listalla".
+  </p>
+
+
+  <h2>Aterioiden tulostaminen</h2>
+
+  <p>
+    Toteuta metodi <code>public void tulostaAteriat()</code>, joka tulostaa ateriat. Kolmen aterian lisäyksen jälkeen tulostuksen tulee olla seuraavanlainen.
+  </p>
+
+<pre class="sample-output">ensimmäisenä lisätty ateria
+toisena lisätty ateria
+kolmantena lisätty ateria
+</pre>
+
+
+  <h2>Ruokalistan tyhjentäminen</h2>
+
+  <p>
+    Toteuta metodi <code>public void tyhjennaRuokalista()</code> joka tyhjentää ruokalistan. <code>ArrayList</code>-luokalla on metodi josta on tässä hyötyä. NetBeans osaa vihjata käytettävissä olevista metodeista kun kirjoitat olion nimen ja pisteen. Yritä kirjoittaa <code>ateriat.</code> metodirungon sisällä ja katso mitä käy.
+  </p>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Oliomuuttujana oleva lista voi sisältää merkkijonojen lisäksi myös muunlaisia olioita. Laajennetaan edellä hahmoteltua luokkaa <code>PainonvartijaYhdistys</code> siten, että yhdistys lisää kaikki jäsenensä listalle. Laajennetussa versiossa konstruktorille annetaan alimman painoindeksin lisäksi myös luotavan yhdistyksen nimi:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class PainonvartijaYhdistys {
+    private double alinPainoindeksi;
+    private String nimi;
+    private ArrayList&lt;Henkilo&gt; jasenet;
+
+    public PainonvartijaYhdistys(String nimi, double alinPainoindeksi) {
+        this.alinPainoindeksi = alinPainoindeksi;
+        this.nimi = nimi;
+        this.jasenet = new ArrayList&lt;&gt;();
+    }
+
+    //..
+}
+</code></pre>
+
+<p>
+  Tehdään metodi jolla henkilö liitetään yhdistykseen. Metodi ei liitä yhdistykseen kuin tarpeeksi suuren painoindeksin omaavat henkilöt. Tehdään myös toString jossa tulostetaan jäsenten nimet:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class PainonvartijaYhdistys {
+    // ...
+
+    public boolean hyvaksytaanJaseneksi(Henkilo henkilo) {
+        if (henkilo.painoindeksi() &lt; this.alinPainoindeksi) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void lisaaJaseneksi(Henkilo henkilo) {
+        // sama kuin hyvaksytaanJaseneksi(henkilo) == false
+        if (!hyvaksytaanJaseneksi(henkilo)) {
+            // void-tyyppisistä metodeista voi palata
+            // return-kutsulla
+            return;
+        }
+
+        this.jasenet.add(henkilo);
+    }
+
+    public String toString() {
+        String jasenetMerkkijonona = "";
+
+        for (Henkilo jasen: this.jasenet) {
+            jasenetMerkkijonona = jasenetMerkkijonona + "  " + jasen.getNimi() + "\n";
+        }
+
+        return "Painonvartijayhdistys " + this.nimi + " jäsenet: \n" + jasenetMerkkijonona;
+    }
+}
+</code></pre>
+
+<p>
+  Metodi <code>lisaaJaseneksi</code> käyttää aiemmin tehtyä metodia <code>hyvaksytaanJaseneksi</code>.
+</p>
+
+<p>
+  Kokeillaan laajentunutta painonvartijayhdistystä:
+</p>
+
+<pre class="sh_java code-highlight"><code>PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpulan paino", 25);
+
+Henkilo matti = new Henkilo("Matti");
+matti.setPaino(86);
+matti.setPituus(180);
+painonVartija.lisaaJaseneksi(matti);
+
+Henkilo juhana = new Henkilo("Juhana");
+juhana.setPaino(64);
+juhana.setPituus(172);
+painonVartija.lisaaJaseneksi(juhana);
+
+Henkilo harri = new Henkilo("Harri");
+harri.setPaino(104);
+harri.setPituus(182);
+painonVartija.lisaaJaseneksi(harri);
+
+Henkilo petri = new Henkilo("Petri");
+petri.setPaino(112);
+petri.setPituus(173);
+painonVartija.lisaaJaseneksi(petri);
+
+System.out.println(painonVartija);
+</code></pre>
+
+<p>
+  Tulostuksesta huomaamme, että Juhanaa ei kelpuutettu jäseneksi:
+</p>
+
+<pre class="sample-output">Painonvartijayhdistys Kumpulan paino jäsenet:
+  Matti
+  Harri
+  Petri
+</pre>
+
+<p>
+  <div class="videoWrapper">
+  <div class="embedded-youtube-video" data-id="Rut2pt5ztN0"></div>
+</div>
+
+</p>
+
+<p>
+  Tehdään vielä lopuksi painovartijayhdistykselle metodi, jolla saadaan tietoon yhdistyksen suurimman painoindeksin omaava henkilö.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class PainonvartijaYhdistys {
+    // ...
+
+    public Henkilo suurinPainoindeksinen() {
+        // jos jasenlista on tyhjä, palautetaan null-viite
+        if (this.jasenet.isEmpty()) {
+            return null;
+        }
+
+        Henkilo painavinTahanAsti = this.jasenet.get(0);
+
+        int indeksi = 1;
+        while (indeksi < this.jasenet.size()) {
+            Henkilo henkilo = this.jasenet.get(indeksi);
+            if (henkilo.painoindeksi() &gt; painavinTahanAsti.painoindeksi()) {
+                painavinTahanAsti = henkilo;
+            }
+
+            indeksi = indeksi + 1;
+        }
+
+        return painavinTahanAsti;
+    }
+}
+</code></pre>
+
+<p>
+  Logiikaltaan edeltävä metodi toimii samaan tapaan kuin suurimman luvun etsiminen taulukosta. Käytössä on apumuuttuja <code>painavinTahanAsti</code> joka laitetaan aluksi viittaamaan listan ensimmäiseen henkilöön. Sen jälkeen käydään lista läpi ja katsotaan tuleeko vastaan suuremman painoindeksin omaavia henkilöitä, jos tulee, niin otetaan viite talteen muuttujaan <code>painavinTahanAsti</code>. Lopuksi palautetaan muuttujan arvo eli viite henkilöolioon.
+</p>
+
+<p>
+  Tehdään lisäys edelliseen pääohjelmaan. Pääohjelma ottaa vastaan metodin palauttaman viitteen muuttujaan <code>painavin</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>PainonvartijaYhdistys painonVartija = new PainonvartijaYhdistys("Kumpulan paino", 25);
+
+// .. lisätään listalle ..
+
+Henkilo painavin = painonVartija.suurinPainoindeksinen();
+System.out.print("suurin painoindeksi on jäsenellä " + painavin.getNimi());
+</code></pre>
+
+<pre class="sample-output">suurin painoindeksi on jäsenellä Petri
+</pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lahjapakkaamo (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+
+  <p>
+    Tässä tehtävässä harjoitellaan lahjojen pakkaamista. Tehdään luokat <code>Lahja</code> ja <code>Pakkaus</code>. Lahjalla on nimi ja paino, ja Pakkaus sisältää lahjoja.
+  </p>
+
+  <h2>Lahja-luokka</h2>
+
+  <p>
+    Tee luokka <code>Lahja</code>, josta muodostetut oliot kuvaavat erilaisia lahjoja. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>Konstruktori, jolle annetaan parametrina lahjan nimi ja paino</li>
+    <li>Metodi <code>public String getNimi()</code>, joka palauttaa lahjan nimen</li>
+    <li>Metodi <code>public int getPaino()</code>, joka palauttaa lahjan painon</li>
+    <li>Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "nimi (paino kg)"</li>
+  </ul>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Lahja kirja = new Lahja("Aapiskukko", 2);
+
+        System.out.println("Lahjan nimi: " + kirja.getNimi());
+        System.out.println("Lahjan paino: " + kirja.getPaino());
+
+        System.out.println("Lahja: " + kirja);
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">Lahjan nimi: Aapiskukko
+Lahjan paino: 2
+Lahja: Aapiskukko (2 kg)</pre>
+
+
+
+  <h2>Pakkaus-luokka</h2>
+
+  <p>
+    Tee luokka <code>Pakkaus</code>, johon voi lisätä lahjoja, ja joka pitää kirjaa pakkauksessa olevien lahjojen yhteispainosta. Luokassa tulee olla:
+  </p>
+
+  <ul>
+    <li>
+      Parametriton konstruktori
+    </li>
+    <li>
+      Metodi <code>public void lisaaLahja(Lahja lahja)</code>, joka lisää parametrina annettavan lahjan pakkaukseen. Metodi ei palauta mitään arvoa.
+    </li>
+    <li>
+      Metodi <code>public int yhteispaino()</code>, joka palauttaa pakkauksessa olevien lahjojen yhteispainon.
+    </li>
+  </ul>
+
+  <p>
+    Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:
+  </p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Lahja&gt; lahjat = new ArrayList&lt;&gt;();
+</code></pre>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Lahja kirja = new Lahja("Aapiskukko", 2);
+
+        Pakkaus paketti = new Pakkaus();
+        paketti.lisaaLahja(kirja);
+        System.out.println(paketti.yhteispaino());
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">2
+</pre>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Vertaisarviointi: Listat
+
+</h1>
+
+<p>
+  Loimme neljännessä osassa omia tehtäviä, joissa käsiteltiin listoja. Nyt on hetki vertaisarviointiin -- anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Vertaisarviointi
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Alla on kolme tehtävänannon pohjalta tehtyä tehtävää: kaksi jonkun kurssitoverisi lähettämää ja yksi itsearviointia varten. Niiden yhteydessä on muistin virkistykseksi ohjeistus, jonka pohjalta kyseiset tehtävänannot on tehty.
+  </p>
+
+  <p>
+    Tarkastele jokaisen tehtävän eri osia: tehtävänantoa, tehtäväpohjaa ja malliratkaisua sekä testaukseen käytettäviä syötteitä ja tulosteita. Arvioi niiden selkeyttä, vaikeutta ja sitä, kuinka hyvin ne vastaavat ohjeistukseensa.
+  </p>
+
+  <p>
+    Voit vaihtaa näkymää tehtäväpohjan ja mallivastauksen välillä painamalla lähdekoodin yläpalkin painikkeita. Palautteenannon avuksi on annettu väittämiä. Voit valita kuinka samaa mieltä niiden kanssa olet painamalla hymiöitä. Annathan myös sanallista palautetta sille varattuun kenttään! Lisää vielä tehtävää mielestäsi kuvaavia tageja ja paina Lähetä.
+  </p>
+
+  <p>
+    Anna arvio kummallekin vertaispalautetehtävälle ja lopuksi vielä omallesi.
+  </p>
+
+  <p>
+    Muista olla reilu ja ystävällinen. Hyvä palaute on rehellistä, mutta kannustavaa!
+  </p>
+
+  <p>
+    Voit halutessasi ladata arvioitavan tehtävän tehtäväpohjan ja malliratkaisun koneellesi, ja testata niiden käyttöä. Molemmat tulevat ZIP-paketeissa, jolloin sinun täytyy purkaa ne, ennen kuin voit avata ne NetBeansissä.
+  </p>
+
+
+  </div>
+</div>
+
+<div class="general-callout">
+  <div class="general-callout__header">
+    <i class="fa fa-magic general-callout__icon"></i> Suunnittele oma tehtävä: Listat
+  </div>
+
+  <div class="general-callout__body">
+      <p>
+    Suunnittele tehtävä, joka harjoituttaa listojen käsittelyä ja tietojen hakemista niistä.
+  </p>
+
+  <p>
+    Tee tehtävään valmiiksi lista tai listoja, jotka sisältävät oman valintasi mukaan joko merkkijonoja, kokonaislukuja tai liukulukuja. Täytä listan arvot valmiiksi.
+  </p>
+  
+  <p>
+    Ohjeista tulevaa tehtävän ratkaisijaa kysymään käyttäjältä komentoa, jonka jälkeen listalta haetaan komennon perusteella jotakin tietoa, joka sen jälkeen tuolostetaan. Jos annettu käsky ei ole sallittujen listalla, tulee ohjelman tulostaa jokin virheviesti.
+  </p>
+  
+  <p>
+    Esimerkiksi yksi tälläinen tehtävä voisi sisältää listan kokonaislukuja, ja käskyt voisivat olla: "suurin", "pienin" ja "keskiarvo". Kun tuleva tehtävän ratkaisija antaa käskyn "keskiarvo", ohjelma tulostaa listan lukujen keskiarvon ja niin edelleen. Keksi kuitenkin tehtävällesi omat sallitut käskyt.
+  </p>
+  
+  <p>
+    Muista merkitä ainakin käskyyn reagointiin liittyvät rivit malliratkaisuriveiksi -- näin ratkaisu ei tule suoraan tehtäväpohjaan. Vastaavasti älä merkitse listan luontia tai sen arvoja lisäävää koodia malliratkaisuriveiksi, sillä se on tarkoitus jättää tehtäväpohjaan.
+  </p>
+
+  <p>
+    Huom! Voit syöttää useamman rivin merkitsemällä rivinvaihdot syötteeseen. Esimerkiksi syöte <code>yksi\nkaksi\nloppu</code> sisältää syötteet <code>yksi</code> <code>kaksi</code> ja <code>loppu</code>. Vastaavasti tulos <code>1\n2\n3</code> olettaa, että tulostuksen tulee olla <code>1</code> <code>2</code> ja <code>3</code> tässä järjestyksessä.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät vastaavat kurssin pisteytyksessä ohjelmointitehtävää.
+  </p>
+
+
+  </div>
+</div>
+
+<div class='crowdsorcerer-widget' data-assignment='11' peer-review data-exercises='3'></div>
+
+
+<h1 class="material-heading">
+    Yhteenveto
+
+</h1>
+
+<p>
+  Viidennessä osassa syvennyttiin olioiden maailmaan. Tarkastelimme alkeis- ja viittaustyyppisten muuttujien eroa. Tutustuimme metodien ja konstruktorien kuormittamiseen, harjoittelimme olioiden käyttöä oliomuuttujina sekä metodin parametrina ja paluuarvona. Harjoittelimme olioiden vertailuun käytettävien metodien luomista, ja käsittelimme olioita listalla sekä listoja oliomuuttujana.
+</p>
+
+<p>
+  Vastaa vielä alla olevaan kyselyyn.
+</p>
+
+<div class="quiznator-plugin" data-quiz-id="5bae731a1abfdc0230c32a80"></div>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+    <div class="improvement">
+<a href="../report_issue/" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    Ilmoita virhe
+</a><a href="../edit_page/?path=part5.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+    Muokkaa sivua
+</a>  <a href="https://github.com/materiaalit/ohjelmointi-s18" class="footer__github-link" target="_blank" rel="noopener">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
+
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-s18">
+                Ohjelmoinnin perusteet, syksy 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="../javascripts/scripts-ec0b5cc4.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script src='https://materiaalit.github.io/pdf-slideshow-cdn/app.js'></script>
+      <script>
+        window.loadYoutube()
+      </script>
+    <script>
+      window.initPdfSlideshow('../pdf.worker.min-7be35925.js');
+    </script>
+  </body>
+</html>
