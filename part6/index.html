@@ -1,0 +1,4154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin perusteet ja Ohjelmoinnin jatkokurssi, syksy 2018 | Osa 6</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9fe27d3a.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/pdf-slideshow-cdn/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://t.me/ohjelmointi_18" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-comments hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          <div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Kuudennen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Ymmärrät staattisten ja ei-staattisten metodien erot. Tunnet hajautustaulun ja osaat käsitellä hajautustaulussa olevaa tietoa. Osaat käyttää olioita hajautustaulun arvona ja tiedät miten oliot toimivat hajautustaulun avaimena. Osaat ryhmitellä tietoa hajautustaulun avulla ja osaat käyttää listaa hajautustaulun arvona. Osaat käyttää olioita sekä tiedon esittämiseen että ohjelman jakamiseen useampaan vastuualueeseen (tekstikäyttöliittymä, sovelluslogiikka).
+  </p>
+  
+
+  </div>
+</div>
+
+<h1 class="material-heading">
+    Luokka- ja oliometodit: määre static
+
+</h1>
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tunnet käsitteet luokka- ja oliometodi.
+    </li>
+    <li>
+      Tiedät miten luokka- ja oliometodit eroavat toisistaan ja luoda sekä käyttää niitä.
+    </li>
+    <li>
+      Osaat kutsua luokkametodeja luokan ulkopuolelta.
+    </li>
+    <li>
+      Kertaat metodien käyttöä.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+
+<p>
+  Kurssin alussa kaikissa metodeissa esiintyi määre <code>static</code>, mutta aloittaessamme olioiden käytön, tuon määreen käyttö jopa kiellettiin. Mistä on kysymys?
+</p>
+
+<p>
+  Javan metodit voidaan jakaa kahteen ryhmään <code>static</code>-määreen olemassaolon perusteella. Metodit joissa ei ole <code>static</code>-määrettä ovat <strong>oliometodeja</strong> (tunnetaan myös instanssimetodeina). Metodit joissa on <code>static</code>-määre ovat <strong>luokkametodeja</strong>.
+</p>
+
+<p>
+  Oliometodit ovat metodeja, jotka liittyvät olioihin, ja joiden koodissa voi käsitellä oliomuuttujia ja kutsua olion muita oliometodeja. Oliometodeissa on erityisesti pääsy <code>this</code>-määreeseen, joka on viite juuri metodia kutsuvaan olioon muuttujiin.
+</p>
+
+<p>
+  Alla on esimerkki luokasta <code>Esine</code>, jolla on kolme oliometodia. Kussakin metodissa voidaan käsitellä olion muuttujia.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Esine {
+    private String nimi;
+    
+    public Esine(String nimi) {
+        this.nimi = nimi;
+    }
+
+    // oliometodit eli instanssimetodit eli olion metodit
+    public String getNimi() {
+        return this.nimi;
+    }
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+    public String toString() {
+        return this.nimi;
+    }
+</code></pre>
+
+<p>
+  Toisin kuin oliometodit, luokkametodit ovat metodeja, joissa voidaan käsitellä vain metodin parametrina saamia tai metodissa luotuja muuttujia. Alla on esimerkki luokasta <code>Tulostaja</code>, jolla on kaksi luokkametodia. Toinen tulostaa metodille parametrina annetun merkkijonon alleviivattuna ja toinen tulostaa metodille parametrina annetun luvun määräämän määrän viivoja.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Tulostaja {
+    
+    // luokkametodit
+    public static void tulostaAlleviivattuna(String merkkijono) {
+        System.out.println(merkkijono);
+        tulostaViiva(merkkijono.length());
+    }
+
+    public static void tulostaViiva(int pituus) {
+        int i = 0;
+        while (i &lt; pituus) {
+            System.out.print("-");
+            i++;
+        }
+        System.out.println();
+    }
+}
+</code></pre>
+
+<p>
+  Oliometodien kutsumiseen tarvitaan olio, jolle metodia kutsutaan (kutsu muotoa <code>olionNimi.metodinNimi</code>). Luokkametodeja voidaan kutsua ilman oliota (kutsu muotoa <code>metodinNimi</code>). Mikäli luokkametodia halutaan kutsua luokan ulkopuolelta, tapahtuu kutsu muodossa <code>LuokanNimi.metodinNimi</code>. 
+</p>
+
+<p>
+  Tarkastellaan edellä luotujen luokkien toimintaa luokassa <code>Ohjelma</code>. Alla olevassa esimerkissä hyödynnetään luokassa <code>Tulostaja</code> olevia luokkametodeja, jonka lisäksi käytetään luokasta <code>Esine</code> luotua oliota sekä sen oliometodeja.
+</p>
+  
+<pre class="sh_java code-highlight"><code>public class Ohjelma {
+    
+    public static void main(String[] args) {
+        Tulostaja.tulostaAlleviivattuna("Hei maailma!");
+
+        System.out.println();
+
+        Esine tuoli = new Esine("Kartell Louis Ghost");
+        Tulostaja.tulostaViiva(tuoli.getNimi().length());
+        Tulostaja.tulostaAlleviivattuna(tuoli.toString());
+    }
+}
+</code></pre>
+
+
+<pre class="sample-output">Hei maailma!
+------------
+
+-------------------
+Kartell Louis Ghost
+-------------------
+</pre>
+
+
+<h2 class="material-heading">
+    Olio luokkametodin parametrina
+
+</h2>
+
+<p>
+  Tarkastellaan ohjelmaa, jossa käsitellään listoja. Ohjelmassa olevassa <code>main</code>-metodissa on toiminnallisuutta, missä käsitellään listalla olevia lukuja. Tämän lisäksi luokassa on luokkametodi <code>nollaaLista</code> joka toimii nimensä mukaisesti eli asettaa nollan parametrina saamansa listan kaikkien lukujen arvoksi.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Ohjelma {
+
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+        luvut.add(1);
+        luvut.add(2);
+        luvut.add(3);
+        luvut.add(4);
+        luvut.add(5);
+
+        for (int luku : luvut) {
+            System.out.print(luku + " ");  // tulostuu 1 2 3 4 5
+        }
+
+        System.out.println();
+
+        nollaaLista(luvut);
+
+        for (int luku : luvut) {
+            System.out.print(luku + " ");  // tulostuu 0 0 0 0 0
+        }
+    }
+
+
+    public static void nollaaLista(ArrayList&lt;Integer&gt; lista) {
+        for (int i = 0; i &lt; lista.size(); i++) {
+            lista.set(i, 0);
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Yllä olevassa esimerkissä metodilla <code>nollaaLista</code> on määre <code>static</code> ja sen kutsuminen tapahtuu ilman alussa olevaa olioviitettä.
+</p>
+
+<p>
+  Luokkametodille (tai <em>staattiselle metodille</em>) voi antaa olion parametrina -- tämä on oikeastaan tuttua jo kurssin kolmannesta osasta. Luokkametodi ei kuitenkaan voi käsitellä mitään muita lukuja, merkkijonoja, tai olioita kuin niitä, jotka annetaan sille parametrina, tai jotka se luo itse.
+</p>
+
+<p>
+  Toisin sanoen, luokkametodia käyttävän koodin tulee antaa luokkametodille ne arvot ja oliot, joita luokkametodissa käsitellään.
+</p>
+
+<p>
+  Koska luokkametodi ei liity mihinkään olioon, ei sitä kutsuta oliometodien tapaan <code>olionNimi.metodinNimi()</code>, vaan sen kutsumisessa (saman luokan sisällä) käytetään pelkkää metodin nimeä. Mikäli luokkametodin koodi on eri luokan sisällä kuin sitä kutsuva metodi, voi luokkametodia kutsua muodossa <code>LuokanNimi.staattisenMetodinNimi()</code>.
+</p>
+
+<p>
+  Alla on edellä tarkasteltu esimerkki muutettuna siten, että pääohjelma ja metodi ovat omissa luokissaan:
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Ohjelma {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+        luvut.add(1);
+        luvut.add(2);
+        luvut.add(3);
+        luvut.add(4);
+        luvut.add(5);
+
+        for (int luku : luvut) {
+            System.out.print(luku + " ");  // tulostuu 1 2 3 4 5
+        }
+
+        System.out.println();
+
+        Listat.nollaaLista(luvut);
+
+        for (int luku : luvut) {
+            System.out.print(luku + " ");  // tulostuu 0 0 0 0 0
+        }
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Listat {
+
+    public static void nollaaLista(ArrayList&lt;Integer&gt; lista) {
+        for (int i = 0; i &lt; lista.size(); i++) {
+            lista.set(i, 0);
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Toisen luokan sisällä -- tässä tämän toisen luokan nimi on <code>Listat</code> -- määriteltyä staattista metodia kutsutaan yllä muodossa <code>Listat.nollaaLista(<em>parametri</em>);</code>.
+</p>
+
+
+<h2 class="material-heading">
+    Milloin luokkametodeja tulisi käyttää
+
+</h2>
+
+<p>
+  Kaikki olion tilaa käsittelevät metodit tulee määritellä oliometodeina, joilla ei ole static-määrettä. Esimerkiksi edellisissä osissa määrittelemiemme luokkien kuten <code>Henkilo, Paivays, Esine, ...</code> kaikki metodit tulee määritellä ilman static-määrettä.
+</p>
+
+<p>
+  Palataan vielä luokkaan <code>Henkilo</code>. Seuraavassa on osa luokan määritelmästä. Kaikkiin oliomuuttujiin viitataan <code>this</code>-määreen avulla sillä korostamme, että metodeissa käsitellään olion "sisällä" olevia oliomuuttujia.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    private String nimi;
+    private int ika;
+
+    public Henkilo(String nimi) {
+        this.ika = 0;
+        this.nimi = nimi;
+    }
+
+    public boolean taysiIkainen() {
+        if (this.ika &lt; 18) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void vanhene() {
+        this.ika++;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+}
+</code></pre>
+
+<p>
+  Koska metodit käsittelevät oliota, ei niitä voi määrittää static:eiksi eli "olioista riippumattomiksi". Jos näin yritetään tehdä, ei metodi toimi. Esimerkiksi allaoleva <code>Henkilo</code>-olion iän muokkausta yrittävä metodi <code>vanhene</code> ei toimi:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Henkilo {
+    //...
+
+    public static void vanhene() {
+        this.ika++;
+    }
+}
+</code></pre>
+
+<p>
+  Seurauksena on virheilmoitus <em>non static variable ika can not be referenced from static context</em>, joka tarkoittaa että <em>oliomuuttujaan ei voida viitata luokkametodista</em>; staattinen metodi ei pysty käsittelemään oliomuuttujaa.
+</p>
+
+<p>
+  Eli milloin staattista metodia sitten kannattaa käyttää? Tarkastellaan seuraavaa esimerkkiä, missä käsitellään henkilöolioita. Ohjelmassa luodaan henkilöitä, vanhennetaan niitä, ja lopulta tulostetaan tietoja olioiden täysi-ikäisyydestä:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Henkilo ada = new Henkilo("Ada");
+        Henkilo antti = new Henkilo("Antti");
+        Henkilo juhana = new Henkilo("Juhana");
+
+        for (int i = 0; i &lt; 30; i++) {
+            ada.vanhene();
+            juhana.vanhene();
+        }
+
+        antti.vanhene();
+
+        if (ada.taysiIkainen()) {
+            System.out.println(ada.getNimi() + " on täysi-ikäinen");
+        } else {
+            System.out.println(ada.getNimi() + " on alaikäinen ");
+        }
+
+        if (antti.taysiIkainen()) {
+            System.out.println(antti.getNimi() + " on täysi-ikäinen");
+        } else {
+            System.out.println(antti.getNimi() + " on alaikäinen");
+        }
+
+        if (juhana.taysiIkainen()) {
+            System.out.println(juhana.getNimi() + " on täysi-ikäinen");
+        } else {
+            System.out.println(juhana.getNimi() + " on alaikäinen ");
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Huomaamme, että henkilöiden täysi-ikäisyyden ilmottamiseen liittyvä koodinpätkä on copy-pastettu kolme kertaa peräkkäin. Todella rumaa!
+</p>
+
+<p>
+  Henkilön täysi-ikäisyyden ilmoittaminen on mainio kohde staattiselle metodille. Kirjoitetaan ohjelma uudelleen metodia hyödyntäen:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+
+    public static void main(String[] args) {
+        Henkilo ada = new Henkilo("Ada");
+        Henkilo antti = new Henkilo("Antti");
+        Henkilo juhana = new Henkilo("Juhana");
+
+        for (int i = 0; i &lt; 30; i++) {
+            ada.vanhene();
+            juhana.vanhene();
+        }
+
+        antti.vanhene();
+
+        ilmoitaTaysiIkaisyys(ada);
+
+        ilmoitaTaysiIkaisyys(antti);
+
+        ilmoitaTaysiIkaisyys(juhana);
+    }
+
+    public static void ilmoitaTaysiIkaisyys(Henkilo henkilo) {
+        if (henkilo.taysiIkainen()) {
+            System.out.println(henkilo.getNimi() + " on täysi-ikäinen");
+        } else {
+            System.out.println(henkilo.getNimi() + " on alaikäinen");
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Metodi <code>ilmoitaTaysiIkaisyys</code> on määritelty staattiseksi, eli se ei liity mihinkään olioon, <strong>mutta</strong> metodi saa parametrikseen henkilöolion. Metodia ei ole kuitenkaan määritelty Henkilö-luokan sisälle sillä vaikka se käsittelee parametrinaan saamaan henkilöolioa, se on juuri kirjoitetun pääohjelman apumetodi, jonka avulla pääohjelma on saatu kirjoitettua selkeämmin.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Matemaattiset apuneuvot</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on kaksi luokkaa: <code>Ohjelma</code> ja <code>MaPu</code>. Toteuta luokkaan <code>MaPu</code> metodi <code>public static double keskiarvo(ArrayList&lt;Integer&gt; luvut)</code>, joka laskee parametrina annetun listan lukujen keskiarvon ja palauttaa sen.
+  </p>
+
+  <p>
+    Kokeile tämän jälkeen metodin käyttöä luokassa <code>Ohjelma</code>. Luokassa <code>MaPu</code> olevan luokkametodin käyttö onnistuu kutsumalla metodia luokan nimeä etuliitteenä käyttäen <code>MaPu.keskiarvo(<em>parametri</em>)</code>. 
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52477/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kirjaston tietojärjestelmä (4 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    <em>
+      Kumpulan tiedekirjasto tarvitsee uuden järjestelmän kirjojen hallintaan. Tässä tehtävässä hahmotellaan ongelma-alueen tietosisältöä ja toteutetaan prototyyppi, joka mahdollistaa kirjan haun nimen, julkaisijan tai julkaisuvuoden perusteella.
+    </em>
+  </p>
+
+  <p>
+    Rakennetaan järjestelmä osista, tässä toteutetaan oleelliset luokat eli <code>Kirja</code> ja <code>Kirjasto</code>. Luokka <code>Kirja</code> sisältää kirjaan liittyvät tiedot, luokka <code>Kirjasto</code> tarjoaa erilaisia hakutoiminnallisuuksia kirjoihin liittyen.
+  </p>
+
+
+  <h2>Kirja</h2>
+
+  <p>
+    Luodaan ensiksi luokka Kirja. Kirjalla on oliomuuttujina <code>nimeke</code>, eli kirjan nimi, <code>julkaisija</code>, eli kirjan julkaisija, ja <code>julkaisuvuosi</code> eli vuosi jolloin kirja on julkaistu. Kaksi ensimmäistä muuttujaa on merkkijonotyyppisiä, viimeisin on kokonaisluku. Oletamme tässä että kirjalla on aina vain yksi kirjoittaja.
+  </p>
+
+  <p>
+    Toteuta luokka <code>Kirja</code>. Kirjalla tulee olla myös konstruktori <code>public Kirja(String niemeke, String julkaisija, int julkaisuvuosi)</code> sekä metodit <code>public String nimeke()</code>, <code>public String julkaisija()</code>, <code>public int julkaisuvuosi()</code> ja <code>public String toString()</code>. Arvannet mitä metodien tulee tehdä, alla esimerkki.
+  </p>
+
+  <p>
+    Testaa luokan toimintaa:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
+System.out.println(cheese.nimeke());
+System.out.println(cheese.julkaisija());
+System.out.println(cheese.julkaisuvuosi());
+
+System.out.println(cheese);
+</code></pre>
+
+<pre class="sample-output">Cheese Problems Solved
+Woodhead Publishing
+2007
+Cheese Problems Solved, Woodhead Publishing, 2007
+</pre>
+
+
+  <h2>Kirjasto</h2>
+
+  <p>
+    Kirjaston tehtävä on antaa käyttäjälle mahdollisuus kirjojen lisäämiseen ja niiden hakemiseen. Luo luokka <code>Kirjasto</code>, jolla on konstruktori <code>public Kirjasto()</code> ja metodit <code>public void lisaaKirja(Kirja uusiKirja)</code> ja <code>public void tulostaKirjat()</code>.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Kirjasto kirjasto = new Kirjasto();
+
+Kirja cheese = new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007);
+kirjasto.lisaaKirja(cheese);
+
+Kirja nhl = new Kirja("NHL Hockey", "Stanley Kupp", 1952);
+kirjasto.lisaaKirja(nhl);
+
+kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
+
+kirjasto.tulostaKirjat();
+</code></pre>
+
+<pre class="sample-output">Cheese Problems Solved, Woodhead Publishing, 2007
+NHL Hockey, Stanley Kupp, 1952
+Battle Axes, Tom A. Hawk, 1851
+</pre>
+
+
+  <h2>Hakutoiminnallisuus</h2>
+
+  <p>
+    Kirjastosta tulee pystyä etsimään kirjoja nimekkeiden ja julkaisijoiden perusteella. Lisää kirjastolle metodit <code>public ArrayList&lt;Kirja&gt; haeKirjaNimekkeella(String nimeke)</code>, <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisijalla(String julkaisija)</code> ja <code>public ArrayList&lt;Kirja&gt; haeKirjaJulkaisuvuodella(int julkaisuvuosi)</code>. Metodit palauttavat listan kirjoista, joissa on haluttu nimeke, julkaisija tai julkaisuvuosi.
+  </p>
+
+  <p>
+    Voit halutessasi hyödyntää seuraavaa runkoa metodin tekemiseen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Kirjasto {
+    // ...
+
+    public ArrayList&lt;Kirja&gt; haeKirjaNimekkeella(String nimeke) {
+        ArrayList&lt;Kirja&gt; loydetyt = new ArrayList&lt;&gt;();
+
+        // käy läpi kaikki kirjat ja lisää ne joilla haetun kaltainen nimeke listalle loydetyt
+
+        return loydetyt;
+    }
+}
+</code></pre>
+
+  <p>
+    Huom! Kun haet teet hakua merkkijonon avulla, älä tee tarkkaa hakua (metodi <code>equals</code>) vaan käytä <code>String</code>-luokan metodia <code>contains</code>. Huomaat todennäköisesti myös että sinulla on ns. copy-paste -koodia <code>Kirjasto</code>-luokan koodissa. Yritä päästä siitä eroon!
+  </p>
+
+<pre class="sh_java code-highlight"><code>Kirjasto kirjasto = new Kirjasto();
+
+kirjasto.lisaaKirja(new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007));
+kirjasto.lisaaKirja(new Kirja("The Stinky Cheese Man and Other Fairly Stupid Tales", "Penguin Group", 1992));
+kirjasto.lisaaKirja(new Kirja("NHL Hockey", "Stanley Kupp", 1952));
+kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
+
+for (Kirja kirja: kirjasto.haeKirjaNimekkeella("Cheese")) {
+    System.out.println(kirja);
+}
+
+System.out.println("---");
+
+for (Kirja kirja: kirjasto.haeKirjaJulkaisijalla("Pong Group")) {
+    System.out.println(kirja);
+}
+
+System.out.println("---");
+
+for (Kirja kirja: kirjasto.haeKirjaJulkaisuvuodella(1851)) {
+    System.out.println(kirja);
+}
+</code></pre>
+
+<pre class="sample-output">Cheese Problems Solved, Woodhead Publishing, 2007
+The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
+---
+---
+Battle Axes, Tom A. Hawk, 1851
+</pre>
+
+
+  <h2>Paranneltu hakutoiminnallisuus</h2>
+
+  <p>
+    Hakutoiminnallisuutemme on jo hyvä, mutta se ei ymmärrä isojen ja pienten kirjainten eroa. Yllä olleessa esimerkissä haku nimekkeellä <code>"cheese"</code> ei olisi tuottanut yhtäkään tulosta. Myös toinen esimerkki, jossa oli ylimääräisiä välilyöntejä, ei näyttänyt haluttua tulosta. Haluamme että nimekkeiden ja julkaisijoiden nimillä haettaessa ei välitetä merkkien koosta, ja että käyttäjä voi syöttää ylimääräisiä välilyöntejä kirjan nimen alkuun tai loppuun (meidän ei tarvitse välittää sanojen välillä olevista tyhjistä!). Toteutetaan pieni apukirjasto <code>StringUtils</code> merkkijonojen vertailuun.
+  </p>
+
+  <p>
+    Luo luokka <code>StringUtils</code>, ja lisää sille staattinen metodi <code>public static boolean sisaltaa(String sana, String haettava)</code>, joka tarkistaa sisältääkö merkkijono <code>sana</code> merkkijonon <code>haettava</code>. Jos jommankumman merkkijonon arvo on <em>null</em>, metodin tulee palauttaa arvo <code>false</code>. Metodin tarjoaman vertailun tulee olla välittämättä merkin koosta.
+  </p>
+
+  <p>
+    Vinkki! Voit luoda uuden merkkijonon, joka sisältää vanhan merkkijonon kirjaimet isoksi muunnettuna <code>String</code>-luokan metodilla <code>toUpperCase()</code>. Kun sekä sana että haettava on kirjoitettu isoilla merkeillä, voi vertailun toteuttaa suoraviivaisesti metodilla <code>contains</code>.
+  </p>
+
+  <p>
+    Lisää metodille <code>sisaltaa</code> myös toiminnallisuus, joka poistaa merkkijonojen <code>sana</code> ja <code>haettava</code> alusta ja lopusta ylimääräiset välilyönnit. Käytä tähän <code>String</code>-luokan metodia <code>trim</code>, esim. <code>trimmattu = trimmattava.trim()</code>.
+  </p>
+
+
+  <p>
+    Kun olet saanut metodin valmiiksi, käytä sitä <code>Kirjasto</code>-luokassa. Alla esimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>if (StringUtils.sisaltaa(kirja.nimeke(), nimeke)) {
+    // kirja löytyi!
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Kirjasto kirjasto = new Kirjasto();
+
+kirjasto.lisaaKirja(new Kirja("Cheese Problems Solved", "Woodhead Publishing", 2007));
+kirjasto.lisaaKirja(new Kirja("The Stinky Cheese Man and Other Fairly Stupid Tales", "Penguin Group", 1992));
+kirjasto.lisaaKirja(new Kirja("NHL Hockey", "Stanley Kupp", 1952));
+kirjasto.lisaaKirja(new Kirja("Battle Axes", "Tom A. Hawk", 1851));
+
+for (Kirja kirja: kirjasto.haeKirjaNimekkeella("CHEESE")) {
+    System.out.println(kirja);
+}
+
+System.out.println("---");
+for (Kirja kirja: kirjasto.haeKirjaJulkaisijalla("PENGUIN  ")) {
+    System.out.println(kirja);
+}
+</code></pre>
+
+<pre class="sample-output">Cheese Problems Solved, Woodhead Publishing, 2007
+The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
+---
+The Stinky Cheese Man and Other Fairly Stupid Tales, Penguin Group, 1992
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52478/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Hajautustaulu
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tunnet käsitteen hajautustaulu ja tiedät pääpiirteittäin miten hajautustaulu toimii.
+    </li>
+    <li>
+      Osaat käyttää Javan hajautustaulua: osaat luoda hajautustaulun, osaat lisätä hajautustauluun tietoa, ja osaat hakea hajautustaulusta tietoa.
+    </li>
+    <li>
+      Osaat kertoa tilanteita, joissa hajautustaulun käytöstä voi olla hyötyä.
+    </li>
+    <li>
+      Osaat käyttää hajautustaulua oliomuuttujana.
+    </li>
+    <li>
+      Osaat käydä hajautustaulun avaimet ja arvot läpi for-each -toistolausetta käyttäen.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">Hajautustaulu</a> eli HashMap on ArrayListin lisäksi eniten käytettyjä Javan valmiiksi tarjoamia tietorakenteita. Hajautustaulua käytetään kun tietoa käsitellään avain-arvo -pareina, missä avaimen perusteella voidaan lisätä, hakea ja poistaa arvo.
+</p>
+
+<p>
+  Hajautustaulun käyttöönotto vaatii luokan alkuun rivin <code>import java.util.HashMap;</code>. Hajautustaulua luodessa tarvitaan kaksi tyyppiparametria, avainmuuttujan tyyppi ja lisättävän arvon tyyppi. Mikäli hajautustaulussa on avaimena merkkijono (String) ja arvona luku (Integer) luodaan hajautustaulu komennolla <code>HashMap&lt;String, Integer&gt; taulu = new HashMap&lt;&gt;();</code>
+</p>
+
+<p>
+  Hajautustauluun lisääminen tapahtuu kaksiparametrisella metodilla <code>put(<em>avain</em>, <em>arvo</em>)</code>, joka saa parametrinaan avaimen ja arvon. Hajautustaulusta hakeminen onnistuu metodilla <code>get(<em>avain</em>)</code>, joka saa parametrinaan avaimen ja palauttaa arvon.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on luotu HashMap-olio kaupunkien hakemiseen postinumeron perusteella, jonka jälkeen HashMap-olioon on lisätty neljä postinumero-kaupunki -paria. Lopulta hajautustaulusta haetaan postinumeroa "00710". Sekä postinumero että kaupunki on esitetty merkkijonona.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, String&gt; postinumerot = new HashMap&lt;&gt;();
+postinumerot.put("00710", "Helsinki");
+postinumerot.put("90014", "Oulu");
+postinumerot.put("33720", "Tampere");
+postinumerot.put("33014", "Tampere");
+
+System.out.println(postinumerot.get("00710"));
+</code></pre>
+
+
+<pre class="sample-output">Helsinki
+</pre>
+
+<p>
+  Sisäisesti yllä luotavan hajautustaulun sisäinen tila näyttää seuraavalta. Kukin avain viittaa arvoon.
+</p>
+
+<img src="../img/drawings/hashmap-d7fb9c9e.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
+
+<p>
+  Mikäli hajautustaulussa ei ole haettavaa avainta, palauttaa hajautustaulun metodi <code>get</code> <code>null</code>-viitteen.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, String&gt; numerot = new HashMap&lt;&gt;();
+numerot.put("Yksi", "Uno");
+numerot.put("Kaksi", "Dos");
+
+String kaannos = numerot.get("Yksi");
+System.out.println(kaannos);
+
+System.out.println(numerot.get("Kaksi"));
+System.out.println(numerot.get("Kolme"));
+System.out.println(numerot.get("Uno"));
+</code></pre>
+
+<pre class="sample-output">Uno
+Dos
+null
+null
+</pre>
+
+
+<div class="quiznator-plugin" data-quiz-id="59da5a594538e90004e0f0e7"></div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lempinimet</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo <code>main</code>-metodissa uusi <code>HashMap&lt;String,String&gt;</code>-olio. Tallenna luomaasi olioon seuraavien henkilöiden nimet ja lempinimet niin, että nimi on avain ja lempinimi on arvo. Käytä pelkkiä pieniä kirjaimia.
+  </p>
+
+  <ul>
+    <li>matin lempinimi on mage</li>
+    <li>mikaelin lempinimi on mixu</li>
+    <li>arton lempinimi on arppa</li>
+  </ul>
+
+  <p>
+    Tämän jälkeen hae HashMapistä mikaelin lempinimi ja tulosta se.
+  </p>
+
+  <p>
+    Testit edellyttävät että kirjoitat nimet pienellä alkukirjaimella.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52479/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Hajautustaulun avaimeen liittyy korkeintaan yksi arvo
+
+</h2>
+
+<p>
+  Hajautustaulussa on jokaista avainta kohden korkeintaan yksi arvo. Mikäli hajautustauluun lisätään uusi avain-arvo -pari, missä avain on jo aiemmin liittynyt toiseen hajautustauluun tallennettuun arvoon, vanha arvo katoaa hajautustaulusta.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, String&gt; numerot = new HashMap&lt;&gt;();
+numerot.put("Uno", "Yksi");
+numerot.put("Dos", "Zwei");
+numerot.put("Uno", "Ein");
+
+String kaannos = numerot.get("Uno");
+System.out.println(kaannos);
+
+System.out.println(numerot.get("Dos"));
+System.out.println(numerot.get("Tres"));
+System.out.println(numerot.get("Uno"));
+</code></pre>
+
+<pre class="sample-output">Ein
+Zwei
+null
+Ein
+</pre>
+
+
+<h2 class="material-heading">
+    Viittaustyyppinen muuttuja hajautustaulun arvona
+
+</h2>
+
+<p>
+  Tutkitaan hajautustaulun toimintaa kirjastoesimerkin avulla. Kirjastosta voi hakea kirjoja kirjan nimen perusteella. Jos haetulla nimellä löytyy kirja, palauttaa kirjasto kirjan viitteen. Luodaan ensin esimerkkiluokka <code>Kirja</code>, jolla on oliomuuttujina nimi, kirjaan liittyvä sisältö sekä kirjan julkaisuvuosi.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String nimi;
+    private String sisalto;
+    private int julkaisuvuosi;
+
+    public Kirja(String nimi, int julkaisuvuosi, String sisalto) {
+        this.nimi = nimi;
+        this.julkaisuvuosi = julkaisuvuosi;
+        this.sisalto = sisalto;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public int getJulkaisuvuosi() {
+        return this.julkaisuvuosi;
+    }
+
+    public void setJulkaisuvuosi(int julkaisuvuosi) {
+        this.julkaisuvuosi = julkaisuvuosi;
+    }
+
+    public String getSisalto() {
+        return this.sisalto;
+    }
+
+    public void setSisalto(String sisalto) {
+        this.sisalto = sisalto;
+    }
+
+    public String toString() {
+        return "Nimi: " + this.nimi + " (" + this.julkaisuvuosi + ")\n"
+            + "Sisältö: " + this.sisalto;
+    }
+}
+</code></pre>
+
+<p>
+  Luodaan seuraavaksi hajautustaulu, joka käyttää avaimena kirjan nimeä eli String-tyyppistä oliota, ja arvona edellä luomaamme kirjaa.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, Kirja&gt; hakemisto = new HashMap&lt;&gt;();
+</code></pre>
+
+<p>
+  Yllä oleva hajautustaulu käyttää avaimena <code>String</code>-oliota. Laajennetaan esimerkkiä siten, että hakemistoon lisätään kaksi kirjaa, <code>"Järki ja tunteet"</code> ja <code>"Ylpeys ja ennakkoluulo"</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811, "...");
+Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813, "....");
+
+HashMap&lt;String, Kirja&gt; hakemisto = new HashMap&lt;&gt;();
+hakemisto.put(jarkiJaTunteet.getNimi(), jarkiJaTunteet);
+hakemisto.put(ylpeysJaEnnakkoluulo.getNimi(), ylpeysJaEnnakkoluulo);
+</code></pre>
+
+<p>
+  Hakemistosta voi hakea kirjoja kirjan nimellä. Haku kirjalla <code>"Viisasteleva sydän"</code> ei tuota osumaa, jolloin hajautustaulu palauttaa <code>null</code>-viitteen. Kirja "Ylpeys ja ennakkoluulo" kuitenkin löytyy.
+</p>
+
+<pre class="sh_java code-highlight"><code>Kirja kirja = hakemisto.get("Viisasteleva sydän");
+System.out.println(kirja);
+System.out.println();
+kirja = hakemisto.get("Ylpeys ja ennakkoluulo");
+System.out.println(kirja);
+</code></pre>
+
+<pre class="sample-output">null
+
+Nimi: Ylpeys ja ennakkoluulo (1813)
+Sisältö: ...
+</pre>
+
+<p>
+  Hajautustauluun lisättäessä avain-arvo -parin arvo voi olla käytännössä mitä tahansa. Arvo voi olla kokonaisluku, lista, tai vaikkapa toinen hajautustaulu.
+</p>
+
+<div class="quiznator-plugin" data-quiz-id="59da5b104538e90004e0f0e8"></div>
+
+
+
+
+<h2 class="material-heading">
+    Milloin hajautustaulua oikein tulisi käyttää?
+
+</h2>
+
+<p>
+  Hajautustaulu on toteutettu sisäisesti siten, että haku avaimen perusteella on hyvin nopeaa. Käytännössä hajautustaulu luo avaimen perusteella "hajautusarvon" eli koodin, jonka perusteella arvo tallennetaan tiettyyn paikkaan. Kun hajautustaulusta haetaan tietoa avaimen perusteella, tämä sama koodi tunnistaa paikan, missä avaimeen liittyvä arvo sijaitsee. Käytännössä avainta etsittäessä hajautustaulusta ei tarvitse käydä läpi kaikkia avain-arvo -pareja, vaan tarkasteltava joukko on merkittävästi pienempi. Hajautustaulun sisäiseen toteutukseen syvennytään tarkemmin kursseilla Ohjelmoinnin jatkokurssi ja Tietorakenteet ja algoritmit.
+</p>
+
+<p>
+  Tarkastellaan edellä esitettyä kirjastoesimerkkiä. Koko ohjelman olisi aivan yhtä hyvin voinut toteuttaa listan avulla. Tällöin kirjat olisivat hakemiston sijaan listalla, ja kirjan etsiminen tapahtuisi listaa läpikäyden.
+</p>
+
+<p>
+  Alla olevassa esimerkissä kirjat on tallennettu listalla ja ne niiden etsiminen tapahtuu listaa läpikäyden.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811, "...");
+Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813, "....");
+kirjat.add(jarkiJaTunteet);
+kirjat.add(ylpeysJaEnnakkoluulo);
+
+// etsitään kirja nimeltä Järki ja tunteet
+Kirja haettava = null;
+for (Kirja kirja: kirjat) {
+    if (kirja.getNimi().equals("Järki ja tunteet")) {
+        haettava = kirja;
+        break;
+    }
+}
+
+System.out.println(haettava);
+System.out.println();
+
+// etsitään kirja nimeltä Viisasteleva sydän
+haettava = null;
+for (Kirja kirja: kirjat) {
+    if (kirja.getNimi().equals("Viisasteleva sydän")) {
+        haettava = kirja;
+        break;
+    }
+}
+
+System.out.println(haettava);
+</code></pre>
+
+<pre class="sample-output">Nimi: Järki ja tunteet (1811)
+Sisältö: ...
+
+null
+</pre>
+
+<p>
+  Yllä olevaa ohjelmaa varten voisi luoda erillisen luokkametodin <code>hae</code>, jolle annetaan parametrina lista sekä haettavan kirjan nimi. Metodi palauttaa nimen perusteella löytyvän kirjan mikäli sellainen on olemassa, muulloin metodi palauttaa <code>null</code>-viitteen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static Kirja hae(ArrayList&lt;Kirja&gt; kirjat, String nimi) {
+
+    for (Kirja kirja: kirjat) {
+        if (kirja.getNimi().equals(nimi)) {
+            return kirja;
+        }
+    }
+
+    return null;
+}
+</code></pre>
+
+<p>
+  Nyt ohjelma on hieman selkeämpi.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811, "...");
+Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813, "....");
+kirjat.add(jarkiJaTunteet);
+kirjat.add(ylpeysJaEnnakkoluulo);
+
+System.out.println(hae(kirjat, "Järki ja tunteet"));
+  
+System.out.println();
+
+System.out.println(hae(kirjat, "Viisasteleva sydän"));
+</code></pre>
+
+<pre class="sample-output">Nimi: Järki ja tunteet (1811)
+Sisältö: ...
+
+null
+</pre>
+
+<p>
+  Ohjelma toimisi nyt täysin samoin kuin hajautustaululla toteutettu ohjelma, eikö niin?
+</p> 
+
+<p>
+  Toiminnallisuuden näkökulmasta kyllä. Tarkastellaan ohjelma vielä tehokkuuden kannalta. Javan valmis metodi <code>System.nanoTime()</code> palauttaa tietokoneen ajan nanosekunteina. Lisätään edellä tarkasteltuun ohjelmaan toiminnallisuus, jonka perusteella voidaan laskea kuinka paljon aikaa kirjojen hakemiseen meni. 
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+
+// lisätään kirjalistalle kymmenen miljoonaa kirjaa
+
+long alku = System.nanoTime();
+System.out.println(hae(kirjat, "Järki ja tunteet"));
+  
+System.out.println();
+
+System.out.println(hae(kirjat, "Viisasteleva sydän"));
+long loppu = System.nanoTime();
+double kestoMillisekunteina = 1.0 * (loppu - alku) / 1000000;
+
+System.out.println("Kirjojen etsimiseen meni " + kestoMillisekunteina + " millisekuntia.");
+</code></pre>
+
+<pre class="sample-output">Nimi: Järki ja tunteet (1811)
+Sisältö: ...
+  
+null
+Kirjojen etsimiseen meni 881.3447 millisekuntia.
+</pre>
+
+<p>
+  Kun kirjoja on kymmenen miljoonaa, kestää kokeilumme mukaan kahden kirjan etsiminen lähes sekunnin. Tässä vaikuttaa toki se, minkälaisessa järjestyksessä lista on. Mikäli haettava kirja olisi listan ensimmäisenä, olisi ohjelma nopeampi. Toisaalta mikäli kirjaa ei listalla ole, tulee ohjelman käydä kaikki listan kirjat läpi ennen kuin se voi todeta, ettei kirjaa ole.
+</p>
+
+<p>
+  Tarkastellaan samaa ohjelmaa hajautustaulua käyttäen.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, Kirja&gt; hakemisto = new HashMap&lt;&gt;();
+  
+// lisätään hajautustauluun kymmenen miljoonaa kirjaa
+
+long alku = System.nanoTime();
+System.out.println(hakemisto.get("Järki ja tunteet"));
+  
+System.out.println();
+
+System.out.println(hakemisto.get("Viisasteleva sydän"));
+long loppu = System.nanoTime();
+double kestoMillisekunteina = 1.0 * (loppu - alku) / 1000000;
+
+System.out.println("Kirjojen etsimiseen meni " + kestoMillisekunteina + " millisekuntia.");
+</code></pre>
+
+
+<pre class="sample-output">Nimi: Järki ja tunteet (1811)
+Sisältö: ...
+  
+null
+Kirjojen etsimiseen meni 0.411458 millisekuntia.
+</pre>
+
+<p>
+  Hajautustaululla kahden kirjan etsimiseen kymmenestä miljoonasta kirjasta meni noin 0.4 millisekuntia. Tehokkusero esimerkissämme on lähes kaksituhatkertainen.
+</p>
+
+<p> 
+  Tämä tehokkuusero liittyy siihen, että kun listalta etsitään kirjaa, tulee huonoimmassa tapauksessa käydä kaikki listan kirjat läpi. Hajautustaulussa kaikkia kirjoja ei tarvitse tarkastella, sillä avain määrää kirjan paikan hajautustaulussa. Tehokkuuserot riippuvat kirjojen määrästä -- esimerkiksi kymmenellä kirjalla tehokkuuserot ovat mitättömiä, mutta miljoonilla kirjoilla tehokkuuserot näkyvät selkeästi.
+</p>
+
+<p>
+  Tarkoittaako tämä sitä, että jatkossa käytämme vain hajautustauluja? Ei tietenkään. Hajautustaulut toimivat silloin, kun tiedämme täsmälleen mitä olemme etsimässä. Mikäli haluamme tunnistaa ne kirjat, joiden sanassa esiintyy tietty merkkijono, ei hajautustaulusta ole juurikaan hyötyä.
+</p>
+
+<p>
+  Hajautustauluilla ei ole myöskään sisäistä järjestystä, eikä hajautustaulun läpikäynti indeksien perusteella ole mahdollista. Listalla alkiot alkiot ovat siinä järjestyksessä missä ne on listalle lisättynä.
+</p>
+
+<p>
+  Tyypillisesti hajautustauluja ja listoja käytetäänkin yhdessä. Hajautustaulun avulla tarjotaan nopea mahdollisuus hakuun tietyn tai tiettyjen avainten perusteella, kun taas listaa käytetään esimerkiksi järjestyksen ylläpitämiseen.
+</p>
+
+<h2 class="material-heading">
+    Hajautustaulu oliomuuttujana
+
+</h2>
+
+<p>
+  Edellä käsitellyn kirjojen tallentamiseen liittyvän esimerkin ongelma on se, että kirjan kirjoitusmuoto tulee muistaa täsmälleen oikein. Joku saattaa etsiä kirjaa pienellä alkukirjaimella ja joku toinen saattaa vaikkapa painaa välilyöntiä nimen kirjoituksen aluksi. Tarkastellaan seuraavaksi erästä tapaa hieman sallivampaan kirjan nimen perusteella tapahtuvaan hakemiseen.
+</p>
+
+<p>
+  Hyödynnämme hakemisessa String-luokan tarjoamia välineitä merkkijonojen käsittelyyn. Metodi <code>toLowerCase()</code> luo merkkijonosta uuden merkkijonon, jonka kaikki kirjaimet on muunnettu pieniksi. Metodi <code>trim()</code> taas luo merkkijonosta uuden merkkijonon, jonka alusta ja lopusta on poistettu tyhjät merkit kuten välilyönnit.
+</p>
+
+<pre class="sh_java code-highlight"><code>String teksti = "Ylpeys ja ennakkoluulo ";
+teksti = teksti.toLowerCase(); // teksti nyt "ylpeys ja ennakkoluulo "
+teksti = teksti.trim(); // teksti nyt "ylpeys ja ennakkoluulo"
+</code></pre>
+
+<p>
+  Edellä kuvatun merkkijonon muunnoksen johdosta kirja löytyy, vaikka käyttäjä kirjoittaisi kirjan nimen pienillä kirjaimilla.
+</p>
+
+<p>
+  Luodaan luokka <code>Kirjasto</code>, joka kapseloi kirjat sisältävän hajautustaulun ja mahdollistaa kirjoitusasusta riippumattoman kirjojen haun. Lisätään luokalle <code>Kirjasto</code> metodit lisäämiseen, hakemiseen ja poistamiseen. Jokainen näistä tapahtuu siistityn nimen perusteella -- siistiminen sisältää nimen muuntamisen pienellä kirjoitetuksi sekä ylimääräisten alussa ja lopussa olevien välilyöntien poistamisen.
+</p>
+
+<p>
+  Hahmotellaan ensin lisäämismetodia. Kirja lisätään hajautustauluun siten, että kirjan nimi on avaimena ja kirja arvona. Koska haluamme, että pienet kirjoitusvirheet kuten isot tai pienet merkkijonot tai alussa ja lopussa olevat välilyönnit sallitaan, avain -- eli kirjan nimi -- muunnetaan pienellä kirjoitetuksi ja sen alusta ja lopusta poistetaan välilyönnit.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirjasto {
+    private HashMap&lt;String, Kirja&gt; hakemisto;
+
+    public Kirjasto() {
+        this.hakemisto = new HashMap&lt;&gt;();
+    }
+
+    public void lisaaKirja(Kirja kirja) {
+        String nimi = kirja.getNimi();
+        if (nimi == null) {
+            nimi = "";
+        }
+
+        nimi = nimi.toLowerCase();
+        nimi = nimi.trim();
+
+        if (this.hakemisto.containsKey(nimi)) {
+            System.out.println("Kirja on jo kirjastossa!");
+        } else {
+            hakemisto.put(nimi, kirja);
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Yllä käytetään hajautustaulun tarjoamaa metodia <code>containsKey</code> avaimen olemassaolon tarkastamiseen. Metodi palauttaa arvon <code>true</code>, jos hajautustauluun on lisätty haetulla avaimella mikä tahansa arvo, muulloin metodi palauttaa arvon <code>false</code>.
+</p>
+
+<p>
+  Huomaamme jo nyt että merkkijonon siistimiseen liittyvää koodia tarvitsisi jokaisessa kirjaa käsittelevässä metodissa, joten siitä on hyvä tehdä erillinen apumetodi -- metodi toteutettaan luokkametodina, sillä se ei käsittele oliomuuttujia.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static String siistiMerkkijono(String merkkijono) {
+    if (merkkijono == null) {
+        return "";
+    }
+
+    merkkijono = merkkijono.toLowerCase();
+    return merkkijono.trim();
+}
+</code></pre>
+
+<p>
+  Toteutus on apumetodia käyttäen paljon siistimpi kuin ilman apumetodia.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirjasto {
+    private HashMap&lt;String, Kirja&gt; hakemisto;
+
+    public Kirjasto() {
+        this.hakemisto = new HashMap&lt;&gt;();
+    }
+
+    public void lisaaKirja(Kirja kirja) {
+        String nimi = siistiMerkkijono(kirja.getNimi());
+
+        if (this.hakemisto.containsKey(nimi)) {
+            System.out.println("Kirja on jo kirjastossa!");
+        } else {
+            hakemisto.put(nimi, kirja);
+        }
+    }
+
+    public Kirja haeKirja(String kirjanNimi) {
+        kirjanNimi = siistiMerkkijono(kirjanNimi);
+        return this.hakemisto.get(kirjanNimi);
+    }
+
+    public void poistaKirja(String kirjanNimi) {
+        kirjanNimi = siistiMerkkijono(kirjanNimi);
+
+        if (this.hakemisto.containsKey(kirjanNimi)) {
+            this.hakemisto.remove(kirjanNimi);
+        } else {
+            System.out.println("Kirjaa ei löydy, ei voida poistaa!");
+        }
+    }
+
+    public static String siistiMerkkijono(String merkkijono) {
+        if (merkkijono == null) {
+            return "";
+        }
+
+        merkkijono = merkkijono.toLowerCase();
+        return merkkijono.trim();
+    }
+}
+</code></pre>
+
+<p>
+  Tarkastellaan vielä luokan käyttöä.
+</p>
+
+<pre class="sh_java code-highlight"><code>Kirja jarkiJaTunteet = new Kirja("Järki ja tunteet", 1811, "...");
+Kirja ylpeysJaEnnakkoluulo = new Kirja("Ylpeys ja ennakkoluulo", 1813, "....");
+  
+Kirjasto kirjasto = new Kirjasto();
+kirjasto.lisaaKirja(jarkiJaTunteet);
+kirjasto.lisaaKirja(ylpeysJaEnnakkoluulo);
+
+System.out.println(kirjasto.haeKirja("ylpeys ja ennakkoluulo");
+System.out.println();
+
+System.out.println(kirjasto.haeKirja("YLPEYS JA ENNAKKOLUULO");
+System.out.println();
+
+System.out.println(kirjasto.haeKirja("JÄRKI"));
+</code></pre>
+
+
+
+<pre class="sample-output">Nimi: Ylpeys ja ennakkoluulo (1813)
+Sisältö: ...
+
+Nimi: Ylpeys ja ennakkoluulo (1813)
+Sisältö: ...
+
+null
+</pre>
+
+<p>
+  Edeltävässä esimerkissä noudatimme ns. DRY-periaatetta (Don't Repeat Yourself), jonka tarkoituksena on saman koodin toistumisen välttäminen. Merkkijonon siistiminen eli pienellä kirjoitetuksi muuttaminen sekä <em>trimmaus</em>, eli tyhjien merkkien poisto alusta ja lopusta, olisi toistunut useasti kirjastoluokassamme ilman metodia <code>siistiMerkkijono</code>. Toistuvaa koodia ei usein huomaa ennen kuin sitä on jo kirjoittanut, jolloin sitä päätyy koodiin lähes pakosti. Tässä ei ole mitään pahaa -- tärkeintä on että koodia siistitään sitä mukaa siistimistä vaativia tilanteita huomataan.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lyhenteet</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo lyhenteiden ylläpitoon käytettävä luokka <code>Lyhenteet</code>. Luokalla tulee olla parametriton konstruktori, ja sen tulee tarjota seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>
+      <code>public void lisaaLyhenne(String lyhenne, String selite)</code> lisää lyhenteen sekä siihen liittyvän selitteen.
+    </li>
+    <li>
+      <code>public boolean onkoLyhennetta(String lyhenne)</code> tarkastaa onko lyhennettä lisätty; palauttaa <code>true</code> mikäli kyllä, <code>false</code> mikäli ei.
+    </li>
+    <li>
+      <code>public String haeLyhenne(String lyhenne)</code> hakee lyhenteeseen liittyvän selitteen; palauttaa <code>null</code> mikäli lyhennettä ei ole lisätty.
+    </li>
+  </ul>
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+
+<pre class="sh_java code-highlight"><code>Lyhenteet lyhenteet = new Lyhenteet();
+lyhenteet.lisaaLyhenne("esim.", "esimerkiksi");
+lyhenteet.lisaaLyhenne("jne.", "ja niin edelleen");
+lyhenteet.lisaaLyhenne("yms.", "ynnä muuta sellaista");
+
+String teksti = "esim. jne. yms. lol.";
+
+for (String osa: teksti.split(" ")) {
+    if(lyhenteet.onkoLyhennetta(osa)) {
+        osa = lyhenteet.haeLyhenne(osa);
+    } 
+        
+    System.out.print(osa);
+    System.out.print(" ");
+}
+
+System.out.println();
+</code></pre>
+
+<pre class="sample-output">esimerkiksi ja niin edelleen ynnä muuta sellaista lol.
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52480/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Hajautustaulun avainten läpikäynti
+
+</h2>
+
+<p>
+  Haluamme joskus etsiä kirjaa nimen osan perusteella. Hajautustaulun metodi <code>get</code> ei tähän sovellu, sillä sitä käytetään tietyllä avaimella etsimiseen. Kirjan nimen osan perusteella etsiminen ei sillä onnistu.
+</p>
+
+<p>
+  Hajautustaulun arvojen läpikäynti onnistuu hajautustaulun metodin <code>keySet()</code> palauttaman joukon sekä for-each -lauseen avulla. Tarkastellaan tätä kirjastoesimerkin kautta. Mikäli haluaisimme etsiä kirjoja, joiden nimessä esiintyy tietty merkkijono, ei hajautustaulu tähän toimi. Tällöin kirjat käydään läpi yksitellen.
+</p>
+
+<p>
+  Alla haetaan kaikki ne kirjat, joiden nimessä esiintyy annettu merkkijono.
+</p>
+
+<pre class="sh_java code-highlight"><code>public ArrayList&lt;Kirja&gt; haeKirjaNimenOsalla(String nimenOsa) {
+    nimenOsa = siistiMerkkijono(nimenOsa);
+
+    ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+
+    for(String kirjanNimi : this.hakemisto.keySet()) {
+        if(!kirjanNimi.contains(nimenOsa)) {
+            continue;
+        }
+
+        // mikäli avain sisältää haetun merkkijonon, haetaan avaimeen
+        // liittyvä arvo ja lisätään se palautettavien kirjojen joukkoon
+        kirjat.add(this.hakemisto.get(kirjanNimi));
+    }
+
+    return kirjat;
+}
+</code></pre>
+
+<p>
+  Tällä tavalla etsiessä menetämme kuitenkin hajautustauluun liittyvän nopeusedun. Hajautustaulu on toteutettu siten, että yksittäisen avaimen perusteella hakeminen on erittäin nopeaa. Yllä olevassa esimerkissä käydään kaikkien kirjojen nimet läpi, kun tietyllä avaimella etsittäessä tarkasteltaisiin tasan yhden kirjan olemassaoloa.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Hajautustaulun tulostelua</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee luokka <code>Ohjelma</code>. Luo luokkaan seuraavat kolme luokkametodia:
+  </p>
+
+  <ul>
+    <li>
+      <code>public static void tulostaAvaimet(HashMap&lt;String, String&gt; hajautustaulu)</code>, joka tulostaa parametrina annetun hajautustaulun avaimet.
+    </li>
+    <li>
+      <code>public static void tulostaAvaimetJoissa(HashMap&lt;String, String&gt; hajautustaulu, String merkkijono)</code>, joka tulostaa parametrina annetun hajautustaulun avaimista ne, jotka sisältävät parametrina annetun merkkijonon.
+    </li>
+    <li>
+      <code>public static void tulostaArvotJosAvaimessa(HashMap&lt;String, String&gt; hajautustaulu, String merkkijono)</code>, joka tulostaa parametrina annetun hajautustaulun ne arvot, joihin liittyvät avaimet sisältävät parametrina annetun merkkijonon.
+    </li>
+  </ul>
+
+  <p>
+    Esimerkki luokkametodien käytöstä:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, String&gt; taulu = new HashMap&lt;&gt;();
+taulu.put("esim.", "esimerkiksi");
+taulu.put("jne.", "ja niin edelleen");
+taulu.put("yms.", "ynnä muuta sellaista");
+
+tulostaAvaimet(taulu);
+System.out.println("---");
+tulostaAvaimetJoissa(taulu, "m");
+System.out.println("---");
+tulostaArvotJosAvaimessa(taulu, "ne");
+</code></pre>
+
+<pre class="sample-output">esim.
+jne.
+yms.
+---
+esim.
+yms.
+---
+ja niin edelleen
+</pre>
+
+  <p>
+    Huom! Tulostusjärjestys voi poiketa yllä esitetystä, sillä hajautustaulun sisäinen tila ei takaa olioiden järjestystä.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52481/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Hajautustaulun arvojen läpikäynti
+
+</h2>
+
+<p>
+  Edellä kuvatun toiminnallisuuden voisi toteuttaa myös hajautustaulun arvojen läpikäynnillä. Hajautustaulu arvojoukon saa hajautustaulun metodilla <code>values()</code>. Myös tämän arvojoukon voi käydä läpi for-each -lauseella.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public ArrayList&lt;Kirja&gt; haeKirjaNimenOsalla(String nimenOsa) {
+    nimenOsa = siistiMerkkijono(nimenOsa);
+
+    ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+
+    for(Kirja kirja : this.hakemisto.values()) {
+        if(!kirja.getNimi().contains(nimenOsa)) {
+            continue;
+        }
+
+        kirjat.add(kirja);
+    }
+
+    return kirjat;
+}
+</code></pre>
+
+<p>
+  Kuten edellisessä esimerkissä, myös tällä tavalla etsiessä menetetään hajautustauluun liittyvä nopeusedun.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Hajautustaulun tulostelua 2</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee materiaalista tuttu luokka <code>Kirja</code> sekä luokka <code>Ohjelma</code>. Luo luokkaan <code>Ohjelma</code> seuraavat kaksi luokkametodia:
+  </p>
+
+  <ul>
+    <li>
+      <code>public static void tulostaArvot(HashMap&lt;String, Kirja&gt; hajautustaulu)</code>, joka tulostaa parametrina annetun hajautustaulun arvot niiden toString-metodia käyttäen.
+    </li>
+    <li>
+      <code>public static void tulostaArvoJosNimessa(HashMap&lt;String, Kirja&gt; hajautustaulu, String merkkijono)</code>, joka tulostaa parametrina annetun hajautustaulun arvoista ne, joiden nimessä on parametrina annettu merkkijono. Nimen saa selville kirjan metodilla <code>getNimi</code>.
+    </li>
+  </ul>
+
+  <p>
+    Esimerkki luokkametodien käytöstä:
+  </p>
+  
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, Kirja&gt; taulu = new HashMap&lt;&gt;();
+taulu.put("tunteet", new Kirja("Järki ja tunteet", 1811, "..."));
+taulu.put("luulot", new Kirja("Ylpeys ja ennakkoluulo", 1813, "...."));
+
+tulostaArvot(taulu);
+System.out.println("---");
+tulostaArvoJosNimessa(taulu, "ennakko");
+</code></pre>
+
+<pre class="sample-output">Nimi: Ylpeys ja ennakkoluulo (1813)
+Sisältö: ...
+Nimi: Järki ja tunteet (1811)
+Sisältö: ...
+---
+Nimi: Ylpeys ja ennakkoluulo (1813)
+Sisältö: ...
+</pre>
+
+  <p>
+    Huom! Tulostusjärjestys voi poiketa yllä esitetystä, sillä hajautustaulun sisäinen tila ei takaa olioiden järjestystä.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52482/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Alkeistyyppiset muuttujat hajautustaulussa
+
+</h2>
+
+<p>
+  Hajautustaulu olettaa, että siihen lisätään viittaustyyppisiä muuttujia (samoin kuin ArrayList). Java muuntaa alkeistyyppiset muuttujat viittaustyyppisiksi käytännössä kaikkia Javan valmiita tietorakenteita (kuten ArrayList ja HashMap) käytettäessä. Vaikka luku <code>1</code> voidaan esittää alkeistyyppisen muuttujan <code>int</code> arvona, tulee sen tyypiksi määritellä <code>Integer</code> ArrayListissä ja HashMapissa.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;Integer, String&gt; taulu = new HashMap&lt;&gt;(); // toimii
+taulu.put(1, "Ole!");
+HashMap&lt;int, String&gt; taulu2 = new HashMap&lt;&gt;(); // ei toimi
+</code></pre>
+
+<p>
+  Hajautustaulun avain ja tallennettava olio ovat aina viittaustyyppisiä muuttujia. Jos haluat käyttää alkeistyyppisiä muuttujia avaimena tai tallennettavana arvona, on niille olemassa viittaustyyppiset vastineet. Alla on esitelty muutama.
+</p>
+
+<table class="table">
+
+  <tr>
+    <th>Alkeistyyppi</th>
+    <th>Viittaustyyppinen vastine</th>
+  </tr>
+
+  <tr>
+    <td>int</td>
+    <td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html" target="_blank" rel="noopener">Integer</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>double</td>
+    <td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" target="_blank" rel="noopener">Double</a></td>
+  </tr>
+
+  <tr>
+    <td>char</td>
+    <td><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html" target="_blank" rel="noopener">Character</a></td>
+  </tr>
+</table>
+
+
+<p>
+  Java muuntaa alkeistyyppiset muuttujat automaattisesti viittaustyyppisiksi kun niitä lisätään HashMapiin tai ArrayListiin. Tätä automaattista muunnosta viittaustyyppisiksi kutsutaan Javassa <em>auto-boxingiksi</em>, eli automaattiseksi "laatikkoon" asettamiseksi. Automaattinen muunnos onnistuu myös toiseen suuntaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>int avain = 2;
+HashMap&lt;Integer, Integer&gt; taulu = new HashMap&lt;&gt;();
+taulu.put(avain, 10);
+int arvo = taulu.get(avain);
+System.out.println(arvo);
+</code></pre>
+
+<pre class="sample-output">10
+</pre>
+
+<p>
+  Seuraava esimerkki kuvaa rekisterinumeroiden bongausten laskemiseen käytettävää luokkaa. Metodeissa metodeissa <code>lisaaBongaus</code> ja <code>montakoKertaaBongattu</code> tapahtuu automaattinen tyyppimuunnos.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Rekisteribongauslaskuri {
+    private HashMap&lt;String, Integer&gt; bongatut;
+
+    public Rekisteribongauslaskuri() {
+        this.bongatut = new HashMap&lt;&gt;();
+    }
+
+    public void lisaaBongaus(String bongattu) {
+        if (!this.bongatut.containsKey(bongattu)) {
+            this.bongatut.put(bongattu, 0);
+        }
+
+        int montakobongausta = this.bongatut.get(bongattu);
+        montakobongausta++;
+        this.bongatut.put(bongattu, montakobongausta);
+    }
+
+    public int montakoKertaaBongattu(String bongattu) {
+        this.bongatut.get(bongattu);
+    }
+}
+</code></pre>
+
+<p>
+  Tyyppimuunnoksissa piilee kuitenkin vaara. Jos yritämme muuntaa null-viitettä -- eli esimerkiksi bongausta, jota ei ole HashMapissa -- kokonaisluvuksi, näemme virheen <em>java.lang.reflect.InvocationTargetException</em>. Tällainen virhemahdollisuus on yllä olevan esimerkin metodissa <code>montakoKertaaBongattu</code> -- jos <code>bongatut</code>-hajautustaulussa ei ole haettavaa arvoa, hajautustaulu palauttaa <code>null</code>-viitteen, eikä muunnos kokonaisluvuksi onnistu.
+</p>
+
+<p> 
+  Kun teemme automaattista muunnosta, tulee varmistaa että muunnettava arvo ei ole null. Yllä olevassa ohjelmassa oleva <code>montakoKertaaBongattu</code>-metodi tulee korjata esimerkiksi seuraavasti.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public int montakoKertaaBongattu(String bongattu) {
+    return this.bongatut.getOrDefault(bongattu, 0);
+}
+</code></pre>
+
+<p>
+  HashMapin metodi <code>getOrDefault</code> hakee sille ensimmäisenä parametrina annettua avainta HashMapista. Jos avainta ei löydy, palauttaa se toisena parametrina annetun arvon. Yllä kuvatun yhdellä rivillä esitetyn metodin toiminta vastaa seuraavaa metodia.
+</p>
+
+<pre class="sh_java code-highlight"><code>public int montakoKertaaBongattu(String bongattu) {
+    if (this.bongatut.containsKey(bongattu) {
+        return this.bongatut.get(bongattu);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>
+  Siistitään vielä lisaaBongaus-metodia hieman. Alkuperäisessä versiossa metodin alussa lisätään hajautustauluun bongausten lukumääräksi arvo 0, jos bongattua ei löydy. Tämän jälkeen bongausten määrä haetaan, sitä kasvatetaan yhdellä, ja vanha bongausten lukumäärä korvataan lisäämällä arvo uudestaan hajautustauluun. Osan tästäkin toiminnallisuudesta voi korvata metodilla getOrDefault.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Rekisteribongauslaskuri {
+    private HashMap&lt;String, Integer&gt; bongatut;
+
+    public Rekisteribongauslaskuri() {
+        this.bongatut = new HashMap&lt;&gt;();
+    }
+
+    public void lisaaBongaus(String bongattu) {
+        int montakobongausta = this.bongatut.getOrDefault(bongattu, 0);
+        montakobongausta++;
+        this.bongatut.put(bongattu, montakobongausta);
+    }
+
+    public int montakoKertaaBongattu(String bongattu) {
+        return this.bongatut.getOrDefault(bongattu, 0);
+    }
+}
+</code></pre>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Velkakirja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Luo luokka <code>Velkakirja</code>, jolla on seuraavat toiminnot:
+  </p>
+
+  <ul>
+    <li>konstruktori <code>public Velkakirja()</code> luo uuden velkakirjan</li>
+    <li>metodi <code>public void asetaLaina(String kenelle, double maara)</code> tallettaa velkakirjaan merkinnän lainasta tietylle henkilölle.</li>
+    <li>metodi <code>public double paljonkoVelkaa(String kuka)</code> palauttaa velan määrän annetun henkilön nimen perusteella. Jos henkilöä ei löydy, palautetaan 0.</li>
+  </ul>
+
+  <p>Luokkaa käytetään seuraavalla tavalla:</p>
+
+<pre class="sh_java code-highlight"><code>Velkakirja matinVelkakirja = new Velkakirja();
+matinVelkakirja.asetaLaina("Arto", 51.5);
+matinVelkakirja.asetaLaina("Mikael", 30);
+
+System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
+System.out.println(matinVelkakirja.paljonkoVelkaa("Joel"));
+</code></pre>
+
+  <p>Yllä oleva esimerkki tulostaisi:</p>
+
+<pre class="sample-output">51.5
+0.0
+</pre>
+
+  <p>
+    Ole tarkkana tilanteessa, jossa kysytään velattoman ihmisen velkaa.
+  </p>
+
+  <p>
+    Huom! Velkakirjan ei tarvitse huomioida vanhoja lainoja. Kun asetat uuden velan henkilölle jolla on vanha velka, vanha velka unohtuu.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Velkakirja matinVelkakirja = new Velkakirja();
+matinVelkakirja.asetaLaina("Arto", 51.5);
+matinVelkakirja.asetaLaina("Arto", 10.5);
+
+System.out.println(matinVelkakirja.paljonkoVelkaa("Arto"));
+</code></pre>
+
+<pre class="sample-output">10.5
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52483/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Olioiden samankaltaisuus
+
+</h1>
+
+<p>
+</p>
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Kertaat olioiden yhtäsuuruuden vertailua equals-metodilla.
+    </li>
+    <li>
+      Tiedät mitä metodi hashCode tekee.
+    </li>
+    <li>
+      Tiedät miten olioiden suurpiirteistä yhtäsuuruutta voidaan verrata.
+    </li>
+    <li>
+      Osaat käyttää ohjelmointiympäristön valmiita välineitä equals- ja hashcode-metodien luomiseen.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Samuudesta kertova metodi "equals"
+
+</h2>
+
+<p>
+  Metodia <code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object" target="_blank" rel="noopener">equals</a></code> käytetään kahden olion yhtäsuuruusvertailuun. Metodia on jo käytetty muun muassa <code>String</code>-olioiden yhteydessä, jonka lisäksi olemme harjoitelleet equals-metodin luomista omiin luokkiimme.
+</p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+
+System.out.print("Kirjoita salasana: ");
+String salasana = lukija.nextLine();
+
+if (salasana.equals("salasana")) {
+    System.out.println("Oikein meni!");
+} else {
+    System.out.println("Pieleen meni!");
+}
+</code></pre>
+
+<pre class="sample-output">Kirjoita salasana: <font color="red">mahtiporkkana</font>
+Pieleen meni!
+</pre>
+
+<p>
+  Metodi <code>equals</code> tarkastaa oletuksena onko parametrina annetulla oliolla sama viite kuin oliolla johon verrataan, eli toisinsanoen oletusarvoisesti vertaillaan onko kyse kahdesta samasta oliosta. Jos viite on sama, palauttaa metodi arvon <code>true</code>, muuten <code>false</code>. Tämä selvenee seuraavalla esimerkillä. Luokassa <code>Kirja</code> ei ole omaa <code>equals</code>-metodin toteutusta, joten se käyttää Javan tarjoamaa oletustoteutusta.
+</p>
+
+<pre class="sh_java code-highlight"><code>Kirja olioKirja = new Kirja("Oliokirja", 2000, "...");
+Kirja toinenOlioKirja = olioKirja;
+
+if (olioKirja.equals(toinenOlioKirja)) {
+    System.out.println("Kirjat olivat samat");
+} else {
+    System.out.println("Kirjat eivät olleet samat");
+}
+
+// nyt luodaan saman sisältöinen olio joka kuitenkin on oma erillinen olionsa
+toinenOlioKirja = new Kirja("Oliokirja", 2000, "...");
+
+if (olioKirja.equals(toinenOlioKirja)) {
+    System.out.println("Kirjat olivat samat");
+} else {
+    System.out.println("Kirjat eivät olleet samat");
+}
+</code></pre>
+
+<pre class="sample-output">Kirjat olivat samat
+Kirjat eivät olleet samat
+</pre>
+
+<p>
+  Vaikka edellisessä esimerkissä olevien kirjaolioiden sisäinen rakenne (eli oliomuuttujien arvot) on täsmälleen sama, vain ensimmäinen vertailu tulostaa merkkijonon "<code>Kirjat olivat samat</code>". Tämä johtuu siitä että vain ensimmäisessä tapauksessa viitteet ovat samat, eli olioa vertaillaan itseensä. Toisessa vertailussa kyse on kahdesta eri oliosta, vaikka muuttujilla onkin samat arvot.
+</p>
+
+<p>
+  Merkkijonojen eli Stringien yhteydessä <code>equals</code> toimii odotetulla tavalla, eli se ilmoittaa kaksi <em>samansisältöistä</em> merkkijonoa "equalseiksi" vaikka kyseessä olisikin kaksi erillistä olioa. String-luokassa onkin korvattu oletusarvoinen <code>equals</code> omalla toteutuksella.
+</p>
+
+<p>
+  Haluamme että kirjojen vertailu onnistuu myös nimen, vuoden ja sisällön perusteella. Korvataan metodin <code>equals</code> oletustoteutus määrittelemällä sille toteutus luokkaan <code>Kirja</code>. Metodin <code>equals</code> tehtävänä on selvittää onko olio sama kuin metodin parametrina saatu olio. Metodi saa parametrina <code>Object</code>-tyyppisen viitteen, joka voi olla mikä tahansa olio. Määritellään ensin metodi, jonka mielestä kaikki oliot ovat samoja.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean equals(Object verrattava) {
+    return true;
+}
+</code></pre>
+
+<p>
+  Metodimme on varsin optimistinen, joten muutetaan sen toimintaa hieman. Käytämme edellisessä osassa nähtyä tapaa vertailun toteuttamiseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean equals(Object verrattava) {
+    // jos muuttujat sijaitsevat samassa paikassa, ovat ne samat
+    if (this == verrattava) {
+        return true;
+    }
+
+    // jos verrattava olio ei ole Kirja-tyyppinen, oliot eivät ole samat
+    if (!(verrattava instanceof Kirja)) {
+        return false;
+    }
+
+    // muunnetaan olio Kirja-olioksi
+    Kirja verrattavaKirja = (Kirja) verrattava;
+
+    // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
+    if (this.nimi.equals(verrattavaKirja.nimi) && 
+        this.julkaisuvuosi == verrattavaKirja.julkaisuvuosi &&
+        this.sisalto.equals(verrattavaKirja.sisalto)) {
+        return true;
+    }
+
+    // muulloin oliot eivät ole samat
+    return false;
+}
+</code></pre>
+
+<p>
+  Alla <code>Kirja</code>-luokka kokonaisuudessaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kirja {
+    private String nimi;
+    private String sisalto;
+    private int julkaisuvuosi;
+
+    public Kirja(String nimi, int julkaisuvuosi, String sisalto) {
+        this.nimi = nimi;
+        this.julkaisuvuosi = julkaisuvuosi;
+        this.sisalto = sisalto;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public int getJulkaisuvuosi() {
+        return this.julkaisuvuosi;
+    }
+
+    public void setJulkaisuvuosi(int julkaisuvuosi) {
+        this.julkaisuvuosi = julkaisuvuosi;
+    }
+
+    public String getSisalto() {
+        return this.sisalto;
+    }
+
+    public void setSisalto(String sisalto) {
+        this.sisalto = sisalto;
+    }
+
+    public String toString() {
+        return "Nimi: " + this.nimi + " (" + this.julkaisuvuosi +   ")\n"
+            + "Sisältö: " + this.sisalto;
+    }
+
+    @Override
+    public boolean equals(Object verrattava) {
+        // jos muuttujat sijaitsevat samassa paikassa, ovat ne  samat
+        if (this == verrattava) {
+            return true;
+        }
+      
+        // jos verrattava olio ei ole Kirja-tyyppinen, oliot eivät  ole samat
+        if (!(verrattava instanceof Kirja)) {
+            return false;
+        }
+      
+        // muunnetaan olio Kirja-olioksi
+        Kirja verrattavaKirja = (Kirja) verrattava;
+      
+        // jos olioiden oliomuuttujien arvot ovat samat, ovat   oliot samat
+        if (this.nimi.equals(verrattavaKirja.nimi) && 
+            this.julkaisuvuosi == verrattavaKirja.julkaisuvuosi &&
+            this.sisalto.equals(verrattavaKirja.sisalto)) {
+            return true;
+        }
+      
+        // muulloin oliot eivät ole samat
+        return false;
+    }
+}
+</code></pre>
+
+<p>
+  Nyt kirjojen vertailu palauttaa <code>true</code> mikäli kirjojen oliomuuttujien arvot ovat samat.
+</p>
+
+<pre class="sh_java code-highlight"><code>Kirja olioKirja = new Kirja("Oliokirja", 2000, "...");
+Kirja toinenOlioKirja = new Kirja("Oliokirja", 2000, "...");
+
+if (olioKirja.equals(toinenOlioKirja)) {
+    System.out.println("Kirjat olivat samat");
+} else {
+    System.out.println("Kirjat eivät olleet samat");
+}
+</code></pre>
+
+<pre class="sample-output">Kirjat olivat samat
+</pre>
+
+<div class="quiznator-plugin" data-quiz-id="5a9882fc7863c4000454a048"></div>
+
+
+
+<h2 class="material-heading">
+    Equals ja ArrayList
+
+</h2>
+
+<p>
+  Jatketaan aiemmin määrittelemämme <code>Kirja</code>-luokan käyttöä listaa käsittelevässä esimerkissä. Jos emme toteuta omissa olioissamme <code>equals</code>-metodia, ei listan tarjoama <code>contains</code>-metodi toimi oikein, sillä se käyttää omassa toteutuksessaan equals-metodia olioiden vertailemiseen. Kokeile alla olevaa koodia kahdella erilaisella <code>Kirja</code>-luokalla. Toisessa on <code>equals</code>-metodi, ja toisessa sitä ei ole.
+</p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Kirja&gt; kirjat = new ArrayList&lt;&gt;();
+Kirja olioKirja = new Kirja("Oliokirja", 2000, "...");
+kirjat.add(olioKirja);
+
+if (kirjat.contains(olioKirja)) {
+    System.out.println("Oliokirja löytyi.");
+}
+
+olioKirja = new Kirja("Oliokirja", 2000, "...");
+
+if (!kirjat.contains(olioKirja)) {
+    System.out.println("Oliokirjaa ei löytynyt.");
+}
+</code></pre>
+
+<p>
+  Tämä oletusmetodeihin kuten <code>equals</code>iin tukeutuminen on oikeastaan syy sille, miksi Java haluaa, että ArrayListiin ja HashMapiin lisättävät muuttujat ovat viittaustyyppisiä. Jokaisella viittaustyyppisellä muuttujalla on oletusmetodeja kuten equals, joten luokan ArrayList sisäistä toteutusta ei tarvitse muuttaa lainkaan erilaisia muuttujia lisättäessä. Alkeistyyppisillä muuttujilla tällaisia oletusmetodeja ei ole.
+</p>
+
+<div class="quiznator-plugin" data-quiz-id="5a9886df7863c4000454a04d"></div>
+
+
+
+<h2 class="material-heading">
+    Suurpiirteinen vertailu hajautusarvon avulla
+
+</h2>
+
+<p>
+  Metodin <code>equals</code> lisäksi olioiden vertailussa voidaan käyttää metodia <code>hashCode</code>, jota käytetään olioiden suurpiirteiseen vertailuun. Metodi luo oliosta "hajautusarvon" eli luvun, joka kertoo hieman olion sisällöstä. Mikäli kahdella oliolla on sama hajautusarvo, ne saattavat olla samanarvoiset. Jos taas kahdella oliolla on eri hajautusarvot, ne ovat varmasti eriarvoiset.
+</p>
+
+<p>
+  Hajautusarvoa tarvitaan muunmuassa HashMapissa. HashMapin sisäinen toiminta perustuu siihen, että avain-arvo -parit on tallennettu avaimen hajautusarvon perusteella listoja sisältävään taulukkoon. Jokainen taulukon indeksi viittaa listaan. Hajautusarvon perusteella tunnistetaan taulukon indeksi, jonka jälkeen taulukon indeksistä löytyvä lista käydään läpi. Avaimeen liittyvä arvo palautetaan jos ja vain jos listasta löytyy täsmälleen sama arvo (samansuuruisuuden vertailu tapahtuu equals-metodilla). Näin etsinnässä tarvitsee tarkastella vain murto-osaa hajautustauluun tallennetuista avaimista.
+</p>
+
+<p>
+  Olemme tähän mennessä käyttäneet HashMapin avaimina ainoastaan String- ja Integer-tyyppisiä olioita, joilla on ollut valmiina sopivasti toteutetut <code>hashCode</code>-metodit. Luodaan esimerkki jossa näin ei ole: jatketaan kirjojen parissa ja pidetään kirjaa lainassa olevista kirjoista. Päätetään ratkaista kirjanpito HashMapin avulla. Avaimena toimii kirja ja kirjaan liitetty arvo on merkkijono, joka keroo lainaajan nimen:
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;Kirja, String&gt; lainaajat = new HashMap&lt;&gt;();
+
+Kirja oliokirja = new Kirja("Oliokirja", 2000, "...");
+lainaajat.put(oliokirja, "Pekka");
+lainaajat.put(new Kirja("Test Driven Development", 1999, "..."), "Arto");
+
+System.out.println(lainaajat.get(oliokirja));
+System.out.println(lainaajat.get(new Kirja("Oliokirja", 2000, "..."));
+System.out.println(lainaajat.get(new Kirja("Test Driven Development", 1999, "..."));
+</code></pre>
+
+<pre class="sample-output">Pekka
+null
+null
+</pre>
+
+<p>
+  Löydämme lainaajan hakiessamme samalla oliolla, joka annettiin hajautustaulun <code>put</code>-metodille avaimeksi. Täsmälleen samanlaisella kirjalla mutta eri oliolla haettaessa lainaajaa ei kuitenkaan löydy ja saamme <em>null</em>-viitteen. Syynä on <code>Object</code>-luokassa oleva <code>hashCode</code>-metodin oletustoteutus. Oletustoteutus luo <code>hashCode</code>-arvon olion viitteen perusteella, eli samansisältöiset mutta eri oliot saavat eri tuloksen hashCode-metodista. Tämän takia olioa ei osata etsiä oikeasta paikasta.
+</p>
+
+<p>
+  Jotta HashMap toimisi haluamallamme tavalla, eli palauttaisi lainaajan kun avaimeksi annetaan oikean <em>sisältöinen</em> olio (ei välttämässä siis sama olio kuin alkuperäinen avain), on avaimena toimivan luokan ylikirjoitettava metodin <code>equals</code> lisäksi metodi <code>hashCode</code>. Metodi on ylikirjoitettava siten, että se antaa saman numeerisen tuloksen kaikille samansisältöisille olioille. Myös jotkut erisisältöiset oliot saavat saada saman tuloksen hashCode-metodista. On kuitenkin HashMapin tehokkuuden kannalta oleellista, että erisisältöiset oliot saavat mahdollisimman harvoin saman hajautusarvon.
+</p>
+
+<p>
+  Olemme aiemmin käyttäneet <code>String</code>-olioita menestyksekkäästi HashMapin avaimena, joten voimme päätellä että <code>String</code>-luokassa on oma järkevästi toimiva <code>hashCode</code>-toteutus. <em>Delegoidaan</em>, eli siirretään laskemisvastuu <code>String</code>-oliolle.
+</p>
+
+<pre class="sh_java code-highlight"><code>public int hashCode() {
+    return this.nimi.hashCode();
+}
+</code></pre>
+
+<p>
+  Yllä oleva ratkaisu on melko hyvä, mutta jos <code>nimi</code> on <em>null</em>, näemme <code>NullPointerException</code>-virheen. Korjataan tämä vielä määrittelemällä ehto: jos <code>nimi</code>-muuttujan arvo on <em>null</em>, palautetaan hajautusarvoksi julkaisuvuosi.
+</p>
+
+<pre class="sh_java code-highlight"><code>public int hashCode() {
+    if (this.nimi == null) {
+        return this.julkaisuvuosi;
+    }
+
+    return this.nimi.hashCode();
+}
+</code></pre>
+
+<p>
+  Nyt ylläolevassa ratkaisussa kaikki saman nimiset kirjat niputetaan samaan joukkoon. Parannetaan toteutusta vielä siten, että kirjan julkaisuvuosi huomioidaan myös nimeen perustuvassa hajautusarvon laskennassa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public int hashCode() {
+    if (this.nimi == null) {
+        return this.julkaisuvuosi;
+    }
+
+    return this.julkaisuvuosi + this.nimi.hashCode();
+}
+</code></pre>
+
+<p>
+  Nyt kirjan käyttö hajautustaulun avaimena on mahdollista. Samalla aiemmin kohtaamamme ongelma ratkeaa ja kirjojen lainaajat löytyvät:
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;Kirja, String&gt; lainaajat = new HashMap&lt;&gt;();
+
+Kirja oliokirja = new Kirja("Oliokirja", 2000, "...");
+lainaajat.put(oliokirja, "Pekka");
+lainaajat.put(new Kirja("Test Driven Development",1999, "..."), "Arto");
+
+System.out.println(lainaajat.get(oliokirja));
+System.out.println(lainaajat.get(new Kirja("Oliokirja", 2000, "..."));
+System.out.println(lainaajat.get(new Kirja("Test Driven Development", 1999));
+</code></pre>
+
+<p>Tulostuu:</p>
+
+<pre class="sample-output">Pekka
+Pekka
+Arto
+</pre>
+
+
+<p>
+  <strong>Kerrataan vielä:</strong> jotta luokkaa voidaan käyttää HashMap:in avaimena, tulee sille määritellä
+</p>
+
+<ul>
+  <li>
+    metodi <code>equals</code> siten, että kaikki samansuuruisena (tai saman sisältöisinä) ajatellut oliot tuottavat vertailussa tuloksen true ja muut false
+  </li>
+  <li>
+    metodi <code>hashCode</code> siten, että mahdollisimman harvalla erisuuruisella oliolla on sama hajautusarvo
+  </li>
+</ul>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Metodien equals ja hashCode automaattinen luominen
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    NetBeans tarjoaa metodien <code>equals</code> ja <code>hashCode</code> automaattisen luonnin. Voit valita valikosta Source -&gt; Insert Code, ja valita aukeavasta listasta <em>equals() and hashCode()</em>. Tämän jälkeen NetBeans kysyy oliomuuttujat joita metodeissa käytetään. NetBeansin automaattisesti luomat metodit ovat tyypillisesti erittäin hyviä omiin tarpeisiimme.
+  </p>
+  
+  <p>
+    Käytä NetBeansin automaattista equals- ja hashCode-metodien luomista kunnes tiedät, että omat metodisi ovat varmasti paremmat kuin NetBeansin automaattisesti luomat metodit.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Sama päiväys</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjan mukana tulee luokka <code>Paivays</code>, joka 
+    määrittelee päiväistä, kuukaudesta ja vuodesta koostuvan olion. Tässä tehtävässä täydennät Paivays-luokkaa siten, että sen equals-metodi osaa kertoa ovatko päivämäärät täsmälleen samat.
+  </p>
+
+  <p>
+    Lisää <code>Paivays</code>-luokkaan metodi <code>public boolean equals(Object object)</code>, joka kertoo onko metodille parametrina annetun olion päiväys sama kuin käytetyn olion päiväys.
+  </p>
+
+  <p>
+    Metodin tulee toimia seuraavasti:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Paivays p = new Paivays(1, 2, 2000);
+System.out.println(p.equals("heh"));
+System.out.println(p.equals(new Paivays(5, 2, 2012)));
+System.out.println(p.equals(new Paivays(1, 2, 2000)));
+</code></pre>
+
+<pre class="sample-output">false
+false
+true
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52484/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Hajautusarvo päiväykselle</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Laajennetaan edellisessä tehtävässä nähtyä <code>Paivays</code>-luokkaa siten, että sillä on myös oma <code>hashCode</code>-metodi.
+  </p>
+
+  <p>
+    Lisää <code>Paivays</code>-luokkaan metodi <code>public int hashCode()</code>, joka laskee päiväys-oliolle hajautusarvon. Toteuta hajautusarvon laskeminen siten, että vuosien 1900 ja 2100 välillä löytyy mahdollisimman vähän samankaltaisia hajautusarvoja.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52485/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Autorekisterikeskus (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <h2>Rekisterinumeron equals ja hashCode</h2>
+
+  <p>
+    Eurooppalaiset rekisteritunnukset koostuvat kahdesta osasta: yksi tai kaksikirjaimisesta maatunnuksesta ja maakohtaisesti määrittyvästä rekisterinumerosta, joka taas koostuu numeroista ja merkeistä. Rekisterinumeroita esitetään seuraavanlaisen luokan avulla:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Rekisterinumero {
+    // tässä määre final tarkoittaa sitä, että arvoa ei voi muuttaa asetuksen jälkeen
+    private final String rekNro;
+    private final String maa;
+
+    public Rekisterinumero(String rekNro, String maa) {
+       this.rekNro = rekNro;
+       this.maa = maa;
+    }
+
+    public String toString(){
+        return maa+ " "+rekNro;
+    }
+}
+</code></pre>
+
+  <p>
+    Rekisterinumeroja halutaan tallettaa esim. ArrayList:eille ja käyttää HashMap:in avaimina, eli kuten yllä mainittu, tulee niille toteuttaa metodit <code>equals</code> ja <code>hashCode</code>, muuten ne eivät toimi halutulla tavalla. Toteuta luokalle rekisterinumero metodit <code>equals</code> ja <code>hashCode</code>.
+  </p>
+
+  <p>Esimerkkiohjelma:</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Rekisterinumero rek1 = new Rekisterinumero("FI", "ABC-123");
+    Rekisterinumero rek2 = new Rekisterinumero("FI", "UXE-465");
+    Rekisterinumero rek3 = new Rekisterinumero("D", "B WQ-431");
+
+    ArrayList&lt;Rekisterinumero&gt; suomalaiset = new ArrayList&lt;&gt;();
+    suomalaiset.add(rek1);
+    suomalaiset.add(rek2);
+
+    Rekisterinumero uusi = new Rekisterinumero("FI", "ABC-123");
+    if (!suomalaiset.contains(uusi)) {
+        suomalaiset.add(uusi);
+    }
+    System.out.println("suomalaiset: " + suomalaiset);
+    // jos equals-metodia ei ole ylikirjoitettu, menee sama rekisterinumero toistamiseen listalle
+
+    HashMap&lt;Rekisterinumero, String&gt; omistajat = new HashMap&lt;&gt;();
+    omistajat.put(rek1, "Arto");
+    omistajat.put(rek3, "Jürgen");
+
+    System.out.println("omistajat:");
+    System.out.println(omistajat.get(new Rekisterinumero("FI", "ABC-123")));
+    System.out.println(omistajat.get(new Rekisterinumero("D", "B WQ-431")));
+    // jos hashCode ei ole ylikirjoitettu, eivät omistajat löydy
+}
+</code></pre>
+
+  <p>
+    Jos equals ja hashCode on toteutettu oikein, tulostus on seuraavanlainen.
+  </p>
+
+<pre class="sample-output">suomalaiset: [FI ABC-123, FI UXE-465]
+omistajat:
+Arto
+Jürgen
+</pre>
+
+
+  <h2>Omistaja rekisterinumeron perusteella</h2>
+
+  <p>
+    Toteuta luokka <code>Ajoneuvorekisteri</code> jolla on seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public boolean lisaa(Rekisterinumero rekkari, String omistaja)</code> lisää parametrina olevaa rekisterinumeroa vastaavalle autolle parametrina olevan omistajan, metodi palauttaa true jos omistajaa ei ollut ennestään, jos rekisterinumeroa vastaavalla autolla oli jo omistaja, metodi palauttaa false ja ei tee mitään</li>
+
+    <li><code>public String hae(Rekisterinumero rekkari)</code> palauttaa parametrina olevaa rekisterinumeroa vastaavan auton omistajan. Jos auto ei ole rekisterissä, palautetaan <code>null</code></li>
+
+    <li><code>public boolean poista(Rekisterinumero rekkari)</code> poistaa parametrina olevaa rekisterinumeroa vastaavat tiedot, metodi palauttaa true jos tiedot poistetiin, ja false jos parametria vastaavia tietoja ei ollut rekisterissä</li>
+  </ul>
+
+  <p>
+    <strong>Huom:</strong> Ajoneuvorekisterin täytyy tallettaa omistajatiedot <code>HashMap&lt;Rekisterinumero, String&gt; omistajat</code> -tyyppiseen oliomuuttujaan!
+  </p>
+
+
+  <h2>Ajoneuvorekisteri laajenee</h2>
+
+  <p>
+    Lisää Ajoneuvorekisteriin vielä seuraavat metodit:
+  </p>
+
+  <ul>
+
+    <li>
+      <code>public void tulostaRekisterinumerot()</code> tulostaa rekisterissä olevat rekisterinumerot.
+    </li>
+    
+    <li>
+      <code>public void tulostaOmistajat()</code> tulostaa rekisterissä olevien autojen omistajat. Kukin nimi tulee tulostaa vain kertaalleen vaikka omistajalla olisikin useampi auto.
+    </li>
+  </ul>
+
+  <p>
+    Vinkki! Voit luoda metodiin <code>tulostaOmistajat</code> listan, jota käytät jo tulostettujen omistajien muistamiseen. Mikäli omistaja ei ole listalla, hänet voi tulostaa ja lisätä listalle-- mikäli omistajaa taas on listalla, häntä ei tule tulostaa.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52486/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Tiedon ryhmittely hajautustaulun avulla
+
+</h1>
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Osaat käyttää listaa hajautustaulun arvona.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  Hajautustaulu sisältää korkeintaan yhden arvon yhtä avainta kohti. Seuraavassa esimerkissä tallennamme henkilöiden puhelinnumeroita hajautustauluun.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, String&gt; puhelinnumerot = new HashMap&lt;&gt;();
+puhelinnumerot.put("Pekka", "040-12348765");
+
+System.out.println("Pekan numero: " + puhelinnumerot.get("Pekka"));
+
+puhelinnumerot.put("Pekka", "09-111333");
+
+System.out.println("Pekan numero: " + puhelinnumerot.get("Pekka"));
+</code></pre>
+
+<pre class="sample-output">Pekan numero: 040-12348765
+Pekan numero: 09-111333
+</pre>
+
+
+<p>
+  Entä jos haluaisimme liittää yhteen avaimeen useita arvoja, eli esimerkiksi useampia puhelinnumeroita yhdelle henkilölle?
+</p>
+
+<p>
+  Koska hajautustaulun avaimet ja arvot voivat olla mitä tahansa muuttujia, myös listojen käyttäminen hajautustaulun arvona on mahdollista. Useamman arvon lisääminen yhdelle avaimelle onnistuu liittämällä avaimeen lista. Muutetaan puhelinnumeroiden tallennustapaa seuraavasti:
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, ArrayList&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+</code></pre>
+
+<p>
+  Nyt hajautustaulussa on jokaiseen avaimeen liitettynä lista. Vaikka new-komento luo hajautustaulun, ei hajautustaulu sisällä alussa yhtäkään listaa. Ne on luotava tarvittaessa erikseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>HashMap&lt;String, ArrayList&lt;String&gt;&gt; puhelinnumerot = new HashMap&lt;&gt;();
+
+// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new ArrayList&lt;&gt;());
+
+// ja lisätään Pekkaa vastaavalle listalle puhelinnumero
+puhelinnumerot.get("Pekka").add("040-12348765");
+// ja lisätään toinenkin puhelinnumero
+puhelinnumerot.get("Pekka").add("09-111333");
+
+System.out.println("Pekan numerot: " + puhelinnumerot.get("Pekka"));
+</code></pre>
+
+<pre class="sample-output">Pekan numero: [040-12348765, 09-111333]
+</pre>
+
+<p>
+  Määrittelimme muuttujan puhelinnumero tyypiksi <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>. Tämä tarkoittaa hajautustaulua, joka käyttää avaimena merkkijonoa ja arvona merkkijonoja sisältävää listaa. Hajautustauluun lisättävät arvot ovat siis konkreettisia listoja.
+</p>
+
+<pre class="sh_java code-highlight"><code>// liitetään Pekka-nimeen ensin tyhjä ArrayList
+puhelinnumerot.put("Pekka", new  ArrayList&lt;&gt;());
+
+// ...
+</code></pre>
+
+<p>
+  Vastaavalla tyylillä voi toteuttaa esimerkiksi tehtävien pistekirjanpidon. Alla olevassa esimerkissä on hahmoteltu luokkaa <code>Tehtavakirjanpito</code>, mikä sisältää käyttäjäkohtaisen pistekirjanpidon. Käyttäjä esitetään merkkijonona ja pisteet kokonaislukuina.
+
+<pre class="sh_java code-highlight"><code>public class Tehtavakirjanpito {
+    private HashMap&lt;String, ArrayList&lt;Integer&gt;&gt; tehdytTehtavat;
+
+    public Tehtavakirjanpito() {
+        this.tehdytTehtavat = new HashMap&lt;&gt;();
+    }
+
+    public void lisaa(String kayttaja, int tehtava) {
+        // uudelle käyttäjälle on lisättävä HashMapiin tyhjä lista jos sitä
+        // ei ole jo lisätty
+        this.tehdytTehtavat.putIfAbsent(kayttaja, new ArrayList&lt;&gt;());
+
+        // haetaan ensin käyttäjän tehtävät sisältävä lista ja tehdään siihen lisäys
+        ArrayList&lt;Integer&gt; tehdyt = this.tehdytTehtavat.get(kayttaja);
+        tehdyt.add(tehtava);
+
+        // edellinen olisi onnitunut myös ilman apumuuttujaa seuraavasti
+        // this.tehdytTehtavat.get(kayttaja).add(tehtava);
+    }
+
+    public void tulosta() {
+        for (String nimi: tehdytTehtavat.keySet()) {
+            System.out.println(nimi + ": " + tehdytTehtavat.get(nimi));
+        }
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Tehtavakirjanpito kirjanpito = new Tehtavakirjanpito();
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 4);
+kirjanpito.lisaa("Ada", 3);
+kirjanpito.lisaa("Ada", 3);
+
+kirjanpito.lisaa("Pekka", 4);
+kirjanpito.lisaa("Pekka", 4);
+
+kirjanpito.lisaa("Matti", 1);
+kirjanpito.lisaa("Matti", 2);
+
+kirjanpito.tulosta();
+</code></pre>
+
+<pre class="sample-output">Matti: [1, 2]
+Pekka: [4, 4]
+Ada: [3, 4, 3, 3]
+</pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Usean käännöksen sanakirja</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtävänäsi on toteuttaa luokka <code>UseanKaannoksenSanakirja</code>, johon voidaan lisätä yksi tai useampi käännös jokaiselle sanalle. Luokan tulee toteuttaa seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public void lisaa(String sana, String kaannos)</code> lisää käännöksen sanalle säilyttäen vanhat käännökset</li>
+    <li><code>public ArrayList&lt;String&gt; kaanna(String sana)</code> palauttaa listan, joka sisältää sanojen käännökset. Jos sanalle ei ole yhtäkään käännöstä, metodin tulee palauttaa tyhjä lista.</li>
+    <li><code>public void poista(String sana)</code> poistaa sanan ja sen kaikki käännökset sanakirjasta.</li>
+  </ul>
+
+  <p>
+    Käännökset kannattanee lisätä <code>HashMap&lt;String, ArrayList&lt;String&gt;&gt;</code>-tyyppiseen oliomuuttujaan.
+  </p>
+
+  <p>
+    Esimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>UseanKaannoksenSanakirja sanakirja = new UseanKaannoksenSanakirja();
+sanakirja.lisaa("kuusi", "six");
+sanakirja.lisaa("kuusi", "spruce");
+
+sanakirja.lisaa("pii", "silicon");
+sanakirja.lisaa("pii", "pi");
+
+System.out.println(sanakirja.kaanna("kuusi"));
+sanakirja.poista("pii");
+System.out.println(sanakirja.kaanna("pii"));
+</code></pre>
+
+<pre class="sample-output">[six, spruce]
+[]
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52487/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Kellari (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <h2>Lisääminen ja sisällön tarkastelu</h2>
+
+  <p>
+    Tehtävänäsi on toteuttaa luokka <code>Kellari</code>, jonka avulla pidetään kirjaa kellarikomeroista sekä niiden sisällöistä. Luokan tulee toteuttaa seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>
+      <code>public void lisaa(String komero, String tavara)</code> lisää parametrina annettuun komeroon parametrina annetun tavaran.
+    </li>
+    <li>
+      <code>public ArrayList&lt;String&gt; sisalto(String komero)</code> palauttaa listan, joka sisältää parametrina annetun komeron sisältämät tavarat. Mikäli komeroa ei ole tai komerossa ei ole yhtäkään tavaraa, metodin tulee palauttaa tyhjä lista.
+    </li>
+  </ul>
+
+  <p>
+    Esimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Kellari kellari = new Kellari();
+kellari.lisaa("a14", "luistimet");
+kellari.lisaa("a14", "maila");
+kellari.lisaa("a14", "luistimet");
+
+kellari.lisaa("f156", "rullaluistimet");
+kellari.lisaa("f156", "rullaluistimet");
+    
+kellari.lisaa("g63", "six");
+kellari.lisaa("g63", "pi");
+
+System.out.println(kellari.sisalto("a14"));
+System.out.println(kellari.sisalto("f156"));
+</code></pre>
+
+<pre class="sample-output">[luistimet, maila, luistimet]
+[rullaluistimet, rullaluistimet]
+</pre>
+
+
+  <h2>Komeroiden listaus ja komerosta poistaminen</h2>
+
+  <p>
+    Kun luokassa <code>Kellari</code> on toiminnallisuus tavaran komeroon lisäämiseen sekä komeron sisällöin listaamiseen, lisää sinne toiminnallisuus tavaran poistamiseen komerosta sekä komeroiden listaamiseen.
+  </p>
+  
+  <ul>
+    <li>
+      <code>public void poista(String komero, String tavara)</code> poistaa parametrina annetusta komerosta parametrina annetun tavaran. Huom! Poistaa vain yhden kappaleen -- mikäli samannimisiä tavaroita on useita, loput jäävät vielä jäljelle. Mikäli komero jäisi poiston jälkeen tyhjäksi, metodi poistaa myös komeron.
+    </li>
+    <li>
+      <code>public ArrayList&lt;String&gt; komerot()</code> palauttaa listana kellarikomeroiden nimet. Huom! Listassa vain ne komerot, joissa on tavaraa.
+    </li>
+  </ul>
+
+  <p>
+    Esimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Kellari kellari = new Kellari();
+kellari.lisaa("a14", "luistimet");
+kellari.lisaa("a14", "maila");
+kellari.lisaa("a14", "luistimet");
+
+kellari.lisaa("f156", "rullaluistimet");
+kellari.lisaa("f156", "rullaluistimet");
+
+kellari.lisaa("g63", "six");
+kellari.lisaa("g63", "pi");
+
+kellari.poista("f156", "rullaluistimet");
+  
+System.out.println(kellari.sisalto("f156"));
+
+kellari.poista("f156", "rullaluistimet");
+
+System.out.println(kellari.komerot());
+</code></pre>
+
+<pre class="sample-output">[rullaluistimet]
+[a14, g63]
+</pre>
+
+  <p>
+    Tulostuksessa näkyvä komeroiden järjestys voi poiketa esimerkistä. 
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52488/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+<h1 class="material-heading">
+    Käyttöliittymän ja sovelluslogiikan eriyttäminen
+
+</h1>
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tutustut käyttöliittymän ja sovelluslogiikan eriyttämiseen.
+    </li>
+    <li>
+      Tiedät syitä käyttöliittymän ja sovelluslogiikan eriyttämiselle.
+    </li>
+    <li>
+      Osaat luoda tekstikäyttöliittymiä, jotka saavat parametrinaan sovelluskohtaisen sovelluslogiikan sekä syötteen lukemiseen käytettävän Scanner-olion.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+
+<p>
+  Suurin syy käyttöliittymän ja sovelluslogiikan eriyttämiseen on ohjelman ylläpidettävyyden ja ymmärrettävyyden lisääminen. Sovelluslogiikan eri osa-alueet ovat ideaalitilanteessa käyttöliittymäriippumattomia, jolloin niitä voidaan parannella ilman käyttöliittymään koskemista. Vastaavasti osia voidaan siirtää sovelluksesta toiseen, jolloin käyttöliittymä on esimerkiksi vaihdettavissa tekstikäyttöliittymästä graafiseen käyttöliittymään.
+</p>
+
+<p>
+  Edellä kuvattu tilanne vaatii kuitenkin sen, että ohjelman komponenttien tarjoamat rajapinnat eli metodit ja niiden parametrit on selkeästi määritelty.
+</p>
+
+<p>
+  Otetaan seuraavaksi ensiaskeleet käyttöliittymän ja sovelluslogiikan eriyttämiseen. 
+</p>
+
+<p>
+  Tehdään ohjelma, joka kysyy käyttäjältä koepisteitä, muuntaa ne arvosanoiksi, ja lopulta tulostaa kurssin arvosanajakauman tähtinä. Ohjelma lopettaa lukemisen kun käyttäjä syöttää tyhjän merkkijonon. Ohjelman käyttö näyttää seuraavalta:
+</p>
+
+<pre class="sample-output">Syötä koepisteet: <font color="red">91</font>
+Syötä koepisteet: <font color="red">98</font>
+Syötä koepisteet: <font color="red">103</font>
+Epäkelpo luku.
+Syötä koepisteet: <font color="red">90</font>
+Syötä koepisteet: <font color="red">89</font>
+Syötä koepisteet: <font color="red">89</font>
+Syötä koepisteet: <font color="red">88</font>
+Syötä koepisteet: <font color="red">72</font>
+Syötä koepisteet: <font color="red">54</font>
+Syötä koepisteet: <font color="red">55</font>
+Syötä koepisteet: <font color="red">51</font>
+Syötä koepisteet: <font color="red">49</font>
+Syötä koepisteet: <font color="red">48</font>
+Syötä koepisteet: 
+
+5: ***
+4: ***
+3: *
+2: 
+1: ***
+0: **
+</pre>
+
+<p>
+  Kuten kaikki ohjelmat, myös tämän ohjelman voisi kirjoittaa yhtenä kokonaisuutena mainiin. Eräs mahdollinen toteutus on seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.HashMap;
+import java.util.Scanner;
+  
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+  
+        HashMap&lt;Integer, Integer&gt; arvosanat = new HashMap&lt;&gt;();
+  
+        while (true) {
+            System.out.print("Syötä koepisteet: ");
+            String luettu = lukija.nextLine();
+            if (luettu.equals("")) {
+                break;
+            }
+  
+            int pisteet = Integer.valueOf(luettu);
+  
+            if (pisteet &lt; 0 || pisteet &gt; 100) {
+                System.out.println("Epäkelpo luku.");
+                continue;
+            }
+  
+            int arvosana = 0;
+            if (pisteet &lt; 50) {
+                arvosana = 0;
+            } else if (pisteet &lt; 60) {
+                arvosana = 1;
+            } else if (pisteet &lt; 70) {
+                arvosana = 2;
+            } else if (pisteet &lt; 80) {
+                arvosana = 3;
+            } else if (pisteet &lt; 90) {
+                arvosana = 4;
+            } else {
+                arvosana = 5;
+            }
+  
+            int lkm = arvosanat.getOrDefault(arvosana, 0);
+            arvosanat.put(arvosana, lkm + 1);
+        }
+  
+        System.out.println("");
+        int arvosana = 5;
+        while (arvosana &gt;= 0) {
+            int tahtia = arvosanat.getOrDefault(arvosana, 0);
+            System.out.print(arvosana + ": ");
+            while (tahtia &gt; 0) {
+                System.out.print("*");
+                tahtia--;
+            }
+            System.out.println("");
+  
+            arvosana = arvosana - 1;
+        }
+    }
+}
+</code></pre>
+
+
+<p>
+  Pilkotaan ohjelma pienempiin osiin. Ohjelman pilkkominen tapahtuu tunnistamalla ohjelmasta vastuualueita. Arvosanojen kirjanpito, mukaanlukien pisteiden muunnos arvosanoiksi, voisi olla erillisen luokan vastuulla. Tämän lisäksi käyttöliittymälle voidaan luoda oma luokkansa. 
+</p>
+
+
+<h2 class="material-heading">
+    Sovelluslogiikka
+
+</h2>
+
+<p>
+  Sovelluslogiikka sisältää ohjelman toiminnan kannalta oleelliset osat kuten tiedon säilöntätoiminnallisuuden. Edellisestä esimerkistä voidaan tunnistaa arvosanojen säilömiseen tarvittava toiminnallisuus. Eriytetään esimerkin ohjelmasta luokka <code>Arvosanarekisteri</code>, jonka vastuulle tulee kirjanpito arvosanojen lukumääristä. Arvosanarekisteriin voidaan lisätä arvosana pisteiden perusteella, jonka lisäksi arvosanarekisteristä voi kysyä kuinka moni on saanut tietyn arvosanan.
+</p>
+
+<p>
+  Luokka voi näyttää esimerkiksi seuraavalta.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.HashMap;
+
+public class Arvosanarekisteri {
+
+    private HashMap&lt;Integer, Integer&gt; arvosanat;
+
+    public Arvosanarekisteri() {
+        this.arvosanat = new HashMap&lt;&gt;();
+    }
+
+    public void lisaaArvosanaPisteidenPerusteella(int pisteet) {
+        int arvosana = pisteetArvosanaksi(pisteet);
+
+        int lkm = this.arvosanat.getOrDefault(arvosana, 0);
+        this.arvosanat.put(arvosana, lkm + 1);
+    }
+
+    public int montakoSaanutArvosanan(int arvosana) {
+        return this.arvosanat.getOrDefault(arvosana, 0);
+    }
+
+    public static int pisteetArvosanaksi(int pisteet) {
+
+        int arvosana = 0;
+        if (pisteet &lt; 50) {
+            arvosana = 0;
+        } else if (pisteet &lt; 60) {
+            arvosana = 1;
+        } else if (pisteet &lt; 70) {
+            arvosana = 2;
+        } else if (pisteet &lt; 80) {
+            arvosana = 3;
+        } else if (pisteet &lt; 90) {
+            arvosana = 4;
+        } else {
+            arvosana = 5;
+        }
+
+        return arvosana;
+    }
+}
+</code></pre>
+
+<p>
+  Kun arvosanarekisteri on eriytetty omaksi luokakseen, voidaan siihen liittyvä toiminnallisuus poistaa pääohjelmastamme. Pääohjelman muoto on nyt seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.HashMap;
+import java.util.Scanner;
+  
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+  
+        Arvosanarekisteri rekisteri = new Arvosanarekisteri();
+  
+        while (true) {
+            System.out.print("Syötä koepisteet: ");
+            String luettu = lukija.nextLine();
+            if (luettu.equals("")) {
+                break;
+            }
+  
+            int pisteet = Integer.valueOf(luettu);
+  
+            if (pisteet &lt; 0 || pisteet &gt; 100) {
+                System.out.println("Epäkelpo luku.");
+                continue;
+            }
+  
+            rekisteri.lisaaArvosanaPisteidenPerusteella(pisteet);
+        }
+  
+        System.out.println("");
+        int arvosana = 5;
+        while (arvosana &gt;= 0) {
+            int tahtia = rekisteri.montakoSaanutArvosanan(arvosana);
+            System.out.print(arvosana + ": ");
+            while (tahtia &gt; 0) {
+                System.out.print("*");
+                tahtia--;
+            }
+            System.out.println("");
+  
+            arvosana = arvosana - 1;
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Sovelluslogiikan eriyttämisestä tulee merkittävä hyöty ohjelman ylläpidettävyyden kannalta. Koska sovelluslogiikka -- tässä Arvosanarekisteri -- on erillinen luokka, voidaan sitä testata ohjelmasta erikseen. Arvosanarekisterin testaaminen ei siis vaadi käyttöliittymän käynnistämistä, vaan rekisterin toiminnallisuutta voi kokeilla täysin erillään käyttöliittymästä. Luokan <code>Arvosanarekisteri</code> voisi halutessaan kopioida myös muihin ohjelmiinsa.
+</p>
+
+<h2 class="material-heading">
+    Käyttöliittymä
+
+</h2>
+
+<p>
+  Käyttöliittymä on tyypillisesti sovelluskohtainen. Luodaan luokka <code>Kayttoliittyma</code> ja eriytetään se pääohjelmasta. Käyttöliittymälle annetaan parametrina arvosanarekisteri, jota käytetään arvosanojen säilömiseen, ja Scanner-olion, jota käytetään syötteen lukemiseen.
+</p>
+
+<p>
+  Kun käytössämme on käyttöliittymä, muodostuu ohjelman käynnistävästä pääohjelmasta hyvin selkeä.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+  
+public class Ohjelma {
+  
+    public static void main(String[] args) {
+        Scanner lukija = new Scanner(System.in);
+  
+        Arvosanarekisteri rekisteri = new Arvosanarekisteri();
+  
+        Kayttoliittyma kali = new Kayttoliittyma(rekisteri, lukija);
+        kali.kaynnista();
+    }
+}
+</code></pre>
+
+<p>
+  Tarkastellaan käyttöliittymän toteutusta. Käyttöliittymässä on oleellisesti kaksi osaa: pisteiden lukeminen sekä arvosanajakauman tulostaminen.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.Scanner;
+
+public class Kayttoliittyma {
+
+    private Arvosanarekisteri rekisteri;
+    private Scanner lukija;
+
+    public Kayttoliittyma(Arvosanarekisteri rekisteri, Scanner lukija) {
+        this.rekisteri = rekisteri;
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+        lueKoepisteet();
+        System.out.println("");
+        tulostaArvosanajakauma();
+    }
+
+    public void lueKoepisteet() {
+    }
+
+    public void tulostaArvosanajakauma() {
+    }
+}
+</code></pre>
+
+<p>
+  Voimme kopioida koepisteiden lukemisen sekä arvosanajakauman tulostamisen lähes suoraan aiemmasta pääohjelmastamme. Alla olevassa ohjelmassa osat on kopioitu aiemmasta pääohjelmasta, jonka lisäksi tähtien tulostukseen on luotu erillinen metodi -- tämä selkiyttää arvosanojen tulostamiseen käytettävää metodia.
+</p>
+
+<pre class="sh_java code-highlight"><code>  import java.util.Scanner;
+  
+  public class Kayttoliittyma {
+  
+      private Arvosanarekisteri rekisteri;
+      private Scanner lukija;
+  
+      public Kayttoliittyma(Arvosanarekisteri rekisteri, Scanner lukija) {
+          this.rekisteri = rekisteri;
+          this.lukija = lukija;
+      }
+  
+      public void kaynnista() {
+          lueKoepisteet();
+          System.out.println("");
+          tulostaArvosanajakauma();
+      }
+  
+      public void lueKoepisteet() {
+          while (true) {
+              System.out.print("Syötä koepisteet: ");
+              String luettu = lukija.nextLine();
+              if (luettu.equals("")) {
+                  break;
+              }
+
+              int pisteet = Integer.valueOf(luettu);
+
+              if (pisteet &lt; 0 || pisteet &gt; 100) {
+                  System.out.println("Epäkelpo luku.");
+                  continue;
+              }
+
+              this.rekisteri.lisaaArvosanaPisteidenPerusteella  (pisteet);
+          }
+    }
+  
+    public void tulostaArvosanajakauma() {
+        int arvosana = 5;
+        while (arvosana &gt;= 0) {
+            int tahtia = rekisteri.montakoSaanutArvosanan(arvosana);
+            System.out.print(arvosana + ": ");
+            tulostaTahtia(tahtia);
+            System.out.println("");
+
+            arvosana = arvosana - 1;
+        }
+    }
+
+    public static void tulostaTahtia(int tahtia) {
+        while (tahtia &gt; 0) {
+            System.out.print("*");
+            tahtia--;
+        }
+    }
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Keskiarvot (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa on edellisessä esimerkissä rakennettu arvosanojen tallentamiseen tarkoitettu ohjelma. Tässä tehtävässä täydennät luokkaa <code>Arvosanarekisteri</code> siten, että se tarjoaa toiminnallisuuden koepisteiden ja arvosanojen keskiarvon laskemiseen.
+  </p>
+
+  <h2>Koepisteiden keskiarvo</h2>
+  
+  <p>
+    Lisää luokalle <code>Arvosanarekisteri</code> uusi oliomuuttuja lista, johon lisäät koepisteitä aina kun luokkaa käyttävä ohjelma kutsuu metodia <code>lisaaArvosanaPisteidenPerusteella</code>. Lisää tämän jälkeen luokalle metodi <code>public double koepisteidenKeskiarvo()</code>, joka laskee ja palauttaa koepisteiden keskiarvon.
+  </p> 
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Arvosanarekisteri rekisteri = new Arvosanarekisteri();
+rekisteri.lisaaArvosanaPisteidenPerusteella(93);
+rekisteri.lisaaArvosanaPisteidenPerusteella(91);
+rekisteri.lisaaArvosanaPisteidenPerusteella(92);
+
+System.out.println(rekisteri.koepisteidenKeskiarvo());
+</code></pre>
+
+
+<pre class="sample-output">92.0
+</pre>
+
+  <h2>Arvosanojen keskiarvo</h2>
+  
+  <p>
+    Lisää tämän jälkeen luokalle <code>Arvosanarekisteri</code> metodi <code>public double arvosanojenKeskiarvo()</code>, joka palauttaa arvosanojen keskiarvon. Laske arvosanojen keskiarvo <code>arvosanat</code>-hajautustaulua hyödyntäen. Hajautustaulun avaimena on aina arvosana, ja arvona arvosanan saaneiden henkilöiden lukumäärä.
+  </p> 
+
+  <p>
+    Käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Arvosanarekisteri rekisteri = new Arvosanarekisteri();
+rekisteri.lisaaArvosanaPisteidenPerusteella(93);
+rekisteri.lisaaArvosanaPisteidenPerusteella(91);
+rekisteri.lisaaArvosanaPisteidenPerusteella(92);
+rekisteri.lisaaArvosanaPisteidenPerusteella(88);
+
+System.out.println(rekisteri.arvosanojenKeskiarvo());
+</code></pre>
+
+
+<pre class="sample-output">4.75
+</pre>
+
+  <h2>Tulostukset käyttöliittymään</h2>
+
+  <p>
+    Lisää lopulta edellä toteutetut metodit osaksi käyttöliittymää. Kun sovellus tulostaa arvosanajakauman, tulee sovelluksen tulostaa myös pisteiden ja arvosanojen keskiarvo.
+  </p>
+
+
+
+<pre class="sample-output">Syötä koepisteet: <font color="red">82</font>
+Syötä koepisteet: <font color="red">83</font>
+Syötä koepisteet: <font color="red">96</font>
+Syötä koepisteet: <font color="red">51</font>
+Syötä koepisteet: <font color="red">48</font>
+Syötä koepisteet: <font color="red">56</font>
+Syötä koepisteet: <font color="red">61</font>
+Syötä koepisteet: 
+
+5: *
+4: **
+3: 
+2: *
+1: **
+0: *
+Koepisteiden keskiarvo: 68.14285714285714
+Arvosanojen keskiarvo: 2.4285714285714284
+</pre>
+
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52489/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Ongelmasta kokonaisuuteen ja takaisin osiin
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tutustut sovelluksen luomiseen siten, että käyttöliittymä ja sovelluslogiikka ovat alusta lähtien erillään.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  Tarkastellaan erään ohjelman rakennusprosessia sekä tutustutaan sovelluksen vastuualueiden erottamiseen toisistaan. Ohjelma kysyy käyttäjältä sanoja kunnes käyttäjä syöttää saman sanan uudestaan. Ohjelma käyttää listaa sanojen tallentamiseen.
+</p>
+
+<pre class="sample-output">Anna sana: <font color="red">porkkana</font>
+Anna sana: <font color="red">selleri</font>
+Anna sana: <font color="red">nauris</font>
+Anna sana: <font color="red">lanttu</font>
+Anna sana: <font color="red">selleri</font>
+Annoit saman sanan uudestaan!
+</pre>
+
+<p>
+  Rakennetaan ohjelma osissa. Eräs haasteista on se, että on vaikea päättää miten lähestyä tehtävää, eli miten ongelma tulisi jäsentää osaongelmiksi, ja mistä osaongelmasta kannattaisi aloittaa. Yhtä oikeaa vastausta ei ole -- joskus on hyvä lähteä pohtimaan ongelmaan liittyviä käsitteitä ja niiden yhteyksiä, joskus taas ohjelman tarjoamaa käyttöliittymää.
+</p>
+
+<p>
+  Käyttöliittymän hahmottelu voisi lähteä liikenteeseen luokasta Kayttoliittyma. Käyttöliittymä käyttää Scanner-oliota, jonka sille voi antaa. Tämän lisäksi käyttöliittymällä on käynnistämiseen tarkoitettu metodi.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Scanner lukija;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+        // tehdään jotain
+    }
+}
+</code></pre>
+
+<p>
+  Käyttöliittymän luominen ja käynnistäminen onnistuu seuraavasti.
+</p>
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+    Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+    kayttoliittyma.kaynnista();
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Toisto ja lopetus
+
+</h2>
+
+<p>
+  Ohjelmassa on (ainakin) kaksi "aliongelmaa". Ensimmäinen on sanojen toistuva lukeminen käyttäjältä kunnes tietty ehto toteutuu. Tämä voitaisiin hahmotella seuraavaan tapaan.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Scanner lukija;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+
+        while (true) {
+            System.out.print("Anna sana: ");
+            String sana = lukija.nextLine();
+
+            if (<em>pitää lopettaa</em>) {
+                break;
+            }
+
+        }
+
+        System.out.println("Annoit saman sanan uudestaan!");
+    }
+}
+</code></pre>
+
+<p>
+  Sanojen kysely jatkuu kunnes käyttäjä syöttää jo aiemmin syötetyn sanan. Täydennetään ohjelmaa siten, että se tarkastaa onko sana jo syötetty. Vielä ei tiedetä miten toiminnallisuus kannattaisi tehdä, joten tehdään siitä vasta runko.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Scanner lukija;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+
+        while (true) {
+            System.out.print("Anna sana: ");
+            String sana = lukija.nextLine();
+
+            if (onJoSyotetty(sana)) {
+                break;
+            }
+
+        }
+
+        System.out.println("Annoit saman sanan uudestaan!");
+    }
+
+    public boolean onJoSyotetty(String sana) {
+        // tänne jotain
+
+        return false;
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelmaa on hyvä testata koko ajan, joten tehdään metodista kokeiluversio:
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean onJoSyotetty(String sana) {
+    if (sana.equals("loppu")) {
+        return true;
+    }
+
+    return false;
+}
+</code></pre>
+
+<p>
+  Nyt toisto jatkuu niin kauan kunnes syötteenä on sana loppu:
+</p>
+
+<pre class="sample-output">Anna sana: <font color="red">porkkana</font>
+Anna sana: <font color="red">selleri</font>
+Anna sana: <font color="red">nauris</font>
+Anna sana: <font color="red">lanttu</font>
+Anna sana: <font color="red">loppu</font>
+Annoit saman sanan uudestaan!
+</pre>
+
+<p>
+  Ohjelma ei toimi vielä kokonaisuudessaan, mutta ensimmäinen osaongelma eli ohjelman pysäyttäminen kunnes tietty ehto toteutuu on saatu toimimaan.
+</p>
+
+<h2 class="material-heading">
+    Oleellisten tietojen tallentaminen
+
+</h2>
+
+<p>
+  Toinen osaongelma on aiemmin syötettyjen sanojen muistaminen. Lista sopii mainiosti tähän tarkoitukseen.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Scanner lukija;
+    private ArrayList&lt;String&gt; aiemmatSanat;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+        this.aiemmatSanat = new ArrayList&lt;String&gt;();
+    }
+
+    //...
+</code></pre>
+
+<p>
+  Kun uusi sana syötetään, on se lisättävä syötettyjen sanojen joukkoon. Tämä tapahtuu lisäämällä while-silmukkaan listan sisältöä päivittävä rivi:
+</p>
+
+<pre class="sh_java code-highlight"><code>while (true) {
+    System.out.print("Anna sana: ");
+    String sana = lukija.nextLine();
+
+    if (onJoSyotetty(sana)) {
+        break;
+    }
+
+    // lisätään uusi sana aiempien sanojen listaan
+    this.aiemmatSanat.add(sana);
+}
+</code></pre>
+
+<p>
+  Kayttoliittyma näyttää kokonaisuudessaan seuraavalta.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Scanner lukija;
+    private ArrayList&lt;String&gt; aiemmatSanat;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+        this.aiemmatSanat = new ArrayList&lt;String&gt;();
+    }
+
+    public void kaynnista() {
+
+        while (true) {
+            System.out.print("Anna sana: ");
+            String sana = lukija.nextLine();
+
+            if (onJoSyotetty(sana)) {
+                break;
+            }
+
+            // lisätään uusi sana aiempien sanojen listaan
+            this.aiemmatSanat.add(sana);
+        }
+
+        System.out.println("Annoit saman sanan uudestaan!");
+    }
+
+    public boolean onJoSyotetty(String sana) {
+        if (sana.equals("loppu")) {
+            return true;
+        }
+
+        return false;
+    }
+}
+</code></pre>
+
+<p>
+  Jälleen kannattaa testata, että ohjelma toimii edelleen. Voi olla hyödyksi esimerkiksi lisätä kaynnista-metodin loppuun testitulostus, joka varmistaa että syötetyt sanat todella menivät listaan.
+</p>
+
+<pre class="sh_java code-highlight"><code>// testitulostus joka varmistaa että kaikki toimii edelleen
+for(String sana: this.aiemmatSanat) {
+    System.out.println(sana);
+}
+</code></pre>
+
+<h2 class="material-heading">
+    Osaongelmien ratkaisujen yhdistäminen
+
+</h2>
+
+<p>
+  Muokataan vielä äsken tekemämme metodi <code>onJoSyotetty</code> tutkimaan onko kysytty sana jo syötettyjen joukossa, eli listassa.
+</p>
+
+<pre class="sh_java code-highlight"><code>public boolean onJoSyotetty(String sana) {
+    return this.aiemmatSanat.contains(sana);
+}
+</code></pre>
+
+<p>
+  Nyt sovellus toimii kutakuinkin halutusti.
+</p>
+
+<h2 class="material-heading">
+    Oliot luonnollisena osana ongelmanratkaisua
+
+</h2>
+
+<p>
+  Rakensimme äsken ratkaisun ongelmaan, missä luetaan käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Syöte ohjelmalle oli esimerkiksi seuraavanlainen.
+</p>
+
+<pre class="sample-output">Anna sana: <font color="red">porkkana</font>
+Anna sana: <font color="red">selleri</font>
+Anna sana: <font color="red">nauris</font>
+Anna sana: <font color="red">lanttu</font>
+Anna sana: <font color="red">selleri</font>
+Annoit saman sanan uudestaan!
+</pre>
+
+<p>
+  Päädyimme ratkaisuun
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Scanner lukija;
+    private ArrayList&lt;String&gt; aiemmatSanat;
+
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
+        this.aiemmatSanat = new ArrayList&lt;String&gt;();
+    }
+
+    public void kaynnista() {
+
+        while (true) {
+            System.out.print("Anna sana: ");
+            String sana = lukija.nextLine();
+
+            if (onJoSyotetty(sana)) {
+                break;
+            }
+
+            // lisätään uusi sana aiempien sanojen listaan
+            aiemmatSanat.add(sana);
+        }
+
+        System.out.println("Annoit saman sanan uudestaan!");
+    }
+
+    public boolean onJoSyotetty(String sana) {
+        return this.aiemmatSanat.contains(sana);
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelman käyttämä apumuuttuja lista <code>aiemmatSanat</code> on yksityiskohta käyttöliittymän kannalta. Käyttöliittymän kannaltahan on oleellista, että muistetaan niiden <em>sanojen joukko</em> jotka on nähty jo aiemmin. Sanojen joukko on selkeä erillinen "käsite", tai abstraktio. Tälläiset selkeät käsitteet ovat potentiaalisia olioita; kun koodissa huomataan "käsite" voi sen eristämistä erilliseksi luokaksi harkita.
+</p>
+
+<h3 class="material-heading">
+    Sanajoukko
+
+</h3>
+
+<p>
+  Tehdään luokka <code>Sanajoukko</code>, jonka käyttöönoton jälkeen käyttöliittymän metodi <code>kaynnista</code> on seuraavanlainen:
+</p>
+
+<pre class="sh_java code-highlight"><code>while (true) {
+    String sana = lukija.nextLine();
+
+    if (aiemmatSanat.sisaltaa(sana)) {
+        break;
+    }
+
+    aiemmatSanat.lisaa(sana);
+}
+
+System.out.println("Annoit saman sanan uudestaan!");
+</code></pre>
+
+<p>
+  Käyttöliittymän kannalta Sanajoukolla kannattaisi siis olla metodit <code>boolean sisaltaa(String sana)</code> jolla tarkastetaan sisältyykö annettu sana jo sanajoukkoon ja <code>void lisaa(String sana)</code> jolla annettu sana lisätään joukkoon.
+</p>
+
+<p>
+  Huomaamme, että näin kirjoitettuna käyttöliittymän luettavuus on huomattavasti parempi.
+</p>
+
+<p>
+  Luokan <code>Sanajoukko</code> runko näyttää seuraavanlaiselta:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Sanajoukko {
+    // oliomuuttuja(t)
+
+    public Sanajoukko() {
+        // konstruktori
+    }
+
+    public boolean sisaltaa(String sana) {
+        // sisältää-metodin toteutus
+        return false;
+    }
+
+    public void lisaa(String sana) {
+        // lisaa-metodin toteutus
+    }
+}
+</code></pre>
+
+
+<h3 class="material-heading">
+    Toteutus aiemmasta ratkaisusta
+
+</h3>
+
+<p>
+  Voimme toteuttaa sanajoukon siirtämällä aiemman ratkaisumme listan sanajoukon oliomuuttujaksi:
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Sanajoukko {
+    private ArrayList&lt;String&gt; sanat;
+
+    public Sanajoukko() {
+        this.sanat = new ArrayList&lt;&gt;();
+    }
+
+    public void lisaa(String sana) {
+        this.sanat.add(sana);
+    }
+
+    public boolean sisaltaa(String sana) {
+        return this.sanat.contains(sana);
+    }
+}
+</code></pre>
+
+
+<p>
+  Ratkaisu on nyt melko elegantti. Erillinen käsite on saatu erotettua ja käyttöliittymä näyttää siistiltä. Kaikki "likaiset yksityiskohdat" on saatu siivottua eli kapseloitua olion sisälle.
+</p>
+
+<p>
+  Muokataan käyttöliittymää niin, että se käyttää Sanajoukkoa. Sanajoukko annetaan käyttöliittymälle samalla tavalla parametrina kuin Scanner.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Kayttoliittyma {
+    private Sanajoukko sanajoukko;
+    private Scanner lukija;
+
+    public Kayttoliittyma(Sanajoukko sanajoukko, Scanner lukija) {
+        this.sanajoukko = sanajoukko;
+        this.lukija = lukija;
+    }
+
+    public void kaynnista() {
+
+        while (true) {
+            System.out.print("Anna sana: ");
+            String sana = lukija.nextLine();
+
+            if (this.sanajoukko.sisaltaa(sana)) {
+                break;
+            }
+
+            this.sanajoukko.lisaa(sana);
+        }
+
+        System.out.println("Annoit saman sanan uudestaan!");
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelman käynnistäminen tapahtuu nyt seuraavasti:
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public static void main(String[] args) {
+    Scanner lukija = new Scanner(System.in);
+    Sanajoukko joukko = new Sanajoukko();
+
+    Kayttoliittyma kayttoliittyma = new Kayttoliittyma(joukko, lukija);
+    kayttoliittyma.kaynnista();
+}
+</code></pre>
+
+
+<h2 class="material-heading">
+    Luokan sisäisen toteutuksen muuttaminen
+
+</h2>
+
+<p>
+  Olemme päätyneet tilanteeseen missä <code>Sanajoukko</code> ainoastaan "kapseloi" ArrayList:in. Onko tässä järkeä? Kenties. Voimme nimittäin halutessamme tehdä Sanajoukolle muitakin muutoksia. Ennen pitkään saatamme esim. huomata, että sanajoukko pitää tallentaa tiedostoon. Jos tekisimme nämä muutokset Sanajoukkoon muuttamatta käyttöliittymän käyttävien metodien nimiä, ei käyttöliittymää tarvitsisi muuttaa mitenkään.
+</p>
+
+<p>
+  Oleellista on tässä se, että Sanajoukko-luokkaan tehdyt sisäiset muutokset eivät vaikuta luokkaan Käyttöliittymä. Tämä johtuu siitä, että käyttöliittymä käyttää sanajoukkoa sen tarjoamien metodien -- eli julkisten rajapintojen -- kautta.
+</p>
+
+<h2 class="material-heading">
+    Uusien toiminnallisuuksien toteuttaminen: palindromit
+
+</h2>
+
+<p>
+  Voi olla, että jatkossa ohjelmaa halutaan laajentaa siten, että <code>Sanajoukko</code>-luokan olisi osattava uusia asiota. Jos ohjelmassa haluttaisiin esimerkiksi tietää kuinka moni syötetyistä sanoista oli palindromi, voidaan sanajoukkoa laajentaa metodilla <code>palindromeja</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public void kaynnista() {
+
+    while (true) {
+        System.out.print("Anna sana: ");
+        String sana = lukija.nextLine();
+
+        if (this.sanajoukko.sisaltaa(sana)) {
+            break;
+        }
+
+        this.sanajoukko.lisaa(sana);
+    }
+
+    System.out.println("Annoit saman sanan uudestaan!");
+    System.out.println("Sanoistasi " + this.sanajoukko.palindromeja() + " oli palindromeja");
+}
+</code></pre>
+
+<p>
+  Käyttöliittymä säilyy siistinä ja palindromien laskeminen jää <code>Sanajoukko</code>-olion huoleksi. Metodin toteutus voisi olla esimerkiksi seuraavanlainen.
+</p>
+
+<pre class="sh_java code-highlight"><code>import java.util.ArrayList;
+
+public class Sanajoukko {
+    private ArrayList&lt;String&gt; sanat;
+
+    public Sanajoukko() {
+        this.sanat = new ArrayList&lt;&gt;();
+    }
+
+    public boolean sisaltaa(String sana) {
+        return this.sanat.contains(sana);
+    }
+
+    public void lisaa(String sana) {
+        this.sanat.add(sana);
+    }
+
+    public int palindromeja() {
+        int lukumaara = 0;
+
+        for (String sana: this.sanat) {
+            if (onPalindromi(sana)) {
+                lukumaara++;
+            }
+        }
+
+        return lukumaara;
+    }
+
+    public boolean onPalindromi(String sana) {
+        int loppu = sana.length() - 1;
+
+        int i = 0;
+        while (i &lt; sana.length() / 2) {
+            // metodi charAt palauttaa annetussa indeksissä olevan merkin
+            // alkeistyyppisenä char-muuttujana
+            if(sana.charAt(i) != sana.charAt(loppu - i)) {
+                return false;
+            }
+
+            i++;
+        }
+
+        return true;
+    }
+}
+</code></pre>
+
+<p>
+  Metodissa <code>palindromeja</code> käytetään sekä apumetodia <code>onPalindromi</code> että virran filter-metodia. Virran <code>count</code>-metodi palauttaa <code>long</code>-tyyppisen kokonaisluvun, joka tulee muuntaa int-tyyppiseksi ennen sen palautusta metodista.
+</p>
+
+
+<h2 class="material-heading">
+    Uusiokäyttö
+
+</h2>
+
+
+<p>
+  Kun ohjelmakoodin käsitteet on eriytetty omiksi luokikseen, voi niitä uusiokäyttää helposti muissa projekteissa. Esimerkiksi luokkaa <code>Sanajoukko</code> voisi käyttää yhtä hyvin graafisesta käyttöliittymästä, ja se voisi myös olla osa kännykässä olevaa sovellusta. Tämän lisäksi ohjelman toiminnan testaaminen on huomattavasti helpompaa silloin kun ohjelma on jaettu erillisiin käsitteisiin, joita kutakin voi käyttää myös omana itsenäisenä yksikkönään.
+</p>
+
+
+<h2 class="material-heading">
+    Neuvoja ohjelmointiin
+
+</h2>
+
+<p>
+  Yllä kuvatussa laajemmassa esimerkissä noudatettiin seuraavia neuvoja.
+</p>
+
+<ul>
+
+  <li> Etene pieni askel kerrallaan
+    <ul>
+      <li> Yritä pilkkoa ongelma osaongelmiin ja <strong>ratkaise vain yksi osaongelma kerrallaan</strong> </li>
+      <li> Testaa aina että ohjelma on etenemässä oikeaan suuntaan eli että osaongelman ratkaisu meni oikein</li>
+      <li> Tunnista ehdot, minkä tapauksessa ohjelman tulee toimia eri tavalla. Esimerkiksi yllä tarkistus, jolla katsotaan onko sana jo syötetty, johtaa erilaiseen toiminnallisuuden.</li>
+    </ul>
+  </li>
+
+  <li> Kirjoita mahdollisimman "siistiä" koodia
+    <ul>
+      <li> sisennä koodi </li>
+      <li> käytä kuvaavia muuttujien ja metodien nimiä</li>
+      <li> älä tee liian pitkiä metodeja, edes mainia</li>
+      <li> tee yhdessä metodissa vaan yksi asia</li>
+      <li> <strong>poista koodistasi kaikki copy-paste</strong></li>
+      <li> korvaa koodisi "huonot" ja epäsiistit osat siistillä koodilla</li>
+    </ul>
+  </li>
+
+  <li>
+    Astu tarvittaessa askel taaksepäin ja mieti kokonaisuutta. Jos ohjelma ei toimi, voi olla hyvä idea palata aiemmin toimineeseen tilaan. Käänteisesti voidaan sanoa, että rikkinäinen ohjelma korjaantuu harvemmin lisäämällä siihen lisää koodia.
+  </li>
+
+</ul>
+
+<p>
+  Ohjelmoijat noudattavat näitä käytänteitä sen takia että ohjelmointi olisi helpompaa. Käytänteiden noudattaminen tekee myös ohjelmien lukemisesta, ylläpitämisestä ja muokkaamisesta helpompaa muille.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Sanakirja (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtäväsarjassa toteutetaan sanakirja, josta voi hakea suomen kielen sanoille englanninkielisiä käännöksiä. Sanakirjan tekemisessä käytetään <code>HashMap</code>-tietorakennetta.
+  </p>
+
+  <h2>Luokka Sanakirja</h2>
+
+  <p>
+    Toteuta luokka nimeltä <code>Sanakirja</code>. Luokalla on aluksi seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> <code>public String kaanna(String sana)</code> metodi palauttaa parametrinsa käännöksen. Jos sanaa ei tunneta, palautetaan <em>null</em>.</li>
+    <li> <code>public void lisaa(String sana, String kaannos)</code> metodi lisää sanakirjaan uuden käännöksen</li>
+  </ul>
+
+  <p>
+    Toteuta luokka Sanakirja siten, että sen ainoa oliomuuttuja on <code>HashMap</code>-tietorakenne.
+  </p>
+
+  <p>
+    Testaa sanakirjasi toimintaa:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Sanakirja sanakirja = new Sanakirja();
+sanakirja.lisaa("apina", "monkey");
+sanakirja.lisaa("banaani", "banana");
+sanakirja.lisaa("cembalo", "harpsichord");
+
+System.out.println(sanakirja.kaanna("apina"));
+System.out.println(sanakirja.kaanna("porkkana"));
+</code></pre>
+
+<pre class="sample-output">monkey
+null
+</pre>
+
+
+  <h2>Sanojen lukumäärä</h2>
+
+  <p>
+    Lisää sanakirjaan metodi <code>public int sanojenLukumaara()</code>, joka palauttaa sanakirjassa olevien sanojen lukumäärän.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Sanakirja sanakirja = new Sanakirja();
+sanakirja.lisaa("apina", "monkey");
+sanakirja.lisaa("banaani", "banana");
+System.out.println(sanakirja.sanojenLukumaara());
+
+sanakirja.lisaa("cembalo", "harpsichord");
+System.out.println(sanakirja.sanojenLukumaara());
+</code></pre>
+
+
+<pre class="sample-output">2
+3
+</pre>
+
+  <p>
+    Tässä osassa kannattaa tutkiskella HashMapin valmiiksi tarjoamia metodeja... Vaihtoehtoisesti <code>long</code>-tyyppisen muuttujan saa muunnettua <code>int</code>-tyyppiseksi seuraavalla tavalla.
+  </p>
+
+<pre class="sh_java code-highlight"><code>long lukuLongina = 1L;
+int lukuInttina = (int) lukuLongina;
+</code></pre>
+
+
+  <h2>Kaikkien sanojen listaaminen</h2>
+
+  <p>
+    Lisää sanakirjaan metodi <code>public ArrayList&lt;String&gt; kaannoksetListana()</code> joka palauttaa sanakirjan sisällön listana <i>avain = arvo</i> muotoisia merkkijonoja.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Sanakirja sanakirja = new Sanakirja();
+sanakirja.lisaa("apina", "monkey");
+sanakirja.lisaa("banaani", "banana");
+sanakirja.lisaa("cembalo", "harpsichord");
+
+ArrayList&lt;String&gt; kaannokset = sanakirja.kaannoksetListana();
+
+for (String kaannos: kaannokset) {
+    System.out.println(kaannos);
+}
+</code></pre>
+
+<pre class="sample-output">banaani = banana
+apina = monkey
+cembalo = harpsichord
+</pre>
+
+
+  <h2>Tekstikäyttöliittymän alku</h2>
+
+  <p>
+    Harjoitellaan erillisen tekstikäyttöliittymän tekemistä. Luo luokka <code>Tekstikayttoliittyma</code>, jolla on seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> konstruktori <code>public Tekstikayttoliittyma(Scanner lukija, Sanakirja sanakirja)</code></li>
+    <li> metodi <code>public void kaynnista()</code>, joka käynnistää tekstikäyttöliittymän.</li>
+  </ul>
+
+  <p>
+    Tekstikäyttöliittymä tallettaa konstruktorin parametrina saamansa lukijan ja sanakirjan oliomuuttujiin. Muita oliomuuttujia ei tarvita. <strong>Käyttäjän syötteen lukeminen tulee hoitaa konstruktorin parametrina saatua lukija-olioa käyttäen! Myös kaikki käännökset on talletettava konstruktorin parametrina saatuun sanakirja-olioon. Tekstikäyttöliittymä ei saa luoda Scanneria tai Sanakirjaa itse!</strong>
+  </p>
+
+  <p>
+    <strong>HUOM:</strong> vielä uudelleen edellinen, eli <strong>Tekstikäyttöliittymä ei saa luoda itse skanneria</strong> vaan sen on käytettävä parametrina saamaansa skanneria syötteiden lukemiseen!
+  </p>
+
+  <p>
+    Tekstikäyttöliittymässä tulee aluksi olla vain komento <code>lopeta</code>, joka poistuu tekstikäyttöliittymästä. Jos käyttäjä syöttää jotain muuta, käyttäjälle sanotaan "Tuntematon komento".
+  </p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+Sanakirja sanakirja = new Sanakirja();
+
+Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
+kayttoliittyma.kaynnista();
+</code></pre>
+
+<pre class="sample-output">Komennot:
+lopeta - poistuu käyttöliittymästä
+
+Komento: <font color="red">apua</font>
+Tuntematon komento.
+
+Komento: <font color="red">lopeta</font>
+Hei hei!
+</pre>
+
+  <h2>Sanojen lisääminen ja kääntäminen</h2>
+
+  <p>
+    Lisää tekstikäyttöliittymälle komennot <code>lisaa</code> ja <code>kaanna</code>. Komento <code>lisaa</code> lisää kysyy käyttäjältä sanaparin ja lisää sen sanakirjaan. Komento <code>kaanna</code> kysyy käyttäjältä sanaa ja tulostaa sen käännöksen.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Scanner lukija = new Scanner(System.in);
+Sanakirja sanakirja = new Sanakirja();
+
+Tekstikayttoliittyma kayttoliittyma = new Tekstikayttoliittyma(lukija, sanakirja);
+kayttoliittyma.kaynnista();
+</code></pre>
+
+<pre class="sample-output">Komennot:
+lisaa - lisää sanaparin sanakirjaan
+kaanna - kysyy sanan ja tulostaa sen käännöksen
+lopeta - poistuu käyttöliittymästä
+
+Komento: <font color="red">lisaa</font>
+Suomeksi: <font color="red">porkkana</font>
+Käännös: <font color="red">carrot</font>
+
+Komento: <font color="red">kaanna</font>
+Anna sana: <font color="red">porkkana</font>
+Käännös: carrot
+
+Komento: <font color="red">lopeta</font>
+Hei hei!
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/52490/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+<h1 class="material-heading">
+    Suunnittele oma tehtävä: Hajautustaulu
+
+</h1>
+
+<p>
+  Tässä kohtaa kertaat hajautustauluja ja pääset taas pohtimaan tehtävää tulevia sukupolvia varten. Jos et ole tehtävien luomiseen käytettävää CrowdSorcerer-työvälinettä aiemmin, käy katsomassa opasvideo toisen osan materiaalista.
+</p>
+
+
+<div class="general-callout">
+  <div class="general-callout__header">
+    <i class="fa fa-magic general-callout__icon"></i> Suunnittele oma tehtävä: HashMap
+  </div>
+
+  <div class="general-callout__body">
+    
+  <p>
+    Keksi tehtävä, jossa käytetään HashMappia. Tehtäväpohjassa on valmiina komennon kysyminen ja toistolause, joka jatkuu kunnes ohjelman käyttäjä kirjoittaa komennon "lopeta".
+  </p>
+
+  <p>
+    <strong>Huom!</strong> Tässä sinun täytyy syöttää jokaiselle testitapaukselle useampi syöte. Useamman syötteen saat annettua, kun laitat rivinvaihdon <code>\n</code> jokaisen syötteen väliin. Lisäksi lopeta jokainen testisyöte tekstillä <code>lopeta</code>, jotta testissä silmukan suoritus lakkaa.
+  </p>
+
+  <p>
+    Esimerkiksi jos haluat antaa testisyötteeksi "kissa", "koira", "lopeta", syötä input-kenttään teksti <code>kissa\nkoira\nlopeta</code>.
+  </p>
+
+  <p>
+    Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät vastaavat kurssin pisteytyksessä ohjelmointitehtävää.
+  </p>  
+
+
+  </div>
+</div>
+
+<div class='crowdsorcerer-widget' data-assignment='12'></div>
+
+
+<h1 class="material-heading">
+    Yhteenveto
+
+</h1>
+
+<p>
+  Kuudennessa osassa tutustuttiin luokka- ja oliometodien eroihin, hajautustaulun käyttöön sekä sovelluslogiikan ja käyttöliittymän eriyttämiseen toisistaan. 
+</p>
+
+<p>
+  Vastaa vielä alla olevaan kyselyyn.
+</p>
+
+<div class="quiznator-plugin" data-quiz-id="5bb9b903a3597f01935d58e8"></div>
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+    <div class="improvement">
+<a href="../report_issue/" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    Ilmoita virhe
+</a><a href="../edit_page/?path=part6.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+    Muokkaa sivua
+</a>  <a href="https://github.com/materiaalit/ohjelmointi-s18" class="footer__github-link" target="_blank" rel="noopener">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
+
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-s18">
+                Ohjelmoinnin perusteet, syksy 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="../javascripts/scripts-d12d5def.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script src='https://materiaalit.github.io/pdf-slideshow-cdn/app.js'></script>
+    <script>
+      window.initPdfSlideshow('../pdf.worker.min-7be35925.js');
+    </script>
+  </body>
+</html>
