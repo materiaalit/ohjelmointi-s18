@@ -1,0 +1,2672 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin perusteet ja Ohjelmoinnin jatkokurssi, syksy 2018 | Osa 7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9fe27d3a.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/pdf-slideshow-cdn/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7-x/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7-x.html&gt;')">Osa 7.X</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://t.me/ohjelmointi_18" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-comments hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          <div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Seitsemännen osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Osaat kertoa proseduraalisen ohjelmoinnin ja olio-ohjelmoinnin eroista ja toteuttaa ohjelmia kumpaakin ohjelmointiparadigmaa noudattaen. Tiedät mitä käsite algoritmi tarkoittaa ja osaat kuvailla muutamien järjestämis- ja hakualgoritmien toimintaa. Osaat kirjoittaa yksikkötestejä ja tiedät testivetoisen ohjelmistokehityksen perusaskeleet.
+  </p>
+  
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Ohjelmointiparadigmoja
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tunnet käsitteen ohjelmointiparadigma.
+    </li>
+    <li>
+      Tiedät mitä proseduraalisella ohjelmoinnilla ja olio-ohjelmoinnilla tarkoitetaan.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  Ohjelmointiparadigmalla tarkoitetaan ohjelmointikielen taustalla olevaa tapaa ajatella ja jäsentää ohjelman toimintaa. Ohjelmointiparadigmat eroavat toisistaan mm. siinä, miten ohjelman suorituksen eteneminen ja kontrolli määritellään sekä minkälaisista osista ohjelmat rakentuvat.
+</p>
+
+<p>
+  Suurin osa nykyään käytössä olevista ohjelmointikielistä tukee useampaa ohjelmointiparadigmaa. Ohjelmoijana kehittymiseen kuuluu kokemuksen kautta kehittyvä kyky sopivan ohjelmointikielen ja paradigman valintaan; yhtä kaikkialla toimivaa ohjelmointikieltä ja ohjelmointiparadigmaa ei toistaiseksi ole olemassa.
+</p>
+
+<p>
+  Tämän hetken yleisimpiä ohjelmointiparadigmoja ovat olio-ohjelmointi, proseduraalinen ohjelmointi sekä funktionaalinen ohjelmointi. Seuraavaksi näistä kahta ensimmäistä käsitellään lyhyesti.
+</p>
+
+
+<h2 class="material-heading">
+    Olio-ohjelmointi
+
+</h2>
+
+<p>
+  Olio-ohjelmoinnissa käsiteltävä tieto esitetään luokkina, jotka kuvaavat ongelma-alueen käsitteitä sekä sovelluksen toimintalogiikkaa. Luokkiin määritellään metodit, jotka määräävät miten tietoa käsitellään. Ohjelman suorituksen aikana luokista luodaan olioita, jotka sisältävät ajonaikaisen tiedon, ja jotka myös vaikuttavat ohjelman suoritukseen: ohjelman suoritus etenee tyypillisesti olioihin liittyvien metodikutsujen kautta. Kuten joitakin viikkoja sitten totesimme, "ohjelma rakennetaan pienistä selkeistä yhteistoiminnassa olevista olioista".
+</p>
+
+<p>
+  Olio-ohjelmoinnin perusideat eli tiedon ja sen käsittelyyn liittyvien toimintojen esittäminen luokkien ja olioiden avulla esiintyivät ensimmäisiä kertoja simulaatioiden rakentamiseen tarkoitetussa <a href="https://en.wikipedia.org/wiki/Simula" target="_blank" norel>Simula 67</a>:ssä sekä <a href="https://en.wikipedia.org/wiki/Smalltalk" target="_blank" norel>Smalltalk</a>-ohjelmointikielessä. Sen läpimurto tapahtui 1980-luvulla <a href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank" norel>C++</a>-ohjelmointikielen kautta ja siitä on muodostunut <a href="https://en.wikipedia.org/wiki/Java_(programming_language)" target="_blank" norel>Java</a>-ohjelmointikielen myötä yksi maailman eniten käytetty ohjelmointiparadigma. 
+</p>
+
+<p>
+  Olio-ohjelmoinnin suurimpia etuja ovat ongelma-alueen käsitteiden mallintaminen luokkien ja olioiden kautta, mikä helpottaa ohjelman ymmärtämistä. Tämän lisäksi ongelma-alueen jäsentäminen luokiksi helpottaa ohjelmien rakentamista ja ylläpitoa. Olio-ohjelmointi ei kuitenkaan sovellu luontaisesti kaikkiin ongelmiin: esimerkiksi tieteellisessä laskennassa ja tilastotieteen sovelluksissa käytetään tyypillisemmin mm. <a href="https://en.wikipedia.org/wiki/R_(programming_language)" target="_blank">R</a>-kieltä.
+</p>
+
+
+<h2 class="material-heading">
+    Proseduraalinen ohjelmointi
+
+</h2>
+
+<p>
+  Siinä missä olio-ohjelmoinnissa ohjelman rakenne muodostuu käsiteltävän tiedon kautta, proseduraalisessa ohjelmoinnissa ohjelman rakenne muodostuu ohjelmalta toivotun toiminnan kautta: ohjelma on askeleittainen ohje suoritettavalle toiminnalle. Ohjelmaa suoritetaa askel kerrallaan, tarvittaessa aliohjelmia (metodeja) kutsuen.
+</p>
+
+<p>
+  Proseduraalisessa ohjelmoinnissa ohjelman tilaa pidetään yllä muuttujissa ja taulukoissa, ja mahdolliset metodit käsittelevät vain niille parametrina annettuja arvoja. Ohjelmassa koneelle kerrotaan mitä pitäisi tapahtua. Esimerkiksi alla on muuttujien a ja b arvojen vaihtaminen.
+</p>
+
+<pre class="sh_java code-highlight"><code>int a = 10;
+int b = 15;
+
+// vaihdetaan muuttujien a ja b arvot
+int c = b;
+b = a;
+a = c;
+</code></pre>
+
+<p>
+  Kun olio-ohjelmointia verrataan proseduraaliseen ohjelmointiin, muutamat oleelliset erot tulevat ilmi. Olio-ohjelmoinnissa olion tila voi periaatteessa muuttua mitä tahansa olion metodia käytettäessä, ja tuo tilan muutos voi vaikuttaa myös muiden olion metodien toimintaan; tätä kautta muutos voi vaikuttaa myös muihin ohjelman suorituksen osa-alueisiin, sillä olioita voidaan käyttää ohjelmassa useammassa paikassa.
+</p>
+
+<p>
+  Konkreettisesti olio-ohjelmoinnin ja proseduraalisen ohjelmoinnin erot näkyvät viidennen osan alussa esitetyssä kello-esimerkissä. Alla on kuvattuna proseduraalista ohjelmointityyliä kuvastava ratkaisu, missä ajan tulostaminen on siiretty metodiin. 
+</p>
+
+
+<pre class="sh_java code-highlight"><code>int tunnit = 0;
+int minuutit = 0;
+int sekunnit = 0;
+
+while (true) {
+    // 1. tulostetaan aika
+    tulosta(tunnit, minuutit, sekunnit);
+    System.out.println();
+
+    // 2. Sekuntiviisarin eteneminen
+    sekunnit = sekunnit + 1;
+
+    // 3. Muiden viisarien eteneminen mikäli tarve
+    if (sekunnit &gt; 59) {
+        minuutit = minuutit + 1;
+        sekunnit = 0;
+
+        if (minuutit &gt; 59) {
+            tunnit = tunnit + 1;
+            minuutit = 0;
+
+            if (tunnit &gt; 23) {
+                tunnit = 0;
+            }
+        }
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>public static void tulosta(int tunnit, int minuutit, int sekunnit) {
+    tulosta(tunnit);
+    tulosta(minuutit);
+    tulosta(sekunnit);
+}  
+
+public static void tulosta(int luku) {
+    if (luku &lt; 10) {
+        System.out.print("0");
+    }
+    System.out.print(luku);
+}
+</code></pre>
+
+<p> 
+  Sama olio-ohjelmointia noudattaen:
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Viisari {
+    private int arvo;
+    private int ylaraja;
+
+    public Viisari(int ylaraja) {
+        this.ylaraja = ylaraja;
+        this.arvo = 0;
+    }
+
+    public void etene() {
+        this.arvo = this.arvo + 1;
+
+        if (this.arvo &gt;= this.ylaraja) {
+            this.arvo = 0;
+        }
+    }
+
+    public int arvo() {
+        return this.arvo;
+    }
+
+    public String toString() {
+        if (this.arvo &lt; 10) {
+            return "0" + this.arvo;
+        }
+          
+        return "" + this.arvo;
+    }
+}
+</code></pre>
+
+
+<pre class="sh_java code-highlight"><code>public class Kello() {
+    private Viisari tunnit;
+    private Viisari minuutit;
+    private Viisari sekunnit;
+      
+    public Kello() {
+        this.tunnit = new Viisari(24);
+        this.minuutit = new Viisari(60);
+        this.tunnit = new Viisari(60);
+    }
+
+    public void etene() {
+        this.sekunnit.etene();
+      
+        if (this.sekunnit.arvo() == 0) {
+            this.minuutit.etene();
+  
+            if (this.minuutit.arvo() == 0) {
+                this.tunnit.etene();
+            }
+        }
+    }
+
+    public String toString() {
+        return tunnit + ":" + minuutit + ":" + sekunnit;
+    }
+}
+</code></pre>
+
+<pre class="sh_java code-highlight"><code>Kello kello = new Kello();
+  
+while (true) {
+    System.out.println(kello);
+    kello.etene();
+}
+</code></pre>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Nestesäiliöt (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteutetaan interaktiivinen ohjelma kahden nestesäiliön käsittelyyn. Säiliöt ovat nimeltään "ensimmäinen" ja "toinen". Kumpikin voi sisältää korkeintaan sata yksikköä nestettä.
+  </p>
+  
+  <p> 
+    Ohjelma tarjoaa toiminnallisuuden nesteen lisäämiseen, nesteen siirtämiseen, ja nesteen poistamiseen. Nesteen lisääminen lisää nestettä ensimmäiseen säiliöön, nesteen siirtäminen siirtää nestettä ensimmäisestä säiliöstä toiseen ja nesteen poistaminen poistaa nestettä toisesta säiliöstä.
+  </p>
+
+  <p>
+    Ohjelman komentojen tulee olla seuraavat:
+  </p>
+
+  <ul>
+    <li>
+      <code>lisaa <em>maara</em></code> lisää ensimmäiseen säiliöön parametrina annetun määrän nestettä. Annettu määrä kuvataan kokonaislukuna. Säiliössä ei voi olla yli sataa yksikköä nestettä ja liialliset lisäykset menevät hukkaan.
+    </li>
+    <li>
+      <code>siirra <em>maara</em></code> siirtää ensimmäisestä säiliöstä toiseen parametrina annetun määrän nestettä. Annettu määrä kuvataan kokonaislukuna. Säiliössä ei voi olla yli sataa yksikköä nestettä. Mikäli ohjelmassa yritetään siirtää enemmän kuin ensimmäisessä säiliössä on, siirretään ensimmäisen säiliön koko sisältö. Mikäli ohjelmassa yritetään siirtää enemmän kuin toiseen säiliöön mahtuu, valuu toiseen säiliöön mahtumaton osa hukkaan.
+    </li>
+    <li>
+      <code>poista <em>maara</em></code> poistaa toisesta säiliöstä parametrina annetun määrän nestettä. Mikäli ohjelmaa pyydetään poistamaan enemmän kuin mitä säiliössä on, poistetaan säiliöstä vain säiliön sisältö.
+    </li>
+  </ul>
+
+  <p>
+    Jokaisen komennon suorituksen jälkeen tulostetaan säiliöden sisältö. Negatiivisia määriä ei tule ottaa huomioon.
+  </p>
+
+  <p>
+    Toteuta ohjelma proseduraalista ohjelmointityyliä noudattaen ilman omia luokkia. Kaikki toiminnallisuus tulee lisätä luokassa <code>Nestesailiot</code> olevaan metodiin <code>main</code> (älä siis tee omia metodeja). Tehtäväpohjassa on valmiina toistolause, mistä poistutaan kun käyttäjä kirjoittaa "lopeta".
+  </p>
+    
+  <p>
+    Alla on muistutuksena merkkijonon pilkkominen osiin.
+  </p>
+
+<pre class="sh_java code-highlight"><code>String luettu = lukija.nextLine();
+String[] osat = luettu.split(" ");
+
+String komento = osat[0];
+int maara = Integer.valueOf(osat[1]);
+</code></pre>
+
+
+  <h2>Lisääminen</h2>
+
+  <p>
+    Toteuta toiminnallisuus nesteen lisäämiseen ensimmäiseen säiliöön. Ohjelman toiminnan tulee olla seuraavanlainen:
+  </p>
+
+
+<pre class="sample-output">Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">lisaa 5</font>
+
+Ensimmäinen: 5/100
+Toinen: 0/100
+> <font color="red">lisaa 25</font>
+
+Ensimmäinen: 30/100
+Toinen: 0/100
+> <font color="red">lisaa 60</font>
+
+Ensimmäinen: 90/100
+Toinen: 0/100
+> <font color="red">lisaa 1000</font>
+
+Ensimmäinen: 100/100
+Toinen: 0/100
+> <font color="red">lisaa -5</font>
+
+Ensimmäinen: 100/100
+Toinen: 0/100
+> <font color="red">lopeta</font>
+</pre>
+  
+  <h2>Siirtäminen</h2>
+
+  <p>
+    Toteuta toiminnallisuus nesteen siirtämiseen ensimmäisestä säiliöstä toiseen.  Ohjelman toiminnan tulee olla seuraavanlainen:
+  </p>
+
+<pre class="sample-output">Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">lisaa 1000</font>
+    
+Ensimmäinen: 100/100
+Toinen: 0/100
+> <font color="red">siirra 50</font>
+    
+Ensimmäinen: 50/100
+Toinen: 50/100
+> <font color="red">lisaa 100</font>
+    
+Ensimmäinen: 100/100
+Toinen: 50/100
+> <font color="red">siirra 100</font>
+    
+Ensimmäinen: 0/100
+Toinen: 100/100
+> <font color="red">lopeta</font>
+</pre>
+
+  <p>
+    Toinen esimerkki:
+  </p>
+
+<pre class="sample-output">Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">siirra 30</font>
+    
+Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">lisaa 10</font>
+    
+Ensimmäinen: 10/100
+Toinen: 0/100
+> <font color="red">siirra -5</font>
+    
+Ensimmäinen: 10/100
+Toinen: 0/100
+> <font color="red">siirra 20</font>
+    
+Ensimmäinen: 0/100
+Toinen: 10/100
+> <font color="red">siirra 10</font>
+    
+Ensimmäinen: 0/100
+Toinen: 10/100
+> <font color="red">lopeta</font>
+</pre>
+
+  <h2>Poistaminen</h2>
+
+  <p>
+    Toteuta toiminnallisuus nesteen poistamiseen toisesta säiliöstä. Ohjelman toiminnan tulee olla seuraavanlainen:
+  </p>
+
+<pre class="sample-output">Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">poista 10</font>
+
+Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">lisaa 20</font>
+
+Ensimmäinen: 20/100
+Toinen: 0/100
+> <font color="red">poista 5</font>
+
+Ensimmäinen: 20/100
+Toinen: 0/100
+> <font color="red">siirra 15</font>
+
+Ensimmäinen: 5/100
+Toinen: 15/100
+> <font color="red">poista 5</font>
+
+Ensimmäinen: 5/100
+Toinen: 10/100
+> <font color="red">poista 20</font>
+
+Ensimmäinen: 5/100
+Toinen: 0/100
+> <font color="red">lopeta</font>
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53114/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Nestesäiliöt olioilla (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Toteutetaan edellä kuvattu interaktiivinen ohjelma kahden nestesäiliön käsittelyyn uudestaan. Tällä kertaa luodaan ohjelman toteutusta varten luokka "Sailio", jonka vastuulla on säiliön sisällön ylläpito.
+  </p>
+
+
+  <h2>Sailio</h2>
+
+  <p>
+    Toteuta luokka Sailio. Säiliöllä tulee olla parametriton konstruktori sekä seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>
+      <code>public int sisalto()</code> palauttaa säiliössä olevan nesteen määrän kokonaislukuna.
+    </li>
+    <li>
+      <code>public void lisaa(int maara)</code> lisää parametrina annetun määrän nestettä säiliöön. Mikäli parametrin arvo on negatiivinen, ei nestettä lisätä. Lisäyksen jälkeen säiliössä on korkeintaan 100 yksikköä nestettä.
+    </li>
+    <li>
+      <code>public void poista(int maara)</code> poistaa parametrina annetun määrän nestettä säiliöstä. Mikäli parametrin arvo on negatiivinen, ei nestettä poisteta. Poistaminen poistaa vain olemassaolevaa nestettä -- poiston takia säiliössä ei voi koskaan olla alle nollaa nesteyksikköä.
+    </li>
+    <li>
+      <code>public String toString()</code> palauttaa olion merkkijonoesityksen muodossa "<em>sisalto</em>/100".
+    </li>
+  </ul>
+
+  <p>
+    Luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>Sailio sailio = new Sailio();
+System.out.println(sailio);
+
+sailio.lisaa(50);
+System.out.println(sailio);
+System.out.println(sailio.sisalto());
+
+sailio.poista(60);
+System.out.println(sailio);
+
+sailio.lisaa(200);
+System.out.println(sailio);
+</code></pre>
+
+
+<pre class="sample-output">0/100
+50/100
+50
+0/100
+100/100
+</pre>
+
+
+  <h2>Toiminnallisuus</h2>
+
+  <p>
+    Kopioi ensimmäisessä osassa toteuttamasi käyttöliittymä ja muokkaa sitä siten, että ohjelmassa käytetään juuri toteuttamiasi säiliöitä. Luokassa <code>NestesailiotOlioilla</code> olevan main-metodin suorituksen tulee käynnistää ohjelma.
+  </p>
+
+  <p>
+    Alla on esimerkkitulostus. Ohjelman tekstikäyttöliittymän toiminnan tulee olla seuraavanlainen:
+  </p>
+
+
+<pre class="sample-output">Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">poista 10</font>
+
+Ensimmäinen: 0/100
+Toinen: 0/100
+> <font color="red">lisaa 20</font>
+
+Ensimmäinen: 20/100
+Toinen: 0/100
+> <font color="red">poista 5</font>
+
+Ensimmäinen: 20/100
+Toinen: 0/100
+> <font color="red">siirra 15</font>
+
+Ensimmäinen: 5/100
+Toinen: 15/100
+> <font color="red">poista 5</font>
+
+Ensimmäinen: 5/100
+Toinen: 10/100
+> <font color="red">poista 20</font>
+
+Ensimmäinen: 5/100
+Toinen: 0/100
+> <font color="red">lopeta</font>
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53115/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<p>
+  Kerrataan seuraavaksi olio-ohjelmointia laajemman olioita olioiden sisällä käsittelevän tehtävän kautta.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Tavara, Matkalaukku ja Lastiruuma (7 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtäväsarjassa tehdään luokat <code>Tavara</code>, <code>Matkalaukku</code> ja <code>Lastiruuma</code>, joiden avulla harjoitellaan lisää olioita, jotka sisältävät toisia olioita.
+  </p>
+
+  <h2>Tavara-luokka</h2>
+
+  <p>
+    Tee luokka <code>Tavara</code>, josta muodostetut oliot vastaavat erilaisia tavaroita. Tallennettavat tiedot ovat tavaran nimi ja paino (kg).
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li>Konstruktori, jolle annetaan parametrina tavaran nimi ja paino</li>
+    <li>Metodi <code>public String getNimi()</code>, joka palauttaa tavaran nimen</li>
+    <li>Metodi <code>public int getPaino()</code>, joka palauttaa tavaran painon</li>
+    <li>Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "nimi (paino kg)"</li>
+  </ul>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Tavara kirja = new Tavara("Aapiskukko", 2);
+        Tavara puhelin = new Tavara("Nokia 3210", 1);
+
+        System.out.println("Kirjan nimi: " + kirja.getNimi());
+        System.out.println("Kirjan paino: " + kirja.getPaino());
+
+        System.out.println("Kirja: " + kirja);
+        System.out.println("Puhelin: " + puhelin);
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">Kirjan nimi: Aapiskukko
+Kirjan paino: 2
+Kirja: Aapiskukko (2 kg)
+Puhelin: Nokia 3210 (1 kg)</pre>
+
+
+
+  <h2>Matkalaukku-luokka</h2>
+
+  <p>
+    Tee luokka <code>Matkalaukku</code>. Matkalaukkuun liittyy tavaroita ja maksimipaino, joka määrittelee tavaroiden suurimman mahdollisen yhteispainon.
+  </p>
+
+  <p>
+    Lisää luokkaan seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> Konstruktori, jolle annetaan maksimipaino</li>
+    <li> Metodi <code>public void lisaaTavara(Tavara tavara)</code>, joka lisää parametrina annettavan tavaran matkalaukkuun. Metodi ei palauta mitään arvoa.</li>
+    <li> Metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "x tavaraa (y kg)"</li>
+  </ul>
+
+  <p>
+    Tavarat kannattaa tallentaa <code>ArrayList</code>-olioon:
+  </p>
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Tavara&gt; tavarat = new ArrayList&lt;&gt;();
+</code></pre>
+
+  <p>
+    Luokan <code>Matkalaukku</code> tulee valvoa, että sen sisältämien tavaroiden yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi lisättävän tavaran vuoksi, metodi <code>lisaaTavara</code> ei saa lisätä uutta tavaraa laukkuun.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Tavara kirja = new Tavara("Aapiskukko", 2);
+        Tavara puhelin = new Tavara("Nokia 3210", 1);
+        Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+        Matkalaukku matkalaukku = new Matkalaukku(5);
+        System.out.println(matkalaukku);
+
+        matkalaukku.lisaaTavara(kirja);
+        System.out.println(matkalaukku);
+
+        matkalaukku.lisaaTavara(puhelin);
+        System.out.println(matkalaukku);
+
+        matkalaukku.lisaaTavara(tiiliskivi);
+        System.out.println(matkalaukku);
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">0 tavaraa (0 kg)
+1 tavaraa (2 kg)
+2 tavaraa (3 kg)
+2 tavaraa (3 kg)
+</pre>
+
+
+  <h2>Kielenhuoltoa</h2>
+
+  <p>
+    Ilmoitukset "0 tavaraa" ja "1 tavaraa" eivät ole kovin hyvää suomea &ndash; paremmat muodot olisivat "ei tavaroita" ja "1 tavara". Tee tämä muutos luokassa <code>Matkalaukku</code> sijaitsevaan toString-metodiin.
+  </p>
+
+  <p>
+    Nyt edellisen ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">ei tavaroita (0 kg)
+1 tavara (2 kg)
+2 tavaraa (3 kg)
+2 tavaraa (3 kg)
+</pre>
+
+
+  <h2>Kaikki tavarat</h2>
+
+  <p>
+    Lisää luokkaan <code>Matkalaukku</code> seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> metodi <code>tulostaTavarat</code>, joka tulostaa kaikki matkalaukussa olevat tavarat</li>
+    <li> metodi <code>yhteispaino</code>, joka palauttaa tavaroiden yhteispainon</li>
+  </ul>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Tavara kirja = new Tavara("Aapiskukko", 2);
+        Tavara puhelin = new Tavara("Nokia 3210", 1);
+        Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+        Matkalaukku matkalaukku = new Matkalaukku(10);
+        matkalaukku.lisaaTavara(kirja);
+        matkalaukku.lisaaTavara(puhelin);
+        matkalaukku.lisaaTavara(tiiliskivi);
+
+        System.out.println("Matkalaukussa on seuraavat tavarat:");
+        matkalaukku.tulostaTavarat();
+        System.out.println("Yhteispaino: " + matkalaukku.yhteispaino() + " kg");
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">Matkalaukussa on seuraavat tavarat:
+Aapiskukko (2 kg)
+Nokia 3210 (1 kg)
+Tiiliskivi (4 kg)
+Yhteispaino: 7 kg
+</pre>
+
+  <p>
+    Muokkaa myös luokkaasi siten, että käytät vain kahta oliomuuttujaa. Toinen sisältää maksimipainon, toinen on lista laukussa olevista tavaroista.
+  </p>
+
+
+  <h2>Raskain tavara</h2>
+
+  <p>
+    Lisää vielä luokkaan <code>Matkalaukku</code> metodi <code>raskainTavara</code>, joka palauttaa painoltaan suurimman tavaran. Jos yhtä raskaita tavaroita on useita, metodi voi palauttaa minkä tahansa niistä. Metodin tulee palauttaa olioviite. Jos laukku on tyhjä, palauta arvo <em>null</em>.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Tavara kirja = new Tavara("Aapiskukko", 2);
+        Tavara puhelin = new Tavara("Nokia 3210", 1);
+        Tavara tiiliskivi = new Tavara("Tiiliskivi", 4);
+
+        Matkalaukku matkalaukku = new Matkalaukku(10);
+        matkalaukku.lisaaTavara(kirja);
+        matkalaukku.lisaaTavara(puhelin);
+        matkalaukku.lisaaTavara(tiiliskivi);
+
+        Tavara raskain = matkalaukku.raskainTavara();
+        System.out.println("Raskain tavara: " + raskain);
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">Raskain tavara: Tiiliskivi (4 kg)</pre>
+
+
+
+  <h2>Lastiruuma-luokka</h2>
+
+  <p>
+    Tee luokka <code>Lastiruuma</code>, johon liittyvät seuraavat metodit:
+  </p>
+
+  <ul>
+    <li> konstruktori, jolle annetaan maksimipaino</li>
+    <li> metodi <code>public void lisaaMatkalaukku(Matkalaukku laukku)</code>, joka lisää parametrina annetun matkalaukun lastiruumaan</li>
+    <li> metodi <code>public String toString()</code>, joka palauttaa merkkijonon muotoa "x matkalaukkua (y kg)"</li>
+  </ul>
+
+  <p>
+    Tallenna matkalaukut sopivaan <code>ArrayList</code>-rakenteeseen.
+  </p>
+
+  <p>
+    Luokan <code>Lastiruuma</code> tulee valvoa, että sen sisältämien matkalaukkujen yhteispaino ei ylitä maksimipainoa. Jos maksimipaino ylittyisi uuden matkalaukun vuoksi, metodi <code>lisaaMatkalaukku</code> ei saa lisätä uutta matkalaukkua.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Tavara kirja = new Tavara("Aapiskukko", 2);
+        Tavara puhelin = new Tavara("Nokia 3210", 1);
+        Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+        Matkalaukku adanLaukku = new Matkalaukku(10);
+        adanLaukku.lisaaTavara(kirja);
+        adanLaukku.lisaaTavara(puhelin);
+
+        Matkalaukku pekanLaukku = new Matkalaukku(10);
+        pekanLaukku.lisaaTavara(tiiliskivi);
+
+        Lastiruuma lastiruuma = new Lastiruuma(1000);
+        lastiruuma.lisaaMatkalaukku(adanLaukku);
+        lastiruuma.lisaaMatkalaukku(pekanLaukku);
+
+        System.out.println(lastiruuma);
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">2 matkalaukkua (7 kg)
+</pre>
+
+
+  <h2>Lastiruuman sisältö</h2>
+
+  <p>
+    Lisää luokkaan <code>Lastiruuma</code> metodi <code>public void tulostaTavarat()</code>, joka tulostaa kaikki lastiruuman matkalaukuissa olevat tavarat.
+  </p>
+
+  <p>
+    Seuraavassa on luokan käyttöesimerkki:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public class Main {
+    public static void main(String[] args) {
+        Tavara kirja = new Tavara("Aapiskukko", 2);
+        Tavara puhelin = new Tavara("Nokia 3210", 1);
+        Tavara tiiliskivi = new Tavara("tiiliskivi", 4);
+
+        Matkalaukku adanLaukku = new Matkalaukku(10);
+        adanLaukku.lisaaTavara(kirja);
+        adanLaukku.lisaaTavara(puhelin);
+
+        Matkalaukku pekanLaukku = new Matkalaukku(10);
+        pekanLaukku.lisaaTavara(tiiliskivi);
+
+        Lastiruuma lastiruuma = new Lastiruuma(1000);
+        lastiruuma.lisaaMatkalaukku(adanLaukku);
+        lastiruuma.lisaaMatkalaukku(pekanLaukku);
+
+        System.out.println("Ruuman matkalaukuissa on seuraavat tavarat:");
+        lastiruuma.tulostaTavarat();
+    }
+}
+</code></pre>
+
+  <p>
+    Ohjelman tulostuksen tulisi olla seuraava:
+  </p>
+
+<pre class="sample-output">Ruuman matkalaukuissa on seuraavat tavarat:
+Aapiskukko (2 kg)
+Nokia 3210 (1 kg)
+tiiliskivi (4 kg)
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53116/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Algoritmiikkaa
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tiedät mitä käsite algoritmi tarkoittaa ja tunnet muutamia algoritmeja.
+    </li>
+    <li>
+      Osaat kertoa miten valintajärjestämisalgoritmi toimii. 
+    </li>
+    <li>
+      Osaat kertoa miten peräkkäishaku- ja binäärihakualgoritmi toimii.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+
+<p>
+  Ohjelman tehokas toiminta eli esimerkiksi tiedon nopea hakeminen ja näyttäminen on oleellinen osa ohjelmistojen käytettävyyttä. Mikäli ohjelman käyttäjä joutuu odottamaan kymmeniä sekunteja kun ohjelma etsii käyttäjän haluamaa tietoa, saattaa ohjelman käyttäjä lopettaa ohjelman käyttämisen kokonaan. Vastaavasti televisio-ohjelmistoja selaava käyttäjä ei hyödy televisio-ohjelman tiedoista mitään jos tiedot latautuvat vasta ohjelman katsomisen jälkeen.
+</p>
+
+<p>
+  Laajemmin voidaan ajatella, että nopeasti tapahtuva tiedon hakeminen ja näyttäminen on oleellista oikeastaan lähes missä tahansa sovelluksessa. Tutustutaan seuraavaksi tiedon hakemiseen ja järjestämiseen liittyviin algoritmeihin. Vaikka esimerkit käyttävät taulukoita, algoritmit toimivat myös muilla tiedon tallentamiseen tarkoitetuilla tietorakenteilla kuten listoilla.
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Mikä ihmeen algoritmi?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Sana algoritmi juontaa juurensa Muhammad ibn Musa al-Khwarizmi -nimiseen henkilöön. Mistä tässä oikein on kyse?
+  </p>
+
+  <p>
+    Ensimmäiset korkeakulttuurit syntyivät (laajemman) lähi-idän alueelle, mikä nopeutti siellä myös henkistä kasvua. Lähi-idässä oltiin merkittävästi muuta maailmaa edellä muunmuassa matematiikassa ja tähtitieteessä -- esimerkiksi Euroopassa 1500-luvulla tapahtunut murros tähtitieteessä (maa kiertääkin aurinkoa eikä toisin päin), tapahtui laajemman lähi-idän vaikutuspiirissä olleessa kreikassa jo noin 300 vuotta ennen ajanlaskumme alkua.
+  </p>
+
+  <p>
+    Nimi al-Khwarizmi viittaa oikeastaan alueeseen, tai hieman laajemmin, etuosa al- viittaa usein henkilön synty- tai kotipaikkaan. <a href="https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi" target="_blank" rel="noopener">Muhammad ibn Musa al-Khwarizmi</a> -- tai hänen isänsä tai esi-isänsä -- tulivat keskiaasiasta alueelta, joka tunnetaan nykyään suomen kielessä nimellä <a href="https://fi.wikipedia.org/wiki/Harezm" target="_blank" rel="noopener">Harezm</a>. Nykyään käytetty termi <strong>algoritmi</strong> onkin hatunnosto sekä Muhammad ibn Musa al-Khwarizmille että hänen syntyperälleen.
+  </p>
+
+  <p>
+    Merkittävä osa al-Khwarizmin työstä tapahtui Baghdadissa sijaitsevassa Viisauden talossa, joka paikallisen hallinnon tukemana keräsi tiedemiehiä eri puolilta maailmaa yhteen. Tavoitteena oli "pienimuotoisesti" kerätä kaikki maailman tieto yhteen paikkaan ja kääntää se arabian kielelle, jota sitten jaettiin eteenpäin. Tätä kautta tietoa valui myös eurooppaan: esimerkiksi al-Khwarizmin kirja intialaisilla numeroilla laskemisesta (latinaksi "Algoritmi de numero Indorum") toi arabialaisten numeroiden käytön eurooppaan.
+  </p>
+
+  <p>
+    Tämä terminologia näkyy yhä esimerkikiksi espanjan kielessä. Espanjankielinen sana guarismo -- eli suomeksi luku -- tulee ilmeisesti juurikin al-Khwarizmin nimestä.
+  </p>
+
+  <p>
+    Vaikka Muhammad ibn Musa al-Khwarizmi kytketään nykyään -- ainakin tietojenkäsittelytieteilijöiden parissa -- ensisijaisesti algoritmeihin, on hän ennen kaikkea vaikuttanut merkittävästi algebran kehitykseen. Hänen työnsä tuolla alueella kontribuoi mm. ensimmäisen ja toisen asteen yhtälöiden ratkaisemiseen. Työn keskiössä olivat konkreettiset esimerkit sekä selkokieliset askeleittaiset ratkaisut  -- numeroita työssä ei esiintynyt.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Tiedon järjestäminen
+
+</h2>
+
+<p>
+  Jos tieto ei noudata minkäänlaista järjestystä tai sääntöä, on tiedon hakeminen tyypillisesti työlästä. Tarvitsemme siis järjestystä!
+</p>
+
+<h3 class="material-heading">
+    Valintajärjestäminen
+
+</h3>
+
+<p>
+  Ohjelmoijan yleissivistykseen kuuluu ainakin yhden järjestämisalgoritmin (eli tavan järjestää taulukko) tuntemus. Tutustutaan erääseen "klassiseen" järjestämisalgoritmiin, valintajärjestämiseen. Tutustuminen tapahtuu harjoitustehtävien avulla.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Järjestäminen (5 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  
+  <h2>Pienimmän arvon etsiminen</h2>
+
+  <p>
+    Tee luokkaan <code>Paaohjelma</code> luokkametodi <code>pienin</code>, joka palauttaa metodille parametrina annetun kokonaislukutaulukon pienimmän luvun.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static int pienin(int[] taulukko) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>Seuraava esimerkki esittelee metodin toimintaa:</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {6, 5, 8, 7, 11};
+System.out.println("Pienin: " + Paaohjelma.pienin(luvut));
+</code></pre>
+
+<pre class="sample-output">Pienin: 5
+</pre>
+
+  
+  <h2>Pienimmän arvon indeksi</h2>
+
+  <p>
+    Tee luokkaan Paaohjelma luokkametodi <code>pienimmanIndeksi</code>, joka palauttaa sille parametrina annetun taulukon pienimmän luvun indeksin.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static int pienimmanIndeksi(int[] taulukko) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>
+    Seuraava koodi esittelee metodin toimintaa:
+  </p>
+
+<pre class="sh_java code-highlight"><code>// indeksit:   0  1  2  3  4
+int[] luvut = {6, 5, 8, 7, 11};
+System.out.println("Pienimmän indeksi: " + new Paaohjelma.pienimmanIndeksi(luvut));
+</code></pre>
+
+<pre class="sample-output">Pienimmän indeksi: 1
+</pre>
+
+  <p>
+    Taulukon pienin luku on 5, ja sen indeksi eli sijaintipaikka taulukossa on 1. Muistathan, että taulukon numerointi alkaa 0:sta.
+  </p>
+
+  
+  <h2>Pienimmän arvon indeksi taulukon loppuosassa</h2>
+
+  <p>
+    Tee luokkaan Paaohjelma luokkametodi <code>pienimmanIndeksiAlkaen</code>, joka toimii samalla tavalla kuin edellisen tehtävän metodi, mutta ottaa huomioon vain taulukon loppuosan jostain indeksistä alkaen. Metodille annetaan parametrina taulukon lisäksi aloitusindeksi, josta lähtien pienintä lukua etsitään.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static int pienimmanIndeksiAlkaen(int[] taulukko, int aloitusIndeksi) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>
+    Seuraava koodi esittelee metodin toimintaa:
+  </p>
+
+<pre class="sh_java code-highlight"><code>// indeksit:    0  1  2  3   4
+int[] luvut = {-1, 6, 9, 8, 12};
+System.out.println(Paaohjelma.pienimmanIndeksiAlkaen(luvut, 0));
+System.out.println(Paaohjelma.pienimmanIndeksiAlkaen(luvut, 1));
+System.out.println(Paaohjelma.pienimmanIndeksiAlkaen(luvut, 2));
+</code></pre>
+
+<pre class="sample-output">0
+1
+3
+</pre>
+
+  <p>
+    Esimerkissä ensimmäinen metodikutsu etsii pienimmän luvun indeksin aloittaen indeksistä 0. Indeksistä 0 alkaen pienin luku on -1, ja sen indeksi on 0. Toinen metodikutsu etsii pienimmän luvun indeksiä indeksistä 1 aloittaen. Tällöin pienin luku on 6, ja sen indeksi on 1. Kolmas kutsu etsii pienimmän luvun indeksiä aloittaen indeksistä 2. Indeksistä 2 alkaen pienin luku on 8, ja sen indeksi on 3.
+  </p>
+
+  
+  <h2>Lukujen vaihtaminen</h2>
+
+  <p>Tee luokkaan Paaohjelma luokkametodi <code>vaihda</code>, jolle annetaan taulukko ja kaksi sen indeksiä. Metodi vaihtaa indekseissä olevat luvut keskenään.</p>
+
+  <p>Metodin runko on seuraava:</p>
+
+<pre class="sh_java code-highlight"><code>public static void vaihda(int[] taulukko, int indeksi1, int indeksi2) {
+    // kirjoita koodia tähän
+}
+</code></pre>
+
+  <p>
+    Seuraavassa estellään metodin toimintaa. Taulukon tulostamisessa käytetään apuna taulukon merkkijonoksi muotoilevaa Arrays.toString-metodia:
+  </p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {3, 2, 5, 4, 8};
+
+System.out.println(Arrays.toString(luvut));
+
+Paaohjelma.vaihda(luvut, 1, 0);
+System.out.println(Arrays.toString(luvut));
+
+Paaohjelma.vaihda(luvut, 0, 3);
+System.out.println(Arrays.toString(luvut));
+</code></pre>
+
+<pre class="sample-output">[3, 2, 5, 4, 8]
+[2, 3, 5, 4, 8]
+[4, 3, 5, 2, 8]
+</pre>
+
+  
+  <h2>Järjestäminen</h2>
+
+  <p>
+    Nyt koossa on joukko hyödyllisiä metodeja, joiden avulla voimme toteuttaa järjestämisalgoritmin nimeltä valintajärjestäminen.
+  </p>
+
+  <p>
+    Valintajärjestämisen idea on seuraava:
+  </p>
+
+  <ul>
+    <li>
+      Siirretään taulukon pienin luku indeksiin 0.
+    </li>
+    <li>
+      Siirretään taulukon toiseksi pienin luku indeksiin 1.
+    </li>
+    <li>
+      Siirretään taulukon kolmanneksi pienin luku indeksiin 2.
+    </li>
+    <li>
+      Jne.
+    </li>
+  </ul>
+
+  <p>
+    Toisin sanoen:
+  </p>
+
+  <ul>
+    <li>
+      Tarkastellaan taulukkoa indeksistä 0 alkaen. Vaihdetaan keskenään indeksissä 0 oleva luku sekä taulukon pienin luku indeksistä 0 alkaen.
+    </li>
+    <li>
+      Tarkastellaan taulukkoa indeksistä 1 alkaen. Vaihdetaan keskenään indeksissä 1 oleva luku sekä taulukon pienin luku indeksistä 1 alkaen.
+    </li>
+    <li>
+      Tarkastellaan taulukkoa indeksistä 2 alkaen. Vaihdetaan keskenään indeksissä 2 oleva luku sekä taulukon pienin luku indeksistä 2 alkaen.
+    </li>
+    <li>
+      Jne.
+    </li>
+  </ul>
+
+  <p>
+    Toteuta luokkaan Paaohjelma luokkametodi <code>jarjesta</code>, joka perustuu yllä olevaan ideaan. Metodissa on syytä olla silmukka, joka käy läpi taulukon indeksejä. Metodeista <code>pieninIndeksiAlkaen</code> ja <code>vaihda</code> on varmasti hyötyä. Tulosta myös taulukon sisältö ennen järjestämistä ja jokaisen kierroksen jälkeen, jotta voit varmistaa algoritmin toimivan oikein.
+  </p>
+
+  <p>
+    Metodin runko on seuraava:
+  </p>
+
+<pre class="sh_java code-highlight"><code>public static void jarjesta(int[] taulukko) {
+    
+}
+</code></pre>
+
+  <p>
+    Testaa metodin toimintaa ainakin seuraavalla esimerkillä:
+  </p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {8, 3, 7, 9, 1, 2, 4};
+Paaohjelma.jarjesta(luvut);
+</code></pre>
+
+  <p>
+    Ohjelman tulosteen tulisi olla seuraavanlainen. Huomaa että sinun tulee tulostaa taulukon sisältö jokaisen vaihtamisen jälkeen!
+  </p>
+
+<pre class="sample-output">[8, 3, 7, 9, 1, 2, 4]
+[1, 3, 7, 9, 8, 2, 4]
+[1, 2, 7, 9, 8, 3, 4]
+[1, 2, 3, 9, 8, 7, 4]
+[1, 2, 3, 4, 8, 7, 9]
+[1, 2, 3, 4, 7, 8, 9]
+[1, 2, 3, 4, 7, 8, 9]
+</pre>
+
+  <p>
+    Huomaat, miten taulukko tulee pikkuhiljaa järjestykseen alkaen alusta ja edeten loppua kohti.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53117/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+
+<h3 class="material-heading">
+    Javan valmiit järjestämisalgoritmit
+
+</h3>
+
+
+<p>
+  Java tarjoaa merkittävän määrän valmiita järjestysalgoritmeja. Taulukot voi järjestää (luonnolliseen järjestykseen) luokan Arrays tarjoamalla metodilla sort, ja listat voi järjestää (luonnolliseen järjestykseen) luokan Collections tarjoamalla metodilla sort.
+</p>
+
+<pre class="sh_java code-highlight"><code>int[] luvut = {8, 3, 7, 9, 1, 2, 4};
+System.out.println(Arrays.toString(luvut));
+Arrays.sort(luvut);
+System.out.println(Arrays.toString(luvut));
+</code></pre>
+
+<pre class="sample-output">[8, 3, 7, 9, 1, 2, 4]
+[1, 2, 3, 4, 7, 8, 9]
+</pre>
+
+
+<pre class="sh_java code-highlight"><code>ArrayList&lt;Integer&gt; luvut = new ArrayList&lt;&gt;();
+luvut.add(8);
+luvut.add(3);
+luvut.add(7);
+System.out.println(luvut);
+Collections.sort(luvut);
+System.out.println(luvut);
+</code></pre>
+
+<pre class="sample-output">[8, 3, 7]
+[3, 7, 8]
+</pre>
+
+<p>
+  Valmiit järjestämisalgoritmit toimivat sekä alkeistyyppisille muuttujille, että joillekin Javan valmiille viittaustyyppisille muuttujille kuten String. Omien luokkiemme järjestämistä varten joudumme antamaan Javalle hieman lisävinkkejä, sillä luokat eivät sisällä tietoa siitä, miten niistä luodut oliot pitäisi järjestää. Palaamme omista luokista tehtyjen olioiden järjestämiseen ohjelmoinnin jatkokurssilla.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Valmiit järjestämisalgoritmit</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Lisää luokkaan <code>Paaohjelma</code> seuraavat luokkametodit:
+  </p>
+
+  <ul>
+    <li>
+      <code>public static void jarjesta(int[] taulukko)</code> järjestää kokonaislukutaulukon.
+    </li>
+    <li>
+      <code>public static void jarjesta(String[] taulukko)</code> järjestää merkkijonotaulukon.
+    </li>
+    <li>
+      <code>public static void jarjestaLuvut(ArrayList&lt;Integer&gt; luvut)</code> järjestää lukuja sisältävän listan.
+    </li>
+    <li>
+      <code>public static void jarjestaMerkkijonot(ArrayList&lt;String&gt; luvut)</code> järjestää merkkijonoja sisältävän listan.
+    </li>
+  </ul>
+
+  <p>
+    Hyödynnä metodien toteutuksessa Javan valmiita kirjastoja. 
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53118/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Tiedon hakeminen
+
+</h2>
+
+<h3 class="material-heading">
+    Peräkkäishaku
+
+</h3>
+
+<p>
+  Peräkkäishaku on hakualgoritmi, joka etsii tietoa taulukosta käymällä taulukkoa läpi alkio alkiolta. Heti kun haettu alkio löytyy, sen indeksi palautetaan. Jos alkiota ei löydy, palautetaan tieto siitä ettei haettavaa alkiota löytynyt -- tämä kerrotaan tyypillisesti palauttamalla indeksin sijaan arvo <code>-1</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Algoritmit {
+
+    public static int perakkaishaku(int[] taulukko, int haettava) {
+        for (int i = 0; i &lt; taulukko.length; i++) {
+            if (taulukko[i] == haettava) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
+</code></pre>
+
+<p>
+  Pahimmassa tapauksessa, eli tilanteessa missä alkiota ei lödy, algoritmi tekee taulukon koon verran vertailuja. Vaikkapa 10 miljoonaa arvoa sisältävässä taulukossa tämä tarkoittaa kymmentä miljoonaa vertailua. Jos tietoa haetaan useampia kertoja, kannattaa tehokkuutta yrittää parantaa.
+</p>
+
+
+<h3 class="material-heading">
+    Binäärihaku (puolitushaku)
+
+</h3>
+
+<p>
+  Kun tieto on järjestyksessä, hakeminen voidaan toteuttaa paljon peräkkäishakua tehokkaammin. Binäärihakualgoritmin idea aloittaa tiedon etsiminen taulukon (tai listan) keskimmäisestä indeksistä, verrata indeksissä olevaa arvoa haettuun arvoon, ja rajata tarvittaessa (eli mikäli haettavaa arvoa ei ole indeksissä) puolet tarkasteltavasta alueesta pois. Algoritmi esitellään seuraavassa slideshowssa.
+</p>
+
+
+<div class="pdf-slideshow-widget" data-pdf='../slideshows/binaarihaku.pdf'></div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Peräkkäishaku vs. Binäärihaku
+  </div>
+
+  <div class="hint__body">
+      <p>
+    Peräkkäishaun pahimmassa tapauksessa -- eli kun haettavaa ei löydy -- käydään kaikki taulukon arvot läpi. Miljoona alkiota sisältävässä taulukossa tämä tarkoittaa miljoonan alkion tarkastelua.
+  </p>
+
+  <p>
+    Binäärihaun pahimmassa tapauksessa tutkittava alue jaetaan kahteen osaan kunnes osan koko on yksi. Alkioita tarkastellaan huomattavasti vähemmän kuin peräkkäishaussa. Tarkastellaan tätä hieman tarkemmin.
+  </p>
+
+  <p>
+    Taulukko, jossa on 16 alkiota, voidaan jakaa kahteen osaan korkeintaan 4 kertaa, eli 16 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1.
+  </p>
+
+  <p>
+    Toisaalta, taulukko, jossa on miljoona alkiota voidaan jakaa kahteen osaan korkeintaa 20 kertaa, eli 1000000 -&gt; 500000 -&gt; 250000 -&gt; 125000 -&gt; 62500 -&gt; 31250 -&gt; 15625 -&gt; ~7813 -&gt; ~3907 -&gt; 1954 -&gt; ~977 -&gt; ~489 -&gt; ~245 -&gt; ~123 -&gt; ~62 -&gt; ~31 -&gt; ~16 -&gt; ~8 -&gt; ~4 -&gt; ~2 -&gt; ~1.
+  </p>
+
+  <p>
+    Mitä tämä tarkoittaa? Binäärihakua käyttäen miljoona alkiota sisältävästä taulukosta tulee pahimmassa tapauksessa tarkastella noin kahtakymmentä alkiota, kun peräkkäishaussa tarkasteltavia alkioita on miljoona.
+  </p>
+
+  <p>
+    Koska haettavien alkioiden määrä puolittuu binäärihaussa jokaisen tarkastelun yhteydessä, voi binäärihaun tehokkuutta tarkastella kaksikantaisen logaritmin avulla. Kaksikantainen logaritmi (<code>log<sub>2</sub></code>) annetusta luvusta kertoo kuinka monta kertaa luku voidaan puolittaa. Esimerkiksi kaksikantainen logaritmi luvusta 16777216 (<code>log<sub>2</sub> 16777216</code>) on 24, ja luvun 4294967296 kaksikantainen logaritmi, (<code>log<sub>2</sub> 4294967296</code>) on 32. Tämä tarkoittaa että 4294967296 eri arvoa sisältävästä järjestyksessä olevasta taulukosta hakeminen vaatisi binäärihaulta korkeintaan 32 eri alkion tarkastamista.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Ensiaskeleet ohjelmien automaattiseen testaamiseen
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Osaat kertoa joitakin ohjelmistovirheistä johtuvia ongelmia.
+    </li>
+    <li>
+      Tiedät mikä on stack trace, tunnet askeleet virheiden selvittämiseen ja osaat antaa tekstimuotoista testisyötettä Scannerille.
+    </li>
+    <li>
+      Tiedät mikä on stack trace, tunnet askeleet virheiden selvittämiseen ja osaat antaa tekstimuotoista testisyötettä Scannerille.
+    </li>
+    <li>
+      Tiedät mistä yksikkötestauksessa on kyse ja osaat kirjoittaa yksikkötestejä.
+    </li>
+    <li>
+      Tunnet testivetoisen ohjelmistokehitysmenetelmän.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+
+<p>
+  Otetaan seuraavaksi ensiaskeleet ohjelmien testaamiseen.
+</p>
+
+
+<h2 class="material-heading">
+    Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan
+
+</h2>
+
+<p>
+  Ohjelmia luodessa niihin päätyy virheitä. Joskus virheet eivät ole niin vakavia, ja aiheuttavat päänvaivaa lähinnä ohjelman käyttäjälle. Joskus toisaalta virheet voivat johtaa hyvinkin vakaviin seurauksiin. Varmaa on joka tapauksessa se, että ohjelmoimaan opetteleva ihminen tekee paljon virheitä.
+</p>
+
+<p>
+  Virheitä ei kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Ohjelmistovirhe
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman sekä ohjelmistovirheen.
+  </p>
+
+  <p>
+    Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein.
+  </p>
+
+  <p>
+    Satelliitti tuhoutui.
+  </p>
+
+
+  </div>
+</div>
+
+<p>
+  Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Debuggerin käyttöä on esitelty kurssimateriaaliin upotetuilla videoilla; niiden kertaamisesta ei ole koskaan haittaa.
+</p>
+
+<h2 class="material-heading">
+    Stack trace
+
+</h2>
+
+<p>
+  Kun ohjelmassa tapahtuu virhe, ohjelma tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta:
+</p>
+
+<pre class="sample-output">Exception in thread "main" ...
+    at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+<p>
+  Listan alussa kerrotaan minkälainen virhe tapahtui (tässä ...), ja seuraavalla rivillä kerrotaan missä virhe tapahtui. Rivi "at Ohjelma.main(Ohjelma.java:15)" sanoo, että virhe tapahtui Ohjelma.java-tiedoston rivillä 15.
+</p>
+
+<pre class="sample-output">at Ohjelma.main(Ohjelma.java:15)
+</pre>
+
+
+<h2 class="material-heading">
+    Muistilista virheenselvitykseen
+
+</h2>
+
+<p>
+  Jos koodisi ei toimi etkä tiedä missä on virhe, näillä askeleilla pääset alkuun.
+</p>
+
+<ol>
+  <li>Sisennä koodisi oikein ja selvitä, puuttuuko sulkuja.</li>
+  <li>Tarkista ovatko käytetyt muuttujat oikean nimisiä.</li>
+  <li>Testaa ohjelman kulkua erilaisilla syötteillä, ja selvitä minkälaisella syötteellä ohjelma ei toimi halutusti. Jos sait virheen testeistä, testit saattavat myös kertoa käytetyn syötteen.</li>
+  <li>Lisää ohjelmaan tulostuskomentoja, joissa tulostat käytettävien muuttujien arvoja ohjelman suorituksen eri vaiheissa.</li>
+  <li>Tarkista, että kaikki käyttämäsi muuttujat on alustettu. Jos tätä ei ole tehty, seuraa virhe NullPointerException.</li>
+  <li>Jos ohjelmasi aiheuttaa poikkeuksen, kannattaa ehdottomasti kiinnittää huomiota poikkeuksen yhteydessä olevaan <em>stack traceen</em>, eli niiden metodikutsujen listaan, minkä seurauksena poikkeuksen aiheuttanut tilanne syntyi.</li>
+  <li>Opettele käyttämään debuggeria, aiemmin nähdyllä videolla pääsee alkuun.</li>
+</ol>
+
+
+<h2 class="material-heading">
+    Testisyötteen antaminen Scannerille
+
+</h2>
+
+<p>
+  Ohjelman testaaminen käsin on usein työlästä. Syötteen antaminen on mahdollista automatisoida esimerkiksi syöttämällä Scanner-oliolle luettava merkkijono. Alla on annettu esimerkki siitä, miten ohjelmaa voi testata automaattisesti. Ohjelmassa syötetään ensin viisi merkkijonoa, jonka jälkeen syötetään aiemmin nähty merkkijono. Tämän jälkeen yritetään syöttää vielä uusi merkkijono. Merkkijonoa "kuusi" ei pitäisi esiintyä sanajoukossa.
+</p>
+
+<p>
+  Testisyötteen voi antaa merkkijonona Scanner-oliolle konstruktorissa. Jokainen testisyötteessä annettava rivinvaihto merkitään merkkijonoon kenoviivan ja n-merkin yhdistelmänä "\n".
+</p>
+
+<pre class="sh_java code-highlight"><code>String syote = "yksi\n" + "kaksi\n"  +
+               "kolme\n" + "nelja\n" +
+               "viisi\n" + "yksi\n"  +
+               "kuusi\n";
+
+Scanner lukija = new Scanner(syote);
+
+ArrayList&lt;String&gt; luetut = new ArrayList&lt;&gt;();
+
+while (true) {
+    System.out.println("Anna syote: ");
+    String rivi = lukija.nextLine();
+    if (luetut.contains(rivi)) {
+        break;
+    }
+
+    luettu.add(rivi);
+}
+
+System.out.println("Kiitos!");
+
+if (luetut.sisaltaa("kuusi")) {
+    System.out.println("Joukkoon lisättiin arvo, jota sinne ei olisi pitänyt lisätä.");
+}
+</code></pre>
+
+<p>
+  Ohjelma tulostus näyttää vain ohjelman antaman tulostuksen, ei käyttäjän tekemiä komentoja.
+</p>
+
+<pre class="sample-output">Anna syote:
+Anna syote:
+Anna syote:
+Anna syote:
+Anna syote:
+Anna syote:
+Kiitos!
+</pre>
+
+<p>
+  Merkkijonon antaminen Scanner-luokan konstruktorille korvaa näppäimistöltä luettavan syötteen. Merkkijonomuuttujan <code>syote</code> sisältö siis "simuloi" käyttäjän antamaa syötettä. Rivinvaihto syötteeseen merkitään <code>\n</code>:llä. Jokainen yksittäinen rivinvaihtomerkkiin loppuva osa syote-merkkijonossa siis vastaa yhtä nextLine()-komentoon annettua syötettä.
+</p>
+
+<p>
+  Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion konstruktorin parametriksi <code>System.in</code>, eli järjestelmän syötevirta. Voit toisaalta halutessasi myös vaihtaa testisyötettä, sillä kyse on merkkijonosta.
+</p>
+
+<p>
+  Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa.
+</p>
+
+<h2 class="material-heading">
+    Yksikkötestaus
+
+</h2>
+
+<p>
+  Edellä esitetty menetelmä automaattiseen testaamiseen missä ohjelmalle syötetyt syötteet muutetaan on varsin kätevä, mutta kuitenkin melko rajoittunut. Isompien ohjelmien testaaminen edellä kuvatulla tavalla on haastavaa. Eräs ratkaisu tähän on yksikkötestaus, missä ohjelman pieniä osia testataan erikseen.
+</p>
+
+<p>
+  Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien kuten luokkien ja niiden tarjoamien metodien testaamista.  Luokkien ja metodien rakenteen suunnittelussa käytettävän ohjesäännön -- jokaisella metodilla ja luokalla tulee olla yksi selkeä vastuu -- noudattamisen tai siitä poikkeamisen huomaa testejä kirjoittaessa. Mitä useampi vastuu metodilla on, sitä monimutkaisempi testi on. Jos laaja sovellus on kirjoitettu yksittäiseen metodiin, on testien kirjoittaminen sitä varten erittäin haastavaa ellei jopa mahdotonta. Vastaavasti, jos sovellus on pilkottu selkeisiin luokkiin ja metodeihin, on testienkin kirjoittaminen suoraviivaista.
+</p>
+
+<p>
+  Testien kirjoittamisessa hyödynnetään tyypillisesti valmiita yksikkötestauskirjastoja, jotka tarjoavat metodeja ja apuluokkia testien kirjoittamiseen. Javassa käytetyin yksikkötestauskirjasto on <a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a>, johon löytyy myös tuki lähes kaikista ohjelmointiympäristöistä. Esimerkiksi NetBeans osaa automaattisesti etsiä JUnit-testejä projektista -- jos testejä löytyy, ne näytetään projektin alla Test Packages -kansiossa.
+</p>
+
+<p>
+  Tarkastellaan yksikkötestien kirjoittamista esimerkin kautta. Oletetaan, että käytössämme on seuraava luokka Laskin, ja haluamme kirjoittaa sitä varten automaattisia testejä.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class Laskin {
+
+    private int arvo;
+ 
+    public Laskin() {
+        this.arvo = 0;
+    }
+
+    public void summa(int luku) {
+        this.arvo = this.arvo + luku;
+    }
+
+    public void erotus(int luku) {
+        this.arvo = this.arvo + luku;
+    }
+
+    public int getArvo() {
+        return this.arvo;
+    }
+}
+</code></pre>
+
+<p>
+  Laskimen toiminta perustuu siihen, että se muistaa aina edellisen laskuoperaation tuottaman tuloksen. Seuraavat laskuoperaatiot lisätään aina edelliseen lopputulokseen. Yllä olevaan laskimeen on jäänyt myös pieni copy-paste -ohjelmoinnista johtuva virhe. Metodin erotus pitäisi vähentää arvosta, mutta nyt se lisää arvoon.
+</p>
+
+<p>
+  Yksikkötestien kirjoittaminen aloitetaan testiluokan luomisella. Testiluokka luodaan Test Packages -kansion alle. Kun testaamme luokkaa <code>Laskin</code>, testiluokan nimeksi tulee <code>LaskinTest</code>. Nimen lopussa oleva merkkijono <code>Test</code> kertoo ohjelmointiympäristölle, että kyseessä on testiluokka. Ilman merkkijonoa Test luokassa olevia testejä ei suoriteta. (Huom! Testit luodaan NetBeansissa Test Packages -kansion alle.)
+</p>
+
+<p>
+  Testiluokka LaskinTest on aluksi tyhjä.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class LaskinTest {
+
+}
+</code></pre>
+
+<p>
+  Testit ovat testiluokassa olevia metodeja ja jokainen testi testaa yksittäistä asiaa. Aloitetaan luokan Laskin testaaminen -- luodaan ensin testimetodi, jossa varmistetaan, että juuri luodun laskimen sisältämä arvo on 0.
+</p>
+
+<pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class LaskinTest {
+
+    @Test
+    public void laskimenArvoAlussaNolla() {
+        Laskin laskin = new Laskin();
+        assertEquals(0, laskin.getArvo());
+    }
+}
+</code></pre>
+
+<p>
+  Yllä olevassa metodissa laskimenArvoAlussaNolla luodaan ensin laskinolio. Tämän jälkeen käytetään JUnit-testikehyksen tarjoamaa assertEquals-metodia arvon tarkistamiseen. Metodi tuodaan luokasta Assert komennolla import static, ja sille annetaan parametrina odotettu arvo -- tässä 0 -- sekä laskimen palauttama arvo. Jos metodin assertEquals arvot poikkeavat toisistaan, testin suoritus ei pääty hyväksytysti. Jokaisella testimetodilla tulee olla <em>annotaatio</em> @Test -- tämä kertoo JUnit-testikehykselle, että kyseessä on suoritettava testimetodi.
+</p>
+
+<p>
+  Testien suorittaminen onnistuu valitsemalla projekti oikealla hiirennapilla ja klikkaamalla vaihtoehtoa Test.
+</p>
+
+<p>
+  Testien suorittaminen luo output-välilehdelle (tyypillisesti NetBeansin alalaidassa) tulosteen, jossa on testiluokkakohtaiset tilastot. Alla olevassa esimerkissä on suoritettu pakkauksessa laskin olevan testiluokan LaskinTest testit. Testejä suoritettiin 1, joista yksikään ei epäonnistunut -- epäonnistuminen tarkoittaa tässä sitä, että testin testaama toiminnallisuus ei toiminut oletetusti.
+</p>
+
+<pre class="sample-output">Testsuite: LaskinTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
+
+test-report:
+test:
+BUILD SUCCESSFUL (total time: 0 seconds)
+</pre>
+
+<p>
+  Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta.
+</p>
+
+<pre class="sh_java code-highlight"><code>import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class LaskinTest {
+
+    @Test
+    public void laskimenArvoAlussaNolla() {
+        Laskin laskin = new Laskin();
+        assertEquals(0, laskin.getArvo());
+    }
+
+    @Test
+    public void arvoViisiKunSummataanViisi() {
+        Laskin laskin = new Laskin();
+        laskin.summa(5);
+        assertEquals(5, laskin.getArvo());
+    }
+
+    @Test
+    public void arvoMiinusKaksiKunErotetaanKaksi() {
+        Laskin laskin = new Laskin();
+        laskin.erotus(2);
+        assertEquals(-2, laskin.getArvo());
+    }
+}
+</code></pre>
+
+<p>
+  Testien suorittaminen antaa seuraavanlaisen tulostuksen.
+</p>
+
+<pre class="sample-output">Testsuite: LaskinTest
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
+
+Testcase: arvoMiinusKaksiKunErotetaanKaksi(LaskinTest):	FAILED
+expected:<-2> but was:<2>
+junit.framework.AssertionFailedError: expected:<-2> but was:<2>
+    at LaskinTest.arvoMiinusKaksiKunErotetaanKaksi(LaskinTest.java:25)
+
+
+Test LaskinTest FAILED
+test-report:
+test:
+BUILD SUCCESSFUL (total time: 0 seconds)
+</pre>
+
+<p>
+  Tulostus kertoo, että kolme testiä suoritettiin. Yksi niistä päätyi virheeseen. Testitulostuksessa on tieto myös testin rivistä, jossa virhe tapahtui (25) sekä tieto odotetusta (-2) ja saadusta arvosta (2). Kun testien suoritus päättyy virheeseen, NetBeans näyttää testien suoritukseen liitttyvän virhetilanteen myös visuaalisena.
+</p>
+
+<p>
+  Edellisillä testeillä kaksi testeistä menee läpi, mutta yhdessä on tapahtunut virhe. Korjataan luokkaan Laskin jäänyt virhe.
+</p>
+
+<pre class="sh_java code-highlight"><code>// ...
+public void erotus(int luku) {
+    this.arvo -= luku;
+}
+// ...
+</code></pre>
+
+<p>
+  Kun testit suoritetaan uudestaan, testit menevät läpi.
+</p>
+
+<pre class="sample-output">Testsuite: LaskinTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec
+
+test-report:
+test:
+BUILD SUCCESSFUL (total time: 0 seconds)
+</pre>
+
+
+<h2 class="material-heading">
+    Testivetoinen ohjelmistokehitys
+
+</h2>
+
+<p>
+  Testivetoinen ohjelmistokehitys (<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank" rel="noopener">Test-driven development</a>) on ohjelmistokehitysprosessi, joka perustuu ohjelman rakentamiseen pienissä osissa. Testivetoisessa ohjelmistokehityksessä ohjelmoija kirjoittaa aina ensin automaattisesti suoritettavan yksittäistä tietokoneohjelman osaa tarkastelevan testin.
+</p>
+
+<p>
+  Testi ei mene läpi, sillä testin täyttävä toiminnallisuus eli tarkasteltava tietokoneohjelman osa puuttuu. Kun testi on kirjoitettu, ohjelmaan lisätään toiminnallisuus, joka täyttää testin vaatimukset. Testit suoritetaan uudestaan, jonka jälkeen -- jos kaikki testit menevät läpi -- lisätään uusi testi tai vaihtoehtoisesti -- jos testit eivät mene läpi -- korjataan aiemmin kirjoitettua ohjelmaa. Ohjelman sisäistä rakennetta korjataan eli refaktoroidaan tarvittaessa siten, että ohjelman toiminnallisuus pysyy samana mutta rakenne selkiytyy.
+</p>
+
+<p>
+  Testivetoinen ohjelmistokehitys koostuu viidestä askeleesta, joita toistetaan kunnes ohjelman toiminnallisuus on valmis.
+</p>
+
+<ul>
+  <li>
+    Kirjoita testi. Ohjelmoija päättää, mitä ohjelman toiminnallisuutta testataan, ja kirjoittaa toiminnallisuutta varten testin.
+  </li>
+  <li>
+    Suorita testit ja tarkista menevätkö testit läpi. Kun uusi testi on kirjoitettu, testit suoritetaan. Jos testin suoritus päättyy hyväksyttyyn tilaan, testissä on todennäköisesti virhe ja se tulee korjata -- testin pitäisi testata vain toiminnallisuutta, jota ei ole vielä toteutettu.
+  </li>
+  <li>
+    Kirjoita toiminnallisuus, joka täyttää testin vaatimukset. Ohjelmoija toteuttaa toiminnallisuuden, joka täyttää vain testin vaatimukset. Huomaa, että tässä ei toteuteta asioita, joita testi ei vaadi -- toiminnallisuutta lisätään vain vähän kerrallaan.
+  </li>
+  <li>
+    Suorita testit. Jos testit eivät pääty hyväksyttyyn tilaan, kirjoitetussa toiminnallisuudessa on todennäköisesti virhe. Korjaa toiminnallisuus -- tai, jos toiminnallisuudessa ei ole virhettä -- korjaa viimeksi toteutettu testi.
+  </li>
+  <li>
+    Korjaa ohjelman sisäistä rakennetta. Kun ohjelman koko kasvaa, sen sisäistä rakennetta korjataan tarvittaessa. Liian pitkät metodit pilkotaan useampaan osaan ja ohjelmasta eriytetään käsitteisiin liittyviä luokkia. Testejä ei muuteta, vaan niitä hyödynnetään ohjelman sisäiseen rakenteeseen tehtyjen muutosten oikeellisuuden varmistamisessa -- jos ohjelman rakenteeseen tehty muutos muuttaa ohjelman toiminnallisuutta, testit varoittavat siitä, ja ohjelmoija voi korjata tilanteen.
+  </li>
+</ul>
+
+<div class="pdf-slideshow-widget" data-pdf='../slideshows/testivetoinen-ohjelmistokehitys.pdf'></div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Tehtavat (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee edellisen esimerkin alkutilanne. Seuraa esimerkkiä, ja luo Tehtavienhallinnalta haluttu toiminnallisuus testivetoista ohjelmistokehitystä noudattaen. Kun olet saanut edellisen esimerkin loppuun asti, lisää sovellukseen vielä testit tehtävien poistamiseen sekä testien vaatima toiminnallisuus.
+  </p>
+
+  <p>
+    Tehtävä on jaettu kahteen osaan. Osat ovat seuraavat:
+  </p>
+
+  <ol>
+    <li>
+      Noudata esimerkkiä kunnes esimerkissä refaktoroidaan ohjelma ja luodaan luokka Tehtava. Luo luokat <code>TehtavienhallintaTest</code> ja <code>Tehtavienhallinta</code> sekä niihin esimerkissä lisätty toiminnallisuus.
+    </li>
+    <li>
+      Noudata esimerkkiä loppuun asti, eli tee myös esimerkissä kuvattu refaktorointi.
+    </li>
+  </ol>
+
+  <p>
+    Päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kumpaakin osaa, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
+  </p>
+
+  <p>
+    Esimerkiksi, kun olet saanut ensimmäisen osan tehtyä eli noudattanut esimerkkiä refaktorointiin asti, olet vaiheessa 1, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>1</code>.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53119/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Lisää ohjelmistojen testaamisesta
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Yksikkötestaus on vain osa ohjelmiston testaamista. Yksikkötestaamisen lisäksi ohjelmiston toteuttaja toteuttaa myös integraatiotestejä, joissa tarkastellaan komponenttien kuten luokkien yhteistoiminnallisuutta, sekä käyttöliittymätestejä, joissa testataan sovelluksen käyttöliittymää käyttöliittymän tarjoamien elementtien kuten nappien kautta.
+  </p>
+
+  <p>
+    Näitä testaamiseen liittyviä menetelmiä tarkastellaan tarkemmin muunmuassa kursseilla ohjelmistotekniikka sekä ohjelmistotuotanto.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<h1 class="material-heading">
+    Muutamia laajempia tehtäviä
+
+</h1>
+
+<p>
+  Ohjelmoinnin perusteiden lopuksi teet muutamia laajempia tehtäviä. Tehtävissä ei ole ennalta määriteltyä rakennetta -- mieti tehtävää tehdessäsi minkälaiset luokat ja oliot auttavat tehtävien ratkaisemisessa.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Arvosanatilastot (4 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä toteutetaan ohjelma kurssipistetilastojen tulostamiseen. Ohjelmalle syötetään pisteitä (kokonaislukuja nollasta sataan), ja ohjelma tulostaa niiden perusteella arvosanoihin liittyviä tilastoja. Syötteiden lukeminen lopetetaan kun käyttäjä syöttää luvun -1. Lukuja, jotka eivät ole välillä [0-100] ei tule ottaa huomioon tilastojen laskemisessa.
+  </p>
+
+  <p>
+    Muistathan, että käyttäjältä luetun merkkijonon saa muunnettua kokonaisluvuksi Integer-luokan metodilla parseInt. Tämä toimii seuraavasti:
+  </p>
+
+<pre class="sh_java code-highlight"><code>String lukuMerkkijonona = "3";
+int luku = Integer.parseInt(lukuMerkkijonona);
+
+System.out.println(lukuMerkkijonona + 7);
+System.out.println(luku + 7);
+</code></pre>
+
+<pre class="sample-output">37
+10
+</pre>
+
+  <h2>Pisteiden keskiarvot</h2>
+
+  <p>
+    Kirjoita ohjelma, joka lukee käyttäjältä kurssin yhteispisteitä kuvaavia kokonaislukuja. Luvut väliltä [0-100] ovat hyväksyttäviä ja luku -1 lopettaa syötteen. Muut luvut ovat virhesyötteitä, jotka tulee jättää huomiotta. Kun käyttäjä syöttää luvun -1, tulostetaan syötettyjen yhteispisteiden keskiarvo.
+  </p>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">-42</font>
+<font color="red">24</font>
+<font color="red">42</font>
+<font color="red">72</font>
+<font color="red">80</font>
+<font color="red">52</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 54.0
+</pre>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">50</font>
+<font color="red">51</font>
+<font color="red">52</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 51.0
+</pre>
+
+
+  <h2>Hyväksyttyyn arvosanaan liittyvien pisteiden keskiarvot</h2>
+
+  <p>
+    Täydennä ohjelmaa siten, että se laskee kaikkien pisteiden keskiarvon lisäksi myös hyväksyttyyn arvosanaan liittyvien pisteiden keskiarvot.
+  </p>
+
+  <p>
+    Hyväksytyn arvosanan saa vähintään 50 kurssipisteellä. Voit olettaa, että käyttäjä kirjoittaa aina vähintään yhden välillä [0-100] olevan kokonaisluvun. Jos hyväksyttyyn arvosanaan osuvia lukuja ei ole lainkaan, tulostetaan viiva hyväksyttyjen keskiarvon kohdalle "-".
+  </p>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">-42</font>
+<font color="red">24</font>
+<font color="red">42</font>
+<font color="red">72</font>
+<font color="red">80</font>
+<font color="red">52</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 54.0
+Pisteiden keskiarvo (hyväksytyt): 68.0
+</pre>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">49</font>
+<font color="red">48</font>
+<font color="red">47</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 48.0
+Pisteiden keskiarvo (hyväksytyt): -
+</pre>
+
+
+  <h2>Hyväksyttyjen prosenttiosuus</h2>
+
+  <p>
+    Täydennä edellisessä osassa toteuttamaasi ohjelmaa siten, että ohjelma tulostaa myös hyväksymisprosentin. Hyväksymisprosentti lasketaan kaavalla <em>100 * hyväksytyt / osallistujat</em>.
+  </p>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">49</font>
+<font color="red">48</font>
+<font color="red">47</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 48.0
+Pisteiden keskiarvo (hyväksytyt): -
+Hyväksymisprosentti: 0.0
+</pre>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">102</font>
+<font color="red">-4</font>
+<font color="red">33</font>
+<font color="red">77</font>
+<font color="red">99</font>
+<font color="red">1</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 52.5
+Pisteiden keskiarvo (hyväksytyt): 88.0
+Hyväksymisprosentti: 50.0
+</pre>
+
+
+  <h2>Arvosanajakauma</h2>
+
+  <p>
+    Täydennä ohjelmaa siten, että ohjelma tulostaa myös arvosanajakauman. Arvosananajakauma muodostetaan seuraavasti.
+  </p>
+
+  <table class="table">
+
+    <tr>
+      <th>pistemäärä</th>
+      <th>arvosana</th>
+    </tr>
+
+    <tr>
+      <td>&lt; 50</td>
+      <td>hylätty eli 0</td>
+    </tr>
+
+    <tr>
+      <td>&lt; 60</td>
+      <td>1</td>
+    </tr>
+
+    <tr>
+      <td>&lt; 70</td>
+      <td>2</td>
+    </tr>
+
+    <tr>
+      <td>&lt; 80</td>
+      <td>3</td>
+    </tr>
+
+    <tr>
+      <td>&lt; 90</td>
+      <td>4</td>
+    </tr>
+
+    <tr>
+      <td>&gt;= 91</td>
+      <td>5</td>
+    </tr>
+
+  </table>
+
+
+  <p>
+    Jokainen koepistemäärä muutetaan arvosanaksi yllä olevan taulukon perusteella. Jos syötetty pistemäärä ei ole välillä [0-100], jätetään se huomiotta.
+  </p>
+
+  <p>
+    Arvosanajakauma tulostetaan tähtinä. Esim jos arvosanaan 5 oikeuttavia koepistemääriä on 1 kappale, tulostuu rivi <em>5: *</em>. Jos johonkin arvosanaan oikeuttavia pistemääriä ei ole, ei yhtään tähteä tulostu, alla olevassa esimerkissä näin on mm. nelosten kohdalla.</em>
+  </p>
+
+<pre class="sample-output">Syötä yhteispisteet, -1 lopettaa:
+<font color="red">102</font>
+<font color="red">-2</font>
+<font color="red">1</font>
+<font color="red">33</font>
+<font color="red">77</font>
+<font color="red">99</font>
+<font color="red">-1</font>
+Pisteiden keskiarvo (kaikki): 52.5
+Pisteiden keskiarvo (hyväksytyt): 88.0
+Hyväksymisprosentti: 50.0
+Arvosanajakauma:
+5: *
+4:
+3: *
+2: 
+1:
+0: **
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53120/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Reseptihaku (4 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä tehdään ohjelma, joka tarjoaa käyttäjälle mahdollisuuden reseptien hakuun reseptin nimen, keittoajan tai raaka-aineen nimen perusteella. Ohjelman tulee lukea reseptit käyttäjän antamasta tiedostosta.
+  </p>
+
+  <p>
+    Jokainen resepti koostuu kolmesta tai useammasta rivistä reseptitiedostossa. Ensimmäisellä rivillä on reseptin nimi, toisella rivillä reseptin keittoaika (kokonaisluku), ja kolmas ja sitä seuraavat rivit kertovat reseptin raaka-aineet. Reseptin raaka-aineiden kuvaus päättyy tyhjään riviin. Tiedostossa voi olla useampia reseptejä. Alla kuvattuna esimerkkitiedosto.
+  </p>
+
+<pre class="sample-output">Lettutaikina
+60
+maito
+muna
+jauho
+sokeri
+suola
+voi
+
+Lihapullat
+20
+jauheliha
+muna
+korppujauho
+
+Tofurullat
+30
+tofu
+riisi
+vesi
+porkkana
+kurkku
+avokado
+wasabi
+</pre>
+
+  <p>
+    Ohjelma toteutetaan osissa. Ensin ohjelmaan luodaan mahdollisuus reseptien lukemiseen sekä listaamiseen. Tämän jälkeen ohjelmaan lisätään mahdollisuus reseptien hakemiseen nimen perusteella, keittoajan perusteella ja lopulta raaka-aineen perusteella.
+  </p>
+
+  <p>
+    Tehtäväpohjassa on mukana tiedosto <code>reseptit.txt</code>, jota voi käyttää sovelluksen testaamiseen. <em>Huomaa, että ohjelman ei tule listata reseptien raaka-aineita, mutta niitä käytetään hakutoiminnallisuudessa.</em>
+  </p>
+
+
+  <h2>
+    Reseptien lukeminen ja listaaminen
+  </h2>
+
+  <p>
+    Luo ohjelmaan ensin mahdollisuus reseptien lukemiseen sekä listaamiseen. Ohjelman käyttöliittymän tulee olla seuraavanlainen. Voit olettaa, että käyttäjä syöttää aina tiedoston, joka on olemassa. Alla oletetaan, että tehtävänannossa annetut esimerkkireseptit ovat tiedostossa <code>reseptit.txt</code>.
+  </p>
+
+<pre class="sample-output">Mistä luetaan? <font color="red">reseptit.txt</font>
+
+Komennot:
+listaa - listaa reseptit
+lopeta - lopettaa ohjelman
+
+Syötä komento: <font color="red">listaa</font>
+
+Reseptit:
+Lettutaikina, keittoaika: 60
+Lihapullat, keittoaika: 20
+Tofurullat, keittoaika: 30
+
+Syötä komento:  <font color="red">lopeta</font>
+</pre>
+
+
+  <h2>
+    Reseptien hakeminen nimen perusteella
+  </h2>
+
+  <p>
+    Lisää ohjelmaan mahdollisuus reseptien hakemiseen nimen perusteella. Nimen perusteella hakeminen tapahtuu komennolla <code>hae nimi</code>, jonka jälkeen käyttäjältä kysytään merkkijonoa, jota etsitään reseptin nimistä. Hakutoiminnallisuuden tulee toimia siten, että se tulostaa kaikki ne reseptit, joiden nimessä esiintyy käyttäjän kirjoittama merkkijono.
+  </p>
+
+
+<pre class="sample-output">Mistä luetaan? <font color="red">reseptit.txt</font>
+
+Komennot:
+listaa - listaa reseptit
+lopeta - lopettaa ohjelman
+hae nimi - hakee reseptiä nimen perusteella
+
+Syötä komento: <font color="red">listaa</font>
+
+Reseptit:
+Lettutaikina, keittoaika: 60
+Lihapullat, keittoaika: 20
+Tofurullat, keittoaika: 30
+
+Syötä komento: <font color="red">hae nimi</font>
+Mitä haetaan: <font color="red">rulla</font>
+
+Reseptit:
+Tofurullat, keittoaika: 30
+
+Syötä komento:  <font color="red">lopeta</font>
+</pre>
+
+
+  <h2>
+    Reseptien hakeminen keittoajan perusteella
+  </h2>
+
+  <p>
+    Lisää seuraavaksi ohjelmaan mahdollisuus reseptien hakemiseen keittoajan perusteella. Keittoajan perusteella hakeminen tapahtuu komennolla <code>hae keittoaika</code>, jonka jälkeen käyttäjältä kysytään suurinta hyväksyttävää keittoaikaa. Hakutoiminnallisuuden tulee toimia siten, että se tulostaa kaikki ne reseptit, joiden keittoaika on pienempi tai yhtä suuri kuin käyttäjän syöttämä keittoaika.
+  </p>
+
+
+<pre class="sample-output">Mistä luetaan? <font color="red">reseptit.txt</font>
+
+Komennot:
+listaa - listaa reseptit
+lopeta - lopettaa ohjelman
+hae nimi - hakee reseptiä nimen perusteella
+hae keittoaika - hakee reseptiä keittoajan perusteella
+
+Syötä komento: <font color="red">hae keittoaika</font>
+Keittoaika korkeintaan: <font color="red">30</font>
+
+Reseptit:
+Lihapullat, keittoaika: 20
+Tofurullat, keittoaika: 30
+
+Syötä komento: <font color="red">hae keittoaika</font>
+Keittoaika korkeintaan: <font color="red">15</font>
+
+Reseptit:
+
+Syötä komento: <font color="red">hae nimi</font>
+Mitä haetaan: <font color="red">rulla</font>
+
+Reseptit:
+Tofurullat, keittoaika: 30
+
+Syötä komento:  <font color="red">lopeta</font>
+</pre>
+
+
+  <h2>
+    Reseptien hakeminen raaka-aineen perusteella
+  </h2>
+
+  <p>
+    Lisää lopulta ohjelmaan mahdollisuus reseptien hakemiseen raaka-aineen perusteella. Raaka-aineen perusteella hakeminen tapahtuu komennolla <code>hae aine</code>, jonka jälkeen käyttäjältä kysytään merkkijonoa. Hakutoiminnallisuuden tulee toimia siten, että se tulostaa kaikki ne reseptit, joiden raaka-aineissa esiintyy käyttäjän antama merkkijono. Huomaa, että tässä annetun merkkijonon täytyy vastata täysin haettua raaka-ainetta (esim. "okeri" ei käy ole sama kuin "sokeri").
+  </p>
+
+<pre class="sample-output">Mistä luetaan? <font color="red">reseptit.txt</font>
+
+Komennot:
+listaa - listaa reseptit
+lopeta - lopettaa ohjelman
+hae nimi - hakee reseptiä nimen perusteella
+hae keittoaika - hakee reseptiä keittoajan perusteella
+hae aine - hakee reseptiä raaka-aineen perusteella
+
+Syötä komento: <font color="red">hae keittoaika</font>
+Keittoaika korkeintaan: <font color="red">30</font>
+
+Reseptit:
+Lihapullat, keittoaika: 20
+Tofurullat, keittoaika: 30
+
+Syötä komento: <font color="red">hae aine</font>
+Mitä raaka-ainetta haetaan: <font color="red">sokeri</font>
+
+Reseptit:
+Lettutaikina, keittoaika: 60
+
+Syötä komento: <font color="red">hae aine</font>
+Mitä raaka-ainetta haetaan: <font color="red">muna</font>
+
+Reseptit:
+Lettutaikina, keittoaika: 60
+Lihapullat, keittoaika: 20
+
+Syötä komento: <font color="red">hae aine</font>
+Mitä raaka-ainetta haetaan: <font color="red">una</font>
+
+Reseptit:
+
+Syötä komento:  <font color="red">lopeta</font>
+</pre>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53121/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Lintubongarin tietokanta (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p><b>Tehtävä vastaa kolmea yksiosaista tehtävää. </b></p>
+
+  <p>
+    Tässä tehtävässä suunnittelet ja toteutat tietokannan lintubongareille. Tietokanta sisältää lintuja, joista jokaisella on nimi (merkkijono) ja latinankielinen nimi (merkkijono). Tämän lisäksi tietokanta laskee kunkin linnun havaintokertoja.
+  </p>
+
+  <p>
+    Ohjelmasi täytyy toteuttaa seuraavat komennot:
+  </p>
+
+  <ul>
+    <li><code>Lisaa</code> - lisää linnun (<b>huom:</b> komennon nimessä ei ä-kirjainta!)</li>
+    <li><code>Havainto</code> - lisää havainnon</li>
+    <li><code>Tilasto</code> - tulostaa kaikki linnut</li>
+    <li><code>Nayta</code> - tulostaa yhden linnun (<b>huom:</b> komennon nimessä ei ä-kirjainta!)</li>
+    <li><code>Lopeta</code> - lopettaa ohjelman</li>
+  </ul>
+
+  <p>
+    Lisäksi virheelliset syötteet pitää käsitellä. (Ks. <code>Simo</code> alla). Tässä vielä esimerkki ohjelman toiminnasta:
+  </p>
+
+<pre class="sample-output">? <font color="red">Lisaa</font>
+Nimi: <font color="red">Korppi</font>
+Latinankielinen nimi: <font color="red">Corvus Corvus</font>
+? <font color="red">Lisaa</font>
+Nimi: <font color="red">Haukka</font>
+Latinankielinen nimi: <font color="red">Dorkus Dorkus</font>
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Haukka</font>
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Simo</font>
+Ei ole lintu!
+? <font color="red">Havainto</font>
+Mikä havaittu? <font color="red">Haukka</font>
+? <font color="red">Tilasto</font>
+Haukka (Dorkus Dorkus): 2 havaintoa
+Korppi (Corvus Corvus): 0 havaintoa
+? <font color="red">Nayta</font>
+Mikä? <font color="red">Haukka</font>
+Haukka (Dorkus Dorkus): 2 havaintoa
+? <font color="red">Lopeta</font>
+</pre>
+
+  <p>
+    <strong>Huom!</strong> Ohjelmasi rakenne on täysin vapaa. Testaamme vain että <code>Paaohjelma</code> luokan <code>main</code>-metodi toimii kuten tässä on kuvailtu. Hyödyt tehtävässä todennäköisesti ongelma-aluetta sopivasti kuvaavista luokista.
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/53122/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Vertaisarviointi: hajautustaulut
+
+</h1>
+
+<p>
+  Otetaan hetkeksi askel taaksepäin ja muistellaan hajautustaulujen käyttöä. 
+</p>
+
+<p>
+  Ohjelmointikurssin kuudennessa osassa loimme taas omia tehtäviä. Nyt on hetki vertaisarviointiin! Anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Itse tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Vertaisarviointi
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Alla on kolme Crowdsorcereriin tehtyä tehtävää: kaksi jonkun kurssitoverisi lähettämää ja yksi itsearviointia varten. Niiden yhteydessä on muistin virkistykseksi ohjeistus, jonka pohjalta kyseiset tehtävänannot on tehty.
+  </p>
+
+  <p>
+    Tarkastele jokaisen tehtävän eri osia: tehtävänantoa, tehtäväpohjaa ja malliratkaisua sekä testaukseen käytettäviä syötteitä ja tulosteita. Arvioi niiden selkeyttä, vaikeutta ja sitä, kuinka hyvin ne vastaavat ohjeistukseensa.
+  </p>
+
+  <p>
+    Voit vaihtaa näkymää tehtäväpohjan ja mallivastauksen välillä painamalla lähdekoodin yläpalkin painikkeita. Palautteenannon avuksi on annettu väittämiä. Voit valita kuinka samaa mieltä niiden kanssa olet painamalla hymiöitä. Annathan myös sanallista palautetta sille varattuun kenttään! Lisää vielä tehtävää mielestäsi kuvaavia tageja ja paina Lähetä.
+  </p>
+
+  <p>
+    Anna arvio kummallekin vertaispalautetehtävälle ja lopuksi vielä omallesi.
+  </p>
+
+  <p>
+    Muista olla reilu ja ystävällinen. Hyvä palaute on rehellistä, mutta kannustavaa!
+  </p>
+
+  <p>
+    Voit halutessasi ladata arvioitavan tehtävän tehtäväpohjan ja malliratkaisun koneellesi, ja testata niiden käyttöä. Molemmat tulevat ZIP-paketeissa, jolloin sinun täytyy purkaa ne, ennen kuin voit avata ne NetBeansissä.
+  </p>
+
+
+  </div>
+</div>
+
+
+<div class="general-callout">
+  <div class="general-callout__header">
+    <i class="fa fa-magic general-callout__icon"></i> Suunnittele oma tehtävä: hajautustaulu
+  </div>
+
+  <div class="general-callout__body">
+    
+  <p>
+    Keksi tehtävä, jossa käytetään HashMappia. Tehtäväpohjassa on valmiina komennon kysyminen ja toistolause, joka jatkuu kunnes ohjelman käyttäjä kirjoittaa komennon "lopeta".
+  </p>
+
+  <p>
+    <strong>Huom!</strong> Tässä sinun täytyy syöttää jokaiselle testitapaukselle useampi syöte. Useamman syötteen saat annettua, kun laitat rivinvaihdon <code>\n</code> jokaisen syötteen väliin. Lisäksi lopeta jokainen testisyöte tekstillä <code>lopeta</code>, jotta testissä silmukan suoritus lakkaa.
+  </p>
+
+  <p>
+    Esimerkiksi jos haluat antaa testisyötteeksi "kissa", "koira", "lopeta", syötä input-kenttään teksti <code>kissa\nkoira\nlopeta</code>.
+  </p>
+
+  <p>
+    Muista merkitä malliratkaisurivit ohjelmaan -- näin ratkaisu ei tule suoraan käyttäjälle näkyvään.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät vastaavat kurssin pisteytyksessä ohjelmointitehtävää.
+  </p>  
+
+
+  </div>
+</div>
+
+
+<div class='crowdsorcerer-widget' data-assignment='12' peer-review data-exercises='3'></div>
+
+
+<h1 class="material-heading">
+    Yhteenveto
+
+</h1>
+
+<p>
+  Seitsemännessa osassa tutustuttiin käsitteeseen ohjelmointiparadigma ja vertailtiin proseduraalista ohjelmointia ja olio-ohjelmointia.  Tutustuimme tiedon järjestämiseen sekä tiedon hakemiseen liittyviin algoritmeihin (valintajärjestäminen, binäärihaku) sekä otimme ensiaskeleet ohjelmien automaattiseen testaamiseen.
+</p>
+
+<p>
+  Vastaa vielä alla olevaan kyselyyn.
+</p>
+
+<div class="quiznator-plugin" data-quiz-id="5bc206fbb60a884e5f609b2f"></div>
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+    <div class="improvement">
+<a href="../report_issue/" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    Ilmoita virhe
+</a><a href="../edit_page/?path=part7.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+    Muokkaa sivua
+</a>  <a href="https://github.com/materiaalit/ohjelmointi-s18" class="footer__github-link" target="_blank" rel="noopener">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
+
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-s18">
+                Ohjelmoinnin perusteet, syksy 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="../javascripts/scripts-d12d5def.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script src='https://materiaalit.github.io/pdf-slideshow-cdn/app.js'></script>
+    <script>
+      window.initPdfSlideshow('../pdf.worker.min-7be35925.js');
+    </script>
+  </body>
+</html>
