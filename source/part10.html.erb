@@ -41,7 +41,9 @@
 </pre>
 
 <p>
-  Kukin luokka voi periä suoranaisesti yhden luokan. Välillisesti luokka kuitenkin perii kaikki perimänsä luokan ominaisuudet. Luokka <code>ArrayList</code> perii luokan <code>AbstractList</code>, ja välillisesti luokat <code>AbstractCollection</code> ja <code>Object</code>. Luokalla <code>ArrayList</code> on siis käytössään luokkien <code>AbstractList</code>, <code>AbstractCollection</code> ja <code>Object</code> muuttujat, metodit <em>ja</em> rajapinnat.
+  Kukin luokka voi periä suoranaisesti yhden luokan. Välillisesti luokka 
+  
+  kuitenkin perii kaikki perimänsä luokan ominaisuudet. Luokka <code>ArrayList</code> perii luokan <code>AbstractList</code>, ja välillisesti luokat <code>AbstractCollection</code> ja <code>Object</code>. Luokalla <code>ArrayList</code> on siis käytössään luokkien <code>AbstractList</code>, <code>AbstractCollection</code> ja <code>Object</code> muuttujat, metodit <em>ja</em> rajapinnat.
 </p>
 
 <p>
@@ -2881,5 +2883,15 @@ asioiden -&gt; hoidossa: 1
   </p>
 
 <% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Ohjelmien testaaminen
+<% end %>
+
+
+
+- konkreettisten yksikkötestien kirjoitus
+
 
 <%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a040' } %>

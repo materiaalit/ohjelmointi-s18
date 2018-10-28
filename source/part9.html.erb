@@ -15,6 +15,76 @@
 <% end %>
 
 
+
+"kun kädessä on vasara, kaikki näyttää naulalta"
+
+https://medium.freecodecamp.org/object-oriented-programming-concepts-21bb035f7260
+
+
+TODO: "kivoja tekniikoita; fori; enum, ..., stringbuilder"
+
+
+<% partial 'partials/material_heading' do %>
+  Perintä ja abstraktit luokat luokkakaaviossa
+<% end %>
+
+
+<p>
+  Perintä merkitään luokkakaavioon kolmion muotoisella nuolella. Kolmio on perittävän luokan päädyssä. Alla olevassa esimerkissä luokka Moottori perii luokan Osa.
+</p>
+
+<img src="/img/diagrams/luokkakaavio-moottori-perii-osan.png" alt="[Osa|-tunnus:String;-valmistaja:String;-kuvaus:String]
+								   [Moottori|-moottorityyppi:String]
+								   [Osa]^-[Moottori]" />
+
+<p>&nbsp;</p>
+
+<p>
+  Alla olevaan esimerkkiin on kirjoitettu auki muistavaa tuotevarastoa käsittelevän tehtävän luokkakaavio. Muistava tuotevarasto perii tuotevaraston, joka taas perii varaston. Muutoshistoria on erillinen luokka, jonka muistava tuotevarasto sisältää. Muistava tuotevarasto tietää muutoshistorian, mutta muutoshistoria ei tiedä muistavasta tuotevarastosta. 
+</p>
+
+<img src="/img/diagrams/luokkakaavio-muistava-tuotevarasto.png" alt="[Varasto|-tilavuus:double;-saldo:double|+Varasto(tilavuus:double);+getSaldo():double;+getTilavuus():double;+paljonkoMahtuu():double;+lisaaVarastoon(maara:double):void;+otaVarastosta(maara:double):double;+toString():String]
+								     [Tuotevarasto|-nimi:String|+Tuotevarasto(nimi:String، tilavuus:double);+getNimi():String;+setNimi(nimi:String):String;+toString():String]
+								     [Muutoshistoria|-tilanteet:ArrayList|+Muutoshistoria();+lisaa(tilanne:double);+nollaa():void;...]
+								     [MuistavaTuotevarasto||+MuistavaTuotevarasto(nimi:String، tilavuus:double،alkusaldo:double);+historia():String;+tulostaAnalyysi():void;+lisaaVarastoon(maara:double);+otaVarastosta(maara:double):double]
+
+								     [Varasto]^-[Tuotevarasto]
+								     [Tuotevarasto]^-[MuistavaTuotevarasto]
+								     [Muutoshistoria]<-[MuistavaTuotevarasto]" />
+
+<p>&nbsp;</p>
+
+<p>
+  Abstraktien luokkien perintä toimii lähes samalla tavalla. Abstraktit luokat kuitenkin merkitään luokkakaavioon siten, että luokan nimen yläpuolella lukee <code>&lt;&lt;abstract&gt;&gt;</code>. Tämän lisäksi luokan nimi ja luokassa määritellyt abstraktit metodit kuvataan kursiivilla.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on tehtävän erilaisia laatikoita ensimmäistä kahta osaa kuvaava luokkaakaavio.
+</p>
+
+
+<img src="/img/diagrams/luokkakaavio-abstraktit.png" />
+
+
+
+<% partial 'partials/hint', locals: { name: 'Miten näitä kannattaa piirtää?' } do %>
+
+  <p>
+    Luokkakaaviot ovat erinomainen tapa kuvata ongelma-aluetta ja ongelman muotoa muille. Niiden käyttö on erittäin hyödyllistä myös silloin, kun ohjelmoija suunnittelee useammasta luokasta koostuvan ohjelman rakennetta.
+  </p>
+
+  <p>
+    Luokkakaavioita piirretään suunnitteluvaiheessa usein esimerkiksi valkotaulua tai isompaa paperiarkkia käyttäen. Luokkakaaviot kannattaa ajatella poisheitettävinä tuotoksina, jotka auttavat ohjelman rakennuksessa. Kaavion piirtämiseen -- eli tyylin oikeellisuuteen ja yksityiskohtiin -- ei kannata käyttää liian pitkään aikaa. Vastaavasti kaavio kannattaa piirtää sopivalla abstraktiotasolla. Esimerkiksi kymmeniä luokkia sisältävään luokkakaavioon ei todennäköisesti kannata merkitä jokaisen luokan jokaista metodia ja muuttujaa.
+  </p>
+
+  <p>
+    Materiaalissa käytetyt luokkakaaviot on piirretty sekä <a href="https://yuml.me/" target="_blank" norel>yUML</a> että <a href="https://creately.com" target="_blank" norel>Creately</a>n avulla. Myös NetBeansiin löytyy välineitä luokkakaavioiden luomiseen -- esimerkiksi <a href="http://plugins.netbeans.org/plugin/55435/easyuml" target="_blank" norel>easyUML</a> mahdollistaa luokkakaavioiden luomisen suoraan projektin koodista.
+  </p>
+  
+<% end %>
+
+
+
 <% partial 'partials/material_heading' do %>
   Luokkakaaviot
 <% end %>
@@ -2710,6 +2780,27 @@ komento: <font color="red">x</font>
   </ul>
 
 <% end %>
+
+
+
+<% partial 'partials/material_heading' do %>
+  Ohjelmien testaaminen
+<% end %>
+
+<br/>
+
+- crowdsorcerer: nähdään kun yksikkötestit generoituu
+
+(1) koodi on valmiina, pitää generoida tehtävänanto ja testit
+
+
+--
+
+--> vertaisarviointi
+----
+
+
++ konkreettisten yksikkötestien kirjoitus
 
 
 <%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a03f' } %>

@@ -2556,3 +2556,1096 @@ https://medium.com/@_marcos_otero/the-real-10-algorithms-that-dominate-our-world
   <% end %>
 
 <% end %>
+
+
+
+
+<% partial 'partials/material_heading' do %>
+  Alkeis- ja viittaustyyppiset muuttujat tietokoneen näkökulmasta
+<% end %>
+
+<p>
+   Sanoessamme "muuttujaan asetetaan arvo.." tai "muuttujan arvoksi kopioidaan.." käytämme ohjelmoijien käyttämää kieltä. 
+   
+   Ohjelmoijien kieli on kuitenkin abstraktio tietokoneen sisäisestä toiminnasta. Tarkastellaan tässä lyhyesti mitä 
+</p>
+
+<p>
+Ohjelmointikieli on abstraktio mikä mahdollistaa ohjelmointiin liittyvistä asioista puhumisen abstraktioiden avulla.
+</p>
+
+<p>
+  Aiheeseen syvennytään tarkemmin kurssilla tietokoneen toiminta.
+</p>
+
+<p>
+  Tänne bittijutut sekä muisti jne. 
+</p>
+
+this vs super
+
+extends vai implements
+
+
+<% partial 'partials/hint', locals: { name: 'Bitit ja binääriluvut' } do %>
+
+  <p>
+    Tietokoneen muisti on käytännössä taulukko, missä jokainen taulukon lokero sisältää joko luvun 0 tai 1. Näitä yksittäisiä lukuja kutsutaan biteiksi (lyhenne sanasta binary digit). Koneen käyttämät luvut kuvataan bittien avulla binäärilukuina. Esimerkiksi <code>short</code>-tyyppinen muuttuja sisältää 16 bittiä ja <code>int</code>-tyyppinen muuttuja 32 bittiä. TODO: miten string-muodostuu
+  </p>
+
+  <p>
+    Tarkastellaan miten binääriluvut toimivat. Alla on kuvattuna 8 bittiä pitkä alue tietokoneen muistista, missä jokainen bitin arvo on 0. 
+  </p>
+
+  <table border="1">
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+
+  <br/>
+  
+  <p>
+    Binäärilukukujen avulla jokainen luku voidaan esittää luvun 2 potensseina. Esimerkiksi yllä olevan kahdeksan bitin luvun arvo kymmenjärjestelmässä on: 0 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + ... + 0 * 2<sup>7</sup> = 0. Laskeminen aloitetaan tyypillisesti luvun oikeasta laidasta. Alla on kuvattuna toinen esimerkki.
+  </p>
+  
+  <table border="1">
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </table>
+
+  <br/>
+  
+  <p>
+    Yllä kuvattu binääriluku on kymmenjärjestelmässä: 1 * 2<sup>0</sup> + 0 * 2<sup>1</sup> + 1 * 2<sup>2</sup> + 0 * 2<sup>3</sup> + ... + 0 * 2<sup>7</sup> = 5. 
+  </p>
+
+  <p>
+    Vastaavasti kymmenjärjestelmän luku 3 voidaan ilmaista binäärilukuna "11", ja esimerkiksi luku 256 binäärilukuna "100000000". Binäärilukujen avulla kuvataan lukujen lisäksi käytännössä kaikki tietokoneen tallentama tieto. Tähän teemaan tutustutaan tarkemmin kurssilla Tietokoneen toiminta (TKT-10005). 
+  </p>
+
+  <p>
+    TODO: tieto muistissa -- muuttuja on osoite paikkaan; int-muuttujan arvon saa selville lukemalla 32 bittiä int-muuttujan arvon kuvaamasta paikasta lähtien.
+  </p>
+
+<% end %>
+
+
+<p>
+  TODO: jatkokurssille moniulotteiset taulukot
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kaksiulotteinen taulukko
+<% end %>
+
+<p>
+  Aiemmat taulukkoesimerkkimme ovat käsitelleet yksiulotteisia taulukoita, missä indeksi kertoo sijainnin yhdessä ulottuvuudessa. Taulukon voi luoda myös useampiulotteisena, jolloin taulukossa olevaa tietoa voi tarkastella useamman indeksin avulla. Tämä on kätevää esimerkiksi silloin, jos tieto on useampiulotteista kuten esimerkiksi koordinaatistossa.
+</p>
+
+<p>
+  Kaksiulotteinen taulukko, jossa on kaksi riviä ja kolme saraketta, luodaan seuraavasti:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  int rivit = 2;
+  int sarakkeet = 3;
+  int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+<% end %>
+
+<p>
+  Yllä luomme taulukon, jonka jokainen rivi viittaa taulukkoon, jossa on tietty määrä sarakkeita. Kaksiulotteisen taulukon läpikäynti onnistuu kahden sisäkkäisen while-toistolauseen avulla seuraavasti:
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  int rivit = 2;
+  int sarakkeet = 3;
+  int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+  int y = 0;
+  while (y &lt; kaksiulotteinenTaulukko.length) {
+
+      int x = 0;
+      while (x &lt; kaksiulotteinenTaulukko[y].length) {
+          int arvo = kaksiulotteinenTaulukko[y][x];
+          System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+          x++;
+      }
+
+      y++;
+  }
+<% end %>
+
+<p>
+  Ylläolevan ohjelman tulostus on seuraava.
+</p>
+
+<% partial 'partials/sample_output' do %>
+  arvo kohdassa (0, 0): 0
+  arvo kohdassa (1, 0): 0
+  arvo kohdassa (2, 0): 0
+  arvo kohdassa (0, 1): 0
+  arvo kohdassa (1, 1): 0
+  arvo kohdassa (2, 1): 0
+<% end %>
+
+<p>
+  Saatoit yllättyä. Selityksenä tulostukselle on se, että int-tyyppisten muuttujien oletusarvo on 0.
+</p>
+
+<p>
+  Voimme muuttaa taulukon arvoja kuten ennenkin. Alla asetamme kahteen kohtaan uudet arvot.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  int rivit = 2;
+  int sarakkeet = 3;
+  int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
+
+  kaksiulotteinenTaulukko[0][1] = 4;
+  kaksiulotteinenTaulukko[1][1] = 1;
+  kaksiulotteinenTaulukko[1][0] = 8;
+
+
+  int y = 0;
+  while (y &lt; kaksiulotteinenTaulukko.length) {
+
+      int x = 0;
+      while (x &lt; kaksiulotteinenTaulukko[y].length) {
+          int arvo = kaksiulotteinenTaulukko[y][x];
+          System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+          x++;
+      }
+
+      y++;
+  }
+<% end %>
+
+<p>
+  Nyt tulostus näyttää seuraavalta:
+</p>
+
+<% partial 'partials/sample_output' do %>
+  arvo kohdassa (0, 0): 0
+  arvo kohdassa (1, 0): 4
+  arvo kohdassa (2, 0): 0
+  arvo kohdassa (0, 1): 8
+  arvo kohdassa (1, 1): 1
+  arvo kohdassa (2, 1): 0
+<% end %>
+
+<p>
+  Kaksiulotteinen taulukko on oikeastaan <a href="https://fi.wikipedia.org/wiki/Matriisi" target="_blank" rel="noopener">matriisi</a>.  Matriiseja käytetään muunmuassa tietokonegrafiikassa, missä yksittäiset pikselit esitetään matriisin avulla.</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Piirto-ohjelma' } do %>
+
+  <p>
+    Tehtäväpohjaan on toteutettu graafinen sovellus, mikä sisältää kaksiulotteisen taulukon. Tehtävänäsi on muuttaa sovelluksen toimintaa siten, että kun käyttäjä painaa hiirtä sovelluksessa tai liikuttaa hiirtä kun nappi on pohjassa, ikkunaan piirretään.
+  </p>
+
+  <p>
+    Tee tätä varten kaksi asiaa: (1) muuta sovelluksessa olevan taulukon "piirrettava" arvoja sopivasti kun käyttäjä käyttää hiirtä, ja (2) piirrä komentoa <code>piirturi(x, y, 2, 2)</code> käyttäen ne alkiot, joiden arvo on 1. Käytä koordinaatteina x, y taulukon indeksejä.
+  </p>
+
+  <p>
+    Kun sovellus toimii, voit käyttää sitä vaikkapa seuraavanlaisen taideteoksen tekemiseen. Tehtävässä ei ole testejä.
+  </p>
+
+  <img src="/img/exercises/06-14-piirturi-ok.png" />
+
+
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Game of Life (2 osaa)' } do %>
+
+  <p>
+    Toteutimme aiemmin Game of Life -pelin logiikan sisäkkäisiä hajautustauluja käyttäen. Tarkastellaan nyt samaa kaksiulotteisten taulukkojen avulla.
+  </p>
+  
+  <p>
+    <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank">Game of Life</a> on neljää yksinkertaista sääntöä seuraava soluautomaatti:
+  </p>
+
+  <ol>
+    <li>Jos elävän solun naapureina on alle kaksi elävää solua, se kuolee alikansoituksen takia.</li>
+    <li>Jos elävän solun naapureina on kaksi tai kolme elävää solua, se jää henkiin.</li>
+    <li>Jos elävän solun naapureina on yli kolme elävää solua, se kuolee ylikansoituksen takia.</li>
+    <li>Jos kuolleen solun naapureina on tasan kolme elävää solua, se syntyy eli muuttuu eläväksi.</li>
+  </ol>
+
+  <p>
+    Peli ei sisällä minkäänlaisia liikkumissääntöjä, mutta se silti luo tilanteita, missä erilaiset hahmot liikkuvat ruudulla. Katso pelin keksineen <a href="https://youtu.be/E8kUJL04ELA" target="_blank">John Conwayn mietteitä pelistä sekä sääntöjen selitys</a>.
+  </p>
+
+  <p>
+    Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
+  </p>
+
+  <h2>Elossa olevien naapurien lukumäärä</h2>
+
+  <p>
+    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(int[][] taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
+  </p>
+
+  <p>
+    Naapureita ovat kaikki ne alkiot, jotka ovat kulman tai sivun kautta yhteydessä alkioon.
+  </p>
+
+  <p>
+    Huomaa, että metodin tulee varoa ArrayIndexOutOfBounds-virhettä. Indeksissä -1 ei esimerkiksi voi olla ketään. Vastaavasti taulukon leveyden tai korkeuden yli ei voi mennä (esim. <code>taulukko[taulukko.length][0]</code> tai <code>taulukko[0][taulukko[0].length]</code>).
+  </p>
+
+  <p>
+    Voit kokeilla metodiasi muunmuassa seuraavilla esimerkeillä.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    GameOfLife gol = new GameOfLife(3, 3);
+
+    int[][] taulukko = new int[3][3];
+    taulukko[0][0] = 1;
+    taulukko[0][1] = 1;
+    taulukko[1][1] = 1;
+    taulukko[2][2] = 1;
+
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    2
+    3
+    3
+    1
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    GameOfLife gol = new GameOfLife(4, 4);
+
+    int[][] taulukko = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 0, 1, 0}, {0, 1, 0, 1}};
+
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
+    System.out.println(gol.elossaOleviaNaapureita(taulukko, 3, 3));
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    3
+    7
+    5
+    1
+  <% end %>
+
+
+  <h2>Kehittyminen</h2>
+
+
+  <p>
+    Täydennä seuraavaksi GameOfLife-luokan metodia <code>public void kehity()</code> siten, että se käy yhden Game of Life -pelin askeleen.
+  </p>
+
+  <p>
+    Toteuta toiminnallisuus niin, että luot toisen taulukon, jonka koko on sama kuin alkuperäisen taulukon. Käy tämän jälkeen alkuperäistä taulukkoa läpi alkio alkiolta siten, että seuraat seuraavia sääntöjä:
+  </p>
+
+  <ol>
+    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on alle kaksi elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on kaksi tai kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on yli kolme elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
+    <li>Jos alkuperäisen taulukon alkion arvo on 0 ja sillä on tasan kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
+  </ol>
+
+  <p>
+    Käytä naapureiden lukumäärän selvittämisessä edellisessä osassa tehtyä metodia. Kun olet käynyt koko taulukon läpi, vaihda kopio taulukon paikalle.
+  </p>
+
+
+  <p>
+    Kokeile tämän jälkeen sovelluksen toimintaa graafisen käyttöliittymän kautta. Sovelluksen pitäisi käynnistyä -- yksi mahdollinen hetkellinen tila on seuraavanlainen.
+  </p>
+
+  <img src="/img/exercises/06-15-gameoflife.png" width="600"/>
+  
+<% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Olio-ohjelmoinnin periaatteet
+<% end %>
+
+<p>
+  Olio-ohjelmointiin kuuluu oleellisesti kolme periaatetta: abstrahointi, kapselointi ja perintä. Käsittelemme periaatteet tässä lyhyesti; perintään tutustutaan tarkemmin ohjelmoinnin jatkokurssille.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Abstrahointi
+<% end %>
+
+<p>
+  Abstrahoinnin tavoitteena on ongelma-alueen käsitteellistäminen. Ohjelmoija pyrkii nimeämään ongelma-alueen käsitteitä kuvaavat luokat, oliot, metodit ja muuttujat mahdollisimman hyvin, jolloin muut näitä käyttävät ohjelmoijat ymmärtävät mistä kussakin on kyse. 
+</p>
+
+<p>
+  Käytännössä kyse on siis prosessista, missä ongelma-alueesta tunnistetaan ja eristetään oleellisimmat piirteet, joiden perusteella niistä luodaan ohjelmaan toiminnallisuutta. Samalla pyritään tilanteeseen, missä ongelma-alueesta on poimittu vain ne käsitteet, jotka ovat oleellisia käsiteltävän ongelman ratkaisun kannalta.
+</p>
+
+<p>
+  <em>
+    Otetaan analogia tosielämästä ja puhutaan käsitteestä auto. Jokainen tietää mistä autossa on kyse ja mihin sitä käytetään. Moni pystyisi myös piirtämään auton pyydettäessä. Käsite auto kuitenkin piilottaa paljon pienempiä osia: autossa on esimerkiksi renkaat, runko, moottori, istuimia, ... Kukin näistä käsitteistä on myös oma abstraktionsa. Esimerkiksi rengas piilottaa myös pienempiä osia -- renkaalla on vanne, ulkokumi, sisäkumi, jnejne.
+  </em>
+</p>
+
+<p>
+  Abstrahoinnista on ohjelmoijalle useita etuja. Se helpottaa asioista puhumista ja sitä kautta niiden käsittelyä. Se helpottaa ohjelmointia -- esimerkiksi käyttämämme apukirjastot kuten Scanner ovat toisten tekemiä valmiita abstraktioita ohjelmointiin liittyvistä tyypillisistä ongelmista. Se myös helpottaa omaa ohjelmointiamme: aivan kuten auto koostuu useammasta pienemmästä osasta, voimme koostaa ohjelmamme useammasta abstraktiosta ja luoda tätä kautta uusia abstraktioita.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Kapselointi
+<% end %>
+
+<p>
+  Kapseloinissa on kyse toteutuksen piilottamisesta julkisen rajapinnan taakse. Käytännössä olio-ohjelmoinissa kyse on muuttujien ja metodien konkreettisen toiminnallisuuden piilottamisesta olion "sisään". Olion käyttöön tarvittavat metodit (ml. konstruktorit) -- eli rajapinta -- ovat käyttäjän nähtävissä, mutta käyttäjä ei pääse käsiksi olion sisäiseen toteutukseen.
+</p>
+
+<p>
+  Tällöin toiset oliot voivat kutsua olion metodeja ilman, että niiden tarvitsee tietää kutsuttavan olion sisäisestä tilasta tai metodien konkreettisesta toteutuksesta. Tällöin kukin olio on myös itsenäinen, eikä niiden sisäinen tila ole riippuvainen toisten olioiden sisäisestä tilasta.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Perintä
+<% end %>
+
+<p>
+  Olio-ohjelmoinnissa on mahdollista luoda luokkia, jotka perivät toisen luokan ominaisuuksia (eli oliomuuttujat ja metodit). Tällöin luokasta tehdyt oliot ovat samalla myös perityn luokan ilmentymiä, jolloin oliot voivat esiintyä useampina erilaisina olioina käyttötarpeesta riippuen.
+</p>
+
+<p>
+  <em>
+    Palaamme perintään ohjelmoinnin jatkokurssilla...
+  </em>
+</p>
+
+
+<% partial 'partials/exercise', locals: { name: 'Maatilasimulaattori (5 osaa)' } do %>
+
+  <p>
+    Maatiloilla on lypsäviä eläimiä, jotka tuottavat maitoa.  Maatilat eivät itse käsittele maitoa, vaan se kuljetetaan Maitoautoilla meijereille.  Meijerit ovat yleisiä maitotuotteita tuottavia rakennuksia.  Jokainen meijeri erikoistuu yhteen tuotetyyppiin, esimerkiksi Juustomeijeri tuottaa Juustoa, Voimeijeri tuottaa voita ja Maitomeijeri tuottaa maitoa.
+  </p>
+
+  <p>
+    Rakennetaan maidon elämää kuvaava simulaattori.
+  </p>
+
+
+  <h2>Maitosäiliö</h2>
+
+  <p>
+    Jotta maito pysyisi tuoreena, täytyy se säilöä sille tarkoitettuun säiliöön. Säiliöitä valmistetaan sekä oletustilavuudella 2000 litraa, että asiakkaalle räätälöidyllä tilavuudella.  Toteuta luokka Maitosailio jolla on seuraavat konstruktorit ja metodit.
+  </p>
+
+  <ul>
+    <li><strong>public Maitosailio()</strong></li>
+    <li><strong>public Maitosailio(double tilavuus)</strong></li>
+    <li><strong>public double getTilavuus()</strong></li>
+    <li><strong>public double getSaldo()</strong></li>
+    <li><strong>public double paljonkoTilaaJaljella()</strong></li>
+    <li><strong>public void lisaaSailioon(double maara)</strong>
+      lisää säiliöön vain niin paljon maitoa kuin sinne mahtuu,
+      ylimääräiset jäävät lisäämättä, maitosäiliön ei siis tarvitse huolehtia tilanteesta jossa maitoa valuu yli</li>
+    <li><strong>public double otaSailiosta(double maara)</strong>
+      ottaa säiliöstä pyydetyn määrän, tai niin paljon kuin siellä on jäljellä
+    </li>
+  </ul>
+
+  <p>
+    Huomaa, että teet <em>kaksi konstruktoria</em>. Kutsuttava konstruktori määräytyy sille annettujen parametrien perusteella. Jos kutsut <code>new Maitosailio()</code>, suoritetaan ensimmäisen konstruktorin lähdekoodi. Toista konstruktoria taas kutsutaan antamalla konstruktorille parametrina tilavuus, esim. <code>new Maitosailio(300.0)</code>.
+  </p>
+
+  <p>
+    Toteuta <code>Maitosailio</code>-luokalle myös <code>toString()</code>-metodi, jolla kuvaat sen tilaa. Ilmaistessasi säiliön tilaa <code>toString()</code>-metodissa, pyöristä litramäärät ylöspäin käyttäen <code>Math</code>-luokan tarjoamaa <code>ceil()</code>-metodia.
+  </p>
+
+  <p>
+    Testaa maitosailiötä seuraavalla ohjelmapätkällä:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Maitosailio sailio = new Maitosailio();
+sailio.otaSailiosta(100);
+sailio.lisaaSailioon(25);
+sailio.otaSailiosta(5);
+System.out.println(sailio);
+
+sailio = new Maitosailio(50);
+sailio.lisaaSailioon(100);
+System.out.println(sailio);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+20.0/2000.0
+50.0/50.0
+  <% end %>
+
+
+  <h2>Lehmä</h2>
+
+  <p>
+    Saadaksemme maitoa tarvitsemme myös lehmiä. Lehmällä on nimi ja utareet. Utareiden tilavuus on satunnainen luku väliltä 15 ja 40, luokkaa <code>Random</code> voi käyttäää satunnaislukujen arpomiseen, esimerkiksi  <code>int luku = 15 + new Random().nextInt(26);</code>. Luokalla <code>Lehma</code> on seuraavat toiminnot:
+  </p>
+
+  <ul>
+    <li><strong>public Lehma()</strong> luo uuden lehmän satunnaisesti valitulla nimellä</li>
+    <li><strong>public Lehma(String nimi)</strong> luo uuden lehmän annetulla nimellä</li>
+    <li><strong>public String getNimi()</strong> palauttaa lehmän nimen</li>
+    <li><strong>public double getTilavuus()</strong> palauttaa utareiden tilavuuden</li>
+    <li><strong>public double getMaara()</strong> palauttaa utareissa olevan maidon määrän</li>
+    <li><strong>public String toString()</strong> palauttaa lehmää kuvaavan merkkijonon (ks. esimerkki alla)</li>
+  </ul>
+
+  <p>
+    <code>Lehma</code> toteuttaa myös rajapinnat: <code>Lypsava</code>, joka kuvaa lypsämiskäyttäytymistä, ja <code>Eleleva</code>, joka kuvaa elelemiskäyttäytymistä.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+public interface Lypsava {
+    public double lypsa();
+}
+
+public interface Eleleva {
+    public void eleleTunti();
+}
+  <% end %>
+
+
+  <p>
+    Lehmää lypsettäessä sen koko maitovarasto tyhjennetään jatkokäsittelyä varten. Lehmän elellessä sen maitovarasto täyttyy hiljalleen. Suomessa maidontuotannossa käytetyt lehmät tuottavat keskimäärin noin 25-30 litraa maitoa päivässä. Simuloidaan tätä tuotantoa tuottamalla noin 0.7 - 2 litraa tunnissa.
+  </p>
+
+  <p>
+    Simuloi tuotantoa tuottamalla noin 0.7 - 2 litraa tunnissa. Random-luokan metodista <code>nextDouble</code>, joka palauttaa satunnaisluvun 0 ja 1 välillä lienee tässä hyötyä.
+  </p>
+
+  <p>
+    Lisäksi, jos lehmälle ei anneta nimeä, valitse sille nimi satunnaisesti seuraavasta taulukosta. Tässä on hyötyä Random-luokan metodista <code>nextInt</code>, jolle annetaan parametrina yläraja. Kannattaa tutustua Random-luokan toimintaan erikseen ennen kuin lisää sen osaksi tätä ohjelmaa.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+private static final String[] NIMIA = new String[]{
+    "Anu", "Arpa", "Essi", "Heluna", "Hely",
+    "Hento", "Hilke", "Hilsu", "Hymy", "Matti", "Ilme", "Ilo",
+    "Jaana", "Jami", "Jatta", "Laku", "Liekki",
+    "Mainikki", "Mella", "Mimmi", "Naatti",
+    "Nina", "Nyytti", "Papu", "Pullukka", "Pulu",
+    "Rima", "Soma", "Sylkki", "Valpu", "Virpi"};
+  <% end %>
+
+  <p>
+    Toteuta luokka Lehma ja testaa sen toimintaa seuraavan ohjelmapätkän avulla.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Lehma lehma = new Lehma();
+System.out.println(lehma);
+
+
+Eleleva elelevaLehma = lehma;
+elelevaLehma.eleleTunti();
+elelevaLehma.eleleTunti();
+elelevaLehma.eleleTunti();
+elelevaLehma.eleleTunti();
+
+System.out.println(lehma);
+
+Lypsava lypsavaLehma = lehma;
+lypsavaLehma.lypsa();
+
+System.out.println(lehma);
+System.out.println("");
+
+lehma = new Lehma("Ammu");
+System.out.println(lehma);
+lehma.eleleTunti();
+lehma.eleleTunti();
+System.out.println(lehma);
+lehma.lypsa();
+System.out.println(lehma);
+  <% end %>
+
+  <p>
+    Ohjelman tulostus on erimerkiksi seuraavanlainen.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Liekki 0.0/23.0
+Liekki 7.0/23.0
+Liekki 0.0/23.0
+Ammu 0.0/35.0
+Ammu 9.0/35.0
+Ammu 0.0/35.0
+  <% end %>
+
+
+  <h2>Lypsyrobotti</h2>
+
+  <p>
+    Nykyaikaisilla maatiloilla lypsyrobotit hoitavat lypsämisen. Jotta lypsyrobotti voi lypsää lypsävää otusta, tulee lypsyrobotin olla kiinnitetty maitosäiliöön:
+  </p>
+
+  <ul>
+    <li><strong>public Lypsyrobotti()</strong> luo uuden lypsyrobotin</li>
+    <li><strong>public Maitosailio getMaitosailio()</strong> palauttaa kiinnitetyn maitosäiliö tai <code>null</code>-viitteen, jos säiliötä ei ole vielä kiinnitetty</li>
+    <li><strong>public void setMaitosailio(Maitosailio maitosailio)</strong> kiinnittää annetun säiliön lypsyrobottiin</li>
+    <li><strong>public void lypsa(Lypsava lypsava)</strong> lypsää lehmän robottiin kiinnitettyyn maitosäiliöön. Jos robottiin ei ole kiinnitetty maitosäiliötä, ohjelma ilmoittaa että maito menee hukkaan.</li>
+  </ul>
+
+  <p>
+    Toteuta luokka Lypsyrobotti ja testaa sitä seuraavien ohjelmanpätkien avulla. Varmista että lypsyrobotti voi lypsää kaikkia Lypsava-rajapinnan toteuttavia olioita!
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Lypsyrobotti lypsyrobotti = new Lypsyrobotti();
+Lehma lehma = new Lehma();
+lypsyrobotti.lypsa(lehma);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+Maidot menevät hukkaan!
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+Lypsyrobotti lypsyrobotti = new Lypsyrobotti();
+Lehma lehma = new Lehma();
+System.out.println("");
+
+Maitosailio sailio = new Maitosailio();
+lypsyrobotti.setMaitosailio(sailio);
+System.out.println("Säiliö: " + sailio);
+
+for (int i = 0; i &lt; 2; i++) {
+    System.out.println(lehma);
+    System.out.println("Elellään..");
+    for (int j = 0; j &lt; 5; j++) {
+        lehma.eleleTunti();
+    }
+    System.out.println(lehma);
+
+    System.out.println("Lypsetään...");
+    lypsyrobotti.lypsa(lehma);
+    System.out.println("Säiliö: " + sailio);
+    System.out.println("");
+}<% end %>
+
+  <p>
+    Ohjelman tulostus on esimerkiksi seuraavanlainen.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Säiliö: 0.0/2000.0
+Mella 0.0/23.0
+Elellään..
+Mella 6.2/23.0
+Lypsetään...
+Säiliö: 6.2/2000.0
+
+Mella 0.0/23.0
+Elellään..
+Mella 7.8/23.0
+Lypsetään...
+Säiliö: 14.0/2000.0
+  <% end %>
+
+
+  <h2>Navetta</h2>
+
+  <p>
+    Lehmät hoidetaan (eli tässä tapauksessa lypsetään) navetassa. Alkukantaisissa navetoissa on maitosäiliö ja tilaa yhdelle lypsyrobotille. Huomaa että lypsyrobottia asennettaessa se kytketään juuri kyseisen navetan maitosäiliöön.  Jos navetassa ei ole lypsyrobottia, ei siellä voida myöskään hoitaa lehmiä. Toteuta luokka <code>Navetta</code> jolla on seuraavat konstruktorit ja metodit:
+  </p>
+
+  <ul>
+    <li><strong>public Navetta(Maitosailio maitosailio)</strong></li>
+    <li><strong>public Maitosailio getMaitosailio()</strong> palauttaa navetan maitosailion</li>
+    <li><strong>public void asennaLypsyrobotti(Lypsyrobotti lypsyrobotti)</strong> asentaa lypsyrobotin ja kiinnittää sen navetan maitosäiliöön</li>
+    <li><strong>public void hoida(Lehma lehma)</strong> lypsää parametrina annetun lehmän lypsyrobotin avulla, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos lypsyrobottia ei ole asennettu</li>
+    <li><strong>public void hoida(Collection&lt;Lehma&gt; lehmat)</strong> lypsää parametrina annetut lehmät lypsyrobotin avulla, metodi heittää poikkeuksen <code>IllegalStateException</code>, jos lypsyrobottia ei ole asennettu</li>
+    <li><strong>public String toString()</strong> palauttaa navetan sisältämän maitosäiliön tilan</li>
+  </ul>
+
+  <p>
+    Testaa luokkaa <code>Navetta</code> seuraavan ohjelmapätkän avulla.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Navetta navetta = new Navetta(new Maitosailio());
+System.out.println("Navetta: " + navetta);
+
+Lypsyrobotti robo = new Lypsyrobotti();
+navetta.asennaLypsyrobotti(robo);
+
+Lehma ammu = new Lehma();
+ammu.eleleTunti();
+ammu.eleleTunti();
+
+navetta.hoida(ammu);
+System.out.println("Navetta: " + navetta);
+
+List&lt;Lehma&gt; lehmaLista = new ArrayList&lt;&gt;();
+lehmaLista.add(ammu);
+lehmaLista.add(new Lehma());
+
+for (Lehma lehma: lehmaLista) {
+    lehma.eleleTunti();
+    lehma.eleleTunti();
+};
+
+navetta.hoida(lehmaLista);
+System.out.println("Navetta: " + navetta);
+  <% end %>
+
+  <p>
+    Tulostuksen tulee olla esimerkiksi seuraavanlainen:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Navetta: 0.0/2000.0
+Navetta: 2.8/2000.0
+Navetta: 9.6/2000.0
+  <% end %>
+
+
+  <h2>Maatila</h2>
+
+  <p>
+    Maatilalla on omistaja ja siihen kuuluu navetta sekä joukko lehmiä. Maatila toteuttaa myös aiemmin nähdyn rajapinnan <code>Eleleva</code>, jonka metodia <code>eleleTunti()</code>-kutsumalla kaikki maatilaan liittyvät lehmät elelevät tunnin.  Toteuta luokka maatila siten, että se toimii seuraavien esimerkkiohjelmien mukaisesti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+Maitosailio sailio = new Maitosailio();
+Navetta navetta = new Navetta(sailio);
+
+Maatila maatila = new Maatila("Esko", navetta);
+System.out.println(maatila);
+
+System.out.println(maatila.getOmistaja() + " on ahkera mies!");
+  <% end %>
+
+  <p>
+    Odotettu tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Maatilan omistaja: Esko
+Navetan maitosäiliö: 0.0/2000.0
+Ei lehmiä.
+Esko on ahkera mies!
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+System.out.println(maatila);
+  <% end %>
+
+  <p>
+    Odotettu tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Maatilan omistaja: Esko
+Navetan maitosäiliö: 0.0/2000.0
+Lehmät:
+    Naatti 0.0/19.0
+    Hilke 0.0/30.0
+    Sylkki 0.0/29.0
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+
+maatila.eleleTunti();
+maatila.eleleTunti();
+
+System.out.println(maatila);
+  <% end %>
+
+  <p>
+    Odotettu tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Maatilan omistaja: Esko
+Navetan maitosäiliö: 0.0/2000.0
+Lehmät:
+    Heluna 2.0/17.0
+    Rima 3.0/32.0
+    Ilo 3.0/25.0
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+Lypsyrobotti robo = new Lypsyrobotti();
+maatila.asennaNavettaanLypsyrobotti(robo);
+
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+
+maatila.eleleTunti();
+maatila.eleleTunti();
+
+maatila.hoidaLehmat();
+
+System.out.println(maatila);
+  <% end %>
+
+  <p>
+    Odotettu tulostus:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+Maatilan omistaja: Esko
+Navetan maitosäiliö: 18.0/2000.0
+Lehmät:
+    Hilke 0.0/30.0
+    Sylkki 0.0/35.0
+    Hento 0.0/34.0
+  <% end %>
+
+  <p>
+    Edellä otettiin ensiaskeleet simulaattorin tekemiseen. Ohjelmaa voisi jatkaa vaikkapa lisäämällä maitoauton sekä luomalla useampia navettoja. Maitoautot voisivat kulkea tehtaalle, jossa tehtäisiin juustoa, jnejne..
+  </p>
+
+<% end %>
+
+
+
+
+<% partial 'partials/exercise', locals: { name: 'Autorekisterikeskus (3 osaa)' } do %>
+
+  <p>
+    TODO: låinkki hashmap-kertaukseen
+  </p>
+
+
+  <h2>Rekisterinumeron equals ja hashCode</h2>
+
+  <p>
+    Eurooppalaiset rekisteritunnukset koostuvat kahdesta osasta: yksi tai kaksikirjaimisesta maatunnuksesta ja maakohtaisesti määrittyvästä rekisterinumerosta, joka taas koostuu numeroista ja merkeistä. Rekisterinumeroita esitetään seuraavanlaisen luokan avulla:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+public class Rekisterinumero {
+    // tässä määre final tarkoittaa sitä, että arvoa ei voi muuttaa asetuksen jälkeen
+    private final String rekNro;
+    private final String maa;
+
+    public Rekisterinumero(String rekNro, String maa) {
+       this.rekNro = rekNro;
+       this.maa = maa;
+    }
+
+    public String toString(){
+        return maa+ " "+rekNro;
+    }
+}
+  <% end %>
+
+  <p>
+    Rekisterinumeroja halutaan tallettaa esim. ArrayList:eille ja käyttää HashMap:in avaimina, eli kuten yllä mainittu, tulee niille toteuttaa metodit <code>equals</code> ja <code>hashCode</code>, muuten ne eivät toimi halutulla tavalla. Toteuta luokalle rekisterinumero metodit <code>equals</code> ja <code>hashCode</code>.
+  </p>
+
+  <p>Esimerkkiohjelma:</p>
+
+  <% partial 'partials/code_highlight' do %>
+public static void main(String[] args) {
+    Rekisterinumero rek1 = new Rekisterinumero("FI", "ABC-123");
+    Rekisterinumero rek2 = new Rekisterinumero("FI", "UXE-465");
+    Rekisterinumero rek3 = new Rekisterinumero("D", "B WQ-431");
+
+    ArrayList&lt;Rekisterinumero&gt; suomalaiset = new ArrayList&lt;&gt;();
+    suomalaiset.add(rek1);
+    suomalaiset.add(rek2);
+
+    Rekisterinumero uusi = new Rekisterinumero("FI", "ABC-123");
+    if (!suomalaiset.contains(uusi)) {
+        suomalaiset.add(uusi);
+    }
+    System.out.println("suomalaiset: " + suomalaiset);
+    // jos equals-metodia ei ole ylikirjoitettu, menee sama rekisterinumero toistamiseen listalle
+
+    HashMap&lt;Rekisterinumero, String&gt; omistajat = new HashMap&lt;&gt;();
+    omistajat.put(rek1, "Arto");
+    omistajat.put(rek3, "Jürgen");
+
+    System.out.println("omistajat:");
+    System.out.println(omistajat.get(new Rekisterinumero("FI", "ABC-123")));
+    System.out.println(omistajat.get(new Rekisterinumero("D", "B WQ-431")));
+    // jos hashCode ei ole ylikirjoitettu, eivät omistajat löydy
+}
+  <% end %>
+
+  <p>
+    Jos equals ja hashCode on toteutettu oikein, tulostus on seuraavanlainen.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+suomalaiset: [FI ABC-123, FI UXE-465]
+omistajat:
+Arto
+Jürgen
+  <% end %>
+
+
+  <h2>Omistaja rekisterinumeron perusteella</h2>
+
+  <p>
+    Toteuta luokka <code>Ajoneuvorekisteri</code> jolla on seuraavat metodit:
+  </p>
+
+  <ul>
+    <li><code>public boolean lisaa(Rekisterinumero rekkari, String omistaja)</code> lisää parametrina olevaa rekisterinumeroa vastaavalle autolle parametrina olevan omistajan, metodi palauttaa true jos omistajaa ei ollut ennestään, jos rekisterinumeroa vastaavalla autolla oli jo omistaja, metodi palauttaa false ja ei tee mitään</li>
+
+    <li><code>public String hae(Rekisterinumero rekkari)</code> palauttaa parametrina olevaa rekisterinumeroa vastaavan auton omistajan. Jos auto ei ole rekisterissä, palautetaan <code>null</code></li>
+
+    <li><code>public boolean poista(Rekisterinumero rekkari)</code> poistaa parametrina olevaa rekisterinumeroa vastaavat tiedot, metodi palauttaa true jos tiedot poistetiin, ja false jos parametria vastaavia tietoja ei ollut rekisterissä</li>
+  </ul>
+
+  <p>
+    <strong>Huom:</strong> Ajoneuvorekisterin täytyy tallettaa omistajatiedot <code>HashMap&lt;Rekisterinumero, String&gt; omistajat</code> -tyyppiseen oliomuuttujaan!
+  </p>
+
+
+  <h2>Ajoneuvorekisteri laajenee</h2>
+
+  <p>
+    Lisää Ajoneuvorekisteriin vielä seuraavat metodit:
+  </p>
+
+  <ul>
+
+    <li>
+      <code>public void tulostaRekisterinumerot()</code> tulostaa rekisterissä olevat rekisterinumerot.
+    </li>
+    
+    <li>
+      <code>public void tulostaOmistajat()</code> tulostaa rekisterissä olevien autojen omistajat. Kukin nimi tulee tulostaa vain kertaalleen vaikka omistajalla olisikin useampi auto.
+    </li>
+  </ul>
+
+<% end %>
+
+
+---
+
+
+
+<% partial 'partials/hint', locals: { name: 'Miten toimikaan for (int i = 0; ...?' } do %>
+
+  <p>
+    Yllä olevassa esimerkissä käytettiin for-toistolausetta alkioiden läpikäyntiin. Toistolausetta käytetään listojen läpikäyntiin indeksien perusteella -- saman voisi toteuttaa myös while-toistolauseella. 
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArrayList&lt;String&gt; sivut = new ArrayList&lt;&gt;();
+    sivut.add("Pilko metodisi lyhyiksi luettaviksi kokonaisuuksiksi.");
+    sivut.add("Erota käyttöliittymälogiikka sovelluksen logiikasta.");
+    sivut.add("Ohjelmoi aina ensin pieni osa, jolla ratkaiset osan ongelmasta.");
+    sivut.add("Harjoittelu tekee mestarin. Keksi ja tee omia kokeiluja ja projekteja.");
+
+    Sahkokirja kirja = new Sahkokirja("Vinkkejä ohjelmointiin.", sivut);
+
+    int sivu = 0;
+    while (sivu &lt; kirja.sivuja()) {
+        System.out.println(kirja.lue());
+        sivu++;
+    }
+  <% end %>
+
+  <p>
+    Saman voi kirjoittaa myös for-toistolauseella seuraavasti.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    ArrayList&lt;String&gt; sivut = new ArrayList&lt;&gt;();
+    sivut.add("Pilko metodisi lyhyiksi luettaviksi kokonaisuuksiksi.");
+    sivut.add("Erota käyttöliittymälogiikka sovelluksen logiikasta.");
+    sivut.add("Ohjelmoi aina ensin pieni osa, jolla ratkaiset osan ongelmasta.");
+    sivut.add("Harjoittelu tekee mestarin. Keksi ja tee omia kokeiluja ja projekteja.");
+
+    Sahkokirja kirja = new Sahkokirja("Vinkkejä ohjelmointiin.", sivut);
+    for (int sivu = 0; sivu &lt; kirja.sivuja(); sivu++) {
+        System.out.println(kirja.lue());
+    }
+  <% end %>
+
+  
+  
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Sukunimet Espanjassa (2 osaa)' } do %>
+
+  <p>
+    Espanjassa ihmisillä on kaksi sukunimeä. Ennen vuoden 1999 lakimuutosta lapsen ensimmäinen sukunimi tuli isän ensimmäisestä sukunimestä ja toinen äidin ensimmäisestä sukunimestä. Vuonna 1999 lainsäädäntöä muutettiin niin, että vanhempien yhteisestä päätöksestä ensimmäiseksi sukunimeksi voidaan valita myös äidin ensimmäinen sukunimi.
+  </p>
+
+  <p>
+    Tee tämän tehtävän luokat pakkaukseen <code>sukunimet</code>.
+  </p>
+
+  <h2>Henkilo</h2>
+  
+  <p>
+    Tarkastellaan olioiden monimuotoisuutta luomalla vuotta 1999 edeltävää Espanjalaista nimentää kuvaava luokka Henkilo. 
+  </p>
+
+  <p>
+    Luo luokka Henkilo, jolla on kaksi konstruktoria:
+  </p>
+
+  <ul>
+    <li>
+      public Henkilo(String etunimi, String ensimmainenSukunimi, String toinenSukunimi)
+    </li>
+    <li>
+      public Henkilo(String etunimi, Henkilo isa, Henkilo aiti)
+    </li>
+  </ul>
+
+  <p>
+    Luo luokalle lisäksi toString-metodi, joka tulostaa henkilöä kuvaavan merkkijonoesityksen.
+  </p>
+
+  <p>
+    Luokan tulee toimia seuraavasti. Huomaa myös viimeinen rivi, missä luokasta tehtyä oliota käsitellään Object-tyyppisenä. 
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Henkilo dolores = new Henkilo("Dolores", "D.", "Parto");
+    System.out.println(dolores);
+
+    Henkilo hay = new Henkilo("Hay", "Alen", "Gualarga");
+    System.out.println(hay);
+
+    Henkilo nacho = new Henkilo("Nacho", "Cuesta", "Parto");
+    System.out.println(nacho);
+
+    Henkilo valeria = new Henkilo("Valeria", "Mogollon", "Gualarga");
+    System.out.println(valeria);
+
+    Henkilo enrico = new Henkilo("Enrico", dolores, hay);
+    System.out.println(enrico);
+
+    Henkilo luz = new Henkilo("Luz", nacho, valeria);
+    System.out.println(luz);
+
+    Henkilo valentina = new Henkilo("Valentina", enrico, luz);
+    System.out.println(valentina);
+
+    Object valObject = valentina;
+    System.out.println(valObject);
+  <% end %>
+
+
+  <% partial 'partials/sample_output' do %>
+    Dolores D. Parto
+    Hay Alen Gualarga
+    Nacho Cuesta Parto
+    Valeria Mogollon Gualarga
+    Enrico D. Alen
+    Luz Cuesta Mogollon
+    Valentina D. Cuesta
+    Valentina D. Cuesta
+  <% end %>
+
+  
+  <h2>Perhe</h2>
+
+  <p>
+    Toteuta tämän jälkeen luokka <code>Perhe</code>. Luokan tulee toimia seuraavasti.
+  </p>
+
+  
+  <% partial 'partials/code_highlight' do %>
+    Henkilo hay = new Henkilo("Hay", "Alen", "Gualarga");
+    Henkilo nacho = new Henkilo("Nacho", "Cuesta", "Parto");
+    Henkilo dolores = new Henkilo("Dolores", "D.", "Parto");
+    Henkilo enrico = new Henkilo("Enrico", dolores, hay);
+    Henkilo luz = new Henkilo("Luz", nacho, valeria);
+    Henkilo valentina = new Henkilo("Valentina", enrico, luz);
+
+    Perhe perhe = new Perhe();
+    perhe.lisaa(dolores);
+    perhe.lisaa(luz);
+    perhe.lisaa(valentina);
+    System.out.println(perhe);
+
+    System.out.println();
+
+    perhe.poista(luz);
+    System.out.println(perhe);
+
+    System.out.println();
+    
+    Object perheObj = perhe;
+    System.out.println(perheObj);
+
+    System.out.println();
+    
+    perhe.lisaa(enrico);
+    System.out.println(perheObj);
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Dolores D. Parto
+    Luz Cuesta Mogollon
+    Valentina D. Cuesta
+
+    Dolores D. Parto
+    Valentina D. Cuesta
+
+    Dolores D. Parto
+    Valentina D. Cuesta
+    Enrico D. Alen
+  <% end %>
+
+  <p>
+    Tee sekä metodista <code>lisaa</code> että metodista <code>poista</code> sellaiset, että ne eivät palauta mitään arvoa. 
+  </p>
+
+  <p>
+    Mikä tässä oikein oli monimuotoisuutta? Kaikki luokat ovat Object-tyyppisiä. Vaikka henkilöä tarkastellaan Object-oliona, suoritetaan <code>toString</code>-metodin lähdekoodi olion "oikeaan" tyyppiin liittyvästä luokasta.
+  </p>
+  
+
+<% end %>
+
