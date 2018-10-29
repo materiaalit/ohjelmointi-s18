@@ -2,13 +2,13 @@
   title: Osa 8
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 <% partial 'partials/hint', locals: { name: 'Kahdeksannen osan tavoitteet' } do %>
 
   <p>
-    Tunnet käsitteet perintä ja rajapinta. Osaat luoda luokkia, jotka periytyvät toisesta luokasta ja osaa luoda luokkia, jotka toteuttavat yhden tai useamman rajapinnan. Tiedät miten abstraktit luokat toimivat. Ymmärrät että olio voidaan esittää kaikkien sen todellisten tyyppien avulla.
+    Tunnet käsitteet perintä ja rajapinta. Osaat luoda luokkia, jotka periytyvät toisesta luokasta ja osaat luoda luokkia, jotka toteuttavat yhden tai useamman rajapinnan. Tiedät miten abstraktit luokat toimivat. Ymmärrät että olio voidaan esittää kaikkien sen todellisten tyyppien avulla.
   </p>
   
 <% end %>
@@ -18,11 +18,11 @@
 <% end %>
 
 <p>
-  Tämän materiaalin ensimmäiset seitsemän osaa liittyvät Helsingin yliopiston kurssiin Ohjelmoinnin perusteet (TKT10002). Materiaalin kahdeksas osa aloittaa kurssin Ohjelmoinnin jatkokurssi (TKT10003). Molemmat kursseista ovat osa tietojenkäsittelytieteen perusopintoja ja viiden opintopisteen arvoisia.
+  Tämän materiaalin ensimmäiset seitsemän osaa liittyvät Helsingin yliopiston kurssiin Ohjelmoinnin perusteet (TKT10002). Materiaalin kahdeksas osa aloittaa kurssin Ohjelmoinnin jatkokurssi (TKT10003). Molemmat ovat osa tietojenkäsittelytieteen perusopintoja ja viiden opintopisteen arvoisia.
 </p>
 
 <p>
-  Kurssin tehtäviä tehdään Test My Code -järjestelmässä. Ohjeita Test My Code -järjestelmän käyttöönottoon löytyy tämän kurssimateriaalin ensimmäisestä osasta kohdasta; etsi kohta "Ohjelmoinnin aloittaminen". 
+  Kurssin tehtäviä tehdään Test My Code (TMC) -järjestelmässä. Ohjeita TMC-järjestelmän käyttöönottoon löytyy tämän kurssimateriaalin ensimmäisestä osasta kohdasta.
 </p>
 
 <p>
@@ -34,7 +34,7 @@
 </p>
 
 <p>
-  Mikäli olet käynyt Ohjelmoinnin perusteet -kurssin aiemmin, lue kertaa materiaalin osat 1-7.
+  Mikäli olet käynyt Ohjelmoinnin perusteet -kurssin aiemmin, kertaa materiaalin osat 1-7 ennen aloittamista.
 </p>
 
 
@@ -254,13 +254,13 @@ if (olioKirja.equals(toinenOlioKirja)) {
 Kirjat olivat samat
 <% end %>
 
-<%= partial 'partials/quiz', locals: { id: '5a9882fc7863c4000454a048' } %>
+<%= partial 'partials/quiz', locals: { id: '5bd76bd68138f12a7e536db7' } %>
 
 <p>
   Monet Javan valmiit tietorakenteet tukeutuvat <code>equals</code>-metodiin osana sisäistä toimintaansa. Esimerkiksi luokan <code>ArrayList</code> <code>contains</code> ja <code>remove</code>-metodit hyödyntävät olioiden yhtäsuuruutta olion etsimisessä. Vastaavasti luokan <code>HashMap</code> toiminnallisuus perustuu equalsiin -- equalsin lisäksi metodi hashCode on oleellinen.
 </p>
 
-<%= partial 'partials/quiz', locals: { id: '5a9886df7863c4000454a04d' } %>
+<%= partial 'partials/quiz', locals: { id: '5bd76c17e8e5d029fd7814b1' } %>
 
 
 <% partial 'partials/material_sub_heading' do %>
@@ -1031,9 +1031,9 @@ public class Piste3D extends Piste {
 </p>
 
 
-<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a33a' } %>
+<%= partial 'partials/quiz', locals: { id: '5bd76c6dc6014229d5b530c7' } %>
 
-<%= partial 'partials/quiz', locals: { id: '5a57bcce574f0b000439a33b' } %>
+<%= partial 'partials/quiz', locals: { id: '5bd76ca1b5cefd2a43d9ae1c' } %>
 
 
 
@@ -1581,14 +1581,7 @@ Valinta: <font color="red">0</font>
     Tehtäväpohjan mukana tulee luokat <code>Tavara</code> ja <code>Laatikko</code>. Luokka <code>Laatikko</code> on abstrakti luokka, jossa useamman tavaran lisääminen on toteutettu siten, että kutsutaan aina <code>lisaa</code>-metodia. Yhden tavaran lisäämiseen tarkoitettu metodi <code>lisaa</code> on abstrakti, joten jokaisen <code>Laatikko</code>-luokan perivän laatikon tulee toteuttaa se. Tehtävänäsi on muokata luokkaa <code>Tavara</code> ja toteuttaa muutamia erilaisia laatikoita luokan <code>Laatikko</code> pohjalta.
   </p>
 
-  <p>
-    Lisää kaikki uudet luokat pakkaukseen <code>laatikot</code>.
-  </p>
-
-
   <% partial 'partials/code_highlight' do %>
-package laatikot;
-
 import java.util.Collection;
 
 public abstract class Laatikko {
@@ -1615,7 +1608,7 @@ public abstract class Laatikko {
   <h2>Maksimipainollinen laatikko</h2>
 
   <p>
-    Toteuta pakkaukseen <code>laatikot</code> luokka <code>MaksimipainollinenLaatikko</code>, joka perii luokan <code>Laatikko</code>. Maksimipainollisella laatikolla on konstruktori <code>public MaksimipainollinenLaatikko(int maksimipaino)</code>, joka määrittelee laatikon maksimipainon. Maksimipainolliseen laatikkoon voi lisätä tavaraa jos ja vain jos tavaran lisääminen ei ylitä laatikon maksimipainoa.
+    Toteuta luokka <code>MaksimipainollinenLaatikko</code>, joka perii luokan <code>Laatikko</code>. Maksimipainollisella laatikolla on konstruktori <code>public MaksimipainollinenLaatikko(int maksimipaino)</code>, joka määrittelee laatikon maksimipainon. Maksimipainolliseen laatikkoon voi lisätä tavaraa jos ja vain jos tavaran lisääminen ei ylitä laatikon maksimipainoa.
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -1639,7 +1632,7 @@ false
   <h2>Yhden tavaran laatikko ja Hukkaava laatikko</h2>
 
   <p>
-    Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>YhdenTavaranLaatikko</code>, joka perii luokan <code>Laatikko</code>. Yhden tavaran laatikolla on konstruktori <code>public YhdenTavaranLaatikko()</code>, ja siihen mahtuu tasan yksi tavara. Jos tavara on jo laatikossa sitä ei tule vaihtaa. Laatikkoon lisättävän tavaran painolla ei ole väliä.
+    Toteuta seuraavaksi luokka <code>YhdenTavaranLaatikko</code>, joka perii luokan <code>Laatikko</code>. Yhden tavaran laatikolla on konstruktori <code>public YhdenTavaranLaatikko()</code>, ja siihen mahtuu tasan yksi tavara. Jos tavara on jo laatikossa sitä ei tule vaihtaa. Laatikkoon lisättävän tavaran painolla ei ole väliä.
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -1657,7 +1650,7 @@ false
   <% end %>
 
   <p>
-    Toteuta seuraavaksi pakkaukseen <code>laatikot</code> luokka <code>HukkaavaLaatikko</code>, joka perii luokan <code>Laatikko</code>. Hukkaavalla laatikolla on konstruktori <code>public HukkaavaLaatikko()</code>. Hukkaavaan laatikkoon voi lisätä kaikki tavarat, mutta tavaroita ei löydy niitä etsittäessä. Laatikkoon lisäämisen tulee siis aina onnistua, mutta metodin <code>onkoLaatikossa</code> kutsumisen tulee aina palauttaa false.
+    Toteuta seuraavaksi luokka <code>HukkaavaLaatikko</code>, joka perii luokan <code>Laatikko</code>. Hukkaavalla laatikolla on konstruktori <code>public HukkaavaLaatikko()</code>. Hukkaavaan laatikkoon voi lisätä kaikki tavarat, mutta tavaroita ei löydy niitä etsittäessä. Laatikkoon lisäämisen tulee siis aina onnistua, mutta metodin <code>onkoLaatikossa</code> kutsumisen tulee aina palauttaa false.
   </p>
 
   <% partial 'partials/code_highlight' do %>
@@ -2976,8 +2969,6 @@ kauppa.asioi("Pekka");
 
 <% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
 
-  Tunnet käsitteet perintä ja rajapinta. Osaat luoda luokkia, jotka periytyvät toisesta luokasta ja osaa luoda luokkia, jotka toteuttavat yhden tai useamman rajapinnan. Tiedät miten abstraktit luokat toimivat. Ymmärrät että olio voidaan esittää kaikkien sen todellisten tyyppien avulla.
-
   <ul>
     <li>
       Tunnet käsitteen perintähierarkia.
@@ -3165,13 +3156,13 @@ kauppa.asioi("Pekka");
   </p>
 
   <p>
-    Tehtävässä toteutat luokat <code>Elio</code> ja <code>Lauma</code>, jotka molemmat ovat siirrettäviä. Toteuta kaikki toiminnallisuus pakkaukseen <code>siirrettava</code>.
+    Tehtävässä toteutat luokat <code>Elio</code> ja <code>Lauma</code>, jotka molemmat ovat siirrettäviä.
   </p>
 
   <h2>Elio-luokan toteuttaminen</h2>
 
   <p>
-    Luo pakkaukseen <code>siirrettava</code> luokka <code>Elio</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Eliön tulee tietää oma sijaintinsa (x, y -koordinaatteina). Luokan <code>Elio</code> APIn tulee olla seuraava:
+    Luo luokka <code>Elio</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Eliön tulee tietää oma sijaintinsa (x, y -koordinaatteina). Luokan <code>Elio</code> APIn tulee olla seuraava:
   </p>
 
   <ul>
@@ -3203,7 +3194,7 @@ kauppa.asioi("Pekka");
   <h2>Lauman toteutus</h2>
 
   <p>
-    Luo pakkaukseen <code>siirrettava</code> luokka <code>Lauma</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Lauma koostuu useasta <code>Siirrettava</code>-rajapinnan toteutavasta oliosta, jotka tulee tallettaa esimerkiksi listarakenteeseen.
+    Luo luokka <code>Lauma</code>, joka toteuttaa rajapinnan <code>Siirrettava</code>. Lauma koostuu useasta <code>Siirrettava</code>-rajapinnan toteutavasta oliosta, jotka tulee tallettaa esimerkiksi listarakenteeseen.
   </p>
 
   <p>
@@ -3240,7 +3231,7 @@ kauppa.asioi("Pekka");
 <% partial 'partials/exercise', locals: { name: 'Eläimiä (4 osaa)', model_solution: '53434' } do %>
 
   <p>
-    Tässä tehtävässä demonstroit perinnän ja rajapintojen käyttöä. Toteuta kaikki luokat ja rajapinnat pakkaukseen <code>perintaa</code>.
+    Tässä tehtävässä demonstroit perinnän ja rajapintojen käyttöä.
   </p>
 
   
@@ -3344,7 +3335,10 @@ kauppa.asioi("Pekka");
 
   <ul>
     <li>
-      Kertaat ohjelmien testaamista ja mietit minkälaisilla syötteillä annettua ohjelmaa voi testata.
+      Kertaat ohjelmien testaamista.
+    </li>
+    <li>
+      Mietit input-output -tyyppistä testausta, missä syötteen perusteella päätellään tuloste.
     </li>
   </ul>
 
