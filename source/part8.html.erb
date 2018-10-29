@@ -3363,7 +3363,7 @@ kauppa.asioi("Pekka");
 </p>
 
 <p>
-  Testaustyypillä tarkoitetaan tässä tapaa, jolla antamaasi tulosta verrataan ohjelman tulokseen. Contains tarkoittaa, että ohjelman tulostuksen täytyy sisältää antamasi tulos, DoesNotContain tarkoittaa, että se ei saa sisältää antamaasi tulosta, ja Equals tarkoittaa sitä, että ohjelman tulostuksen täytyy olla tarkalleen sama kuin antamasi tulos, merkkejä ja rivinvaihtoja myöten.
+  Testaustyypillä tarkoitetaan tässä tapaa, jolla antamaasi tulosta verrataan ohjelman tulokseen. Contains tarkoittaa, että ohjelman tulostuksen täytyy sisältää antamasi tulos, Does not contain tarkoittaa, että se ei saa sisältää antamaasi tulosta, ja Equals tarkoittaa sitä, että ohjelman tulostuksen täytyy olla tarkalleen sama kuin antamasi tulos, merkkejä ja rivinvaihtoja myöten.
 </p>
 
 <p>
@@ -3375,9 +3375,12 @@ kauppa.asioi("Pekka");
 @Test
 public void tulostaMauJosSyoteOnKissa() {
 	Submission.suorita(new Scanner(“kissa”));
-	String metodinTulostus = io.getSysOut(); // tässä ohjelmasi tulostus tallennetaan olioon metodinTulostus
-	String viesti = “Kun syöte oli: ‘kissa’, tulostus oli: ‘“ + metodinTulostus + “‘, mutta se ei ollut: ‘Mau!’.”; // viesti näytetään tehtävän tekijälle, jos ohjelma ei mene testeistä läpi
-	assertEquals(viesti, “Mau!”, metodinTulostus); // assertEquals testaa sitä, että metodinTulostus on tarkalleen “Mau!”
+	String metodinTulostus = io.getSysOut(); // tässä ohjelmasi tulostus tallennetaan 
+                                                 // olioon metodinTulostus
+	String viesti = “Kun syöte oli: ‘kissa’, tulostus oli: ‘“ + metodinTulostus + “‘, mutta se ei ollut: ‘Mau!’.”; 
+        // viesti näytetään tehtävän tekijälle, jos ohjelma ei mene testistä läpi
+	assertEquals(viesti, “Mau!”, metodinTulostus); // assertEquals testaa sitä, että 
+                                                       // metodinTulostus on tarkalleen “Mau!”
 }
 <% end %>
 
