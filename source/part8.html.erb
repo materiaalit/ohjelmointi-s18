@@ -2713,7 +2713,7 @@ sokeri: 0
 Varasto varasto = new Varasto();
 varasto.lisaaTuote("maito", 3, 10);
 varasto.lisaaTuote("kahvi", 5, 6);
-varasto.lisaaTuote("piimä", 2, 20);
+varasto.lisaaTuote("piima", 2, 20);
 varasto.lisaaTuote("jugurtti", 2, 20);
 
 System.out.println("tuotteet:");
@@ -2725,7 +2725,7 @@ for (String tuote: varasto.tuotteet()) {
 
   <% partial 'partials/sample_output' do %>
 tuotteet:
-piimä
+piima
 jugurtti
 kahvi
 maito
@@ -2802,7 +2802,7 @@ maito: 5
   <% partial 'partials/code_highlight' do %>
 Ostoskori kori = new Ostoskori();
 kori.lisaa("maito", 3);
-kori.lisaa("piimä", 2);
+kori.lisaa("piima", 2);
 kori.lisaa("juusto", 5);
 System.out.println("korin hinta: " + kori.hinta());
 kori.lisaa("tietokone", 899);
@@ -2822,7 +2822,7 @@ korin hinta: 909
   </p>
 
   <% partial 'partials/sample_output' do %>
-piimä: 1
+piima: 1
 juusto: 1
 tietokone: 1
 maito: 1
@@ -2849,7 +2849,7 @@ kori.lisaa("maito", 3);
 kori.tulosta();
 System.out.println("korin hinta: " + kori.hinta() + "\n");
 
-kori.lisaa("piimä", 2);
+kori.lisaa("piima", 2);
 kori.tulosta();
 System.out.println("korin hinta: " + kori.hinta() + "\n");
 
@@ -2865,15 +2865,15 @@ System.out.println("korin hinta: " + kori.hinta() + "\n");<% end %>
 maito: 1
 korin hinta: 3
 
-piimä: 1
+piima: 1
 maito: 1
 korin hinta: 5
 
-piimä: 1
+piima: 1
 maito: 2
 korin hinta: 8
 
-piimä: 1
+piima: 1
 maito: 3
 korin hinta: 11
   <% end %>
@@ -2944,8 +2944,8 @@ public class Kauppa {
 Varasto varasto = new Varasto();
 varasto.lisaaTuote("kahvi", 5, 10);
 varasto.lisaaTuote("maito", 3, 20);
-varasto.lisaaTuote("piimä", 2, 55);
-varasto.lisaaTuote("leipä", 7, 8);
+varasto.lisaaTuote("piima", 2, 55);
+varasto.lisaaTuote("leipa", 7, 8);
 
 Kauppa kauppa = new Kauppa(varasto, new Scanner(System.in));
 kauppa.asioi("Pekka");
