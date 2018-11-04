@@ -2,7 +2,7 @@
   title: Osa 9
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -1524,6 +1524,9 @@ Adult literacy rate, population 15+ years, male (%),Angola,2014,82.15105
       Tunnet perinteisen for-toistolauseen.
     </li>
     <li>
+      Tiedät merkkijonojen liittämiseen liittyviä ongelmia ja osaat välttää ne StringBuilder-luokan avulla.
+    </li>
+    <li>
       Tunnet säännölliset lausekkeet ja osaat kirjoittaa omia säännöllisiä lausekkeita.
     </li>
     <li>
@@ -1614,6 +1617,126 @@ Adult literacy rate, population 15+ years, male (%),Angola,2014,82.15105
     // toistettava asia
   }
 <% end %>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  StringBuilder
+<% end %>
+
+<p>
+  Tarkastellaan seuraavaa ohjelmaa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String luvut = "";
+  for (int i = 1; i &lt; 5; i++) {
+      luvut = luvut + i;
+  }
+  System.out.println(luvut);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  1234
+<% end %>
+
+<p>
+  Ohjelma on rakenteeltaan suoraviivainen. Ohjelmassa luodaan merkkijono, joka sisältää luvun 1234. Lopulta merkkijono tulostetaan.
+</p>
+
+<p>
+  Ohjelma toimii, mutta sen toiminnallisuudessa on pieni käyttäjälle näkymätön ongelma. Kutsu <code>luvut + i</code> luo <em>uuden</em> merkkijonon. Tarkastellaan ohjelmaa riveittän siten, että toistolause on purettu auki.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String luvut = ""; // luodaan uusi merkkijono: ""
+  int i = 1;
+  luvut = luvut + i; // luodaan uusi merkkijono: "1"
+  i++;
+  luvut = luvut + i; // luodaan uusi merkkijono: "12"
+  i++;
+  luvut = luvut + i; // luodaan uusi merkkijono: "123"
+  i++;
+  luvut = luvut + i; // luodaan uusi merkkijono: "1234"
+  i++;
+  
+  System.out.println(luvut); // tulostetaan merkkijono
+<% end %>
+
+<p>
+  Edellisessä esimerkissä luodaan yhteensä viisi merkkijonoa. 
+</p>
+
+<p>
+  Tarkastellaan samaa ohjelmaa siten, että jokaisen luvun jälkeen lisätään rivinvaihto.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  String luvut = "";
+  for (int i = 1; i &lt; 5; i++) {
+      luvut = luvut + i + "\n";
+  }
+  System.out.println(luvut);
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  1
+  2
+  3
+  4
+<% end %>
+
+<p>
+  Kukin <code>+</code>-operaatio luo uuden merkkijonon. Yllä rivillä <code>luvut + i + "\n";</code> luodaan ensin merkkijono <code>luvut + i</code>, jonka jälkeen luodaan toinen merkkijono, joka yhdistää edellä luotuun merkkijonoon rivinvaihdon. Kirjoitetaan tämäkin auki.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  String luvut = ""; // luodaan uusi merkkijono: ""
+  int i = 1;
+  // luodaan ensin merkkijono "1" ja sitten merkkijono "1\n"
+  luvut = luvut + i + "\n";
+  i++;
+  // luodaan ensin merkkijono "1\n2" ja sitten merkkijono "1\n2\n"
+  luvut = luvut + i + "\n"
+  i++;
+  // luodaan ensin merkkijono "1\n2\n3" ja sitten merkkijono "1\n2\n3\n"
+  luvut = luvut + i + "\n"
+  i++;
+  // jne
+  luvut = luvut + i + "\n"
+  i++;
+  
+  System.out.println(luvut); // tulostetaan merkkijono
+<% end %>
+
+<p>
+  Edellisessä esimerkissä luodaan yhteensä yhdeksän merkkijonoa. 
+</p>
+
+<p>
+  Merkkijonojen luonti -- vaikka pienessä mittakaavassa se ei näy -- ei ole nopea operaatio. Jokaista merkkijonoa varten varataan muistista tilaa, mihin merkkijono asetetaan. Mikäli merkkijonoa tarvitaan vain osana laajemman merkkijonon rakentamista, toimintaa kannattaa tehostaa.
+</p>
+
+<p>
+  Javan valmis luokka StringBuilder tarjoaa tavan merkkijonojen yhdistämiseen ilman turhaa merkkijonojen luomista. Uusi StringBuilder-olio luodaan <code>new StringBuilder()</code> -kutsulla, ja olioon lisätään sisältöä <code>append</code>-metodilla, joka on kuormitettu, eli siitä on monta versiota eri tyyppisille muuttujille. Lopulta StringBuilder-oliolta saa merkkijonon metodilla <code>toString</code>.
+</p>
+
+<p>
+  Alla olevassa esimerkissä luodaan vain yksi merkkijono. Hieman tehokkaampaa.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  StringBuilder luvut = new StringBuilder();
+  for (int i = 1; i &lt; 5; i++) {
+      luvut.append(i);
+  }
+  System.out.println(luvut.toString());
+<% end %>
+
+<%= partial 'partials/quiz', locals: { id: '5bded8c283601b299c268708' } %>
+
+<%= partial 'partials/quiz', locals: { id: '5bded9a8e921f629a8dfd8dc' } %>
+
 
 <% partial 'partials/material_sub_heading' do %>
   Säännölliset lausekkeet
@@ -2628,16 +2751,36 @@ Adult literacy rate, population 15+ years, male (%),Angola,2014,82.15105
   Voit halutessasi ladata arvioitavan tehtävän tehtäväpohjan ja malliratkaisun koneellesi, ja testata niiden käyttöä. Molemmat tulevat ZIP-paketeissa, jolloin sinun täytyy purkaa ne, ennen kuin voit avata ne NetBeansissä.
 </p>
 
-<p>
-  Ohjeistus muistin virkistykseksi: "Suunnittele testitapaukset valmiille malliratkaisulle 1"
-</p>
+
+<% partial 'partials/general_callout', locals: { name: 'Ohjeistus muistin virkistämiseksi: Suunnittele testitapaukset valmiille malliratkaisulle 1' } do %>
+
+  <p>
+    Lähdekoodin kohdalla on valmis malliratkaisu. Keksi sitä vastaava tehtävänanto ja anna testitapaukset. Lähetettyäsi tehtävän saat tiedon siitä, menivätkö testisi läpi. Jos eivät, lue virheviesti ja lähdekoodi uudestaan ja korjaa testisi menemään läpi.
+  </p>
+
+  <p>
+    Tehtävien luomis- ja testaustehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
+
+<% end %>
 
 <div class='crowdsorcerer-widget' data-assignment='14' peer-review data-exercises=’3’></div>
 
 
-<p>
-  Ohjeistus muistin virkistykseksi: "Suunnittele testitapaukset valmiille malliratkaisulle 2"
-</p>
+<% partial 'partials/general_callout', locals: { name: 'Ohjeistus muistin virkistämiseksi: Suunnittele testitapaukset valmiille malliratkaisulle 2' } do %>
+
+  <p>
+    Lähdekoodin kohdalla on valmis malliratkaisu. Keksi sitä vastaava tehtävänanto ja anna testitapaukset. Lähetettyäsi tehtävän saat tiedon siitä, menivätkö testisi läpi. Jos eivät, lue virheviesti ja lähdekoodi uudestaan ja korjaa testisi menemään läpi.
+  </p>
+  <p>
+    Fibonaccin lukujonosta voit lukea <a href="https://fi.wikipedia.org/wiki/Fibonaccin_lukujono">Wikipediasta</a>.
+  </p>
+
+  <p>
+    Tehtävien luomis- ja testaustehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
+
+<% end %>
 
 <div class='crowdsorcerer-widget' data-assignment='13' peer-review data-exercises=’3’></div>
 
