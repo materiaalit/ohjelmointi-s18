@@ -5751,9 +5751,50 @@ public static void main(String[] args) throws Exception {
   Ohjelmien testaaminen
 <% end %>
 
+<p>
+  Kuten viikolla 8 lupailtiin, nyt pääset kirjoittamaan testejä itse suoraan testikoodiin. CrowdSorcerer-tehtävän malliratkaisu on taas annettu valmiina. Sinun tehtäväsi on keksiä sille tehtävänanto ja kirjoittaa sille testit.
+</p>
 
+<p>
+  Testikoodin pohja on annettu valmiiksi. Kirjoita vähintään kolme testiä, jotka testaavat tehtävien lähdekoodeissa annettuja metodeja "vertaile" ja "annaKokonaisluku". Pyri miettimään, miten saisit ohjelmasi testattua mahdollisimman kattavasti. 
+  TODO: pitääkö ohjeistaa tarkemmin testien kirjoittamiseen?
+</p>
 
-- konkreettisten yksikkötestien kirjoitus
+<p>
+  Nyt pääset laatimaan testejä seuraaville kahdelle tehtävälle.
+</p>
+
+<% partial 'partials/general_callout', locals: { name: 'Kirjoita testit valmiille malliratkaisulle 1' } do %>
+
+  <p>
+    Lähdekoodin kohdalla on valmis malliratkaisu. Keksi sitä vastaava tehtävänanto ja kirjoita testit luokan Submission metodille vertaile. Lähetettyäsi tehtävän saat tiedon siitä, kääntyikö testikoodi ja menivätkö testisi läpi. Jos eivät, lue virheviesti ja lähdekoodi uudestaan ja korjaa testisi sen mukaisesti.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
+
+<% end %>
+
+<p>TODO: TEHTÄVÄT EI OLE VIELÄ KANNASSA OIKEIN</p>
+<div class='crowdsorcerer-widget' data-assignment='15'></div>
+
+<% partial 'partials/general_callout', locals: { name: 'Kirjoita testit valmiille malliratkaisulle 2' } do %>
+
+  <p>
+    Lähdekoodin kohdalla on valmis malliratkaisu. Keksi sitä vastaava tehtävänanto ja kirjoita testit luokan Submission metodille annaKokonaisluku. Huomaa, että lähdekoodissa ei käytetä ääkkösiä.
+  </p>
+  <p>
+    Lähetettyäsi tehtävän saat tiedon siitä, kääntyikö testikoodi ja menivätkö testisi läpi. Jos eivät, lue virheviesti ja lähdekoodi uudestaan ja korjaa testisi sen mukaisesti.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
+
+<% end %>
+
+<div class='crowdsorcerer-widget' data-assignment='16'></div>
 
 
 <%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a040' } %>
