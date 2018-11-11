@@ -2,7 +2,7 @@
   title: Osa 10
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 
@@ -23,7 +23,13 @@
 
   <ul>
     <li>
-      TODO
+      Tunnet luokkakaavioiden merkintätavan ja osaat merkitä luokkakaavioon luokat, attribuutit, konstruktorit, ja metodit.
+    </li>
+    <li>
+      Tunnet luokkien väliset yhteydet ja osaat merkitä luokkakaavioon perinnän sekä rajapinnan toteutuksen. 
+    </li>    
+    <li>
+      Osaat luoda luokkia luokkakaavioiden perusteella.
     </li>    
   </ul>
 
@@ -103,7 +109,7 @@
 </p>
 
 <% partial 'partials/material_sub_heading' do %>
-  Luokan metodin kuvaaminen
+  Luokan metodien kuvaaminen
 <% end %>
 
 <p>
@@ -176,7 +182,7 @@
   <img src="/img/diagrams/luokkakaavio-henkilo-ika-ja-nimi-ja-konstruktori-ja-tulosta-ja-getnimi.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String]">
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Asiakas' } do %>
+<% partial 'partials/exercise', locals: { name: 'Asiakas', model_solution: '53651' } do %>
 
   <p>
     Alla olevassa luokkakaaviossa on kuvattuna luokka Asiakas. Toteuta luokka tehtäväpohjaan.
@@ -188,7 +194,7 @@
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Kirja ja lentokone' } do %>
+<% partial 'partials/exercise', locals: { name: 'Kirja ja lentokone', model_solution: '53652' } do %>
 
   <p>
     Alla olevassa luokkakaaviossa on kuvattuna luokat Kirja ja Lentokone. Toteuta luokat tehtäväpohjaan.
@@ -206,12 +212,6 @@
 <% partial 'partials/material_sub_heading' do %>
   Luokkien väliset yhteydet
 <% end %>
-
-
- - yhteys viivalla
- - osallistumisrajoitteet viivojen päihin
- - mikäli halutaan korostaa, että yhteys vain toisesta suunnasta toiseen, merkitään nuolella -- tämä ns. v-mäinen suhde tarjoittaa siis sitä, että vain toinen on suhteesta tietoinen
- - 
 
 <p>
   Luokkakaavioissa yhteydet merkitään viivoilla, joissa nuolet kuvaavat yhteyden suuntaa. Oletetaan, että käytössämme luokka Kirja.
@@ -232,7 +232,7 @@
 
 
 <p>
-  Jos luokalle kirja merkitään kirjoittaja, joka on tyyppiä Henkilö, ohjelmakoodissa oliomuuttuja merkitänä muiden muuttujien seuraksi.
+  Jos luokalle kirja merkitään kirjoittaja, joka on tyyppiä Henkilö, ohjelmakoodissa oliomuuttuja merkitään muiden muuttujien seuraksi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -256,18 +256,12 @@
 </p>
 
 <p>
-  Yhteys kertoo, että kirja tietää kirjoittajansa, mutta kirjoittaja ei tiedä mitään kirjoittamistaan kirjoista. Kun viivaan merkitään nuoli, nuoli kertoo "tietämyssuunnan". Viivaan voi kirjoittaa myös tekstin, joka antaa lisätietoa yhteydestä. Yllä olevassa esimerkissä viivaan on kirjattu tieto siitä, että kirjaan liittyy "kirjoittaja".
+  Nuoli kertoo "tietämyssuunnan". Yllä oleva yhteys kertoo, että kirja tietää kirjoittajansa, mutta henkilö ei tiedä mitään kirjoittamistaan kirjoista. Viivaan voi kirjoittaa myös tekstin, joka antaa lisätietoa yhteydestä. Yllä olevassa esimerkissä viivaan on kirjattu tieto siitä, että kirjaan liittyy "kirjoittaja".
 </p>
-
-<% partial 'partials/material_sub_heading' do %>
-  Luokkien väliset yhteydet--bla
-<% end %>
-
 
 <p>
-  Jos kirjalla voi olla useita kirjoittajia, kirjoittajat merkitään luokkaan listana.
+  Mikäli kirjalla voi olla useita kirjoittajia, kirjoittajat merkitään luokkaan listana.
 </p>
-
 
 <% partial 'partials/code_highlight' do %>
   public class Kirja {
@@ -281,7 +275,7 @@
 
 
 <p>
-  Luokkakaaviossa tilanne merkitään yhteyden päätyyn asetettavalla tähdellä. Tähti kertoo, että kirjalla voi olla nollasta äärettömään kirjoittajaa. Alla olevassa esimerkissä yhteyteen ei ole merkitty yhteyttä kuvaavaa tekstiä "kirjoittajat", mutta se kannattaisi lisätä kaavioon.
+  Luokkakaaviossa tilanne merkitään yhteyden päätyyn asetettavalla tähdellä. Tähti kertoo, että kirjalla voi olla nollasta äärettömään kirjoittajaa. Alla olevassa esimerkissä yhteyteen ei ole merkitty yhteyttä kuvaavaa tekstiä "kirjoittajat", mutta se kannattaisi selkeyden takia lisätä kaavioon.
 </p>
 
 <p>
@@ -324,15 +318,14 @@
   Ylläolevaan kaavioon voisi lisätä vielä ArrayListin sisältämien arvojen tyypin <code>ArrayList&lt;Henkilo&gt;</code> sekä yhteyttä tarkentavan määreen "kirjoittajat".
 </p>
 
-<p>
-  TODO: avaa mitä tarkoittaa seuraavassa oleva viiva..
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Naytos ja lippu' } do %>
+<% partial 'partials/exercise', locals: { name: 'Naytos ja lippu', model_solution: '53653' } do %>
 
   <p>
-    Alla on kuvattu kaksi luokkaa, Naytos ja Lippu, sekä niiden välinen yhteys. Toteuta kuvatut luokat tehtäväpohjaan.
+    Alla on kuvattu kaksi luokkaa, Naytos ja Lippu, sekä niiden välinen yhteys. Alla olevassa kuvassa tähti on luokan Lippu-päädyssä -- tässä tapauksessa tähti antaa lisätietoa yhteydestä; vaikkei näytös tiedä näytökseen myydyistä lipuista, voi lippuja silti myydä näytökseen monia.
+  </p>
+  
+  <p>
+    Toteuta kuvatut luokat tehtäväpohjaan. 
   </p>
 
 
@@ -342,7 +335,67 @@
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Opiskelija ja korkeakoulu' } do %>
+<p>
+  Mikäli luokkakaavioon ei merkitä nuolta, näkyy yhteys kummassakin oliossa. Alla esimerkki tilanteesta, missä kirja tietää kirjoittajansa ja henkilö tietää kirjoittamansa kirjan.
+</p>
+
+
+<p>
+  <img src="/img/diagrams/luokkakaavio-kirja-henkilo-kaksisuuntainen.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String], 												     [Kirja|-nimi:String;-julkaisija:String|+getKirjoittajat():ArrayList;+lisaaKirjoittaja(kirjoittaja:Henkilo)], 												     [Kirja]-*[Henkilo]">
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Henkilo {
+      private String nimi;
+      private int ika;
+      private Kirja kirja;
+ 
+      // ...
+  }
+<% end %>
+
+
+<% partial 'partials/code_highlight' do %>
+  public class Kirja {
+      private String nimi;
+      private String kustantaja;
+      private ArrayList&lt;Henkilo&gt; kirjoittajat;
+
+      // ..
+  }
+<% end %>
+
+<p>
+  Kuten yllä huomaat, oletuksena -- eli kun viivan päätyyn ei merkitä tähteä -- kyse on yhdestä viitteestä. Yllä olevat luokat ovat mielenkiintoiset, sillä henkilöllä voi olla vain yksi kirja.
+</p>
+
+<p>
+  Mikäli henkilöllä voi olla monta kirjaa ja kirjalla monta kirjoittajaa, merkitään tähti yhteyden kumpaankin päätyyn seuraavasti:
+</p>
+
+<p>
+  <img src="/img/diagrams/luokkakaavio-kirja-henkilo-kaksisuuntainen-monesta-moneen.png" alt="[Henkilo|-nimi:String;-ika:int|+Henkilo(nimi:String);+tulostaHenkilo():void;+getNimi():String], 												     [Kirja|-nimi:String;-julkaisija:String|+getKirjoittajat():ArrayList;+lisaaKirjoittaja(kirjoittaja:Henkilo)], 												     [Kirja]*-*[Henkilo]">
+</p>
+
+<p>
+  Nyt luokka Henkilo olisi muotoa:
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.ArrayList;
+
+  public class Henkilo {
+      private String nimi;
+      private int ika;
+      private ArrayList&lt;Kirja&gt; kirja;
+ 
+      // ...
+  }
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Opiskelija ja korkeakoulu', model_solution: '53654' } do %>
 
   <p>
     Alla on kuvattu kaksi luokkaa, Opiskelija ja Korkeakoulu, sekä niiden välinen yhteys. Toteuta kuvatut luokat tehtäväpohjaan.
@@ -388,15 +441,10 @@
   Abstraktien luokkien perintä toimii lähes samalla tavalla. Abstraktit luokat kuitenkin merkitään luokkakaavioon siten, että luokan nimen yläpuolella lukee <code>&lt;&lt;abstract&gt;&gt;</code>. Tämän lisäksi luokan nimi ja luokassa määritellyt abstraktit metodit kuvataan kursiivilla.
 </p>
 
-<p>
-  Alla olevassa esimerkissä on tehtävän erilaisia laatikoita ensimmäistä kahta osaa kuvaava luokkaakaavio.
-</p>
-
-
 <img src="/img/diagrams/luokkakaavio-abstraktit.png" />
 
 
-<% partial 'partials/exercise', locals: { name: 'Pelaaja ja tekoäly' } do %>
+<% partial 'partials/exercise', locals: { name: 'Pelaaja ja tekoäly', model_solution: '53655' } do %>
 
   <p>
     Alla on kuvattu kaksi luokkaa, Pelaaja ja Tekoaly, sekä niiden välinen yhteys. Toteuta kuvatut luokat tehtäväpohjaan.
@@ -414,7 +462,7 @@
 <% end %>
 
 <p>
-  Rajapinnat merkitään luokkakaavioissa muodossa &lt;&lt;interface&gt;&gt; RajapintaLuokanNimi. Tarkastellaan esimerkkinä rajapintaa Luettava.
+  Rajapinnat merkitään luokkakaavioissa muodossa <code>&lt;&lt;interface&gt;&gt;</code> RajapintaLuokanNimi. Tarkastellaan esimerkkinä rajapintaa Luettava.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -441,7 +489,7 @@
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Tallennettava henkilo' } do %>
+<% partial 'partials/exercise', locals: { name: 'Tallennettava henkilo', model_solution: '53656' } do %>
 
   <p>
     Alla on kuvattuna rajapinta Tallennettava sekä luokka Henkilo. Toteuta luokkakaaviossa kuvattu sisältö tehtäväpohjaan.
@@ -471,7 +519,7 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Isompi luokkakaavio' } do %>
+<% partial 'partials/exercise', locals: { name: 'Isompi luokkakaavio', model_solution: '53657' } do %>
 
   <p>
     Alla on kuvattuna isompi luokkakaavio, jossa on luokat A, B, C, D ja E, sekä rajapinnat IA, IB ja IC. Toteuta luokkakaavion kuvaama sisältö tehtäväpohjaan. 
@@ -502,17 +550,17 @@
 
   <ul>
     <li>
-      TODO
-    </li>    
+      Tiedät mitä pakkaukset ovat ja osaat asettaa luokkia pakkauksiin.
+    </li>
+    <li>
+      Tiedät mistä Javassa käytetyn <code>import</code>-lauseen osat muodostuvat.
+    </li>
   </ul>
 
 <% end %>
 
- 
- - sovelluksen jakaminen loogisiin kokonaisuuksiin
-
 <p>
-  Ohjelmaa varten toteutettujen luokkien määrän kasvaessa niiden toiminnallisuuksien ja metodien muistaminen vaikeutuu. Muistamista helpottaa luokkien järkevä nimentä sekä luokkien suunnittelu siten, että jokaisella luokalla on yksi selkeä vastuu. Tämän lisäksi luokat kannattaa jakaa toiminnallisuutta, käyttötarkoitusta tai jotain muuta loogista kokonaisuutta kuvaaviin pakkauksiin.
+  Ohjelmaa varten toteutettujen luokkien määrän kasvaessa toiminnallisuuksien ja metodien muistaminen vaikeutuu. Muistamista helpottaa luokkien järkevä nimentä sekä luokkien suunnittelu siten, että jokaisella luokalla on yksi selkeä vastuu. Tämän lisäksi luokat kannattaa jakaa toiminnallisuutta, käyttötarkoitusta tai jotain muuta loogista kokonaisuutta kuvaaviin pakkauksiin.
 </p>
 
 <p>
@@ -591,7 +639,7 @@
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Ensimmäisiä pakkauksia (3 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Ensimmäisiä pakkauksia (3 osaa)', model_solution: '53658' } do %>
 
 
   <h2>Käyttöliittymä-rajapinta</h2>
@@ -657,7 +705,7 @@
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Kolme pakkausta' } do %>
+<% partial 'partials/exercise', locals: { name: 'Kolme pakkausta', model_solution: '53659' } do %>
 
   <p>
     Luo tehtäväpohjaan kolme pakkausta <code>a</code>, <code>b</code> ja <code>c</code>. Luo pakkauksen <code>a</code> sisälle luokka <code>A</code>, pakkauksen <code>b</code> sisälle luokka <code>B</code>, ja pakkauksen <code>c</code> sisälle luokka <code>C</code>. Luokissa ei tarvita oliomuuttujia, konstruktoreja tai metodeja.
@@ -680,7 +728,7 @@
 </p>
 
 <p>
-  Projektin hakemistossa <code>src</code> on ohjelmaan liittyvät lähdekoodit. Jos luokan pakkauksena on kirjasto, sijaitsee se projektin lähdekoodihakemiston <code>src</code> sisällä olevassa hakemistossa <code>kirjasto</code>. NetBeansissa voi käydä katsomassa projektien konkreettista rakennetta <em>Files</em>-välilehdeltä joka on normaalisti <em>Projects</em>-välilehden vieressä. Jos et näe välilehteä <em>Files</em>, saa sen näkyville valitsemalla vaihtoehdon <em>Files</em> valikosta <em>Window</em>.
+  Projektin hakemistossa <code>src</code> on ohjelmaan liittyvät lähdekoodit. Jos luokan pakkauksena on kirjasto, sijaitsee luokka projektin lähdekoodihakemiston <code>src/main/java/kirjasto</code>-kansiossa. NetBeansissa voi käydä katsomassa projektien konkreettista rakennetta <em>Files</em>-välilehdeltä joka on normaalisti <em>Projects</em>-välilehden vieressä. Jos et näe välilehteä <em>Files</em>, saa sen näkyville valitsemalla vaihtoehdon <em>Files</em> valikosta <em>Window</em>.
 </p>
 
 <p>
@@ -798,10 +846,6 @@
 <% end %>
 
 <p>
-  TODO: kirjoita auki
-</p>
-
-<p>
   Tarkastellaan ohjelmaa, joka tarjoaa tekstikäyttöliittymän lentokoneiden ja lentojen lisäämiseen sekä näiden tarkasteluun. Ohjelman tekstikäyttöliittymä on seuraava.
 </p>
 
@@ -915,13 +959,17 @@
 </ul>
 
 <p>
-  Alla olevissa aliluvuissa on kuvattu sovelluksen käyttämät luokat (poislukien pääohjelmaluokka).
+  Alla olevissa aliluvuissa on listattu eräs mahdollinen jako sovelluksen toimintaa varten (poislukien pääohjelmaluokka).
 </p>
 
 
 <% partial 'partials/material_sub_sub_heading' do %>
   Aihealueen käsitteitä kuvaavat luokat
 <% end %>
+
+<p>
+  Aihealueen käsitteitä kuvaavat luokat asetetaan usein pakkaukseen nimeltä <code>domain</code>. Koska koko sovellus on pakkauksessa <code>lentokentta</code>, asetetaan pakkaus <code>domain</code> pakkaukseen <code>lentokentta</code>. Aihealueen käsitteitä kuvaavat luokat <code>Paikka</code>, <code>Lentokone</code>, ja <code>Lento</code>.
+</p>
 
 <% partial 'partials/code_highlight' do %>
 package lentokentta.domain;
@@ -1008,6 +1056,10 @@ public class Lento {
   Sovelluslogiikka
 <% end %>
 
+<p>
+  Sovelluslogiikka eriytetään tyypillisesti aihealuetta kuvaavista luokista. Sovelluslogiikka on esimerkissämme lisätty pakkaukseen <code>logiikka</code>. Sovelluslogiikka sisältää toiminnallisuudet lentokoneiden ja lentojen lisäämiseen sekä niiden listaamiseen.
+</p>
+
 <% partial 'partials/code_highlight' do %>
 package lentokentta.logiikka;
 
@@ -1060,6 +1112,10 @@ public class Lentohallinta {
 <% partial 'partials/material_sub_sub_heading' do %>
   Tekstikäyttöliittymä
 <% end %>
+
+<p>
+  Käyttöliittymä eriytetään aihealuetta kuvaavista luokista ja sovelluslogiikasta. Käyttöliittymä on alla olevassa esimerkissä lisätty pakkaukseen <code>ui</code>. 
+</p>
 
 <% partial 'partials/code_highlight' do %>
 package lentokentta.ui;
@@ -1195,10 +1251,10 @@ public class Tekstikayttoliittyma {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Lentokenttä (2 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Lentokenttä (2 osaa)', model_solution: '53660' } do %>
 
   <p>
-    Tässä tehtävässä toteutat edellä kuvattuun aiheeseen sovelluksen. Saat suunnitella rakenteen vapaasti, tai voit noudattaa edellä kuvattua rakennetta. Käyttöliittymän ulkomuoto sekä vaaditut komennot on määritelty ennalta. Tehtävä on kahden yksittäisen tehtäväpisteen arvoinen.
+    Tässä tehtävässä toteutat edellä kuvatun sovelluksen. Saat suunnitella rakenteen vapaasti, tai voit noudattaa edellä kuvattua rakennetta. Käyttöliittymän ulkomuoto sekä vaaditut komennot on määritelty ennalta. Tehtävä on kahden yksittäisen tehtäväpisteen arvoinen.
   </p>
 
   <p>
@@ -1331,7 +1387,13 @@ public class Tekstikayttoliittyma {
 
   <ul>
     <li>
-      TODO
+      Tiedät mitä poikkeukset ovat ja osaat varautua poikkeuksiin.
+    </li>
+    <li>
+      Osaat heittää poikkeuksia.
+    </li>
+    <li>
+      Tiedät että osaan poikkeksista tulee varautua, ja tiedät että on olemassa poikkeuksia joihin ei tarvitse erikseen varautua.
     </li>    
   </ul>
 
@@ -1645,7 +1707,7 @@ Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee ol
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Parametrien validointi (2 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Parametrien validointi (2 osaa)', model_solution: '53661' } do %>
 
   <p>
     Harjoitellaan hieman parametrien validointia <code>IllegalArgumentException</code>-poikkeuksen avulla. Tehtäväpohjassa tulee kaksi luokkaa, <code>Henkilo</code> ja <code>Laskin</code>. Muuta luokkia seuraavasti:
@@ -1687,24 +1749,11 @@ Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee ol
 
 
 <% partial 'partials/material_sub_heading' do %>
-  Poikkeusten tyypit
-<% end %>
-
-<p>
-  Javassa on kahdenlaisia poikkeuksia. Tarkastetut poikkeukset (checked exceptions)
-</p>
-
-<p>
-  
-</p>
-
-
-<% partial 'partials/material_sub_heading' do %>
   Poikkeukset ja rajapinnat
 <% end %>
 
 <p>
-  Rajapintaluokilla ei ole metodirunkoa, mutta metodimäärittely on vapaasti rajapinnan suunnittelijan toteutettavissa. Rajapintaluokissa voidaan määritellä metodeja, jotka saattavat heittää poikkeuksen. Esimerkiksi seuraavan rajapinnan <code>Tiedostopalvelin</code> toteuttavat luokat heittävät <em>mahdollisesti</em> poikkeuksen <code>lataa</code>- ja <code>tallenna</code>-metodissa.
+  Rajapintaluokilla ei ole metodirunkoa, mutta metodimäärittely on vapaasti rajapinnan suunnittelijan toteutettavissa. Rajapintaluokissa voidaan määritellä metodeja, jotka saattavat heittää poikkeuksen. Esimerkiksi seuraavan rajapinnan <code>Tiedostopalvelin</code> toteuttavat luokat heittävät <em>mahdollisesti</em> poikkeuksen metodeissa <code>lataa</code> ja <code>tallenna</code>.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1944,39 +1993,21 @@ mittaukset: [-10, -4, 5]
 
   <ul>
     <li>
-      TODO
+      Kertaat tiedon lukemista tiedostosta.
+    </li>    
+    <li>
+      Osaat kirjoittaa tiedostoon.
     </li>    
   </ul>
 
 <% end %>
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Esimerkki: tiedostojen käsittely
-<% end %>
-
- - ensin esimerkki tiedostoon kirjoittamisesta, sitten laajempi esimerkki luokasta, missä sekä kirjoitetaan että luetaan tiedostoon 
-
-   - käsite "tiedosto":
-     - konstruktorina polku
-     - metodi lue lukee ja palauttaa listan
-     - metodi lisaa rivi lisää rivin listalle
-     - metodi tallenna tallentaa listan
-
- - laajempi esimerkki, missä luetaan 
-
- - tiedostoon kirjoittaminen
-
- - toinen esimerkki, missä rajapinta "tietosailo", yksi toteutus merkkijonopohjainen, toinen tiedostopohjainen
-
-
-
 <p>
-  Olemme aiemmin oppineet menetelmiä tekstitiedostojen ja muiden lähteiden lukemiseen. Tarkastellaan seuraavaksi tiedostoon kirjoittamista.
+  Olemme aiemmin oppineet menetelmiä tekstitiedostojen lukemiseen. Mikäli nämä eivät ole tuoreessa muistissa, lue kurssimateriaalin <a href="/part4/">neljännen osan</a> alusta luku "Tiedon lukeminen ja tiedostot".
 </p>
 
 <p>
-  Luokka <code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html">PrintWriter</a></code> tarjoaa toiminnallisuuden tiedostoon kirjoittamiseen. Luokan <code>PrintWriter</code> konstruktorille annetaan parametrina kohdetiedoston sijaintia kuvaava merkkijono.
+  Tarkastellaan seuraavaksi tiedostoon kirjoittamista. Luokka <code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html">PrintWriter</a></code> tarjoaa toiminnallisuuden tiedostoon kirjoittamiseen. Luokan <code>PrintWriter</code> konstruktorille annetaan parametrina kohdetiedoston sijaintia kuvaava merkkijono.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -2029,9 +2060,7 @@ public static void main(String[] args) throws Exception {
   Mikäli tiedostoja haluaa käsitellä siten, että kirjoitus tapahtuu olemassaolevan tiedoston perään, kannattaa kirjoituksessa käyttää <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html" target="_blank" norel>FileWriter</a>-luokkaa.
 </p>
 
-
-
-<% partial 'partials/exercise', locals: { name: 'Muistava sanakirja (4 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Muistava sanakirja (4 osaa)', model_solution: '53663' } do %>
 
   <p>
     Tässä tehtävässä laajennetaan sanakirjaa siten, että sanat voidaan lukea tiedostosta ja kirjoittaa tiedostoon. Sanakirjan tulee myös osata kääntää molempiin suuntiin, suomesta vieraaseen kieleen sekä toiseen suuntaan (tehtävässä oletetaan hieman epärealistisesti, että suomen kielessä ja vieraassa kielessä ei ole yhtään samalla tavalla kirjoitettavaa sanaa). Tehtävänäsi on luoda sanakirja luokkaan <code>MuistavaSanakirja</code>. Toteuta luokka pakkaukseen <code>sanakirja</code>.
@@ -2245,9 +2274,7 @@ public static void main(String[] args) throws Exception {
 <% end %>
 
 
-
-
-<% partial 'partials/exercise', locals: { name: 'Maatilasimulaattori (5 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Maatilasimulaattori (5 osaa)', model_solution: '53664' } do %>
 
   <p>
     Maatiloilla on lypsäviä eläimiä, jotka tuottavat maitoa.  Maatilat eivät itse käsittele maitoa, vaan se kuljetetaan Maitoautoilla meijereille.  Meijerit ovat yleisiä maitotuotteita tuottavia rakennuksia.  Jokainen meijeri erikoistuu yhteen tuotetyyppiin, esimerkiksi Juustomeijeri tuottaa Juustoa, Voimeijeri tuottaa voita ja Maitomeijeri tuottaa maitoa.
@@ -2671,15 +2698,23 @@ Lehmät:
   Ohjelmien testaaminen
 <% end %>
 
-- konkreettisten yksikkötestien kirjoitus
+
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      Kertaat automaattisten testien kirjoittamista.
+    </li>    
+  </ul>
+
+<% end %>
 
 <p>
   Kuten viikolla 8 lupailtiin, nyt pääset kirjoittamaan testejä itse suoraan testikoodiin. CrowdSorcerer-tehtävän malliratkaisu on taas annettu valmiina. Sinun tehtäväsi on keksiä sille tehtävänanto ja kirjoittaa sille testit.
 </p>
 
 <p>
-  Testikoodin pohja on annettu valmiiksi. Kirjoita vähintään kolme testiä, jotka testaavat tehtävien lähdekoodeissa annettuja metodeja "vertaile" ja "annaKokonaisluku". Pyri miettimään, miten saisit ohjelmasi testattua mahdollisimman kattavasti. 
-  TODO: pitääkö ohjeistaa tarkemmin testien kirjoittamiseen?
+  Testikoodin pohja on annettu valmiiksi. Kirjoita vähintään kolme testiä, jotka testaavat tehtävien lähdekoodeissa annettuja metodeja "vertaile" ja "annaKokonaisluku". Pyri miettimään, miten saisit ohjelmasi testattua mahdollisimman kattavasti. Mikäli et muista miten yksikkötestien kirjoittaminen onnistuu, kertaa kurssimateriaalin <a href="/part7/">seitsemännen osan</a> sisällöstä luku 2.5. Yksikkötestaus.
 </p>
 
 <p>
@@ -2718,6 +2753,21 @@ Lehmät:
 <div class='crowdsorcerer-widget' data-assignment='16'></div>
 
 
-<%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a040' } %>
 
+<% partial 'partials/material_heading' do %>
+  Yhteenveto
+<% end %>
 
+<p>
+  Kymmenennessä osassa eli Ohjelmoinnin jatkokurssin kolmannessa osassa tutustuimme luokkakaavioihin ja pakkauksiin. Luokkakaavioita käytetään ohjelmien rakenteen kuvaamiseen ja pakkauksia ohjelman rakenteen jakamiseen loogisiin osakokonaisuuksiin. Edellä mainittujen lisäksi tutustuimme poikkeuksiin sekä tiedostoon kirjoittamiseen, ja lopuksi kertasimme lyhyesti testien kirjoittamista.
+</p>
+
+<p>
+  Tietojenkäsittelytieteen opiskelijat kehittävät tällä hetkellä uutta työvälinettä kurssin käsitteiden harjoitteluun. Työvälineen toiminta perustuu <a href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank" norel>aikavälikertaukseen</a>, missä käsitteistöä harjoitellaan pidemmällä aikavälillä. Työväline pyrkii oppimaan käsitteet jotka tunnet ja joita et vielä tunne, ja tarjoamaan juusi sinulle sopivaa harjoittelua. Työvälineen kehitys on vielä kesken, mutta toivomme että käyt kokeilemassa työvälinettä seuraavien viikkojen aikana useampaan otteeseen osoitteessa <a href="https://opi.mooc.fi" target="_blank" norel>https://opi.mooc.fi</a>.
+</p>
+
+<p>
+  Vastaa vielä alla olevaan kyselyyn.
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '5be81cf20da4eb3df8c0429a' } %>
