@@ -2319,12 +2319,73 @@ Sija    Nimi
 
 
 <% partial 'partials/material_heading' do %>
-  Ohjelmien testaaminen
+  Vertaisarviointi: Ohjelmien testaaminen
+<% end %>
+<p>
+  Kymmenennessä osassa kirjoitimme omia testejä valmiille malliratkaisulle. Nyt on taas vertaisarvioinnin aika! Anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Itse tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
+</p>
+
+<% partial 'partials/hint', locals: { name: 'Vertaisarviointi' } do %>
+
+  <p>
+    Alla on kolme Crowdsorcereriin tehtyä tehtävää: kaksi jonkun kurssitoverisi lähettämää ja yksi itsearviointia varten. Niiden yhteydessä on muistin virkistykseksi ohjeistus, jonka pohjalta kyseiset tehtävänannot on tehty.
+  </p>
+
+  <p>
+    Tarkastele jokaisen tehtävän tehtävänantoa ja testejä. Arvioi niiden selkeyttä, kattavuutta ja sitä, kuinka hyvin ne vastaavat valmiina annettua lähdekoodia.
+  </p>
+
+  <p>
+    Palautteenannon avuksi on annettu väittämiä. Voit valita kuinka samaa mieltä niiden kanssa olet painamalla hymiöitä. Annathan myös sanallista palautetta sille varattuun kenttään! Lisää vielä tehtävää mielestäsi kuvaavia tageja ja paina Lähetä.
+  </p>
+
+  <p>
+    Anna arvio kummallekin vertaispalautetehtävälle ja lopuksi vielä omallesi.
+  </p>
+
+  <p>
+    Muista olla reilu ja ystävällinen. Hyvä palaute on rehellistä, mutta kannustavaa!
+  </p>
+
+  <p>
+    Voit halutessasi ladata arvioitavan tehtävän tehtäväpohjan ja malliratkaisun koneellesi, ja testata niiden käyttöä. Molemmat tulevat ZIP-paketeissa, jolloin sinun täytyy purkaa ne, ennen kuin voit avata ne NetBeansissä.
+  </p>
+
 <% end %>
 
+<p>TODO: crowdsorcererit ei vielä toimi</p>
 
 
-- konkreettisten yksikkötestien kirjoituksen vertaisarviointi
+<% partial 'partials/general_callout', locals: { name: 'Kirjoita testit valmiille malliratkaisulle 1' } do %>
+
+  <p>
+    Lähdekoodin kohdalla on valmis malliratkaisu. Keksi sitä vastaava tehtävänanto ja kirjoita testit luokan Submission metodille vertaile. Lähetettyäsi tehtävän saat tiedon siitä, kääntyikö testikoodi ja menivätkö testisi läpi. Jos eivät, lue virheviesti ja lähdekoodi uudestaan ja korjaa testisi sen mukaisesti.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
+
+<% end %>
+
+<div class='crowdsorcerer-widget' data-assignment='17' peer-review data-exercises='3'></div>
+
+<% partial 'partials/general_callout', locals: { name: 'Kirjoita testit valmiille malliratkaisulle 2' } do %>
+
+  <p>
+    Lähdekoodin kohdalla on valmis malliratkaisu. Keksi sitä vastaava tehtävänanto ja kirjoita testit luokan Submission metodille annaKokonaisluku. Huomaa, että lähdekoodissa ei käytetä ääkkösiä.
+  </p>
+  <p>
+    Lähetettyäsi tehtävän saat tiedon siitä, kääntyikö testikoodi ja menivätkö testisi läpi. Jos eivät, lue virheviesti ja lähdekoodi uudestaan ja korjaa testisi sen mukaisesti.
+  </p>
+
+  <p>
+    Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
+
+<% end %>
+
+<div class='crowdsorcerer-widget' data-assignment='19' peer-review data-exercises='3'></div>
 
 
 <%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a044' } %>
