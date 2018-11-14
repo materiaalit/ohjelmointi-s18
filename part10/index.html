@@ -138,7 +138,7 @@
   <div class="hint__body">
     
   <p>
-    Tunnet luokkakaaviot ja osaat tulkita ja rakentaa ohjelmia luokkakaavioiden perusteella. Osaat käyttää Javan pakkauksia ja tiedät mistä <code>import</code>-lauseen osat muodostuvat. Tunnet Javan erilaisia poikkeuksia ja osaat käsitellä sekä heittää niitä eteenpäin. Osaat kirjoittaa tietoa tiedostoon ohjelmallisesti. 
+    Tunnet luokkakaaviot ja osaat tulkita ja rakentaa ohjelmia luokkakaavioiden perusteella. Osaat käyttää Javan pakkauksia ja tiedät mistä <code>import</code>-lauseen osat muodostuvat. Tunnet Javan erilaisia poikkeuksia ja osaat käsitellä sekä heittää niitä eteenpäin. Osaat kirjoittaa tietoa tiedostoon ohjelmallisesti.
   </p>
 
 
@@ -163,11 +163,11 @@
       Tunnet luokkakaavioiden merkintätavan ja osaat merkitä luokkakaavioon luokat, attribuutit, konstruktorit, ja metodit.
     </li>
     <li>
-      Tunnet luokkien väliset yhteydet ja osaat merkitä luokkakaavioon perinnän sekä rajapinnan toteutuksen. 
-    </li>    
+      Tunnet luokkien väliset yhteydet ja osaat merkitä luokkakaavioon perinnän sekä rajapinnan toteutuksen.
+    </li>
     <li>
       Osaat luoda luokkia luokkakaavioiden perusteella.
-    </li>    
+    </li>
   </ul>
 
 
@@ -175,7 +175,7 @@
 </div>
 
 <p>
-  Luokkakaavio on ohjelmistojen suunnittelussa ja mallinnuksessa käytettävä kaavio, jonka avulla kuvataan luokkia ja niiden yhteyksiä. Luokkakaaviot mahdollistavat ohjelmien kuvaamisen korkealla abstraktiotasolla ilman lähdekoodin katsomista. 
+  Luokkakaavio on ohjelmistojen suunnittelussa ja mallinnuksessa käytettävä kaavio, jonka avulla kuvataan luokkia ja niiden yhteyksiä. Luokkakaaviot mahdollistavat ohjelmien kuvaamisen korkealla abstraktiotasolla ilman lähdekoodin katsomista.
 </p>
 
 <p>
@@ -236,7 +236,7 @@
 </code></pre>
 
 <p>
-  Luokkakaaviossa konstruktori (ja metodit) merkitään oliomuuttujien jälkeen. Oliomuuttujien alapuolelle lisätään viiva, jonka jälkeen tulee konstruktori (ja metodit). Konstruktori saa näkyvyysmääreen public takia eteen plussan, jonka lisäksi siitä merkitään nimi sekä parametrien nimet ja niiden tyypit (tässä <code>+ Henkilo(nimi: String)</code>). 
+  Luokkakaaviossa konstruktori (ja metodit) merkitään oliomuuttujien jälkeen. Oliomuuttujien alapuolelle lisätään viiva, jonka jälkeen tulee konstruktori (ja metodit). Konstruktori saa näkyvyysmääreen public takia eteen plussan, jonka lisäksi siitä merkitään nimi sekä parametrien nimet ja niiden tyypit (tässä <code>+ Henkilo(nimi: String)</code>).
 </p>
 
 <p>
@@ -287,7 +287,7 @@
   </div>
 
   <div class="hint__body">
-      
+    
   <p>
     Luokkakaaviossa kuvataan luokat, muuttujat, konstruktorit, ja metodit sekä luokkien väliset yhteydet. Luokkakaavio ei kuitenkaan kerro mitään konstruktorien ja metodien sisäisestä toteutuksesta. Luokkakaaviolla kerrotaan siis olioiden rakenteesta, mutta luokkakaaviot eivät itsessään määrittele toiminnallisuutta.
   </p>
@@ -295,7 +295,7 @@
   <p>
     Esimerkiksi metodi <code>tulostaHenkilo</code> hyödyntää oliomuuttujia <code>nimi</code> ja <code>ika</code>, mutta luokkakaaviossa tämä ei näy millään tavalla.
   </p>
-    
+
 
   </div>
 </div>
@@ -514,9 +514,9 @@
   <p>
     Alla on kuvattu kaksi luokkaa, Naytos ja Lippu, sekä niiden välinen yhteys. Alla olevassa kuvassa tähti on luokan Lippu-päädyssä -- tässä tapauksessa tähti antaa lisätietoa yhteydestä; vaikkei näytös tiedä näytökseen myydyistä lipuista, voi lippuja silti myydä näytökseen monia.
   </p>
-  
+
   <p>
-    Toteuta kuvatut luokat tehtäväpohjaan. 
+    Toteuta kuvatut luokat tehtäväpohjaan.
   </p>
 
 
@@ -547,7 +547,7 @@
     private String nimi;
     private int ika;
     private Kirja kirja;
- 
+
     // ...
 }
 </code></pre>
@@ -585,7 +585,7 @@ public class Henkilo {
     private String nimi;
     private int ika;
     private ArrayList&lt;Kirja&gt; kirja;
- 
+
     // ...
 }
 </code></pre>
@@ -639,7 +639,7 @@ public class Henkilo {
 <p>&nbsp;</p>
 
 <p>
-  Alla olevaan esimerkkiin on kirjoitettu auki muistavaa tuotevarastoa käsittelevän tehtävän luokkakaavio. Muistava tuotevarasto perii tuotevaraston, joka taas perii varaston. Muutoshistoria on erillinen luokka, jonka muistava tuotevarasto sisältää. Muistava tuotevarasto tietää muutoshistorian, mutta muutoshistoria ei tiedä muistavasta tuotevarastosta. 
+  Alla olevaan esimerkkiin on kirjoitettu auki muistavaa tuotevarastoa käsittelevän tehtävän luokkakaavio. Muistava tuotevarasto perii tuotevaraston, joka taas perii varaston. Muutoshistoria on erillinen luokka, jonka muistava tuotevarasto sisältää. Muistava tuotevarasto tietää muutoshistorian, mutta muutoshistoria ei tiedä muistavasta tuotevarastosta.
 </p>
 
 <img src="../img/diagrams/luokkakaavio-muistava-tuotevarasto-186f8e06.png" alt="[Varasto|-tilavuus:double;-saldo:double|+Varasto(tilavuus:double);+getSaldo():double;+getTilavuus():double;+paljonkoMahtuu():double;+lisaaVarastoon(maara:double):void;+otaVarastosta(maara:double):double;+toString():String]
@@ -774,7 +774,7 @@ public class Henkilo {
   <p>
     Materiaalissa käytetyt luokkakaaviot on piirretty <a href="https://yuml.me/" target="_blank" norel>yUML</a>:n, <a href="https://creately.com" target="_blank" norel>Creately</a>n, ja <a href="https://www.draw.io/" target="_blank" norel>draw.io</a>:n. Myös NetBeansiin löytyy välineitä luokkakaavioiden luomiseen -- esimerkiksi <a href="http://plugins.netbeans.org/plugin/55435/easyuml" target="_blank" norel>easyUML</a> mahdollistaa luokkakaavioiden luomisen suoraan projektin koodista.
   </p>
-  
+
 
   </div>
 </div>
@@ -794,7 +794,7 @@ public class Henkilo {
     <div class="exercise__body">
       
   <p>
-    Alla on kuvattuna isompi luokkakaavio, jossa on luokat A, B, C, D ja E, sekä rajapinnat IA, IB ja IC. Toteuta luokkakaavion kuvaama sisältö tehtäväpohjaan. 
+    Alla on kuvattuna isompi luokkakaavio, jossa on luokat A, B, C, D ja E, sekä rajapinnat IA, IB ja IC. Toteuta luokkakaavion kuvaama sisältö tehtäväpohjaan.
   </p>
 
   <p>
@@ -965,7 +965,7 @@ public class Sovellus {
     <li>
       <code>public Sovelluslogiikka(Kayttoliittyma kayttoliittyma)</code><br/>Sovelluslogiikka-luokan konstruktori. Saa parametrina Kayttoliittyma-rajapinnan toteuttavan luokan. Huom: jotta sovelluslogiikka näkisi rajapinnan, on sen "importoitava" se, eli tarvitset tiedoston alkuun rivin <code>import mooc.ui.Kayttoliittyma;</code>
     </li>
-    
+
     <li>
       <code>public void suorita(int montaKertaa)</code><br/>Tulostaa <code>montaKertaa</code>-muuttujan määrittelemän määrän merkkijonoa "Sovelluslogiikka toimii". Jokaisen "Sovelluslogiikka toimii"-tulostuksen jälkeen tulee kutsua konstruktorin parametrina saadun rajapinnan <code>Kayttoliittyma</code>-toteuttaman olion määrittelemää <code>paivita()</code>-metodia.
     </li>
@@ -1310,23 +1310,23 @@ public class Paikka {
 <pre class="sh_java code-highlight"><code>package lentokentta.domain;
 
 public class Lentokone {
-  
+
     private String tunnus;
     private int kapasiteetti;
-  
+
     public Lentokone(String tunnus, int kapasiteetti) {
         this.tunnus = tunnus;
         this.kapasiteetti = kapasiteetti;
     }
-  
+
     public String getTunnus() {
         return this.tunnus;
     }
-  
+
     public int getKapasiteetti() {
         return this.kapasiteetti;
     }
-  
+
     @Override
     public String toString() {
         return this.tunnus + " (" + this.kapasiteetti + " henkilöä)";
@@ -1431,7 +1431,7 @@ public class Lentohallinta {
 </h3>
 
 <p>
-  Käyttöliittymä eriytetään aihealuetta kuvaavista luokista ja sovelluslogiikasta. Käyttöliittymä on alla olevassa esimerkissä lisätty pakkaukseen <code>ui</code>. 
+  Käyttöliittymä eriytetään aihealuetta kuvaavista luokista ja sovelluslogiikasta. Käyttöliittymä on alla olevassa esimerkissä lisätty pakkaukseen <code>ui</code>.
 </p>
 
 <pre class="sh_java code-highlight"><code>package lentokentta.ui;
@@ -1734,7 +1734,7 @@ Valitse toiminto:
     </li>
     <li>
       Tiedät että osaan poikkeksista tulee varautua, ja tiedät että on olemassa poikkeuksia joihin ei tarvitse erikseen varautua.
-    </li>    
+    </li>
   </ul>
 
 
@@ -1877,11 +1877,11 @@ Syötä numero: <font color="red">43</font>
 </h2>
 
 <p>
-  Erilaisten käyttöjärjestelmäresurssien kuten tiedostojen lukemiseen on toteutettu erillinen versio poikkeustenhallinnasta. ns. try-with-resources -tyyppisessä poikkeustenhallinnassa avattava resurssi lisätään try-osaan määriteltävään ei-pakolliseen suluilla rajattavaan osaan. 
+  Erilaisten käyttöjärjestelmäresurssien kuten tiedostojen lukemiseen on toteutettu erillinen versio poikkeustenhallinnasta. ns. try-with-resources -tyyppisessä poikkeustenhallinnassa avattava resurssi lisätään try-osaan määriteltävään ei-pakolliseen suluilla rajattavaan osaan.
 </p>
 
 <p>
-  Alla olevassa esimerkissä luetaan tiedoston "tiedosto.txt" kaikki rivit, jotka lisätään ArrayList-listaan. Tiedostoja lukiessa voidaan kohdata virhetilanne, joten tiedoston lukeminen vaatii erillisen "yrittämisen" (try) sekä mahdollisen virheen kiinnioton (catch). 
+  Alla olevassa esimerkissä luetaan tiedoston "tiedosto.txt" kaikki rivit, jotka lisätään ArrayList-listaan. Tiedostoja lukiessa voidaan kohdata virhetilanne, joten tiedoston lukeminen vaatii erillisen "yrittämisen" (try) sekä mahdollisen virheen kiinnioton (catch).
 </p>
 
 
@@ -2051,7 +2051,7 @@ Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee ol
     Harjoitellaan hieman parametrien validointia <code>IllegalArgumentException</code>-poikkeuksen avulla. Tehtäväpohjassa tulee kaksi luokkaa, <code>Henkilo</code> ja <code>Laskin</code>. Muuta luokkia seuraavasti:
   </p>
 
-  
+
   <h2>Henkilön validointi</h2>
 
   <p>
@@ -2087,7 +2087,7 @@ Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee ol
   <p>
     Edellä todettiin seuraavaa: <em>...poikkeuksia on karkeasti ottaen kahdenlaisia. On poikkeuksia jotka on pakko käsitellä, ja on poikkeuksia joita ei ole pakko käsitellä.</em>.
   </p>
-  
+
   <p>
     Poikkeukset, jotka on pakko käsitellä, ovat tarkemmin ottaen poikkeuksia, joiden mahdollinen heittäminen ja niihin varautuminen tarkastetaan käännösaikaisesti. Tämän takia joihinkin poikkeuksiin tulee joko varautua <code>try-catch</code>-lauseella tai ne tulee heittää edelleen metodiin liitettävällä <code>throws</code>-määreellä. Tällaisia poikkeuksia ovat esimerkiksi tiedostojen käsittelyyn liittyvät poikkeukset <code>IOException</code> ja <code>FileNotFoundException</code>.
   </p>
@@ -2095,7 +2095,7 @@ Exception in thread "..." java.lang.IllegalArgumentException: Arvosanan tulee ol
   <p>
     Osa poikkeuksista on taas sellaisia, että niitä ei tarkasteta käännösaikaisesti, vaan ne saattavat tapahtua ohjelman suorituksen aikana. Tällaisiin ei ole pakko varautua <code>try-catch</code>-lauseella. Tällaisia poikkeuksia ovat esimerkiksi <code>IllegalArgumentException</code> ja <code>NullPointerException</code>.
   </p>
-  
+
 
   </div>
 </div>
@@ -2359,10 +2359,10 @@ mittaukset: [-10, -4, 5]
   <ul>
     <li>
       Kertaat tiedon lukemista tiedostosta.
-    </li>    
+    </li>
     <li>
       Osaat kirjoittaa tiedostoon.
-    </li>    
+    </li>
   </ul>
 
 
@@ -2668,7 +2668,7 @@ sanakirja.tallenna();
   </p>
 
   <p>
-    Simulaattorin lopullinen rakenne kutakuinkin noudattaa seuraavaa luokkakaaviota. 
+    Simulaattorin lopullinen rakenne kutakuinkin noudattaa seuraavaa luokkakaaviota.
   </p>
 
 
@@ -3082,7 +3082,7 @@ Lehmät:
   <ul>
     <li>
       Kertaat automaattisten testien kirjoittamista.
-    </li>    
+    </li>
   </ul>
 
 
@@ -3118,7 +3118,7 @@ Lehmät:
 
   <p>
     Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
-  </p>  
+  </p>
 
 
   </div>
@@ -3142,7 +3142,7 @@ Lehmät:
 
   <p>
     Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
-  </p>  
+  </p>
 
 
   </div>
@@ -3162,7 +3162,7 @@ Lehmät:
 </p>
 
 <p>
-  Tietojenkäsittelytieteen opiskelijat kehittävät tällä hetkellä uutta työvälinettä kurssin käsitteiden harjoitteluun. Työvälineen toiminta perustuu <a href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank" norel>aikavälikertaukseen</a>, missä käsitteistöä harjoitellaan pidemmällä aikavälillä. Työväline pyrkii oppimaan käsitteet jotka tunnet ja joita et vielä tunne, ja tarjoamaan juusi sinulle sopivaa harjoittelua. Työvälineen kehitys on vielä kesken, mutta toivomme että käyt kokeilemassa työvälinettä seuraavien viikkojen aikana useampaan otteeseen osoitteessa <a href="https://opi.mooc.fi" target="_blank" norel>https://opi.mooc.fi</a>.
+  Tietojenkäsittelytieteen opiskelijat kehittävät tällä hetkellä uutta työvälinettä kurssin käsitteiden harjoitteluun. Työvälineen toiminta perustuu <a href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank" norel>aikavälikertaukseen</a>, missä käsitteistöä harjoitellaan pidemmällä aikavälillä. Työväline pyrkii oppimaan käsitteet jotka tunnet ja joita et vielä tunne, ja tarjoamaan juusi sinulle sopivaa harjoittelua. Työvälineen kehitys on vielä kesken, mutta toivomme että käyt kokeilemassa työvälinettä seuraavien viikkojen aikana useampaan otteeseen osoitteessa <a href="https://opi.mooc.fi" target="_blank" norel>https://opi.mooc.fi</a>. Työväline on suunniteltu toimimaan mobiililaitteiden selaimilla. Lisäksi, jotta tehokas käsitteiden kertaus olisi mahdollista, toivomme että kävisit testaamassa työkalua useampana päivänä kunnes hallitset kaikki työkalussa olevat käsitteet.
 </p>
 
 <p>
