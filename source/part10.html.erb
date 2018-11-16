@@ -2173,7 +2173,7 @@ public static void main(String[] args) throws Exception {
   </p>
 
   <p>
-    Sanakirjatiedostossa yksi rivi sisältää sanan ja sen käännöksen merkillä ":" erotettuna. Tehtäväpohjan mukana tuleva testaamiseen tarkoitettu sanakirjatiedosto <code>src/sanat.txt</code> on sisällöltään seuraava:
+    Sanakirjatiedostossa yksi rivi sisältää sanan ja sen käännöksen merkillä ":" erotettuna. Tehtäväpohjan mukana tuleva testaamiseen tarkoitettu sanakirjatiedosto <code>sanat.txt</code> on sisällöltään seuraava:
   </p>
 
   <% partial 'partials/sample_output' do %>
@@ -2202,7 +2202,7 @@ public static void main(String[] args) throws Exception {
   </p>
 
   <% partial 'partials/code_highlight' do %>
-    MuistavaSanakirja sanakirja = new MuistavaSanakirja("src/sanat.txt");
+    MuistavaSanakirja sanakirja = new MuistavaSanakirja("sanat.txt");
     boolean onnistui = sanakirja.lataa();
 
     if (onnistui) {
@@ -2259,7 +2259,7 @@ public static void main(String[] args) throws Exception {
   </p>
 
   <% partial 'partials/code_highlight' do %>
-    MuistavaSanakirja sanakirja = new MuistavaSanakirja("src/sanat.txt");
+    MuistavaSanakirja sanakirja = new MuistavaSanakirja("sanat.txt");
     sanakirja.lataa();
 
     // käytä sanakirjaa
