@@ -8,388 +8,39 @@
 <% partial 'partials/hint', locals: { name: 'Yhdennentoista osan tavoitteet' } do %>
 
   <p>
-    Osaa käsitellä yksi- ja useampiulotteisia taulukoita, ja ymmärtää miten taulukot käyttävät tilaa tietokoneen muistissa. Kertaa indeksien käyttöä. Osaa kertoa sekä taulukoiden että hajautustaulujen eduista. Tuntee ainakin yhden järjestämisalgoritmin sekä hakualgoritmin, ja tietää miten Javan omia järjestämiseen tarkoitettuja apuvälineitä käytetään. Tuntee rajapinnan Comparable ja hyödyntää sitä olioiden järjestämisessä. 
+    Tiedät mitä geneeriset tyyppiparametrit ovat ja osaat luoda luokkia jotka käyttävät niitä. Tiedät pääpiirteittäin ArrayListin ja HashMapin sisäisen toteutuksen ja osaat luoda niistä yksinkertaistetut omat versiot. Tiedät miten satunnaislukuja luodaan ja osaat käyttää Javan valmiita välineitä satunnaislukujen luomiseen. Tunnet menetelmiä moniulotteisen tiedon esittämiseen ja osaat luoda sekä käsitellä moniulotteisia taulukoita.
   </p>
 
 <% end %>
 
 
-<p>
-  TODO: sosiaalinen pääomakysely
-</p>
+<%= partial 'partials/quiz', locals: { id: '5a7e08e95b43a10004fb3879' } %>
 
 
 
 <% partial 'partials/material_heading' do %>
-  Satunnaisuus ohjelmissa
+  Geneeriset tyyppiparametrit
 <% end %>
 
-<p>
-  Satunnaisuutta tarvitaan esimerkiksi salausalgoritmeissa, koneoppimisessa sekä tietokonepelien ennustettavuuden vähentämisessä. Satunnaisuutta mallinnetaan käytännössä satunnaislukujen avulla, joiden luomiseen Java tarjoaa valmiin <code>Random</code>-luokan. Random-luokasta voi tehdä olion jota voi käyttää seuraavalla tavalla.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  import java.util.Random;
-
-  public class Arvontaa {
-      public static void main(String[] args) {
-          Random arpoja = new Random(); // luodaan apuväline arpoja
-
-          for (int i = 0; i &lt; 10; i++) {
-              // Arvotaan ja tulostetaan satunnainen luku
-              int luku = arpoja.nextInt(10);
-              System.out.println(luku);
-          }
-      }
-  }
-<% end %>
-
-<p>
-  Yllä olevassa esimerkissä luodaan ensin <code>Random</code>-luokasta olio. Random-olio tarjoaa metodin <code>nextInt</code>, jolle annetaan parametrina kokonaisluku. Metodi palauttaa satunnaisen kokonaisluvun väliltä <code>[0,kokonaisluku[</code> eli <em>0..(annettu kokonaisluku - 1)</em>.
-</p>
-
-<p>
-  Ohjelman tuottama tulostus ei ole aina sama. Yksi mahdollinen tulostusesimerkki on seuraava:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  2
-  2
-  4
-  3
-  4
-  5
-  6
-  0
-  7
-  8
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'TODO: ohjelma, joka tulostaa satunnaislukuja väliltä 0-100' } do %>
-  <p>
-    LOL
-  </p>
-
-<% end %>
-
-<p>
-  Metodin <code>nextInt</code> avulla pystyy luomaan hyvin monipuolista satunnaisuutta. Ohjelmoija saattaisi esimerkiksi haluta, että ohjelman ilmoittama lämpötila on satunnainen ja väliltä [-30,50]. Tällöin ratkaisu on arpoa lukuja nollan ja kahdeksankymmenen väliltä ja miinustaa arvotusta luvusta 30.
-</p>
-
-
-<% partial 'partials/code_highlight' do %>
-  Random arpoja = new Random();
-  int lampotila = arpoja.nextInt(81) - 30;
-  System.out.println(lampotila);
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Noppa' } do %>
-
-  <p>
-    Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    import java.util.Random;
-
-    public class Noppa {
-        private Random random;
-        private int tahkojenMaara;
-
-        public Noppa(int tahkojenMaara) {
-            this.random = new Random();
-            // Alusta oliomuuttuja tahkojenMaara tässä
-        }
-
-        public int heita() {
-            // arvo täällä luku jonka tulee olla yhdestä tahkojen määrään
-            // ja palauta se
-        }
-    }
-  <% end %>
-
-  <p>
-    Muokkaa luokkaa siten, että sen konstruktori<code>Noppa(int tahkojenMaara)</code> luo uuden noppa-olion annetulla nopan tahkojen (eri oman numeronsa sisältämien "puolien") määrällä. Muokkaa myös metodia <code>heita</code> siten, että se antaa satunnaisen nopanheiton tuloksen, jonka arvon tulee olla väliltä <code>1...tahkojen määrä</code>.
-  </p>
-
-  <p>
-    Seuraavassa noppaa testaava pääohjelma:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    public class Ohjelma {
-        public static void main(String[] args) {
-            Noppa noppa = new Noppa(6);
-
-            for (int i = 0; i &lt; 10; i++) {
-                System.out.println(noppa.heita());
-            }
-        }
-    }
-  <% end %>
-
-  <p>
-    Tulostus voisi olla esimerkiksi seuraava:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    1
-    6
-    3
-    5
-    3
-    3
-    2
-    2
-    6
-    1
-  <% end %>
-
-<% end %>
-
-<p>
-  Random-luokasta tehdyn olion kautta päästään käsiksi myös satunnaisiin liukulukuihin, joita käytetään muunmuassa todennäköisyyslaskennan yhteydessä; tietokoneilla todennäköisyyksiä simuloidaan yleensä väliltä [0..1] olevilla luvuilla.
-</p>
-
-<p>
-  Random-oliolta satunnaisia liukulukuja saa metodilla <code>nextDouble</code>. Tarkastellaan seuraavia säämahdollisuuksia:
-</p>
-
-<ul>
-  <li>Sataa räntää todennäköisyydellä 0.1 (10%)</li>
-  <li>Sataa lunta todennäköisyydellä 0.3 (30%)</li>
-  <li>Aurinko paistaa todennäköisyydellä 0.6 (60%)</li>
-</ul>
-
-<p>
-  Luodaan edellä olevista arvioista sääennustaja.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  import java.util.ArrayList;
-  import java.util.Random;
-
-  public class SaaEnnustaja {
-      private Random random;
-
-      public SaaEnnustaja() {
-          this.random = new Random();
-      }
-
-      public String ennustaSaa() {
-          double todennakoisyys = this.random.nextDouble();
-
-          if (todennakoisyys &lt;= 0.1) {
-              return "Sataa räntää";
-          } else if (todennakoisyys &lt;= 0.4) { // 0.1 + 0.3
-              return "Sataa lunta";
-          } else { // loput, 1.0 - 0.4 = 0.6
-              return "Aurinko paistaa";
-          }
-      }
-
-      public int ennustaLampotila() {
-          return (int) (4 * this.random.nextGaussian() - 3);
-      }
-  }
-<% end %>
-
-<p>
-  Metodi <code>ennustaLampotila</code> on monella tapaa mielenkiintoinen. Metodin sisällä tehtävä kutsu <code>this.random.nextGaussian()</code> on tavallinen metodikutsu, jonka kaltaisia olemme nähneet aikaisemminkin. Kiinnostavaa tässä <code>Random</code>-luokan ilmentymän tarjoamassa metodissa on se, että metodin palauttama luku on normaalijakautunut (normaalijakautuneilla luvuilla voi kuvata esimerkiksi ihmisten pituuksia ja painoja -- jos et koe mielenkiintoa satunnaisuuden eri lajeihin se ei haittaa!).
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  public int ennustaLampotila() {
-      return (int) (4 * this.random.nextGaussian() - 3);
-  }
-<% end %>
-
-<p>
-  Edellisessä esimerkissä käytetään eksplisiittistä tyyppimuunnosta liukulukujen muuntamiseen kokonaisluvuiksi <code>(int)</code>. Vastaavalla menetelmällä voidaan muuttaa myös kokonaislukuja liukuluvuiksi kirjoittamalla <code>(double) kokonaisluku</code>
-</p>
-
-<p>
-  Luodaan vielä pääohjelma josta luokkaa <code>SaaEnnustaja</code> käytetään.
-</p>
-
-<% partial 'partials/code_highlight' do %>
-  // importit 
-
-  public class Ohjelma {
-
-      public static void main(String[] args) {
-          SaaEnnustaja ennustaja = new SaaEnnustaja();
-
-          // tallennetaan päivät listalle
-          ArrayList&lt;String&gt; paivat = new ArrayList&lt;&gt;();
-          paivat.add("Ma");
-          paivat.add("Ti");
-          paivat.add("Ke");
-          paivat.add("To");
-          paivat.add("Pe");
-          paivat.add("La");
-          paivat.add("Su");
-
-          System.out.println("Seuraavan viikon sääennuste:");
-
-          for (String paiva: paivat) {
-              String saaEnnuste = ennustaja.ennustaSaa();
-              int lampotilaEnnuste = ennustaja.ennustaLampotila();
-
-              System.out.println(paiva + ": " + saaEnnuste + " " + lampotilaEnnuste + " astetta.");
-          }
-      }
-  }
-<% end %>
-
-<p>
-  Ohjelman tulostus voisi olla esimerkiksi seuraavanlainen:
-</p>
-
-<% partial 'partials/sample_output' do %>
-  Seuraavan viikon sääennuste:
-  Ma: Sataa lunta 1 astetta.
-  Ti: Sataa lunta 1 astetta.
-  Ke: Aurinko paistaa -2 astetta.
-  To: Aurinko paistaa 0 astetta.
-  Pe: Sataa lunta -3 astetta.
-  La: Sataa lunta -3 astetta.
-  Su: Aurinko paistaa -5 astetta
-<% end %>
-
-<% partial 'partials/exercise', locals: { name: 'Lottoarvonta' } do %>
-
-  <p>
-    Tehtävänäsi on täydentää luokkaa <code>Lottorivi</code>, joka arpoo viikon lottonumerot. Lottonumerot ovat väliltä 1&ndash;40 ja niitä arvotaan 7. Lottorivi koostuu siis seitsemästä eri numerosta väliltä 1&ndash;40.
-  </p>
-  <p>
-    Luokalle toivotaan seuraava toiminnot:
-  </p>
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
 
   <ul>
     <li>
-      konstruktori <code>Lottorivi</code> luo uuden Lottorivi-olion joka sisältää uudet, arvotut numerot
+      Tiedät mitä käsitteellä geneerinen tyyppiparametri tarkoitetaan.
     </li>
     <li>
-      metodi <code>numerot</code> palauttaa tämän lottorivin lottonumerot
+      Tunnet Javassa olevia geneerisiä tyyppiparametreja hyödyntäviä luokkia. 
     </li>
     <li>
-      metodi <code>sisaltaaNumeron</code> kertoo onko arvotuissa numeroissa annettu numero
-    </li>
-    <li>
-      metodi <code>arvoNumerot</code> arpoo riville uudet numerot
-    </li>
-    <li>
-      metodi <code>equals</code> kertoo onko lottorivin luvun täsmälleen samat kuin parametrina annetun lottorivin luvut.
+      Osaat luoda omia luokkia, joissa käytetään geneerisiä tyyppiparametreja.
     </li>
   </ul>
 
-  <p>
-    Luokan runko on seuraava:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    import java.util.ArrayList;
-    import java.util.Random;
-
-     public class LottoRivi {
-        private ArrayList&lt;Integer&gt; numerot;
-
-        public LottoRivi() {
-            this.arvoNumerot();
-        }
-
-        public ArrayList&lt;Integer&gt; numerot() {
-            return this.numerot;
-        }
-
-        public boolean sisaltaaNumeron(int numero) {
-            // Testaa tässä onko numero jo arvottujen numeroiden joukossa
-            return false;
-        }
-
-        public void arvoNumerot() {
-            // alustetaan lista numeroille
-            this.numerot = new ArrayList&lt;&gt;();
-            // Kirjoita numeroiden arvonta tänne käyttämällä metodia sisaltaaNumeron()
-        }
-
-        public boolean equals(Object toinen) {
-            return false;
-        }
-    }
-  <% end %>
-
-  <p>
-    Tehtäväpohjan mukana tulee seuraava pääohjelma:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    import java.util.ArrayList;
-
-    public class Ohjelma {
-        public static void main(String[] args) {
-            Lottorivi rivi = new Lottorivi();
-            ArrayList&lt;Integer&gt; lottonumerot = rivi.numerot();
-
-            System.out.println("Lottonumerot:");
-            for (int numero: lottonumerot) {
-                System.out.print(numero + " ");
-            }
-
-            System.out.println("");
-        }
-    }
-  <% end %>
-
-  <p>
-    Ohjelman mahdollisia tulostuksia ovat seuraavat:
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    Lottonumerot:
-    3 5 10 14 15 27 37
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    Lottonumerot:
-    2 9 11 18 23 32 34
-  <% end %>
-
-  <p>
-    <strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran. Lottorivin numeroiden ei tarvitse olla järjestyksessä.
-  </p>
-
-<% end %>
-
-<% partial 'partials/hint', locals: { name: 'Lukujen satunnaisuudesta' } do %>
-
-  <p>
-    Tietokoneiden toiminta on ennustettavissa sillä ne suorittavat niille annettuja komentoja orjallisesti. Ovatko siis tietokoneen luomat luvut todellisuudessa satunnaisia?
-  </p>
-
-  <p>
-    Tietokoneohjelmissa käytetyt satunnaisluvut ovat tyypillisesti pseudosatunnaislukuja, eli ne vaikuttavat satunnaisluvuilta, mutta seuraavat todellisuudessa jonkinlaista algoritmisesti luotua toistuvaa lukusarjaa. Suurimmalle osalle tietokoneohjelmista pseudosatunnaisluvut ovat riittävän hyviä -- esimerkiksi youtube-videoiden satunnaisessa toistossa normaali käyttäjä tuskin huomaa eroa. Toisaalta, jos satunnaislukuja käytetään tieteelliseen laskentaan, heikosti toimivat pseudosatunnaislukuja luovat algoritmit saattavat jopa johtaa tulosten kyseenalaistamiseen. Eräs esimerkki tällaisesta on hetken 1960-luvulla käytössä ollut IBM:n <a href="https://en.wikipedia.org/wiki/RANDU" target="_blank" norel>RANDU</a>.
-  </p>
-
-  <p>
-    Kaikki tietokoneohjelmien satunnaisuus ei kuitenkaan ole pseudosatunnaisuutta. Vahvempaan satunnaisuuteen pyrkivät ohjelmat hyödyntävät muunmuassa jonkinlaisia tosielämän satunnaiseksi ajateltuja ilmiöitä satunnaislukujen luomiseen. Tällaisia ilmiöitä ovat esimerkiksi avaruussäteily tai vaikkapa <a href="https://www.wired.com/2003/08/random/" target="_blank" norel>laavalamppujen toiminta</a>.
-  </p>
-
-  <p>
-    Lisää aiheesta osoitteessa <a href="https://www.random.org/randomness/" target="_blank" norel>https://www.random.org/randomness/</a>.
-  </p>
-
-<% end %>
-
-
-<% partial 'partials/material_heading' do %>
-  Geneerinen tyyppi
 <% end %>
 
 
 <p>
-  Olemme listoihin tutustumisesta lähtien kertoneet erilaisille tietorakenteille niiden sisältämän arvon tyypin. Esimerkiksi String-tyyppisiä olioita sisältävä lista on esitelty muodossa <code>ArrayList&lt;String&gt;</code>. Tässä on saattanut kuitenkin ihmetyttää se, että miten ihmeessä listat ja muutkin tietorakenteet voivat sisältää erityyppisiä oliota.
+  Olemme listoihin tutustumisesta lähtien kertoneet tietorakenteille niiden sisältämän arvon tyypin. Esimerkiksi merkkijono-olioita sisältävä lista on esitelty muodossa <code>ArrayList&lt;String&gt;</code> ja merkkijonoja avaimina ja arvoina sisältävä hajautustaulu on esitelty muodossa <code>HashMap&lt;String, String&gt;</code>. Miten ihmeessä luokan voi toteuttaa niin, että luokka voi sisältää annetun tyyppisiä olioita?
 </p>
 
 <p>
@@ -511,19 +162,236 @@
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'TODO: tehtava' } do %>
+
+<p>
+  Geneeristen rajapintojen tekeminen onnistuu samalla tavalla kuin geneeristen luokkien tekeminen. Alla on esimerkki geneerisestä rajapinnasta <code>Lista</code>.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public interface Lista&lt;T&gt; {
+    void lisaa(T arvo);
+    T hae(int indeksi);
+    T poista(int indeksi); 
+  }
+<% end %>
+
+<p> 
+  Luokka voi toteuttaa geneerisen rajapinnan kahdella tavalla. Luokka voi määritellä rajapinnan toteutuksen yhteydessä rajapinnalle tyyppiparametrin tai luokalle voidaan myös määritellä tyyppiparametri. Alla olevassa esimerkissä on luokka <code>Elokuvalista</code>, joka määrittelee listan toteutuksen yhteydessä rajapinnalle tyyppiparametrin. Elokuvalista on vain elokuvien käsittelyyn tarkoitettu.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Elokuvalista implements Lista&lt;Elokuva&gt; {
+      // oliomuuttujat
+
+      @Override
+      public void lisaa(Elokuva arvo) {
+          // toteutus
+      }
+
+      @Override
+      public Elokuva hae(int indeksi) {
+          // toteutus
+      }
+
+      @Override
+      public Elokuva poista(int indeksi) {
+          // toteutus
+      }
+  }
+<% end %>
+
+<p>
+  Toinen vaihtoehto on määritellä rajapinnan toteuttavalle luokalle tyyppiparametri, joka ohjataan myös rajapinnalle. Tällöin myös konkreettinen toteutus on geneerinen.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public class Yleislista&lt;T&gt; implements Lista&lt;T&gt; {
+      // oliomuuttujat
+
+      @Override
+      public void lisaa(T arvo) {
+          // toteutus
+      }
+
+      @Override
+      public T hae(int indeksi) {
+          // toteutus
+      }
+
+      @Override
+      public T poista(int indeksi) {
+          // toteutus
+      }
+  }
+<% end %>
+
+<p>
+  Yleislistan voisi toteuttaa myös halutessaan esimerkiksi Javan valmiin ArrayList-luokan avulla. Tällöin toteutus olisi kutakuinkin seuraava.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.ArrayList;
+
+  public class Yleislista&lt;T&gt; implements Lista&lt;T&gt; {
+      ArrayList&lt;T&gt; arvot;
+
+      public Yleislista() {
+          this.arvot = new ArrayList&lt;&gt;();
+      }
+
+      @Override
+      public void lisaa(T arvo) {
+          this.arvot.add(arvo);
+      }
+
+      @Override
+      public T hae(int indeksi) {
+          retun this.arvot.get(indeksi);
+      }
+
+      @Override
+      public T poista(int indeksi) {
+          T arvo = this.arvot.get(indeksi);
+          this.arvot.remove(indeksi);
+          return arvo;
+      }
+  }
+<% end %>
+
+
+<% partial 'partials/exercise', locals: { name: 'Piilo' } do %>
 
   <p>
-    TODO: geneerinen tyyppi 1
+    Toteuta luokka Piilo, jolla on yksi geneerinen tyyppiparametri. Luokasta tehdyssä oliossa voi olla yksi olio kerralaan piilossa. Luokan tulee tarjota parametriton konstruktori sekä seuraavat kolme metodia:
   </p>
+
+  <ul>
+    <li>
+      <code>public void laitaPiiloon(T piilotettava)</code> laittaa piiloon luokan tyyppiparametrin mukaisen olion. Mikäli piilossa on jo olio, vanha olio katoaa.
+    </li>
+    <li>
+      <code>public T otaPiilosta()</code> ottaa piilosta luokan tyyppiparametrin mukaisen olion. Mikäli piilossa ei ole mitään, palautetaan <code>null</code>. Metodin kutsuminen palauttaa piilossa olevan olion ja poistaa olion piilosta.
+    </li>
+    <li>
+      <code>public void onkoPiilossa()</code> palauttaa arvon <code>true</code> mikäli piilossa on olio. Mikäli piilossa ei ole oliota, palauttaa arvon <code>false</code>.
+    </li>
+  </ul>
+
+  <p>
+    <em>
+      <strong>Luokalle ei ole tehtäväpohjassa testejä</strong>. Palauta tehtävä kun seuraavat esimerkit toimivat toivotulla tavalla.
+    </em>
+  </p>
+
+
+  <% partial 'partials/code_highlight' do %>
+    Piilo&lt;String&gt; jemma = new Piilo&lt;&gt;();
+    System.out.println(jemma.onkoPiilossa());
+    jemma.laitaPiiloon("kukkuu");
+    System.out.println(jemma.onkoPiilossa());
+    System.out.println(jemma.otaPiilosta());
+    System.out.println(jemma.onkoPiilossa());
+    jemma.laitaPiiloon("kukkuluuruu");
+    jemma.laitaPiiloon("huhuu");
+    System.out.println(jemma.onkoPiilossa());
+    System.out.println(jemma.otaPiilosta());
+    System.out.println(jemma.onkoPiilossa());
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    false
+    true
+    kukkuu
+    false
+    true
+    huhuu
+    false
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    Piilo&lt;Integer&gt; jemma = new Piilo&lt;&gt;();
+    System.out.println(jemma.onkoPiilossa());
+    jemma.laitaPiiloon(1);
+    System.out.println(jemma.onkoPiilossa());
+    System.out.println(jemma.onkoPiilossa());
+    System.out.println(jemma.otaPiilosta());
+    System.out.println(jemma.onkoPiilossa());
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    false
+    true
+    true
+    1
+    false
+  <% end %>
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'TODO: tehtava' } do %>
+<% partial 'partials/exercise', locals: { name: 'Putki' } do %>
 
   <p>
-    TODO: geneerinen tyyppi 2
+    Toteuta luokka Putki, jolla on yksi geneerinen tyyppiparametri. Putki toimii siten, että sinne voi lisätä arvoja ja sieltä voi ottaa arvoja. Lisääminen tapahtuu putken toisesta päästä ja ottaminen toisesta päästä, eli toisin sanoen putkesta otetaan aina siellä pisimpään ollut arvo kun taas sinne lisätään aina uusin arvo. Luokan tulee tarjota parametriton konstruktori sekä seuraavat kolme metodia:
   </p>
+
+  <ul>
+    <li>
+      <code>public void lisaaPutkeen(T arvo)</code> lisää putkeen luokan tyyppiparametrin mukaisen olion.
+    </li>
+    <li>
+      <code>public T otaPutkesta()</code> ottaa putkesta siellä pisimpään olleen arvon. Mikäli putkessa ei ole mitään, palautetaan <code>null</code>. Metodin kutsuminen palauttaa putkessa pisimpään olleen olion ja poistaa sen putkesta.
+    </li>
+    <li>
+      <code>public void onkoPutkessa()</code> palauttaa arvon <code>true</code> mikäli putkessa on arvoja. Mikäli putki on tyhjä, palauttaa arvon <code>false</code>.
+    </li>
+  </ul>
+
+  <p>
+    Tee luokan sisäinen toteutus ArrayListin avulla.
+  </p>
+
+  <p>
+    <em>
+      <strong>Luokalle ei ole tehtäväpohjassa testejä</strong>. Palauta tehtävä kun seuraavat esimerkit toimivat toivotulla tavalla.
+    </em>
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    Putki&lt;String&gt; putki = new Putki&lt;&gt;();
+    putki.lisaaPutkeen("dibi");
+    putki.lisaaPutkeen("dab");
+    putki.lisaaPutkeen("dab");
+    putki.lisaaPutkeen("daa");
+    while(putki.onkoPutkessa()) {
+        System.out.println(putki.otaPutkesta());
+    }
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    dibi
+    dab
+    dab
+    daa
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    Putki&lt;Integer&gt; numeroputki = new Putki&lt;&gt;();
+    numeroputki.lisaaPutkeen(1);
+    numeroputki.lisaaPutkeen(2);
+    numeroputki.lisaaPutkeen(3);
+
+    int summa = 0;
+    while(numeroputki.onkoPutkessa()) {
+        summa = summa + numeroputki.otaPutkesta();
+    }
+    System.out.println(summa);
+    System.out.println(numeroputki.otaPutkesta());
+  <% end %>
+
+  <% partial 'partials/code_highlight' do %>
+    6
+    null
+  <% end %>
 
 <% end %>
 
@@ -531,6 +399,26 @@
 <% partial 'partials/material_heading' do %>
   ArrayList ja Hajautustaulu
 <% end %>
+
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      Tiedät miten miten muuttuvankokoinen geneerinen lista toteutetaan.  
+    </li>
+    <li>
+      Tunnet erään mahdollisen tavan Javan ArrayListin kaltaisen luokan toteutukselle.
+    </li>
+    <li>
+      Tiedät miten miten hajautustaulu toteutetaan.  
+    </li>
+    <li>
+      Tunnet erään mahdollisen tavan Javan HashMapin kaltaisen luokan toteutukselle.
+    </li>
+  </ul>
+
+<% end %>
+
 
 <p>
   ArrayList ja Hajautustaulu ovat ohjemoinnissa hyvin yleisesti käytettyjä tietorakenteita. Tarkastellaan tässä niiden todellista toteutusta. Kerrataan ensin lyhyesti taulukon käyttöä, jonka jälkeen rakennetaan esimerkinomaisesti ensin ArrayListiä imitoiva tietorakenne <code>Lista</code>, jota hyödynnetään sitten tietorakenteen <code>Hajautustaulu</code> tekemisessä.
@@ -603,27 +491,36 @@
   7
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Etsityn alkion indeksi' } do %>
+<% partial 'partials/exercise', locals: { name: 'Rajatut taulukossa' } do %>
 
   <p>
-    Tehtäväpohjassa on valmiina taulukko, joka sisältää lukuja. Täydennä ohjelmaa siten, että käyttäjältä kysyttyä lukua etsitään taulukosta. Jos luku löytyy taulukosta, ohjelma kertoo luvun indeksin. Jos lukua taas ei löydy taulukosta, ohjelma kertoo ettei lukua löydy.
+    Luo luokkaan <code>Ohjelma</code> luokkametodi <code>public static int summa(int[] taulukko, int mista, int mihin, int pienin, int suurin)</code>. Metodin tulee laskea sille parametrina annetusta taulukosta indeksien mista ja mihin välillä olevien arvojen summa. Summaan otetaan mukaan vain ne arvot, jotka ovat suurempia tai yhtäsuuria kuin pienin ja pienempiä tai yhtä pieniä kuin suurin.
   </p>
 
-  <% partial 'partials/sample_output' do %>
-    Mitä etsitään? <font color="red">3</font>
-    Luku 3 löytyy indeksistä 4.
+  <p>
+    Metodin tulee lisäksi varmistaa, että käsiteltävät indeksit ovat valideja. Mikäli parametri <code>mista</code> on pienempi kuin 0, tulee taulukon indeksien läpikäynti alkaa parametrin mista arvon sijaan nollasta. Vastaavasti, mikäli parametri <code>mihin</code> on suurempi kuin käsiteltävä taulukko, tulee taulukon indeksien läpikäynti lopettaa  parametrin mihin arvon sijaan taulukon kokoon. 
+  </p>
+
+
+  <% partial 'partials/code_highlight' do %>
+    int[] luvut = {3, -1, 8, 4};
+    
+    System.out.println(summa(luvut, 0, 0, 0, 0)); 
+    System.out.println(summa(luvut, 0, 0, 0, 10)); 
+    System.out.println(summa(luvut, 0, 1, 0, 10)); 
+    System.out.println(summa(luvut, 0, 1, -10, 10)); 
+    System.out.println(summa(luvut, -1, 999, -10, 10)); 
   <% end %>
 
-  <% partial 'partials/sample_output' do %>
-    Mitä etsitään? <font color="red">7</font>
-    Luku 7 löytyy indeksistä 7.
-  <% end %>
 
   <% partial 'partials/sample_output' do %>
-    Mitä etsitään? <font color="red">22</font>
-    Lukua 22 ei löydy.
+    0
+    3
+    3
+    2
+    14
   <% end %>
-
+  
 <% end %>
 
 <p>
@@ -1072,21 +969,13 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Lista (3 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Lista (2 osaa)' } do %>
 
   <p>
-    TODO: vain listan toteutus
+    Toteuta tehtäväpohjaan edellistä esimerkkiä noudattaen luokka <code>Lista</code>. Tehtäväpohjassa ei ole testejä -- kokeile listaa materiaalin esimerkkien ja omien kokeilujen avulla. Tehtävä on kahden pisteen arvoinen.
   </p>
 
 <% end %>
-
-
-<% partial 'partials/exercise', locals: { name: 'TODO: pino' } do %>
-  <p>
-    TODO: pino taulukon avulla
-  </p>
-<% end %>
-
 
 <% partial 'partials/material_sub_heading' do %>
   Hajautustaulu
@@ -1436,71 +1325,13 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Lista ja hajautustaulu (3 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Hajautustaulu (3 osaa)' } do %>
 
   <p>
-    TODO: hajautustaulun toteutus, mutta siten, että itse toteutetun listan sijaan käytetään Javan ArrayListiä.
+    Toteuta tehtäväpohjaan edellistä esimerkkiä noudattaen luokka Hajautustaulu. Toisin kuin esimerkissä, toteuta luokka siten, että se hyödyntää sisäisessä toteutuksessa Listan sijaan Javan valmista luokkaa ArrayList. Tehtäväpohjassa ei ole testejä -- kokeile listaa materiaalin esimerkkien ja omien kokeilujen avulla. Tehtävä on kolmen pisteen arvoinen.
   </p>
 
-  <p>
-    Toteuta edellistä esimerkkiä noudattaen luokat Lista ja Hajautustaulu pakkaukseen <code>tietorakenteita</code>. Kohdat on pisteytetty askeleittain, jotka ovat seuraavat:
-  </p>
-
-  <h2>Lista</h2>
   
-  <ol>
-    <li>
-      Listan luominen
-    </li>
-    <li>
-      Arvojen lisääminen listalle (osat 1 ja 2)
-    </li>
-    <li>
-      Listalla olevan arvon olemassaolon tarkastaminen
-    </li>
-    <li>
-      Listalla olevan arvon poistaminen
-    </li>
-    <li>
-      Listan indeksistä hakeminen ja listan koko
-    </li>
-  </ol>
-
-  <h2>Hajautustaulu, osa 1</h2>
-  
-  <ol>
-    <li>
-      Avain-arvo -paria kuvaavan luokan toteutus
-    </li>
-    <li>
-      Hajautustaulun luominen
-    </li>
-    <li>
-      Arvon hakeminen hajautustaulusta
-    </li>
-    <li>
-      Hajautustauluun lisääminen (ei kasvatusta)
-    </li>
-  </ol>
-
-  <h2>Hajautustaulu, osa 2</h2>
-
-  <ol>
-    <li>
-      Hajautustaulun koon kasvattaminen tarvittaessa
-    </li>
-    <li>
-      Hajautustaulusta poistaminen
-    </li>
-  </ol>
-  
-  <p>
-    Sitä mukaa kun kehität listaa ja hajautustaulua, päivitä luokan Ohjelma metodia <code>osiaToteutettu</code> palauttamaan valmiiksi saamasi osan numero. Voit palauttaa tehtävän vaikket tekisikään kaikkia osia, jolloin saat pisteitä tehtävän niistä osista, jotka olet tehnyt.
-  </p>
-
-  <p>
-    Esimerkiksi, kun olet saanut listan luomisen, arvojen lisäämisen ja arvon poistamisen toimimaan, olet vaiheessa 3, jolloin metodin <code>osiaToteutettu</code> tulisi palautta arvo <code>3</code>.
-  </p>
   
 <% end %>
 
@@ -1564,11 +1395,422 @@
 
 
 <% partial 'partials/material_heading' do %>
-  Moniulotteinen tieto
+  Satunnaisuus ohjelmissa
+<% end %>
+
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      Tiedät miten satunnaislukuja luodaan ja tiedät joitakin tilanteita missä satunnaislukuja tarvitaan.
+    </li>
+    <li>
+      Osaat käyttää Javan valmista Random-luokkaa satunnaislukujen luomiseen.
+    </li>
+  </ul>
+
 <% end %>
 
 <p>
-  Aiemmat taulukkoesimerkkimme ovat käsitelleet yksiulotteisia taulukoita, missä indeksi kertoo sijainnin yhdessä ulottuvuudessa. Taulukon voi luoda myös useampiulotteisena, jolloin taulukossa olevaa tietoa voi tarkastella useamman indeksin avulla. Tämä on kätevää esimerkiksi silloin, jos tieto on useampiulotteista kuten esimerkiksi koordinaatistossa.
+  Satunnaisuutta tarvitaan esimerkiksi salausalgoritmeissa, koneoppimisessa sekä tietokonepelien ennustettavuuden vähentämisessä. Satunnaisuutta mallinnetaan käytännössä satunnaislukujen avulla, joiden luomiseen Java tarjoaa valmiin <code>Random</code>-luokan. Random-luokasta voi tehdä olion jota voi käyttää seuraavalla tavalla.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.Random;
+
+  public class Arvontaa {
+      public static void main(String[] args) {
+          Random arpoja = new Random(); // luodaan apuväline arpoja
+
+          for (int i = 0; i &lt; 10; i++) {
+              // Arvotaan ja tulostetaan satunnainen luku
+              int luku = arpoja.nextInt(10);
+              System.out.println(luku);
+          }
+      }
+  }
+<% end %>
+
+<p>
+  Yllä olevassa esimerkissä luodaan ensin <code>Random</code>-luokasta olio. Random-olio tarjoaa metodin <code>nextInt</code>, jolle annetaan parametrina kokonaisluku. Metodi palauttaa satunnaisen kokonaisluvun väliltä <code>[0,kokonaisluku[</code> eli <em>0..(annettu kokonaisluku - 1)</em>.
+</p>
+
+<p>
+  Ohjelman tuottama tulostus ei ole aina sama. Yksi mahdollinen tulostusesimerkki on seuraava:
+</p>
+
+<% partial 'partials/sample_output' do %>
+  2
+  2
+  4
+  3
+  4
+  5
+  6
+  0
+  7
+  8
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Lukuja' } do %>
+
+  <p>
+    Kirjoita ohjelma, joka kysyy käyttäjältä tulostettavien satunnaislukujen määrän ja tulostaa tämän jälkeen luvut. Tulostettavien lukujen tulee olla välillä <code>[0, 10]</code>. Alla muutamia esimerkkejä.
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Montako satunnaislukua tulostetaan?
+    <font color="red">4</font>
+    9
+    1
+    4
+    3
+  <% end %>
+
+
+  <% partial 'partials/sample_output' do %>
+    Montako satunnaislukua tulostetaan?
+    <font color="red">8</font>
+    9
+    6
+    0
+    9
+    10
+    7
+    3
+    3
+  <% end %>
+
+<% end %>
+
+<p>
+  Metodin <code>nextInt</code> avulla pystyy luomaan hyvin monipuolista satunnaisuutta. Ohjelmoija saattaisi esimerkiksi haluta, että ohjelman ilmoittama lämpötila on satunnainen ja väliltä [-30,50]. Tällöin ratkaisu on arpoa lukuja nollan ja kahdeksankymmenen väliltä ja miinustaa arvotusta luvusta 30.
+</p>
+
+
+<% partial 'partials/code_highlight' do %>
+  Random arpoja = new Random();
+  int lampotila = arpoja.nextInt(81) - 30;
+  System.out.println(lampotila);
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Noppa' } do %>
+
+  <p>
+    Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    import java.util.Random;
+
+    public class Noppa {
+        private Random random;
+        private int tahkojenMaara;
+
+        public Noppa(int tahkojenMaara) {
+            this.random = new Random();
+            // Alusta oliomuuttuja tahkojenMaara tässä
+        }
+
+        public int heita() {
+            // arvo täällä luku jonka tulee olla yhdestä tahkojen määrään
+            // ja palauta se
+        }
+    }
+  <% end %>
+
+  <p>
+    Muokkaa luokkaa siten, että sen konstruktori<code>Noppa(int tahkojenMaara)</code> luo uuden noppa-olion annetulla nopan tahkojen (eri oman numeronsa sisältämien "puolien") määrällä. Muokkaa myös metodia <code>heita</code> siten, että se antaa satunnaisen nopanheiton tuloksen, jonka arvon tulee olla väliltä <code>1...tahkojen määrä</code>.
+  </p>
+
+  <p>
+    Seuraavassa noppaa testaava pääohjelma:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public class Ohjelma {
+        public static void main(String[] args) {
+            Noppa noppa = new Noppa(6);
+
+            for (int i = 0; i &lt; 10; i++) {
+                System.out.println(noppa.heita());
+            }
+        }
+    }
+  <% end %>
+
+  <p>
+    Tulostus voisi olla esimerkiksi seuraava:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    1
+    6
+    3
+    5
+    3
+    3
+    2
+    2
+    6
+    1
+  <% end %>
+
+<% end %>
+
+<p>
+  Random-luokasta tehdyn olion kautta päästään käsiksi myös satunnaisiin liukulukuihin, joita käytetään muunmuassa todennäköisyyslaskennan yhteydessä; tietokoneilla todennäköisyyksiä simuloidaan yleensä väliltä [0..1] olevilla luvuilla.
+</p>
+
+<p>
+  Random-oliolta satunnaisia liukulukuja saa metodilla <code>nextDouble</code>. Tarkastellaan seuraavia säämahdollisuuksia:
+</p>
+
+<ul>
+  <li>Sataa räntää todennäköisyydellä 0.1 (10%)</li>
+  <li>Sataa lunta todennäköisyydellä 0.3 (30%)</li>
+  <li>Aurinko paistaa todennäköisyydellä 0.6 (60%)</li>
+</ul>
+
+<p>
+  Luodaan edellä olevista arvioista sääennustaja.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  import java.util.ArrayList;
+  import java.util.Random;
+
+  public class SaaEnnustaja {
+      private Random random;
+
+      public SaaEnnustaja() {
+          this.random = new Random();
+      }
+
+      public String ennustaSaa() {
+          double todennakoisyys = this.random.nextDouble();
+
+          if (todennakoisyys &lt;= 0.1) {
+              return "Sataa räntää";
+          } else if (todennakoisyys &lt;= 0.4) { // 0.1 + 0.3
+              return "Sataa lunta";
+          } else { // loput, 1.0 - 0.4 = 0.6
+              return "Aurinko paistaa";
+          }
+      }
+
+      public int ennustaLampotila() {
+          return (int) (4 * this.random.nextGaussian() - 3);
+      }
+  }
+<% end %>
+
+<p>
+  Metodi <code>ennustaLampotila</code> on monella tapaa mielenkiintoinen. Metodin sisällä tehtävä kutsu <code>this.random.nextGaussian()</code> on tavallinen metodikutsu, jonka kaltaisia olemme nähneet aikaisemminkin. Kiinnostavaa tässä <code>Random</code>-luokan ilmentymän tarjoamassa metodissa on se, että metodin palauttama luku on normaalijakautunut (normaalijakautuneilla luvuilla voi kuvata esimerkiksi ihmisten pituuksia ja painoja -- jos et koe mielenkiintoa satunnaisuuden eri lajeihin se ei haittaa!).
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  public int ennustaLampotila() {
+      return (int) (4 * this.random.nextGaussian() - 3);
+  }
+<% end %>
+
+<p>
+  Edellisessä esimerkissä käytetään eksplisiittistä tyyppimuunnosta liukulukujen muuntamiseen kokonaisluvuiksi <code>(int)</code>. Vastaavalla menetelmällä voidaan muuttaa myös kokonaislukuja liukuluvuiksi kirjoittamalla <code>(double) kokonaisluku</code>
+</p>
+
+<p>
+  Luodaan vielä pääohjelma josta luokkaa <code>SaaEnnustaja</code> käytetään.
+</p>
+
+<% partial 'partials/code_highlight' do %>
+  // importit 
+
+  public class Ohjelma {
+
+      public static void main(String[] args) {
+          SaaEnnustaja ennustaja = new SaaEnnustaja();
+
+          // tallennetaan päivät listalle
+          ArrayList&lt;String&gt; paivat = new ArrayList&lt;&gt;();
+          paivat.add("Ma");
+          paivat.add("Ti");
+          paivat.add("Ke");
+          paivat.add("To");
+          paivat.add("Pe");
+          paivat.add("La");
+          paivat.add("Su");
+
+          System.out.println("Seuraavan viikon sääennuste:");
+
+          for (String paiva: paivat) {
+              String saaEnnuste = ennustaja.ennustaSaa();
+              int lampotilaEnnuste = ennustaja.ennustaLampotila();
+
+              System.out.println(paiva + ": " + saaEnnuste + " " + lampotilaEnnuste + " astetta.");
+          }
+      }
+  }
+<% end %>
+
+<p>
+  Ohjelman tulostus voisi olla esimerkiksi seuraavanlainen:
+</p>
+
+<% partial 'partials/sample_output' do %>
+  Seuraavan viikon sääennuste:
+  Ma: Sataa lunta 1 astetta.
+  Ti: Sataa lunta 1 astetta.
+  Ke: Aurinko paistaa -2 astetta.
+  To: Aurinko paistaa 0 astetta.
+  Pe: Sataa lunta -3 astetta.
+  La: Sataa lunta -3 astetta.
+  Su: Aurinko paistaa -5 astetta
+<% end %>
+
+<% partial 'partials/exercise', locals: { name: 'Lottoarvonta' } do %>
+
+  <p>
+    Tehtävänäsi on täydentää luokkaa <code>Lottorivi</code>, joka arpoo viikon lottonumerot. Lottonumerot ovat väliltä 1&ndash;40 ja niitä arvotaan 7. Lottorivi koostuu siis seitsemästä eri numerosta väliltä 1&ndash;40.
+  </p>
+  <p>
+    Luokalle toivotaan seuraava toiminnot:
+  </p>
+
+  <ul>
+    <li>
+      konstruktori <code>Lottorivi</code> luo uuden Lottorivi-olion joka sisältää uudet, arvotut numerot
+    </li>
+    <li>
+      metodi <code>numerot</code> palauttaa tämän lottorivin lottonumerot
+    </li>
+    <li>
+      metodi <code>sisaltaaNumeron</code> kertoo onko arvotuissa numeroissa annettu numero
+    </li>
+    <li>
+      metodi <code>arvoNumerot</code> arpoo riville uudet numerot
+    </li>
+  </ul>
+
+  <p>
+    Luokan runko on seuraava:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    import java.util.ArrayList;
+    import java.util.Random;
+
+     public class LottoRivi {
+        private ArrayList&lt;Integer&gt; numerot;
+
+        public LottoRivi() {
+            this.arvoNumerot();
+        }
+
+        public ArrayList&lt;Integer&gt; numerot() {
+            return this.numerot;
+        }
+
+        public boolean sisaltaaNumeron(int numero) {
+            // Testaa tässä onko numero jo arvottujen numeroiden joukossa
+            return false;
+        }
+
+        public void arvoNumerot() {
+            // alustetaan lista numeroille
+            this.numerot = new ArrayList&lt;&gt;();
+            // Kirjoita numeroiden arvonta tänne käyttämällä metodia sisaltaaNumeron()
+        }
+
+        public boolean equals(Object toinen) {
+            return false;
+        }
+    }
+  <% end %>
+
+  <p>
+    Tehtäväpohjan mukana tulee seuraava pääohjelma:
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    import java.util.ArrayList;
+
+    public class Ohjelma {
+        public static void main(String[] args) {
+            Lottorivi rivi = new Lottorivi();
+            ArrayList&lt;Integer&gt; lottonumerot = rivi.numerot();
+
+            System.out.println("Lottonumerot:");
+            for (int numero: lottonumerot) {
+                System.out.print(numero + " ");
+            }
+
+            System.out.println("");
+        }
+    }
+  <% end %>
+
+  <p>
+    Ohjelman mahdollisia tulostuksia ovat seuraavat:
+  </p>
+
+  <% partial 'partials/sample_output' do %>
+    Lottonumerot:
+    3 5 10 14 15 27 37
+  <% end %>
+
+  <% partial 'partials/sample_output' do %>
+    Lottonumerot:
+    2 9 11 18 23 32 34
+  <% end %>
+
+  <p>
+    <strong>Huom!</strong> Sama numero saa esiintyä lottorivissä vain kerran. Lottorivin numeroiden ei tarvitse olla järjestyksessä.
+  </p>
+
+<% end %>
+
+<% partial 'partials/hint', locals: { name: 'Lukujen satunnaisuudesta' } do %>
+
+  <p>
+    Tietokoneiden toiminta on ennustettavissa sillä ne suorittavat niille annettuja komentoja orjallisesti. Ovatko siis tietokoneen luomat luvut todellisuudessa satunnaisia?
+  </p>
+
+  <p>
+    Tietokoneohjelmissa käytetyt satunnaisluvut ovat tyypillisesti pseudosatunnaislukuja, eli ne vaikuttavat satunnaisluvuilta, mutta seuraavat todellisuudessa jonkinlaista algoritmisesti luotua toistuvaa lukusarjaa. Suurimmalle osalle tietokoneohjelmista pseudosatunnaisluvut ovat riittävän hyviä -- esimerkiksi youtube-videoiden satunnaisessa toistossa normaali käyttäjä tuskin huomaa eroa. Toisaalta, jos satunnaislukuja käytetään tieteelliseen laskentaan, heikosti toimivat pseudosatunnaislukuja luovat algoritmit saattavat jopa johtaa tulosten kyseenalaistamiseen. Eräs esimerkki tällaisesta on hetken 1960-luvulla käytössä ollut IBM:n <a href="https://en.wikipedia.org/wiki/RANDU" target="_blank" norel>RANDU</a>.
+  </p>
+
+  <p>
+    Kaikki tietokoneohjelmien satunnaisuus ei kuitenkaan ole pseudosatunnaisuutta. Vahvempaan satunnaisuuteen pyrkivät ohjelmat hyödyntävät muunmuassa jonkinlaisia tosielämän satunnaiseksi ajateltuja ilmiöitä satunnaislukujen luomiseen. Tällaisia ilmiöitä ovat esimerkiksi avaruussäteily tai vaikkapa <a href="https://www.wired.com/2003/08/random/" target="_blank" norel>laavalamppujen toiminta</a>.
+  </p>
+
+  <p>
+    Lisää aiheesta osoitteessa <a href="https://www.random.org/randomness/" target="_blank" norel>https://www.random.org/randomness/</a>.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Moniulotteinen tieto
+<% end %>
+
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      Tunnet menetelmiä moniulotteisen tiedon esittämiseen.
+    </li>
+    <li>
+      Osaat luoda ja käyttää moniulotteisia taulukoita.
+    </li>
+  </ul>
+
+<% end %>
+
+
+<p>
+  Aiemmat esimerkkimme ovat käsitelleet yksiulotteisia taulukoita, missä indeksi kertoo sijainnin yhdessä ulottuvuudessa. Taulukon voi luoda myös useampiulotteisena, jolloin taulukossa olevaa tietoa voi tarkastella useamman indeksin avulla. Tämä on kätevää esimerkiksi silloin, jos tieto on useampiulotteista kuten esimerkiksi koordinaatistossa.
 </p>
 
 <p>
@@ -1582,7 +1824,7 @@
 <% end %>
 
 <p>
-  Yllä luomme taulukon, jonka jokainen rivi viittaa taulukkoon, jossa on tietty määrä sarakkeita. Kaksiulotteisen taulukon läpikäynti onnistuu kahden sisäkkäisen while-toistolauseen avulla seuraavasti:
+  Yllä luomme taulukon, jonka jokainen rivi viittaa taulukkoon, jossa on tietty määrä sarakkeita. Kaksiulotteisen taulukon läpikäynti onnistuu kahden sisäkkäisen for-toistolauseen avulla seuraavasti:
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -1590,10 +1832,11 @@
   int sarakkeet = 3;
   int[][] kaksiulotteinenTaulukko = new int[rivit][sarakkeet];
 
-  for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
-      for (int x = 0; x &lt; kaksiulotteinenTaulukko[y].length; x++) {
-          int arvo = kaksiulotteinenTaulukko[y][x];
-          System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+  System.out.println("rivi, sarake, arvo");
+  for (int rivi = 0; rivi &lt; kaksiulotteinenTaulukko.length; rivi++) {
+      for (int sarake = 0; sarake &lt; kaksiulotteinenTaulukko[y].length; sarake++) {
+          int arvo = kaksiulotteinenTaulukko[rivi][sarake];
+          System.out.println("" + rivi + ", " + sarake + ", " + arvo);
       }
   }
 <% end %>
@@ -1603,16 +1846,17 @@
 </p>
 
 <% partial 'partials/sample_output' do %>
-  arvo kohdassa (0, 0): 0
-  arvo kohdassa (1, 0): 0
-  arvo kohdassa (2, 0): 0
-  arvo kohdassa (0, 1): 0
-  arvo kohdassa (1, 1): 0
-  arvo kohdassa (2, 1): 0
+  rivi, sarake, arvo
+  0, 0, 0
+  0, 1, 0
+  0, 2, 0
+  1, 0, 0
+  1, 1, 0
+  1, 2, 0
 <% end %>
 
 <p>
-  Saatoit yllättyä. Selityksenä tulostukselle on se, että int-tyyppisten muuttujien oletusarvo on 0.
+  Yllä huomataan että int-tyyppisten muuttujien oletusarvo on 0.
 </p>
 
 <p>
@@ -1628,11 +1872,11 @@
   kaksiulotteinenTaulukko[1][1] = 1;
   kaksiulotteinenTaulukko[1][0] = 8;
 
-
-  for (int y = 0; y &lt; kaksiulotteinenTaulukko.length; y++) {
-      for (int x = 0; x &lt; kaksiulotteinenTaulukko[y].length; x++) {
-          int arvo = kaksiulotteinenTaulukko[y][x];
-          System.out.println("arvo kohdassa (" + x + ", " + y + "): " + arvo);
+  System.out.println("rivi, sarake, arvo");
+  for (int rivi = 0; rivi &lt; kaksiulotteinenTaulukko.length; rivi++) {
+      for (int sarake = 0; sarake &lt; kaksiulotteinenTaulukko[y].length; sarake++) {
+          int arvo = kaksiulotteinenTaulukko[rivi][sarake];
+          System.out.println("" + rivi + ", " + sarake + ", " + arvo);
       }
   }
 <% end %>
@@ -1642,169 +1886,184 @@
 </p>
 
 <% partial 'partials/sample_output' do %>
-  arvo kohdassa (0, 0): 0
-  arvo kohdassa (1, 0): 4
-  arvo kohdassa (2, 0): 0
-  arvo kohdassa (0, 1): 8
-  arvo kohdassa (1, 1): 1
-  arvo kohdassa (2, 1): 0
-<% end %>
-
-<p>
-  QUIZEJA: mitä ohjelma tulostaa
-
-</p>
-
-<p>
-  Kaksiulotteinen taulukko on oikeastaan <a href="https://fi.wikipedia.org/wiki/Matriisi" target="_blank" rel="noopener">matriisi</a>.  Matriiseja käytetään muunmuassa tietokonegrafiikassa, missä yksittäiset pikselit esitetään matriisin avulla.
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Piirto-ohjelma' } do %>
-
-  <p>
-    Tehtäväpohjaan on toteutettu graafinen sovellus, mikä sisältää kaksiulotteisen taulukon. Tehtävänäsi on muuttaa sovelluksen toimintaa siten, että kun käyttäjä painaa hiirtä sovelluksessa tai liikuttaa hiirtä kun nappi on pohjassa, ikkunaan piirretään.
-  </p>
-
-  <p>
-    Tee tätä varten kaksi asiaa: (1) muuta sovelluksessa olevan taulukon "piirrettava" arvoja sopivasti kun käyttäjä käyttää hiirtä, ja (2) piirrä komentoa <code>piirturi(x, y, 2, 2)</code> käyttäen ne alkiot, joiden arvo on 1. Käytä koordinaatteina x, y taulukon indeksejä.
-  </p>
-
-  <p>
-    Kun sovellus toimii, voit käyttää sitä vaikkapa seuraavanlaisen taideteoksen tekemiseen. Tehtävässä ei ole testejä.
-  </p>
-
-  <img src="/img/exercises/06-14-piirturi-ok.png" />
-
-
+  rivi, sarake, arvo
+  0, 0, 0
+  1, 0, 4
+  2, 0, 0
+  0, 1, 8
+  1, 1, 1
+  2, 1, 0
 <% end %>
 
 
-
-<% partial 'partials/material_sub_heading' do %>
-  Simulaatiot
-<% end %>
-
-<p>
-  luodaan kaksi taulukkoa, joista toinen on aina se näytettävä
-</p>
-
-
-<% partial 'partials/exercise', locals: { name: 'Game of Life (2 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Taulukko merkkijonona' } do %>
 
   <p>
-    Toteutimme aiemmin Game of Life -pelin logiikan sisäkkäisiä hajautustauluja käyttäen. Tarkastellaan nyt samaa kaksiulotteisten taulukkojen avulla.
-  </p>
-  
-  <p>
-    <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank">Game of Life</a> on neljää yksinkertaista sääntöä seuraava soluautomaatti:
-  </p>
-
-  <ol>
-    <li>Jos elävän solun naapureina on alle kaksi elävää solua, se kuolee alikansoituksen takia.</li>
-    <li>Jos elävän solun naapureina on kaksi tai kolme elävää solua, se jää henkiin.</li>
-    <li>Jos elävän solun naapureina on yli kolme elävää solua, se kuolee ylikansoituksen takia.</li>
-    <li>Jos kuolleen solun naapureina on tasan kolme elävää solua, se syntyy eli muuttuu eläväksi.</li>
-  </ol>
-
-  <p>
-    Peli ei sisällä minkäänlaisia liikkumissääntöjä, mutta se silti luo tilanteita, missä erilaiset hahmot liikkuvat ruudulla. Katso pelin keksineen <a href="https://youtu.be/E8kUJL04ELA" target="_blank">John Conwayn mietteitä pelistä sekä sääntöjen selitys</a>.
+    Luo tehtäväpohjaan metodi <code>public static String taulukkoMerkkijonona(int[][] taulukko)</code>, joka muodostaa parametrina saamastaan taulukosta merkkijonomuotoisen esityksen ja palauttaa sen.
   </p>
 
   <p>
-    Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
-  </p>
-
-  <h2>Elossa olevien naapurien lukumäärä</h2>
-
-  <p>
-    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(int[][] taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
-  </p>
-
-  <p>
-    Naapureita ovat kaikki ne alkiot, jotka ovat kulman tai sivun kautta yhteydessä alkioon.
-  </p>
-
-  <p>
-    Huomaa, että metodin tulee varoa ArrayIndexOutOfBounds-virhettä. Indeksissä -1 ei esimerkiksi voi olla ketään. Vastaavasti taulukon leveyden tai korkeuden yli ei voi mennä (esim. <code>taulukko[taulukko.length][0]</code> tai <code>taulukko[0][taulukko[0].length]</code>).
-  </p>
-
-  <p>
-    Voit kokeilla metodiasi muunmuassa seuraavilla esimerkeillä.
+    Kertaa yhdeksännen osan kohta 3.2. StringBuilder ennen tehtävän tekoa. Alla muutamia esimerkkejä metodin odotetusta toiminnasta.
   </p>
 
   <% partial 'partials/code_highlight' do %>
-    GameOfLife gol = new GameOfLife(3, 3);
-
-    int[][] taulukko = new int[3][3];
-    taulukko[0][0] = 1;
-    taulukko[0][1] = 1;
-    taulukko[1][1] = 1;
-    taulukko[2][2] = 1;
-
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
+    int rivit = 2;
+    int sarakkeet = 3;
+    int[][] matriisi = new int[rivit][sarakkeet];
+    matriisi[0][1] = 5;
+    matriisi[1][0] = 3;
+    matriisi[1][2] = 7;
+    System.out.println(taulukkoMerkkijonona(matriisi));
   <% end %>
-
+ 
   <% partial 'partials/sample_output' do %>
-    2
-    3
-    3
-    1
+    050
+    307
   <% end %>
-
+  
   <% partial 'partials/code_highlight' do %>
-    GameOfLife gol = new GameOfLife(4, 4);
+    int[][] matriisi = {
+      {3, 2, 7, 6},
+      {2, 4, 1, 0},
+      {3, 2, 1, 0}
+    };
 
-    int[][] taulukko = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 0, 1, 0}, {0, 1, 0, 1}};
-
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
-    System.out.println(gol.elossaOleviaNaapureita(taulukko, 3, 3));
+    System.out.println(taulukkoMerkkijonona(matriisi));
   <% end %>
 
   <% partial 'partials/sample_output' do %>
-    3
-    7
-    5
-    1
+    3276
+    2410
+    3210
   <% end %>
-
-
-  <h2>Kehittyminen</h2>
-
-
-  <p>
-    Täydennä seuraavaksi GameOfLife-luokan metodia <code>public void kehity()</code> siten, että se käy yhden Game of Life -pelin askeleen.
-  </p>
-
-  <p>
-    Toteuta toiminnallisuus niin, että luot toisen taulukon, jonka koko on sama kuin alkuperäisen taulukon. Käy tämän jälkeen alkuperäistä taulukkoa läpi alkio alkiolta siten, että seuraat seuraavia sääntöjä:
-  </p>
-
-  <ol>
-    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on alle kaksi elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
-    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on kaksi tai kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
-    <li>Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on yli kolme elävää naapuria, kopioon asetetaan alkion arvoksi 0.</li>
-    <li>Jos alkuperäisen taulukon alkion arvo on 0 ja sillä on tasan kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.</li>
-  </ol>
-
-  <p>
-    Käytä naapureiden lukumäärän selvittämisessä edellisessä osassa tehtyä metodia. Kun olet käynyt koko taulukon läpi, vaihda kopio taulukon paikalle.
-  </p>
-
-
-  <p>
-    Kokeile tämän jälkeen sovelluksen toimintaa graafisen käyttöliittymän kautta. Sovelluksen pitäisi käynnistyä -- yksi mahdollinen hetkellinen tila on seuraavanlainen.
-  </p>
-
-  <img src="/img/exercises/06-15-gameoflife.png" width="600"/>
   
 <% end %>
 
+
+<% partial 'partials/exercise', locals: { name: 'Taikaneliö (4 osaa)' } do %>
+
+  <p>
+    <a href="https://fi.wikipedia.org/wiki/Taikaneli%C3%B6" target="_blank">Taikaneliöt</a> ovat kokonaisluvuista järjestettyjä neliöitä, joiden jokaisen rivin, sarakkeen ja lävistäjän summa on sama. Harjoitellaan taulukoiden käyttöä taikaneliöiden yhteydessä.
+  </p>
+
+  <p>
+    Ohjelmassa on annettu osittain toteutettu luokka <code>Taikanelio</code>, jota voidaan käyttää lähtökohtana. Tehtävänäsi on ensin lisätä luokkaan toiminnallisuutta, jolla tarkistetaan onko neliö taikaneliö. Tämän jälkeen toteutat algoritmin taikaneliön luomiseen.
+  </p>
+
+  <h2>Rivien summat</h2>
+
+  <p>
+    Luokassa Taikanelio on valmiina metodi <code>public ArrayList&lt;Integer&gt; rivienSummat()</code>, joka palauttaa tyhjän ArrayList-olion. Muuta metodin toiminnallisuutta siten, että se palauttaa listan, jossa on jokaisen taikaneliön rivin summa.
+  </p>
+
+  <p>
+    Esimerkiksi seuraavanlaisella taikaneliöllä rivienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15, 15</code>.
+  </p>
+
+<pre> 
+8 1 6 
+3 5 7
+4 9 2</pre>
+
+  <p>
+    Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee rivien summat silti palauttaa. Allaolevalla esimerkillä rivienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>6, 15, 24</code>.
+  </p>
+
+<pre> 
+1 2 3
+4 5 6
+7 8 9</pre>
+
+
+  <h2>Sarakkeiden summat</h2>
+
+  <p>
+    Luokassa Taikanelio on valmiina metodi <code>public ArrayList&lt;Integer&gt; sarakkeidenSummat()</code>, joka palauttaa tyhjän ArrayList-olion. Muuta metodin toiminnallisuutta siten, että se palauttaa listan, jossa on jokaisen taikaneliön sarakkeen summa.
+  </p>
+
+  <p>
+    Esimerkiksi seuraavanlaisella taikaneliöllä sarakkeidenSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15, 15</code>.
+  </p>
+
+<pre> 
+8 1 6 
+3 5 7
+4 9 2</pre>
+
+  <p>
+    Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee sarakkeiden summat silti palauttaa. Allaolevalla esimerkillä sarakkeidenSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>12, 15, 18</code>.
+  </p>
+
+<pre> 
+1 2 3
+4 5 6
+7 8 9</pre>
+
+
+  <h2>Lävistäjien summat</h2>
+
+  <p>
+    Toteuta seuraavaksi metodi <code>public ArrayList&lt;Integer&gt; lavistajienSummat()</code>, joka palauttaa listan, jossa on taikaneliön lävistäjien summat.
+  </p>
+
+  <p>
+    Esimerkiksi seuraavanlaisella taikaneliöllä lavistajienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15</code> (8 + 5 + 2) ja (4 + 5 + 6).
+  </p>
+
+<pre> 
+8 1 6 
+3 5 7
+4 9 2</pre>
+
+  <p>
+    Vaikka taikaneliö ei olisi "oikea" taikaneliö, tulee lävistäjien summat silti palauttaa. Allaolevalla esimerkillä lavistajienSummat-metodin pitäisi palauttaa lista, jossa on luvut <code>15, 15</code> (1 + 5 + 9) ja (7 + 5 + 3).
+  </p>
+
+<pre> 
+1 2 3
+4 5 6
+7 8 9</pre>
+
+
+  <h2>Taikaneliön luominen</h2>
+
+  <p>
+    Huom! Tämä tehtävä on melko visainen, kannattanee palauttaa edelliset osat ennen tämän aloitusta.
+  </p>
+
+  <p>
+    Taikaneliön pystyy myös luomaan. Tutustutaan <a href="https://en.wikipedia.org/wiki/Siamese_method" target="_blank">Siamese method</a>-menetelmään, jonka avulla voidaan luoda parittomien lukujen kokoisia taikaneliöitä.
+  </p>
+
+  <p>
+    Siamese method -algoritmi toimii siten, että numero yksi asetetaan ylimmän rivin keskimmäiseen sarakkeeseen. Tämän jälkeen siirrytään yksi ylös ja yksi oikealle ja asetetaan luku kaksi. Tämän jälkeen taas siirrytään yksi ylös ja yksi oikealle, ja asetetaan luku kolme jne.
+  </p>
+  
+  <p>
+    Lukujen lisäämiseen liittyy kaksi sääntöä:
+  </p>
+
+  <ol>
+    <li>
+      Jos siirtymä tapahtuu siten, että mennään taikaneliön alueen ulkopuolelle, hypätään toiselle laidalle. Jos siis mennään "oikealta yli" mennään vasempaan laitaan ja jos mennään "ylhäältä yli" mennään alalaitaan.
+    </li>
+    <li>
+      Jos kohdassa on jo luku, ei mennäkään ylös ja oikealle, vaan astutaan yksi askel alaspäin.
+    </li>
+  </ol>
+
+
+  <figure>
+    <img class="naytto" src="/img/taikaneliot-siamese.gif"/>
+
+    <figcaption><p>Siamese method -algoritmin suoritus. Kuva Wikipediasta (<a href="https://en.wikipedia.org/wiki/Siamese_method" target="_blank">Siamese method</a>).</p></figcaption>
+  </figure>
+
+  <p>
+    Toteuta parittomien taikalukujen luominen luokan <code>Taikaneliotehdas</code> metodiin <code>luoTaikanelio</code>. Metodin tarvitsee toimia vain tilanteissa, missä neliön leveys on pariton luku.
+  </p>
+
+<% end %>
 
 
 <% partial 'partials/hint', locals: { name: 'Taulukko vs. Hajautustaulu' } do %>
@@ -1828,27 +2087,21 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Miinaharava' } do %>
-
-  <p>
-    TODO:
-  </p>
-
-<% end %>
-
-
-
-<div class="code-states-visualizer-widget" data-input='{"code":"public class Esimerkki {\n    public static void main(String[] args) {\n        int rivit = 2;\n        int sarakkeet = 3;\n        int[][] taulukko = new int[rivit][sarakkeet];\n\n        taulukko[0][1] = 4;\n        taulukko[1][1] = 1;\n        taulukko[1][0] = 8;\n\n        for (int y = 0; y < taulukko.length; y++) {\n            for (int x = 0; x < taulukko[y].length; x++) {\n                int arvo = taulukko[y][x];\n                System.out.println(\"(\" + x + \", \" + y + \"): \" + arvo);\n            }\n        }\n    }\n}","stdin":"","trace":[{"stdout":"","event":"call","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"1","frame_id":1}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"main:3","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"2","frame_id":2}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"main:4","encoded_locals":{"rivit":2},"ordered_varnames":["rivit"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"4","frame_id":4}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":5,"stack_to_render":[{"func_name":"main:5","encoded_locals":{"rivit":2,"sarakkeet":3},"ordered_varnames":["rivit","sarakkeet"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"7","frame_id":7}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{}},{"stdout":"","event":"step_line","line":7,"stack_to_render":[{"func_name":"main:7","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"12","frame_id":12}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,0,0],"146":["LIST",0,0,0]}},{"stdout":"","event":"step_line","line":8,"stack_to_render":[{"func_name":"main:8","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"19","frame_id":19}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",0,0,0]}},{"stdout":"","event":"step_line","line":9,"stack_to_render":[{"func_name":"main:9","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"26","frame_id":26}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",0,1,0]}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"33","frame_id":33}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"36","frame_id":36}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"40","frame_id":40}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"43","frame_id":43}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"49","frame_id":49}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":0,"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"56","frame_id":56}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"59","frame_id":59}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"60","frame_id":60}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"67","frame_id":67}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":4,"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"74","frame_id":74}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"79","frame_id":79}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"80","frame_id":80}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"87","frame_id":87}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":0,"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"94","frame_id":94}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"99","frame_id":99}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":3,"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"100","frame_id":100}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":0,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"107","frame_id":107}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"109","frame_id":109}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"114","frame_id":114}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"117","frame_id":117}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"123","frame_id":123}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":8,"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"130","frame_id":130}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":0,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"135","frame_id":135}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"136","frame_id":136}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"143","frame_id":143}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":1,"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"150","frame_id":150}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":1,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"155","frame_id":155}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"156","frame_id":156}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":13,"stack_to_render":[{"func_name":"main:13","encoded_locals":{"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"163","frame_id":163}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n","event":"step_line","line":14,"stack_to_render":[{"func_name":"main:14","encoded_locals":{"arvo":0,"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x","arvo"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"170","frame_id":170}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":2,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"175","frame_id":175}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":12,"stack_to_render":[{"func_name":"main:12","encoded_locals":{"x":3,"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y","x"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"176","frame_id":176}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":1,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"183","frame_id":183}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":11,"stack_to_render":[{"func_name":"main:11","encoded_locals":{"y":2,"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko","y"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"185","frame_id":185}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"step_line","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143]},"ordered_varnames":["rivit","sarakkeet","taulukko"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"190","frame_id":190}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}},{"stdout":"(0, 0): 0\n(1, 0): 4\n(2, 0): 0\n(0, 1): 8\n(1, 1): 1\n(2, 1): 0\n","event":"return","line":17,"stack_to_render":[{"func_name":"main:17","encoded_locals":{"rivit":2,"sarakkeet":3,"taulukko":["REF",143],"__return__":["VOID"]},"ordered_varnames":["rivit","sarakkeet","taulukko","__return__"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"192","frame_id":192}],"globals":{},"ordered_globals":[],"func_name":"main","heap":{"143":["LIST",["REF",145],["REF",146]],"145":["LIST",0,4,0],"146":["LIST",8,1,0]}}],"userlog":"Debugger VM maxMemory: 455M\n"}'></div>
-
-
-<% partial 'partials/material_heading' do %>
-  Olioita taulukossa? 
-<% end %>
-
 
 <% partial 'partials/material_heading' do %>
   Vertaisarviointi: Ohjelmien testaaminen
 <% end %>
+
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      Harjoittelet toisten kirjoittamien testimetodien lukemista ja opit mahdollisesti lisää testaamisesta.
+    </li>
+  </ul>
+
+<% end %>
+
 
 <p>
   Kymmenennessä osassa kirjoitimme omia testejä valmiille malliratkaisulle. Nyt on taas vertaisarvioinnin aika! Anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Itse tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
@@ -1882,8 +2135,9 @@
 
 <% end %>
 
-<p>TODO: crowdsorcererit ei vielä toimi</p>
-
+<p>
+  Kuten huomaat, nämä ovat vielä hieman rikki. Korjaamme näitä parhaillaan!
+</p>
 
 <% partial 'partials/general_callout', locals: { name: 'Kirjoita testit valmiille malliratkaisulle 1' } do %>
 
@@ -1917,6 +2171,13 @@
 <div class='crowdsorcerer-widget' data-assignment='19' peer-review data-exercises='3'></div>
 
 
-<%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a044' } %>
 
+<% partial 'partials/material_heading' do %>
+  Yhteenveto
+<% end %>
 
+<p>
+  Yhdennessätoista osassa eli Ohjelmoinnin jatkokurssin neljännessä osassa tutustuimme geneeriseen tyyppiin sekä sen käyttöön tietorakenteissa kuten ArrayListissä ja HashMapissa, joista loimme myös omat versiot. Harjoittelimme lisäksi satunnaislukujen luomista sekä useampiulotteisten taulukoiden käyttöä. Lopuksi kertasimme lyhyesti testien kirjoittamista erityisesti muiden kirjoittamien testien lukemiseen keskittyen.
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '5bf08b6afd6c3b3e161a10cc' } %>
