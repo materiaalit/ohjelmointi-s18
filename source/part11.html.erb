@@ -2,7 +2,7 @@
   title: Osa 11
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 <% partial 'partials/hint', locals: { name: 'Yhdennentoista osan tavoitteet' } do %>
@@ -259,7 +259,7 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Piilo' } do %>
+<% partial 'partials/exercise', locals: { name: 'Piilo', model_solution: '53838' } do %>
 
   <p>
     Toteuta luokka Piilo, jolla on yksi geneerinen tyyppiparametri. Luokasta tehdyssä oliossa voi olla yksi olio kerralaan piilossa. Luokan tulee tarjota parametriton konstruktori sekä seuraavat kolme metodia:
@@ -328,7 +328,7 @@
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Putki' } do %>
+<% partial 'partials/exercise', locals: { name: 'Putki', model_solution: '53839' } do %>
 
   <p>
     Toteuta luokka Putki, jolla on yksi geneerinen tyyppiparametri. Putki toimii siten, että sinne voi lisätä arvoja ja sieltä voi ottaa arvoja. Lisääminen tapahtuu putken toisesta päästä ja ottaminen toisesta päästä, eli toisin sanoen putkesta otetaan aina siellä pisimpään ollut arvo kun taas sinne lisätään aina uusin arvo. Luokan tulee tarjota parametriton konstruktori sekä seuraavat kolme metodia:
@@ -491,7 +491,7 @@
   7
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Rajatut taulukossa' } do %>
+<% partial 'partials/exercise', locals: { name: 'Rajatut taulukossa', model_solution: '53840' } do %>
 
   <p>
     Luo luokkaan <code>Ohjelma</code> luokkametodi <code>public static int summa(int[] taulukko, int mista, int mihin, int pienin, int suurin)</code>. Metodin tulee laskea sille parametrina annetusta taulukosta indeksien mista ja mihin välillä olevien arvojen summa. Summaan otetaan mukaan vain ne arvot, jotka ovat suurempia tai yhtäsuuria kuin pienin ja pienempiä tai yhtä pieniä kuin suurin.
@@ -1452,7 +1452,7 @@
   8
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Lukuja' } do %>
+<% partial 'partials/exercise', locals: { name: 'Lukuja', model_solution: '53843' } do %>
 
   <p>
     Kirjoita ohjelma, joka kysyy käyttäjältä tulostettavien satunnaislukujen määrän ja tulostaa tämän jälkeen luvut. Tulostettavien lukujen tulee olla välillä <code>[0, 10]</code>. Alla muutamia esimerkkejä.
@@ -1494,7 +1494,7 @@
   System.out.println(lampotila);
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Noppa' } do %>
+<% partial 'partials/exercise', locals: { name: 'Noppa', model_solution: '53844' } do %>
 
   <p>
     Tehtäväpohjassa on luokka <code>Noppa</code>, jonka runko on seuraava:
@@ -1668,7 +1668,7 @@
   Su: Aurinko paistaa -5 astetta
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Lottoarvonta' } do %>
+<% partial 'partials/exercise', locals: { name: 'Lottoarvonta', model_solution: '53845' } do %>
 
   <p>
     Tehtävänäsi on täydentää luokkaa <code>Lottorivi</code>, joka arpoo viikon lottonumerot. Lottonumerot ovat väliltä 1&ndash;40 ja niitä arvotaan 7. Lottorivi koostuu siis seitsemästä eri numerosta väliltä 1&ndash;40.
@@ -1896,7 +1896,7 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Taulukko merkkijonona' } do %>
+<% partial 'partials/exercise', locals: { name: 'Taulukko merkkijonona', model_solution: '53846' } do %>
 
   <p>
     Luo tehtäväpohjaan metodi <code>public static String taulukkoMerkkijonona(int[][] taulukko)</code>, joka muodostaa parametrina saamastaan taulukosta merkkijonomuotoisen esityksen ja palauttaa sen.
@@ -1940,7 +1940,7 @@
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Taikaneliö (4 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Taikaneliö (4 osaa)', model_solution: '53847' } do %>
 
   <p>
     <a href="https://fi.wikipedia.org/wiki/Taikaneli%C3%B6" target="_blank">Taikaneliöt</a> ovat kokonaisluvuista järjestettyjä neliöitä, joiden jokaisen rivin, sarakkeen ja lävistäjän summa on sama. Harjoitellaan taulukoiden käyttöä taikaneliöiden yhteydessä.
@@ -2107,6 +2107,13 @@
   Kymmenennessä osassa kirjoitimme omia testejä valmiille malliratkaisulle. Nyt on taas vertaisarvioinnin aika! Anna vertaispalautetta kahdesta jonkun toisen kurssilaisen lähettämästä tehtävästä ja arvioi lopuksi itse tekemääsi tehtävää. Itse tekemäsi tehtävä näkyy vain jos olet tehnyt sen -- jos et tehnyt tehtävää, pääset arvioimaan yhden ylimääräisen tehtävän.
 </p>
 
+<p>
+  <em>
+    Kuten huomaat, nämä ovat vielä hieman rikki. Korjaamme näitä parhaillaan!
+  </em>
+</p>
+
+
 <% partial 'partials/hint', locals: { name: 'Vertaisarviointi' } do %>
 
   <p>
@@ -2134,10 +2141,6 @@
   </p>
 
 <% end %>
-
-<p>
-  Kuten huomaat, nämä ovat vielä hieman rikki. Korjaamme näitä parhaillaan!
-</p>
 
 <% partial 'partials/general_callout', locals: { name: 'Kirjoita testit valmiille malliratkaisulle 1' } do %>
 
