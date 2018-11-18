@@ -2547,7 +2547,7 @@ programming
   </p>
 
   <p>
-    Sanakirjatiedostossa yksi rivi sisältää sanan ja sen käännöksen merkillä ":" erotettuna. Tehtäväpohjan mukana tuleva testaamiseen tarkoitettu sanakirjatiedosto <code>src/sanat.txt</code> on sisällöltään seuraava:
+    Sanakirjatiedostossa yksi rivi sisältää sanan ja sen käännöksen merkillä ":" erotettuna. Tehtäväpohjan mukana tuleva testaamiseen tarkoitettu sanakirjatiedosto <code>sanat.txt</code> on sisällöltään seuraava:
   </p>
 
 <pre class="sample-output">apina:monkey
@@ -2573,7 +2573,7 @@ while (tiedostonLukija.hasNextLine()) {
     Sanakirjaa käytetään seuraavasti:
   </p>
 
-<pre class="sh_java code-highlight"><code>MuistavaSanakirja sanakirja = new MuistavaSanakirja("src/sanat.txt");
+<pre class="sh_java code-highlight"><code>MuistavaSanakirja sanakirja = new MuistavaSanakirja("sanat.txt");
 boolean onnistui = sanakirja.lataa();
 
 if (onnistui) {
@@ -2626,7 +2626,7 @@ below
     Sanakirjan lopullista versiota on tarkoitus käyttää  seuraavasti:
   </p>
 
-<pre class="sh_java code-highlight"><code>MuistavaSanakirja sanakirja = new MuistavaSanakirja("src/sanat.txt");
+<pre class="sh_java code-highlight"><code>MuistavaSanakirja sanakirja = new MuistavaSanakirja("sanat.txt");
 sanakirja.lataa();
 
 // käytä sanakirjaa
