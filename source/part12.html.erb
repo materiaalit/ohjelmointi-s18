@@ -18,6 +18,16 @@
   Graafiset käyttöliittymät
 <% end %>
 
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      TODO
+    </li>
+  </ul>
+
+<% end %>
+
 <p>
   Tutustutaan seuraavaksi graafisten käyttöliittymien luomiseen. Graafiset käyttöliittymät poikkeavat aiemmin toteuttamistamme tekstikäyttöliittymistä usealla tavalla. Graafisia käyttöliittymiä luodessa hyödynnämme ensisijaisesti käyttöliittymäkirjastoja, jotka tarjoavat valmiita käyttöliittymäkomponentteja kuten tekstikenttäelementtejä ja nappeja.
 </p>
@@ -727,59 +737,6 @@ public void start(Stage ikkuna) {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Ristinolla (3 osaa)' } do %>
-
-  <p>
-    Tässä tehtävässä toteutat 3x3-kokoisen ristinollapelin. Tehtävä on jaettu kolmeen osaan: ensin luodaan käyttöliittymän osat, sitten nappien toiminnallisuus, ja lopuksi mahdollisuus pelin loppuun pelaamiseen.
-  </p>
-
-  <img src="/img/material/gui-ristinolla.png" alt="3x3 ristinolla."/>
-
-  <p>
-    Huom! Saat nappien merkit pysymään saman kokoisina sopivalla fontilla. Kuvakaappauksessa nappien käyttämä fontti on asetettu seuraavalla tavalla:
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-Button nappi = new Button(" ");
-nappi.setFont(Font.font("Monospaced", 40));
-  <% end %>
-
-
-  <h2>Käyttöliittymä</h2>
-
-  <p>
-    Muokkaa luokkaa RistinollaSovellus siten, että se käynnistää graafisen käyttöliittymän. Käytä käyttöliittymäkomponenttien asetteluun ensin BorderPane-luokkaa. Aseta BorderPanen ylälaitaan tekstielementti, joka sisältää tiedon vuorosta sekä pelin loppuessa tiedon pelin loppumisesta. Aseta BorderPanen keskelle GridPane, joka sisältää 9 nappia. GridPanessa tulee olla 3 riviä ja 3 saraketta, jolloin napit muodostavat 3x3-ruudukon.
-  </p>
-
-
-  <h2>Vuorojen vaihtaminen ja reilu peli</h2>
-
-  <p>
-    Pelissä pelaavat X ja O. Pelin aloittaa aina X. Lisää peliin toiminnallisuus, missä nappia painamalla tilanne päivittyy siten, että nappiin asetetaan vuorossa olevan pelaajan merkki (jos on X:n vuoro, nappiin tulee teksti X). Tämän jälkeen vuoro siirtyy seuraavalle pelaajalle.
-  </p>
-
-  <p>
-    Pelin ylälaidassa olevan tekstikentän tulee kertoa aina vuorossa oleva pelaaja. Teksti on aluksi "Vuoro: X". Kun X pelaa vuoronsa, eli painaa jotain nappia, tekstiksi asetetaan "Vuoro: O". Tämän jälkeen kun O pelaa vuoronsa, tekstiksi asetetaan taas "Vuoro: X".
-  </p>
-
-  <p>
-    Huom! Jos pelaaja on jo pelannut tietyn ruudun, ei toinen pelaaja saa enää pelata sitä. Varmista, ettei vuoro muutu tilanteessa, missä pelaaja yrittää pelata jo pelatun ruudun.
-  </p>
-
-  <p>
-    Huom2! Mahdollisesti kohtaamasi virhe "local variables referenced from a lambda expression must be final or effectively final" johtuu siitä, että rajapinnoista tehdyt oliot eivät voi käyttää metodin ulkopuolella määriteltyjä muuttujia. Voit "kiertää" virheen luomalla uudet muuttujat, joihin asetat ongelmalliset arvot juuri ennen niiden käyttöönottoa metodissa.
-  </p>
-
-
-  <h2>Pelin loppuun vieminen</h2>
-
-  <p>
-    Lisää peliin toiminnallisuus, missä pelin voi pelata loppuun. Peli loppuu jos toinen pelaajista saa kolme samaa merkkiä riviin (pysty, vaaka, vino). Pelin loppuminen tulee ilmaista siten, että ylälaidassa on teksti "Loppu!". Tämän jälkeen pelin jatkaminen ei enää onnistu.
-  </p>
-
-<% end %>
-
-
 <p>
   Käytettävä tapahtumankäsittelijä riippuu käyttöliittymäkomponentista, johon tapahtumankäsittelijä kytketään. Jos haluaisimme seurata tekstikenttään tapahtuvia muutoksia merkki merkiltä, käyttäisimme rajapintaa <a href="https://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html" target="_blank" rel="noopener">ChangeListener</a>.  Alla olevassa esimerkissä vasempaan tekstikenttään on kytketty rajapinnan ChangeListener toteuttava olio, joka sekä tulostaa muutokset tekstikonsoliin että asettaa aina uuden arvon oikealla olevaan tekstikenttään.
 </p>
@@ -1091,6 +1048,16 @@ public class HenkiloSovellus extends Application {
 
 <% partial 'partials/material_heading' do %>
   Useampi näkymä sovelluksessa
+<% end %>
+
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      TODO
+    </li>
+  </ul>
+
 <% end %>
 
 <p>
@@ -1701,444 +1668,78 @@ public class HenkiloSovellus extends Application {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Vaalipuheen tarkastaja (3 osaa)' } do %>
-
+<% partial 'partials/exercise', locals: { name: 'Ristinolla (3 osaa)' } do %>
 
   <p>
-    Harjoittelimme aiemmin vaalipuheen luomista Ylen kuntavaalidatan perusteella. Tässä tehtävässä jatketaan kyseisen datan parissa ja luodaan ohjelma, joka pyrkii ennustamaan tuleeko kirjoitetun vaalipuheen perusteella valituksi.
+    Tässä tehtävässä toteutat 3x3-kokoisen ristinollapelin. Tehtävä on jaettu kolmeen osaan: ensin luodaan käyttöliittymän osat, sitten nappien toiminnallisuus, ja lopuksi mahdollisuus pelin loppuun pelaamiseen.
   </p>
 
-  <p>
-    Tehtäväpohjassa on mukana dokumentti <code>vaalidata.csv</code>, joka sisältää osajoukon Ylen tarjoamasta vaalidatasta. Tekstidokumentti on jaettu sarakkeisiin puolipisteiden perusteella. Ensimmäisessä sarakkeessa on tieto siitä, tuliko ehdokas valituksi (0 = ei, 1 = kyllä), toisessa sarakkeessa on perustelu kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?", ja kolmannessa sarakkeessa on perustelu kysymykseen "Mitä asioita haluat edistää tai ajaa tulevalla vaalikaudella?". Tässä tehtävässä käytetty vaalidatatiedosto on lisensoitu <a href="https://creativecommons.org/licenses/by-sa/1.0/fi/" target="_blank">Creative Commons CC BY-SA</a>-lisenssillä alkuperäisen tiedoston tavoin.
-  </p>
+  <img src="/img/material/gui-ristinolla.png" alt="3x3 ristinolla."/>
 
   <p>
-    Tiedoston ensimmäiset kolme riviä ovat seuraavat:
-  </p>
-
-  <pre>
-1;olen aikaansaava ja aktiivinen luottamushenkilö joka pitää kuntalaisten puolia kuuntelen selvitän ja vien asioita eteenpäin hoidan koko sydämelläni kotiseutuni asioita ;edistää elinvointia kunnan tehtävä on huolehtia asukkaidensa hyvinvoinnista haluan tehdä edelleen aloitteita joissa on vahva terveyttä edistävä näkökulma haluan olla edelleen kaikkien kuntalaisten käytettävissä tiedän että kykenen vaikuttamaan asioihin oma alotteisesti sekä viemään kuntalaisten viestiä eteenpäin aina päätöksentekoon saakka tulevalla vaalikaudella meidän on panostettava ympäristönhoitoon jotta kunnassamme viihtyisi ja se houkuttelisi myös uusia asukkaita
-0;olen ratkaisukeskeinen yhteistyökykyinen ja avoin henkilö teen aina päätöksiin vaadittavan taustatyön huolellisesti arvostan tasa arvoa ja vastuullisuutta yhteisten asioiden hoidossa ;päätösten pitkäjänteisyyttä helsinkiläisten aitoa kuuntelua kulttuuritarjonnan monipuolisuutta ja saatavuutta tietoisuutta jo olemassaolevasta tapahtumakirjosta koko kaupungin pitää olla turvallinen paikka asua syrjäytyneet nuoret tarvitsevat pikaisesti apua meillä ei ole varaa menettää yhtään sukupolvea kaikki ovat arvokkaita helsinki on koko suomen käyntikortti hyvä talous koulutus kulttuuri ja joukkoliikenne näiden turvaaminen ja säilyminen ovat kaikille tärkeitä
-0;uuden salon aikaiset kaksi valtuustokautta ovat tuoneet hyvän perehtyneisyyden ja hyvät verkostot kaupungin asioiden hoitoon nykyinen elämäntilanne antaa hyvin aikaa yhteisten asioiden hoitoon ;yrittäjänä näen kaupungin elinvoimapolitiikan edistämisen ensisijaiseksi toinen tärkeä asia tulevaisuuden kunnassa on sivistys siinä perusasioita ovat tietysti hyvä varhaiskasvatus ja perusopetus ja muu koulutus sivistyksen sektorilla erityisesti lähinnä sydäntäni on kulttuuri ja kirjasto säilytetään kattavat kirjastopalvelut kaupungin resurssit ovat rajalliset ja vastuun kulttuuriasioista hoitaa pääasiassa kolmas sektori kaupungin tuki sellaiselle tasolle että tekijöiden työn ilo säilyy
-  </pre>
-
-  <p>
-    Valinnan ennustajaan luodaan kaksi erillistä ennustustoiminnallisuutta. Ensimmäinen ennustustoiminnallisuus perustuu sanojen lukumäärien laskemiseen, ja toinen <em>mystiseen ennustukseen</em>. Täydennämme myös ohjelman mukana olevaa graafista käyttöliittymää, joka tulee näyttämään tuleeko puheella valituksi.
-  </p>
-
-
-  <h2>Valinnan ennustaja, osa 1</h2>
-
-  <p>
-    Ensimmäinen ennustustoiminnallisuus perustuu sanojen esiintymislukumääriin. Täydennä luokkaa <code>Ennustaja</code> siten, että metodi <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> tarkastelee lauseen jokaista sanaa ja laskee kunkin sanan esiintymislukumäärän valintaan johtaneista ja valintaan johtamattomista lauseista.
-  </p>
-
-  <p>
-    Mikäli lauseen sanat ovat esiintyneet useammin valintaan johtaneissa lauseissa kuin valintaan johtamattomissa lauseissa, tulee metodin <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> palauttaa arvo <code>1</code>. Mikäli taas lauseen sanat ovat esiintyneet useammin valintaan johtamattomissa lauseissa kuin valintaan johtaneissa lauseissa, tulee metodin <code>public int valitaanSanojenLukumaariinPerustuen(String lause)</code> palauttaa arvo <code>-1</code>. Muulloin metodi palauttaa arvon 0. Sama sana voi esiintyä lauseessa useampaan kertaan -- tällöin sana myös lasketaan useampaan otteeseen.
-  </p>
-
-  <p>
-    Täydennä luokkaa muilta osin sopivasti. Tarvitset todennäköisesti muutamia oliomuuttujia, jonka lisäksi metodia <code>public void lisaa(boolean valitaan, String lause)</code> tulee toteuttaa sopivasti. Metodi saa parametrinaan tiedon valinnasta (true = valittu, false=ei valittu) sekä ehdokkaan käyttämän lauseen.
-  </p>
-
-  <p>
-    Voit pilkkoa merkkijonon osiin välilyöntien perusteella seuraavasti.
+    Huom! Saat nappien merkit pysymään saman kokoisina sopivalla fontilla. Kuvakaappauksessa nappien käyttämä fontti on asetettu seuraavalla tavalla:
   </p>
 
   <% partial 'partials/code_highlight' do %>
-    String lause = " olipa   kerran     elämä  ";
-    String[] palat = lause.trim().split("\\s+");
-    // palat[0] sisältää merkkijonon olipa
-    // palat[1] sisältää merkkijonon kerran
-    // palat[2] sisältää merkkijonon elämä
+Button nappi = new Button(" ");
+nappi.setFont(Font.font("Monospaced", 40));
   <% end %>
 
+
+  <h2>Käyttöliittymä</h2>
+
   <p>
-    Alla on esimerkki toivotusta toiminnallisuudesta.
+    Muokkaa luokkaa RistinollaSovellus siten, että se käynnistää graafisen käyttöliittymän. Käytä käyttöliittymäkomponenttien asetteluun ensin BorderPane-luokkaa. Aseta BorderPanen ylälaitaan tekstielementti, joka sisältää tiedon vuorosta sekä pelin loppuessa tiedon pelin loppumisesta. Aseta BorderPanen keskelle GridPane, joka sisältää 9 nappia. GridPanessa tulee olla 3 riviä ja 3 saraketta, jolloin napit muodostavat 3x3-ruudukon.
   </p>
 
-  <% partial 'partials/code_highlight' do %>
-    Ennustaja ennustaja = new Ennustaja();
-    ennustaja.lisaa(true, "minulla on rohkeutta");
-    ennustaja.lisaa(true, "olen positiivisesti ajatteleva ja yhteistyökykyinen");
-    ennustaja.lisaa(true, "olen valmis valtuustoon");
-    ennustaja.lisaa(false, "olen ollut aktiivinen kuntapolitiikassa");
-    ennustaja.lisaa(false, "olen ollut yhteiskunnan asioissa aina aktiivinen toimija");
-    ennustaja.lisaa(false, "haluan olla valtuustossa");
 
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("haluan valtuustoon"));
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen aktiivinen toimija"));
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen yhteistyökykyinen"));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    0
-    -1
-    1
-  <% end %>
+  <h2>Vuorojen vaihtaminen ja reilu peli</h2>
 
   <p>
-    Tarkastellaan vielä miten ennusteet muodostuvat. Yllä olevassa esimerkissä lisaa-kutsujen jälkeen ohjelman sisäinen sanakohtainen tieto valinnasta on seuraava.
-  </p>
-
-  <table class="table">
-    <tr>
-      <th>Sana</th>
-      <th>Esiintymisiä valintaan johtaneissa lauseissa</th>
-      <th>Esiintymisiä valintaan johtamattomissa lauseissa</th>
-    </tr>
-    <tr>
-      <td>aina</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>ajatteleva</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>aktiivinen</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>asioissa</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>haluan</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>ja</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>kuntapolitiikassa</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>minulla</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>on</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>olen</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>ollut</td>
-      <td>0</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>positiivisesti</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>rohkeutta</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>toimija</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>yhteiskunnan</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>yhteistyökykyinen</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>valmis</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>valtuustoon</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>valtuustossa</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-  </table>
-
-  <p>
-    Nyt kutsu <code>ennustaja.valitaanSanojenLukumaariinPerustuen("haluan valtuustoon")</code> laskee sanojen "haluan" ja "valtuustoon" esiintymislukumäärät valintaan johtaneista sekä ei valintaan johtaneista lauseista. Sana "haluan" ei ole esiintynyt kertaakaan valintaan johtaneissa lauseissa ja kerran kerran valintaan johtamattomissa lauseissa. Sana "valtuustoon" on esiintynyt kerran valintaan johtaneissa lauseissa ja ei kertaakaan valintaan johtamattomissa lauseissa. Sekä valintaan johtamattomien että valintaan johtaneiden sanojen summa lauseessa on tässä 1, eli ennustaja ei suosittele kumpaakaan. Metodi palauttaa arvon 0.
+    Pelissä pelaavat X ja O. Pelin aloittaa aina X. Lisää peliin toiminnallisuus, missä nappia painamalla tilanne päivittyy siten, että nappiin asetetaan vuorossa olevan pelaajan merkki (jos on X:n vuoro, nappiin tulee teksti X). Tämän jälkeen vuoro siirtyy seuraavalle pelaajalle.
   </p>
 
   <p>
-    Huom! Vaikka yllä tieto esitetään taulukkona, kannattanee harkita ainakin yhden hajautustaulun käyttöä luokan <code>Ennustaja</code> sisäisen tilan esittämiseen.
-  </p>
-
-  <h2>Graafinen käyttöliittymä</h2>
-
-  <p>
-    Sovelluksen graafinen käyttöliittymä näyttää tällä hetkellä seuraavalta.
-  </p>
-
-  <img src="/img/ennustaja-1.png" alt="Tyhjä ikkuna, jossa on tekstikenttä."/>
-
-  <p>
-    &nbsp;
+    Pelin ylälaidassa olevan tekstikentän tulee kertoa aina vuorossa oleva pelaaja. Teksti on aluksi "Vuoro: X". Kun X pelaa vuoronsa, eli painaa jotain nappia, tekstiksi asetetaan "Vuoro: O". Tämän jälkeen kun O pelaa vuoronsa, tekstiksi asetetaan taas "Vuoro: X".
   </p>
 
   <p>
-    Muokkaa käyttöliittymää siten, että lisäät tekstikentän alapuolelle VBox-elementin, joka sisältää kaksi Label-elementtiä. Ensimmäisen Label-elementin tulee sisältää teksti "Sanojen esiintymien perusteella: ???" ja toisen Label-elementin tulee sisältää teksti "Mystisen ennustajan perusteella: ???". Saat VBox-elementin metodilla <code>setPadding</code> asetettua elementille "ilmaa" reunoille.
+    Huom! Jos pelaaja on jo pelannut tietyn ruudun, ei toinen pelaaja saa enää pelata sitä. Varmista, ettei vuoro muutu tilanteessa, missä pelaaja yrittää pelata jo pelatun ruudun.
   </p>
 
   <p>
-    Muokkauksen jälkeen sovelluksen tulee näyttää seuraavalta.
+    Huom2! Mahdollisesti kohtaamasi virhe "local variables referenced from a lambda expression must be final or effectively final" johtuu siitä, että rajapinnoista tehdyt oliot eivät voi käyttää metodin ulkopuolella määriteltyjä muuttujia. Voit "kiertää" virheen luomalla uudet muuttujat, joihin asetat ongelmalliset arvot juuri ennen niiden käyttöönottoa metodissa.
   </p>
 
-  <img src="/img/ennustaja-2.png" alt="Tyhjä ikkuna, jossa on tekstikenttä. Tekstikentän alapuolella on odotetut merkkijonot."/>
+
+  <h2>Pelin loppuun vieminen</h2>
 
   <p>
-    &nbsp;
+    Lisää peliin toiminnallisuus, missä pelin voi pelata loppuun. Peli loppuu jos toinen pelaajista saa kolme samaa merkkiä riviin (pysty, vaaka, vino). Pelin loppuminen tulee ilmaista siten, että ylälaidassa on teksti "Loppu!". Tämän jälkeen pelin jatkaminen ei enää onnistu.
   </p>
-
-  <p>
-    Täydennä tämän jälkeen käyttöliittymää siten, että sovelluksen käynnistyksen yhteydessä graafiseen käyttöliittymään luodaan <code>Ennustaja</code>-olio, ja ennustajaoliolle lisätään tehtäväpohjassa olevasta <code>vaalidata.csv</code>-tiedostosta rivit.
-  </p>
-
-  <p>
-    Käytä ennustajalle syötettävinä lauseina vastausta kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?". Saat tiedoston rivit pilkottua osiin komennolla <code>rivi.split(";")</code> -- metodin palauttaman taulukon indeksissä 0 on tieto valinnasta (1 = valittu, 0 = ei valittu), ja indeksissä 1 vastaus kysymykseen "Miksi juuri sinut kannattaisi valita kunnanvaltuustoon?".
-  </p>
-
-  <p>
-    Muokkaa ohjelmaa lopulta siten, että tekstin "Sanojen esiintymien perusteella: ???" sisältämän tekstikentän arvo muuttuu lennossa kun käyttäjä kirjoittaa puhetta. Mikäli ennustajan palauttama arvo on "0" on ennustus "???", mikäli arvo on "1" on ennustus "Kyllä", mikäli arvo on "-1", on ennustus "Ei". Kun tehtävän tämä osa on valmis, sovellus toimii seuraavasti.
-  </p>
-
-  <img src="/img/ennustaja-3.gif" alt="Käyttöliittymä näyttää ennusteen kirjoitetun tekstin perusteella."/>
-
-  <p>
-    &nbsp;
-  </p>
-
-  <p>
-    Käyttöliittymä näyttää nyt jonkinlaisen reaaliaikaisen ennustuksen vaalipuheen toimivuudesta.
-  </p>
-
-  <h2>Valinnan ennustaja, osa 2</h2>
-
-  <p>
-    Tehdään toinen ennustaja. Kukin sana esiintyy jollain todennäköisyydellä valituiksi johtaneissa lauseissa ja jollain todennäköisyydellä lauseissa, jotka eivät johtaneet valintaan. Tämä "tietty todennäköisyys" tai "jokin todennäköisyys" voidaan laskea havainnoista eli aiemmasta datasta.
-  </p>
-
-  <p>
-    Tarkastellaan tätä seuraavan esimerkkidatan perusteella. Datan ensimmäinen merkki kuvaa valintaa (1 = kyllä, 0 = ei) ja seuraavat sanoja. Datassa on yhteensä yhdeksän riviä, joista ensimmäiset neljä johtavat valintaan ja seuraavat viisi eivät johda valintaan. Valintaa seuraa merkkejä -- erilaisia merkkejä on esimerkissä yhteensä 4 (a, b, c ja d).
-  </p>
-
-  <% partial 'partials/sample_output' do %>
-    1 a b
-    1 a c d
-    1 b c
-    1 a a
-    0 c c d
-    0 a b d
-    0 a b
-    0 c d
-    0 c d d d
-  <% end %>
-
-  <p>
-    Seuraava taulukko kuvaa kunkin merkin esiintymislukumääriä valintaan johtaneissa ja valintaan johtamattomissa lauseissa.
-  </p>
-
-  <table class="table">
-    <tr>
-      <th>
-	Merkki
-      </th>
-      <th>
-	Valittu
-      </th>
-      <th>
-	Ei valittu
-      </th>
-    </tr>
-    <tr>
-      <td>
-	a
-      </td>
-      <td>
-	4
-      </td>
-      <td>
-	2
-      </td>
-    </tr>
-    <tr>
-      <td>
-	b
-      </td>
-      <td>
-	2
-      </td>
-      <td>
-	2
-      </td>
-    </tr>
-    <tr>
-      <td>
-	c
-      </td>
-      <td>
-	2
-      </td>
-      <td>
-	4
-      </td>
-    </tr>
-    <tr>
-      <td>
-	d
-      </td>
-      <td>
-	1
-      </td>
-      <td>
-	6
-      </td>
-    </tr>
-  </table>
-
-
-  <p>
-    Tarkastellaan dataa.
-  </p>
-
-  <p>
-    Nopeasti katsoen vastaus kysymykseen "Millä todennäköisyydellä merkki 'c' johtaa valintaan?" on (merkin 'c' esiintymislukumäärät valintaan johtaneissa lauseissa / merkin 'c' esiintymislukumäärät yhteensä), eli 2/6, eli noin 33.33%. Vastaavasti vastaus kysymykseen "Millä todennäköisyydellä merkki 'd' ei johda valintaan?" on (merkin 'd' esiintymislukumäärät valintaan johtamattomissa lauseissa / merkin 'd' esiintymislukumäärät yhteensä), eli 6/7, eli noin 85.71%.
-  </p>
-
-  <p>
-    Entäpä kysymys "Millä todennäköisyydellä merkit 'a' ja 'd' johtavat valintaan?". Oletetaan, että merkit ovat riippumattomia toisistaan (lisää aiheesta <a href="https://fi.wikipedia.org/wiki/Todenn%C3%A4k%C3%B6isyys" target="_blank" norel>Wikipedian artikkelissa todennäköisyydestä</a>), jolloin voimme tarkastella kysymystä muodossa "Millä todennäköisyydellä merkki 'a' johtaa valintaan, ja, millä todennäköisyydellä merkki 'd' johtaa valintaan?", eli todennäköisyys "Millä todennäköisyydellä merkki 'a' johtaa valintaan" kerrottuna todennäköisyydellä "Millä todennäköisyydellä merkki 'd' johtaa valintaan?". Tämä olisi 4/6 * 1/7 eli noin 9.52%.
-  </p>
-
-  <p>
-    Asia ei ole kuitenkaan ihan näin yksinkertainen. Yllä oletamme, että valinnan todennäköisyys on aina fifti-fifti, eli joka toinen tulee valituksi ja joka toinen ei tule valituksi. Tämä ei kuitenkaan pidä paikkaansa. Datassa neljä riviä johti valintaan ja viisi riviä ei johtanut valintaan. Valinnan todennäköisyys riippumatta käytetyistä merkeistä tulee ottaa myös huomioon.
-  </p>
-
-  <p>
-    Tarkastellaan nyt kysymystä "Millä todennäköisyydellä merkki 'b' johtaa valintaan?". Merkki 'b' esiintyy valituissa ja valitsematta jääneissä lauseissa yhtä usein, eli kaksi kertaa neljästä. Valinnan todennäköisyys on datassa olevien rivien perusteella neljä yhdeksästä, eli noin 44.44%. Nyt merkin 'b' johtaminen valintaan on 4/9 * 2/4, eli noin 22.22%. Vastaavasti todennäköisyys sille, että merkki 'b' johtaa valitsematta jäämiseen on noin 5/9 * 2/4 eli 27.78%.
-  </p>
-
-  <p>
-    <em>
-      Kun haluamme tarkastella johtavatko tietyt merkit valintaan vai johtavatko ne valitsematta jäämiseen, tarkastelemme kummankin vaihtoehdon todennäköisyyttä ja valitsemme niistä suuremman.
-    </em>
-  </p>
-
-  <p>
-    Sama ajatus toimii merkkien lisäksi myös lauseilla.  Ohjelmallisesti mystinen algoritmi on seuraavanlainen.
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    double valitaan = valintaan johtaneiden lauseiden lukumäärä / lauseita yhteensä;
-    double hylataan = valintaan johtamattomien lauseiden lukumäärä / lauseita yhteensä;
-
-    jokaiselle sanalle sana annetussa lauseessa:
-
-        jos sanan sana esiintymiä on alle 5, jätä sana huomiotta
-
-        valitaan = valitaan * sanan sana esiintymiskerrat valituissa lauseissa / sanan esiintymiskerrat yhteensä
-
-        hylataan = hylataan * sanan sana esiintymiskerrat ei valituissa lauseissa / sanan esiintymiskerrat yhteensä
-
-
-    jos valitaan on suurempi kuin hylataan, palauta arvo 1
-    jos valitaan on pienempi kuin hylataan, palauta arvo -1
-    muulloin, palauta arvo 0
-  <% end %>
-
-  <p>
-    Toteuta metodi <code>public int valitaanMystisellaEnnustajalla(String lause)</code> edellisen kuvauksen perusteella. Joudut mahdollisesti myös täydentämään luokkaan määriteltyjä oliomuuttujia sekä muokkaamaan metodia <code>public void lisaa(boolean valitaan, String lause)</code>.
-  </p>
-
-  <p>
-    Voit kokeilla ohjelmasi toimintaa seuraavalla esimerkillä. <strong>Alla olevassa esimerkissä rajaus "jos sanan sana esiintymiä on alle 5, jätä sana huomiotta" on poissa. Palautettavassa versiossa rajauksen tulee kuitenkin esiintyä.</strong>
-  </p>
-
-  <% partial 'partials/code_highlight' do %>
-    Ennustaja ennustaja = new Ennustaja();
-    ennustaja.lisaa(true, "a b");
-    ennustaja.lisaa(true, "a c d");
-    ennustaja.lisaa(true, "b c");
-    ennustaja.lisaa(true, "a a");
-    ennustaja.lisaa(false, "c c d");
-    ennustaja.lisaa(false, "a b d");
-    ennustaja.lisaa(false, "a b");
-    ennustaja.lisaa(false, "c d");
-    ennustaja.lisaa(false, "c d d d");
-
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("olen aktiivinen toimija"));
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen(""));
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("a"));
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("b"));
-    System.out.println(ennustaja.valitaanSanojenLukumaariinPerustuen("a b c"));
-
-    System.out.println();
-
-    System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a"));
-    System.out.println(ennustaja.valitaanMystisellaEnnustajalla("b"));
-    System.out.println(ennustaja.valitaanMystisellaEnnustajalla("a b c"));
-  <% end %>
-
-  <% partial 'partials/sample_output' do %>
-    0
-    0
-    1
-    0
-    0
-
-    1
-    -1
-    -1
-  <% end %>
-
-  <p>
-    Muokkaa lopulta vielä graafista käyttöliittymää siten, että graafinen käyttöliittymä näyttää myös mystisen ennustajan tarjoaman ehdotuksen. Mikäli metodi <code>valitaanMystisellaEnnustajalla</code> palauttaa arvon 1, tulee tekstin olla "Mystisen ennustajan perusteella: Kyllä". Mikäli arvo on -1, tulee tekstin olla "Mystisen ennustajan perusteella: Ei". Muulloin tekstin tulee olla "Mystisen ennustajan perusteella: ???".
-  </p>
-
-  <p>
-    <em>
-      Ennustusmekanismi ei vieläkään ole kovin hyvä. Ohjelma ei esimerkiksi osaa käsitellä pilkkuja, pisteitä, tai muita erikoismerkkejä. Ohjelma käsittelee myös sanat kuten "kuntavaali" ja "kuntavaalit" täysin erillisinä sanoina. Edellä käsitelty "mystinen ennustaja" tulee tarkemmin tutuksi mm. tekoälyn johdatuskursseilla, missä ongelmaan opitaan myös parempia menetelmiä. Aiheesta opitaan lisää myös muunmuassa luonnollisen kielen käsittelyyn liittyvillä kursseilla sekä laajemmin digitaalisten ihmistieteiden tutkimuksen parissa.
-    </em>
-  </p>
-
 
 <% end %>
-
 
 
 <% partial 'partials/material_heading' do %>
   Ohjelmien testaaminen
 <% end %>
 
+<% partial 'partials/learning_objectives', locals: { name: 'Oppimistavoitteet' } do %>
+
+  <ul>
+    <li>
+      TODO
+    </li>
+  </ul>
+
+<% end %>
+
 - koko testiluokan kirjoittaminen?
 
 
+<% partial 'partials/material_heading' do %>
+  Yhteenveto
+<% end %>
 
 <%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a041' } %>
