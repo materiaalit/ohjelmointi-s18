@@ -29,21 +29,21 @@
 <% end %>
 
 <p>
-  Tutustutaan seuraavaksi graafisten käyttöliittymien luomiseen. Graafiset käyttöliittymät poikkeavat aiemmin toteuttamistamme tekstikäyttöliittymistä usealla tavalla. Graafisia käyttöliittymiä luodessa hyödynnämme ensisijaisesti käyttöliittymäkirjastoja, jotka tarjoavat valmiita käyttöliittymäkomponentteja kuten tekstikenttäelementtejä ja nappeja.
+  Tutustutaan seuraavaksi graafisten käyttöliittymien luomiseen. Graafisia käyttöliittymiä luodessa hyödynnämme ensisijaisesti käyttöliittymäkirjastoja, jotka tarjoavat valmiita komponentteja kuten nappeja ja tekstikenttiä. Käyttöliittymäkirjastot hoitavat komponenttien piirtämisen puolestamme, eli meidän ei tarvitse piirtää jokaista käyttöliittymässä olevaa komponenttia ohjelmassamme -- riittää, että komponentit lisätään ohjelmaan.
 </p>
 
 <p>
-  Käyttäjän syötteiden käsittely poikkeaa myös tekstikäyttöliittymistä. Siinä missä tekstikäyttöliittymissä toiminnallisuus kytketään tietyn muotoiseen syötteeseen, graafisissa käyttöliittymissä toiminnallisuus lisätään käyttöliittymäkomponentteihin. Ohjelmoija esimerkiksi lisää käyttöliittymän nappiin metodin, joka käsittelee napin painallukseen liittyvän tapahtuman.
+  Siinä missä tekstikäyttöliittymissä toiminnallisuus kytketään tietyn muotoiseen syötteeseen, graafisissa käyttöliittymissä toiminnallisuus lisätään käyttöliittymäkomponentteihin. Ohjelmoija esimerkiksi lisää käyttöliittymässä olevaan nappiin metodin, joka käsittelee napin painallukseen liittyvän tapahtuman.
 </p>
 
 <p>
-  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank" rel="noopener">JavaFX</a> käyttöliittymäkirjastoa.
+  Käytämme graafisten käyttöliittymien luomiseen Javan <a href="https://en.wikipedia.org/wiki/JavaFX" target="_blank" rel="noopener">JavaFX</a> käyttöliittymäkirjastoa. Toteuttamamme sovellukset ovat työpöytäsovelluksia.
 </p>
 
 <% partial 'partials/hint', locals: { name: 'Graafiset käyttöliittymät ja tarvittavat kirjastot' } do %>
 
   <p>
-    Graafisten käyttöliittymien luomiseen käytetään JavaFx-nimistä kirjastoa. Linux-koneilla joudut -- riippuen Javan asennuksesta -- asentamaan myös openjfx-kirjaston. Tämän asentaminen onnistuu Ubuntussa (komentoriviltä) komennolla:
+    Graafisten käyttöliittymien luomiseen käytetään JavaFX-nimistä kirjastoa. Linux-koneilla joudut -- riippuen Javan asennuksesta -- asentamaan myös openjfx-kirjaston. Tämän asentaminen onnistuu Ubuntussa (komentoriviltä) komennolla:
   </p>
 
   <pre>
@@ -81,7 +81,6 @@ public class JavaFxSovellus extends Application {
 <% end %>
 
 
-
 <p>
   Kun ohjelman käynnistää, sovellus näyttää seuraavalta.
 </p>
@@ -90,20 +89,13 @@ public class JavaFxSovellus extends Application {
 
 <p>&nbsp;</p>
 
-<% partial 'partials/hint', locals: { name: 'Omien JavaFX-sovellusten laatiminen' } do %>
-
-  <p>
-    Voit tehdä omia JavaFx-projekteja NetBeansissa valitsemalla File -&gt; New Project. Valitse tämän jälkeen projektilistauksesta JavaFx ja sieltä JavaFx Application. Tämän jälkeen edessäsi on projektien luomiseen käytetty näkymä, missä voit nimetä projektin.
-  </p>
-
-<% end %>
 
 <p>
-  Mitä ohjelmassa oikein tapahtuu? Luokkamme JavaFxSovellus perii luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html" target="_blank" rel="noopener">Application</a>, joka tarjoaa rungon graafisten käyttöliittymien luomiseen. Sovellus käynnistetään Application-luokalta perittävällä metodilla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch-java.lang.Class-java.lang.String...--" target="_blank" rel="noopener">launch</a>, jolle annetaan parametrina käynnistettävän luokan nimi muodossa <em>LuokanNimi.class</em>.
+  Mitä ohjelmassa oikein tapahtuu? Luokkamme JavaFxSovellus perii JavaFx-käyttöliittymäkirjaston luokan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html" target="_blank" rel="noopener">Application</a>, joka tarjoaa rungon graafisten käyttöliittymien luomiseen. Sovellus käynnistetään Application-luokalta perittävällä metodilla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch-java.lang.Class-java.lang.String...--" target="_blank" rel="noopener">launch</a>, jolle annetaan parametrina käynnistettävän luokan nimi muodossa <em>LuokanNimi.class</em> -- yllä luokan nimi on JavaFxSovellus, joten metodille launch annetaan parametrina <code>JavaFxSovellus.class</code>.
 </p>
 
 <p>
-  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init periytyy luokasta Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Jätimme sen tässä toteuttamatta, sillä ohjelmamme on melko yksinkertainen. Metodin init kutsumisen jälkeen ohjelma kutsuu metodia start, joka saa parametrinaan ikkunaa kuvaavan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank" rel="noopener">Stage</a>-olion. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle stage-oliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen.
+  Kun metodia launch kutsutaan, Application-luokassa sijaitseva metodi luo parametrina annetusta luokasta (tässä JavaFxSovellus) uuden olion ja kutsuu sen init-metodia. Metodi init on määritelty luokassa Application, ja sitä käytetään esimerkiksi ohjelmassa käytettävien olioiden alustamiseen. Metodin init kutsumisen jälkeen ohjelma kutsuu metodia start, joka saa parametrinaan ikkunaa kuvaavan <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html" target="_blank" rel="noopener">Stage</a>-olion. Yllä tehdyssä start-metodin toteutuksessa parametrina saadulle Stage-tyyppiselle ikkunaoliolle asetetaan otsikko metodilla setTitle, jonka jälkeen kutsutaan ikkunan näyttämiseen johtavaa metodia show. Lopulta ohjelma jää kuuntelemaan käyttöliittymässä tapahtuvia tapahtumia kuten ikkunan sulkemista, joka johtaa sovelluksen sammumiseen.
 </p>
 
 
@@ -111,10 +103,6 @@ public class JavaFxSovellus extends Application {
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jonka otsikkona on "Sovellukseni". Sovelluksen tulee käynnistyä kun main-metodi suoritetaan.
-  </p>
-
-  <p>
-    Huom! Sekä tässä että tulevassa tehtävässä testit käynnistävät sovelluksen. Käytössä olevissa testeissä on <a href="https://github.com/TestFX/TestFX/issues/245" target="_blank" rel="noopener">huomattu ongelmia</a> Windows-käyttöjärjestelmissä silloin, kun käyttöjärjestelmä skaalaa ruutua (tapahtuu isoilla resoluutioilla). Vaikkei testit toimisi paikallisesti oikein, voit palauttaa tehtävän kuitenkin TMC:lle, joka antaa testeistä tarkoitetun palautteen.
   </p>
 
 <% end %>
@@ -172,7 +160,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Käyttöliittymäkomponentit lisätään niiden asettelusta vastaavan olion -- edellä FlowPane -- "lapsiksi". Tämä liittyy JavaFx:n suunnittelussa tehtyyn päätökseen, missä jokainen käyttöliittymäkomponenttien asetteluun käytettävä olio voi sisältää muita käyttöliittymäkomponenttien asetteluun käytettäviä olioita sekä luonnollisesti myös käyttöliittymäkomponentteja. Tämä mahdollistaa graafiset käyttöliittymät, joissa käyttöliittymäkomponenttien asettelutapa riippuu niiden paikasta käyttöliittymässä. Esimerkiksi käyttöliittymässä ylhäällä olevan valikon vaihtoehdot asetetaan yleensä vierekkäin, kun taas listattavat asiat allekkain.
+  Käyttöliittymäkomponentit lisätään niiden asettelusta vastaavan olion -- edellä FlowPane -- "lapsiksi". Tämä liittyy JavaFx:n suunnittelussa tehtyyn päätökseen, missä jokainen käyttöliittymäkomponenttien asetteluun käytettävä olio voi sisältää muita käyttöliittymäkomponenttien asetteluun käytettäviä olioita sekä käyttöliittymäkomponentteja. Tämä mahdollistaa graafiset käyttöliittymät, joissa käyttöliittymäkomponenttien asettelutapa riippuu niiden paikasta käyttöliittymässä. Esimerkiksi käyttöliittymässä ylhäällä olevan valikon vaihtoehdot asetetaan yleensä vierekkäin, kun taas listattavat asiat allekkain.
 </p>
 
 <p>
@@ -220,10 +208,10 @@ public class JavaFxSovellus extends Application {
 
     @Override
     public void start(Stage ikkuna) {
-        Label teksti = new Label("Tekstielementti");
+        Label tekstikomponentti = new Label("Tekstielementti");
 
         FlowPane komponenttiryhma = new FlowPane();
-        komponenttiryhma.getChildren().add(teksti);
+        komponenttiryhma.getChildren().add(tekstikomponentti);
 
         Scene nakyma = new Scene(komponenttiryhma);
 
@@ -237,14 +225,14 @@ public class JavaFxSovellus extends Application {
 }
 <% end %>
 
-<img src="/img/material/gui-tekstielementti.png" alt="Ikkuna, jossa on tekstielementti. Ikkunassa näkyy teksti 'Tekstielementti'."/>
+<img src="/img/material/gui-tekstielementti.png" alt="Ikkuna, jossa on tekstikomponentti. Ikkunassa näkyy teksti 'Tekstielementti'."/>
 
 <p>
   &nbsp;
 </p>
 
 <p>
-  Käyttöliittymään saa painikkeita <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html" target="_blank" rel="noopener">Button</a>-luokan avulla. Napin lisääminen käyttöliittymään tapahtuu aivan kuten tekstielementin lisääminen.
+  Käyttöliittymään saa painikkeita <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html" target="_blank" rel="noopener">Button</a>-luokan avulla. Napin lisääminen käyttöliittymään tapahtuu aivan kuten tekstikomponentin lisääminen.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -260,10 +248,10 @@ public class JavaFxSovellus extends Application {
 
     @Override
     public void start(Stage ikkuna) {
-        Button nappi = new Button("Tämä on nappi");
+        Button nappikomponentti = new Button("Tämä on nappi");
 
         FlowPane komponenttiryhma = new FlowPane();
-        komponenttiryhma.getChildren().add(nappi);
+        komponenttiryhma.getChildren().add(nappikomponentti);
 
         Scene nakyma = new Scene(komponenttiryhma);
 
@@ -282,7 +270,7 @@ public class JavaFxSovellus extends Application {
 <p>&nbsp;</p>
 
 <p>
-  Sovellukseen voi lisätä myös useampia käyttöliittymäelementtejä samaan aikaan. Alla käytössä on sekä nappi että tekstielementti.
+  Sovellukseen voi lisätä myös useampia käyttöliittymäelementtejä samaan aikaan. Alla käytössä on sekä nappi että tekstikomponentti.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -299,12 +287,12 @@ public class JavaFxSovellus extends Application {
 
     @Override
     public void start(Stage ikkuna) {
-        Button nappi = new Button("Tämä on nappi");
-        Label teksti = new Label("Tekstielementti");
+        Button nappikomponentti = new Button("Tämä on nappi");
+        Label tekstikomponentti = new Label("Tekstielementti");
 
         FlowPane komponenttiryhma = new FlowPane();
-        komponenttiryhma.getChildren().add(nappi);
-        komponenttiryhma.getChildren().add(teksti);
+        komponenttiryhma.getChildren().add(nappikomponentti);
+        komponenttiryhma.getChildren().add(tekstikomponentti);
 
         Scene nakyma = new Scene(komponenttiryhma);
 
@@ -322,7 +310,7 @@ public class JavaFxSovellus extends Application {
   Sovellus näyttää seuraavalta.
 </p>
 
-<img src="/img/material/gui-nappi-ja-teksti.png" alt="Ikkuna, jossa on nappi sekä tekstielementti. Napissa on teksti 'Tämä on nappi' ja tekstielementti sisältää tekstin 'Tekstielementti'."/>
+<img src="/img/material/gui-nappi-ja-teksti.png" alt="Ikkuna, jossa on nappi sekä tekstikomponentti. Napissa on teksti 'Tämä on nappi' ja tekstikomponentti sisältää tekstin 'Tekstielementti'."/>
 
 <p>
   &nbsp;
@@ -345,10 +333,10 @@ public class JavaFxSovellus extends Application {
   Ainoa merkittävä ero käyttöliittymäkomponenttien lisäämisessä liittyy siihen, että mihin kohtaan käyttöliittymää komponentin haluaa lisätä. Tarkastellaan käyttöliittymäkomponenttien asettelua kohta.
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Nappi ja tekstielementti' } do %>
+<% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikomponentti' } do %>
 
   <p>
-    Luo edellistä esimerkkiä seuraten tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on nappi (Button) ja tekstielementti (Label). Napin tulee olla tekstielementin vasemmalla puolella tai yläpuolella.
+    Luo edellistä esimerkkiä seuraten tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on nappi (Button) ja tekstikomponentti (Label). Napin tulee olla tekstikomponentin vasemmalla puolella tai yläpuolella.
   </p>
 
 <% end %>
@@ -371,10 +359,10 @@ public class JavaFxSovellus extends Application {
 </p>
 
 <p>
-  Edellisissä esimerkeissä käytimme käyttöliittymäkomponenttien asetteluun <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html" target="_blank" rel="noopener">FlowPane</a>-nimistä luokkaa. FlowPanen avulla käyttöliittymään lisättävät komponentit tulevat vierekkäin. Jos ikkunan koko pienenee siten, että kaikki komponentit eivät mahdu vierekkäin, rivitetään komponentit automaattisesti. Alla olevassa kuvassa edellisen esimerkin tuottamaa sovellusta on kavennettu, jolloin elementit ovat rivittyneet automaattisesti.
+  Edellisissä esimerkeissä käytimme käyttöliittymäkomponenttien asetteluun <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html" target="_blank" rel="noopener">FlowPane</a>-nimistä luokkaa. FlowPanen avulla käyttöliittymään lisättävät komponentit tulevat vierekkäin. Jos ikkunan koko pienenee siten, että kaikki komponentit eivät mahdu vierekkäin, rivitetään komponentit automaattisesti. Alla olevassa kuvassa edellisen esimerkin tuottamaa sovellusta on kavennettu, jolloin komponentit ovat rivittyneet automaattisesti.
 </p>
 
-<img src="/img/material/gui-nappi-ja-teksti-rivitetty.png" alt="Ikkuna, jossa on nappi sekä tekstielementti. Napissa on teksti 'Tämä on nappi' ja tekstielementti sisältää tekstin 'Tekstielementti'. Ikkunan leveys on niin pieni, että elementit ovat rivitetty omille riveilleen."/>
+<img src="/img/material/gui-nappi-ja-teksti-rivitetty.png" alt="Ikkuna, jossa on nappi sekä tekstikomponentti. Napissa on teksti 'Tämä on nappi' ja tekstikomponentti sisältää tekstin 'Tekstielementti'. Ikkunan leveys on niin pieni, että komponentit ovat omilla riveillään."/>
 
 <p>&nbsp;</p>
 
@@ -419,7 +407,7 @@ public class JavaFxSovellus extends Application {
 }
 <% end %>
 
-<img src="/img/material/gui-borderpane.png" alt="BorderPane-asettelua käyttävä käyttöliittymä, jossa jokaiseen pääkohtaan on asetettu tekstielementti."/>
+<img src="/img/material/gui-borderpane.png" alt="BorderPane-asettelua käyttävä käyttöliittymä, jossa jokaiseen pääkohtaan on asetettu tekstikomponentti."/>
 
 <p>
   &nbsp;
@@ -429,7 +417,7 @@ public class JavaFxSovellus extends Application {
 
 
   <p>
-    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, joka käyttää BorderPane-luokkaa elementtien asetteluun. Lisää ylälaitaan tekstielementti, jossa on teksti "NORTH", oikeaan laitaan tekstielementti, jossa on teksti "EAST", ja alalaitaan tekstielementti, jossa on teksti "SOUTH".
+    Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, joka käyttää BorderPane-luokkaa käyttöliittymäkomponenttien asetteluun. Lisää ylälaitaan tekstikomponentti, jossa on teksti "NORTH", oikeaan laitaan tekstikomponentti, jossa on teksti "EAST", ja alalaitaan tekstikomponentti, jossa on teksti "SOUTH".
   </p>
 
 <% end %>
@@ -459,14 +447,14 @@ public void start(Stage ikkuna) {
 }
 <% end %>
 
-<img src="/img/material/gui-hbox.png" alt="Tekstielementit on asetettu riviin HBox-asettelun avulla. Elementit ovat kiinni toisissaan."/>
+<img src="/img/material/gui-hbox.png" alt="Tekstikomponentit on asetettu riviin HBox-asettelun avulla. Komponentit ovat kiinni toisissaan."/>
 
 <p>
   &nbsp;
 </p>
 
 <p>
-  Kuten edellisestä esimerkistä huomaa, HBox asettaa käyttöliittymäelementit oletuksena täysin toisiinsa kiinni. Metodin setSpacing avulla elementtien väliin saa tyhjää.
+  Kuten edellisestä esimerkistä huomaa, HBox asettaa käyttöliittymäkomponentit oletuksena täysin toisiinsa kiinni. Metodin setSpacing avulla käyttöliittymäkomponenttien väliin saa tyhjää.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -486,7 +474,7 @@ public void start(Stage ikkuna) {
 }
 <% end %>
 
-<img src="/img/material/gui-hbox-spacing.png" alt="Tekstielementit on asetettu riviin HBox-asettelun avulla. Elementtien välillä on 10 pikseliä eroa."/>
+<img src="/img/material/gui-hbox-spacing.png" alt="Käyttöliittymäkomponentit on asetettu riviin HBox-asettelun avulla. Komponenttien välillä on 10 pikseliä eroa."/>
 
 <p>
   &nbsp;
@@ -496,7 +484,7 @@ public void start(Stage ikkuna) {
   Luokka <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/VBox.html" target="_blank">VBox</a> toimii vastaavasti, mutta asettelee käyttöliittymäkomponentit allekkain.
 </p>
 
-<img src="/img/material/gui-vbox-spacing.png" alt="Tekstielementit on asetettu allekkain VBox-asettelun avulla. Elementtien välillä on 10 pikseliä eroa."/>
+<img src="/img/material/gui-vbox-spacing.png" alt="Käyttöliittymäkomponentit on asetettu allekkain VBox-asettelun avulla. Komponenttien välillä on 10 pikseliä eroa."/>
 
 <p>
   &nbsp;
@@ -603,7 +591,7 @@ public class JavaFxSovellus extends Application {
 <% partial 'partials/exercise', locals: { name: 'Tekstitilastointia' } do %>
 
   <p>
-    Luo tehtäväpohjassa olevaan luokkaan sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstielementtiä. Aseta alalaidan tekstielementit HBox-olion sisään. Ensimmäisessä tekstielementissä tulee olla teksti "Kirjaimia: 0". Toisessa tekstielementissä tulee olla teksti "Sanoja: 0". Kolmannessa tekstielementissä tulee olla teksti "Pisin sana on:".
+    Luo tehtäväpohjassa olevaan luokkaan sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstikomponenttia. Aseta alalaidan tekstikomponentit HBox-olion sisään. Ensimmäisessä tekstikomponentissa tulee olla teksti "Kirjaimia: 0". Toisessa tekstikomponentissa tulee olla teksti "Sanoja: 0". Kolmannessa tekstikomponentissa tulee olla teksti "Pisin sana on:".
   </p>
 
 <% end %>
@@ -647,11 +635,11 @@ nappi.setOnAction((event) -&gt; {
 </p>
 
 <p>
-  Käyttöliittymäkomponentteihin liitetyt tapahtumankäsittelijät kuten edellä käytetty EventHandler liittyvät aina tiettyihin käyttöliittymäkomponentteihin. Aina kun käyttöliittymäkomponentille tehdään toiminto, esimerkiksi napille napin painaminen, jokaista kyseiseen käyttöliittymäkomponenttiin liittyvää tapahtumankäsittelijää kutsutaan, ja niihin liittyvä ohjelmakoodi suoritetaan.
+  Käyttöliittymäkomponentteihin liitetyt <strong>tapahtumankäsittelijät</strong> kuten edellä käytetty EventHandler liittyvät aina tiettyihin käyttöliittymäkomponentteihin. Aina kun käyttöliittymäkomponentille tehdään toiminto, esimerkiksi napille napin painaminen, jokaista kyseiseen käyttöliittymäkomponenttiin liitettyä tapahtumankäsittelijää kutsutaan, ja niihin liittyvä ohjelmakoodi suoritetaan.
 </p>
 
 <p>
-  Haluamme tyypillisesti että tapahtumankäsittelijä muokkaa jonkun olion tilaa. Päästäksemme olioon käsiksi, tulee tapahtumankäsittelijällä olla viite käsiteltävään olioon. Pohditaan seuraavaa käyttöliittymää jossa on kaksi tekstikenttää sekä nappi.
+  Haluamme usein että tapahtumankäsittelijä muokkaa jonkun olion tilaa. Päästäksemme olioon käsiksi, tulee tapahtumankäsittelijällä olla viite käsiteltävään olioon. Pohditaan seuraavaa käyttöliittymää jossa on kaksi tekstikenttää sekä nappi.
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -681,7 +669,7 @@ public void start(Stage ikkuna) {
 <p>&nbsp;</p>
 
 <p>
-  Haluaisimme luoda tilanteen, missä vasemman tekstikentän sisältö kopioituu oikean kentän sisällöksi kun käyttäjä painaa nappia. Tämä onnistuu EventHandler-rajapinnan toteuttavan olion avulla. Toteutettava metodi pystyy käyttämään metodin edellä määriteltyjä olioita, jos olioiden arvoa ei aseteta ohjelmassa uudestaan yhtäsuuruusmerkillä (eli viitteet eivät muutu).
+  Haluamme ohjelman, missä vasemman tekstikentän sisältö kopioituu oikean kentän sisällöksi kun käyttäjä painaa nappia. Tämä onnistuu EventHandler-rajapinnan toteuttavan olion avulla. 
 </p>
 
 <% partial 'partials/code_highlight' do %>
@@ -716,10 +704,14 @@ public void start(Stage ikkuna) {
   &nbsp;
 </p>
 
+<p>
+  Huom! Toteutettava metodi pystyy käyttämään metodin edellä määriteltyjä olioita, mikäli käytettävien olioiden arvoa ei aseteta ohjelmassa uudestaan yhtäsuuruusmerkillä (eli viitteet eivät muutu).
+</p>
+
 <% partial 'partials/exercise', locals: { name: 'Ilmoitin' } do %>
 
   <p>
-    Toteuta tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on kolme käyttöliittymäkomponenttia. Ylin komponentti on tekstikenttä (TextField), keskimmäinen komponentti nappi (Button), ja alin komponentti tekstielementti (Label). Asettele komponentit VBox-luokan avulla. Käyttöliittymän tulee näyttää (esimerkiksi) seuraavalta.
+    Toteuta tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on kolme käyttöliittymäkomponenttia. Ylin komponentti on tekstikenttä (TextField), keskimmäinen komponentti nappi (Button), ja alin komponentti tekstikomponentti (Label). Asettele komponentit VBox-luokan avulla. Käyttöliittymän tulee näyttää (esimerkiksi) seuraavalta.
   </p>
 
   <img src="/img/material/gui-ilmoitin-1.png" alt="."/>
@@ -727,7 +719,7 @@ public void start(Stage ikkuna) {
   <p>&nbsp;</p>
 
   <p>
-    Lisää tämän jälkeen sovellukseen toiminnallisuus, missä napin painaminen johtaa siihen, että tekstikentän teksti kopioituu tekstielementin arvoksi. Alla olevassa esimerkissä tekstikenttään on kirjoitettu teksti "hei mualima!", jonka jälkeen nappia on painettu.
+    Lisää tämän jälkeen sovellukseen toiminnallisuus, missä napin painaminen johtaa siihen, että tekstikentän teksti kopioituu tekstikomponentin arvoksi. Alla olevassa esimerkissä tekstikenttään on kirjoitettu teksti "hei mualima!", jonka jälkeen nappia on painettu.
   </p>
 
   <img src="/img/material/gui-ilmoitin-2.png" alt="."/>
@@ -822,7 +814,7 @@ public interface Henkilovarasto {
 <% end %>
 
 <p>
-  Käyttöliittymää toteutettaessa hyvä aloitustapa on ensin käyttöliittymän piirtäminen, jota seuraa sopivien käyttöliittymäkomponenttien lisääminen käyttöliittymään. Henkilöiden tallennuksessa tarvitsemme kentät nimelle ja henkilötunnukselle sekä napin jolla henkilö voidaan lisätä. Käytetään luokkaa TextField nimen ja henkilötunnuksen syöttämiseen ja luokkaa Button napin toteuttamiseen. Luodaan käyttöliittymään lisäksi selventävät Label-tyyppiset selitystekstit.
+  Käyttöliittymää toteutettaessa hyvä aloitustapa on ensin käyttöliittymän piirtäminen, jota seuraa sopivien käyttöliittymäkomponenttien lisääminen käyttöliittymään. Henkilöiden tallennuksessa tarvitsemme kentät nimelle ja henkilötunnukselle sekä napin jolla henkilö voidaan lisätä. Käytetään luokkaa TextField nimen ja henkilötunnuksen syöttämiseen ja luokkaa Button napin toteuttamiseen. Luodaan käyttöliittymään lisäksi käyttöliittymän toiminnallisuutta selventävät Label-tyyppiset selitystekstit.
 </p>
 
 <p>
@@ -1032,6 +1024,9 @@ public class HenkiloSovellus extends Application {
   }
 <% end %>
 
+<p>
+  Parametreja käyttämällä ohjelmalle voisi kertoa esimerkiksi henkilöiden tallentamiseen ja lataamiseen käytetyn tiedoston nimen tai vaikkapa verkko-osoitteen.
+</p>
 
 <% partial 'partials/exercise', locals: { name: 'Käyttäjän otsikko' } do %>
 
@@ -1689,7 +1684,7 @@ nappi.setFont(Font.font("Monospaced", 40));
   <h2>Käyttöliittymä</h2>
 
   <p>
-    Muokkaa luokkaa RistinollaSovellus siten, että se käynnistää graafisen käyttöliittymän. Käytä käyttöliittymäkomponenttien asetteluun ensin BorderPane-luokkaa. Aseta BorderPanen ylälaitaan tekstielementti, joka sisältää tiedon vuorosta sekä pelin loppuessa tiedon pelin loppumisesta. Aseta BorderPanen keskelle GridPane, joka sisältää 9 nappia. GridPanessa tulee olla 3 riviä ja 3 saraketta, jolloin napit muodostavat 3x3-ruudukon.
+    Muokkaa luokkaa RistinollaSovellus siten, että se käynnistää graafisen käyttöliittymän. Käytä käyttöliittymäkomponenttien asetteluun ensin BorderPane-luokkaa. Aseta BorderPanen ylälaitaan tekstikomponentti, joka sisältää tiedon vuorosta sekä pelin loppuessa tiedon pelin loppumisesta. Aseta BorderPanen keskelle GridPane, joka sisältää 9 nappia. GridPanessa tulee olla 3 riviä ja 3 saraketta, jolloin napit muodostavat 3x3-ruudukon.
   </p>
 
 
