@@ -8,7 +8,7 @@
 <% partial 'partials/hint', locals: { name: 'Kahdennentoista osan tavoitteet' } do %>
 
   <p>
-    Tutustuu graafisten käyttöliittymien ohjelmointiin. Tuntee muutamia käyttöliittymäkomponentteja, käyttöliittymäkomponenttien asettelun mekanismeja, sekä osaa käsitellä käyttöliittymän tapahtumia. Osaa tehdä käyttöliittymiä, jotka sisältävät useamman näkymän (esimerkiksi kirjautumisnäkymä, tiedon listaukseen käytettävä näkymä, tiedon muokkaukseen käytettävä näkymä).
+    Tutustut graafisten käyttöliittymien ohjelmointiin. Tunnet muutamia käyttöliittymäkomponentteja, käyttöliittymäkomponenttien asettelun mekanismeja, sekä osaat käsitellä käyttöliittymän tapahtumia. Osaat tehdä käyttöliittymiä, jotka sisältävät useamman näkymän.
   </p>
 
 <% end %>
@@ -22,7 +22,19 @@
 
   <ul>
     <li>
-      TODO
+      Tiedät mistä käyttöliittymät koostuvat ja osaat käynnistää graafisen käyttöliittymän.
+    </li>
+    <li>
+      Tunnet muutamia käyttöliittymäkomponentteja ja osaat lisätä niitä käyttöliittymään.
+    </li>
+    <li>
+      Tunnet menetelmiä käyttöliittymäkomponenttien asetteluun.
+    </li>
+    <li>
+      Tunnet käsitteen tapahtumankäsittelijä ja osaat käsitellä käyttöliittymän tapahtumia. 
+    </li>
+    <li>
+      Tunnet menetelmiä sovelluslogiikan ja käyttöliittymälogiikan eriyttämiseen.
     </li>
   </ul>
 
@@ -1049,7 +1061,10 @@ public class HenkiloSovellus extends Application {
 
   <ul>
     <li>
-      TODO
+      Harjoittelet useamman näkymän lisäämistä graafiseen käyttöliittymään. 
+    </li>
+    <li>
+      Tunnet näkymän vaihtamiseen käytettäviä menetelmiä.
     </li>
   </ul>
 
@@ -1724,7 +1739,7 @@ nappi.setFont(Font.font("Monospaced", 40));
 
   <ul>
     <li>
-      TODO
+      Kertaat automaattisten testien kirjoittamista.
     </li>
   </ul>
 
@@ -1738,22 +1753,98 @@ nappi.setFont(Font.font("Monospaced", 40));
   Mikäli se, miten tehtäviä luodaan, on unohtunut, voit käydä palauttamassa ohjeet mieleesi kurssimateriaalin <a href="/part2/">toisessa osassa</a>. Muistathan erityisesti erotella lähdekoodista vain malliratkaisuun kuuluvat rivit, jotta ne eivät näy tehtävää tekevälle.
 </p>
 
-<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: MITÄ???' } do %>
+<% partial 'partials/general_callout', locals: { name: 'Suunnittele oma tehtävä: Kurssin kertausta' } do %>
+
   <p>
-    Jotain jotain luo tehtävä (MILLAINEN TEHTÄVÄ???=, jonka tekijää pyydetään kirjoittamaan metodi, joka palauttaa jotain (ei ole void). Kirjoita tuolle metodille kattavat testit. Huomaa, että koodi kirjoitetaan luokkaan Submission ja tuon luokan metodeja kutsutaan tyylillä Submission.metodi(). Jotain jotain.
+    Tehtävänäsi on suunnitella ja luoda tehtävä. Tehtävässä opiskelijaa tulee pyytää luomaan yksi tai useampi luokkametodi, joka saa parametrinaan jotain, ja joka lopulta palauttaa jotain. Metodin tulee siis olla muotoa <code>public static <em>palautus</em> <em>metodinNimi</em>(<em>parametrit</em>)</code>. Ohjelman käynnistämiseen kutsuttava metodi voi kutsua myös muita metodeja.
   </p>
 
   <p>
-    Tehtävien luomistehtävät vastaavat kurssin pisteytyksessä ohjelmointitehtävää. VASTAAVATKO??????
+    Kirjoita ohjelmaan liittyvälle metodillesi (tai metodeillesi) kattavat testit. Huomaa, että metodisi tulee sijaitsemaan luokassa <code>Submission</code>, joten luokkametodien kutsu tapahtuu muodossa <code>Submission.metodi()</code>.
   </p>
+
+  <p>
+    Alla on annettu kaksi esimerkkiä ohjelman käynnistävästä metodista sekä sen testistä.
+  </p>
+
+  <p>
+    Ensimmäisessä esimerkissä metodi saa parametrinaan Scanner-olion, lukee sen rivit ja palauttaa rivit sisältävän merkkijonon. Ohjelman käynnistävä metodi luokassa Submission.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public static String lueJaTulosta(Scanner syote) {
+        String tulostus = "";
+        while (syote.hasNextLine()) {
+            tulostus = tulostus = syote.nextLine();
+        }
+        return tulostus;
+    }
+  <% end %>
+
+  <p>
+    Metodin testi luokkaan SubmissionTest.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    @Test
+    public void testaaSyote() {
+        Scanner syote = new Scanner("hei\nmaailma\n");
+        String tulostus = Submission.lueJaTulosta(syote);
+        assertEquals("heimaailma", tulostus);
+    }
+  <% end %>
+    
+  <p>
+    Toisessa esimerkissä metodi saa parametrinaan merkkijonoja sisältävän listan sekä merkkijonon, ja metodi palauttaa listan joka sisältää vain ne merkkijonot joissa esiintyy käyttäjän metodille antama merkkijono.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    public static ArrayList&lt;String&gt; rajaa(ArrayList&lt;String&gt; sanat, String pitaaSisaltaa) {
+        ArrayList&lt;String&gt; uusi = new ArrayList&lt;&gt;();
+        for (String sana: sanat) {
+            if (sana.contains(pitaaSisaltaa)) {
+                uusi.add(sana);
+            }
+        }
+
+        return uusi;
+    }
+  <% end %>
+
+  <p>
+    Metodin testi luokkaan SubmissionTest.
+  </p>
+
+  <% partial 'partials/code_highlight' do %>
+    @Test
+    public void testaaSyote() {
+        ArrayList&lt;String&gt; sanat = new ArrayList&lt;&gt;();
+        sanat.add("eka");
+        sanat.add("toka");
+        sanat.add("kolmas");
+
+        ArrayList&lt;String&gt; sanat = Submission.rajaa(sanat, "ok");
+        
+        assertEquals(1, sanat.size());
+        assertEquals("toka", sanat.get(0));
+    }
+  <% end %>
+
+  <p>
+    Tee tehtävästäsi edellisiä esimerkkejä laajempi -- voit erityisesti antaa lisää parametreja ohjelman käynnistämiseen käytettävälle metodille. Myös ohjelman käynnistävä metodi voi palauttaa jotain muuta kuten esimerkiksi listan tai hajautustaulun (muistathan tällöin tarvittavat importit). Tehtävien luomistehtävät käsitellään pisteytyksessä bonuksena.
+  </p>  
 
 <% end %>
 
 <div class='crowdsorcerer-widget' data-assignment='20'></div>
 
-
 <% partial 'partials/material_heading' do %>
   Yhteenveto
 <% end %>
 
-<%= partial 'partials/quiz', locals: { id: '5a987a0f7863c4000454a041' } %>
+
+<p>
+  Kahdennessatoista osassa eli Ohjelmoinnin jatkokurssin viidennessä osassa tutustuimme graafisten käyttöliittymien luomiseen. Harjoittelimme käyttöliittymäkomponenttien lisäämistä, asettelua sekä niissä tapahtuviin tapahtumiin reagointia. Teimme myös muutamia graafisia käyttöliittymiä, jotka sisältävät useamman näkymän. Lopuksi kertasimme testien kirjoittamista.
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '5bf7a0100f49d53dce30b93f' } %>
