@@ -2,7 +2,7 @@
   title: Osa 12
   exercise_page: true
   quiz_page: true
-  published: false
+  published: true
 ---
 
 <% partial 'partials/hint', locals: { name: 'Kahdennentoista osan tavoitteet' } do %>
@@ -111,7 +111,7 @@ public class JavaFxSovellus extends Application {
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Sovellukseni' } do %>
+<% partial 'partials/exercise', locals: { name: 'Sovellukseni', model_solution: '54366' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jonka otsikkona on "Sovellukseni". Sovelluksen tulee käynnistyä kun main-metodi suoritetaan.
@@ -345,7 +345,7 @@ public class JavaFxSovellus extends Application {
   Ainoa merkittävä ero käyttöliittymäkomponenttien lisäämisessä liittyy siihen, että mihin kohtaan käyttöliittymää komponentin haluaa lisätä. Tarkastellaan käyttöliittymäkomponenttien asettelua kohta.
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikomponentti' } do %>
+<% partial 'partials/exercise', locals: { name: 'Nappi ja tekstielementti', model_solution: '54628' } do %>
 
   <p>
     Luo edellistä esimerkkiä seuraten tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on nappi (Button) ja tekstikomponentti (Label). Napin tulee olla tekstikomponentin vasemmalla puolella tai yläpuolella.
@@ -353,7 +353,7 @@ public class JavaFxSovellus extends Application {
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikenttä' } do %>
+<% partial 'partials/exercise', locals: { name: 'Nappi ja tekstikenttä', model_solution: '54629' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä, jossa on nappi ja tekstikenttä. Tekstikentän saa toteutettua luokalla <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html" target="_blank" rel="noopener">TextField</a>. Napin tulee olla tekstikentän vasemmalla puolella tai yläpuolella.
@@ -425,7 +425,7 @@ public class JavaFxSovellus extends Application {
   &nbsp;
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'BorderPane' } do %>
+<% partial 'partials/exercise', locals: { name: 'BorderPane', model_solution: '54630' } do %>
 
 
   <p>
@@ -600,7 +600,7 @@ public class JavaFxSovellus extends Application {
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Tekstitilastointia' } do %>
+<% partial 'partials/exercise', locals: { name: 'Tekstitilastointia', model_solution: '54631' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan sovellus, joka käyttää BorderPane-luokkaa asetteluun. Keskellä tulee olla TextArea-luokasta luotu tekstikenttä, ja alalaidassa kolme tekstikomponenttia. Aseta alalaidan tekstikomponentit HBox-olion sisään. Ensimmäisessä tekstikomponentissa tulee olla teksti "Kirjaimia: 0". Toisessa tekstikomponentissa tulee olla teksti "Sanoja: 0". Kolmannessa tekstikomponentissa tulee olla teksti "Pisin sana on:".
@@ -720,7 +720,7 @@ public void start(Stage ikkuna) {
   Huom! Toteutettava metodi pystyy käyttämään metodin edellä määriteltyjä olioita, mikäli käytettävien olioiden arvoa ei aseteta ohjelmassa uudestaan yhtäsuuruusmerkillä (eli viitteet eivät muutu).
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Ilmoitin' } do %>
+<% partial 'partials/exercise', locals: { name: 'Ilmoitin', model_solution: '54632' } do %>
 
   <p>
     Toteuta tehtäväpohjassa olevaan luokkaan käyttöliittymä, jossa on kolme käyttöliittymäkomponenttia. Ylin komponentti on tekstikenttä (TextField), keskimmäinen komponentti nappi (Button), ja alin komponentti tekstikomponentti (Label). Asettele komponentit VBox-luokan avulla. Käyttöliittymän tulee näyttää (esimerkiksi) seuraavalta.
@@ -788,7 +788,7 @@ vasenTeksti.textProperty().addListener((muutos, vanhaArvo, uusiArvo) -&gt; {
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Tekstitilastointia, osa II' } do %>
+<% partial 'partials/exercise', locals: { name: 'Tekstitilastointia, osa II', model_solution: '54633' } do %>
 
   <p>
     Kopioi tehtävässä Tekstitilastointia tekemäsi toteutus tehtäväpohjassa olevaan luokkaan ja liitä mukaan yllä olevassa esimerkissä oleva toiminnallisuus tilastojen laskemiseen. Lopputuloksena ohjelman pitäisi laskea kirjoitetusta tekstistä tilastoja, jotka päivittyvät automaattisesti sovellukseen.
@@ -1040,14 +1040,14 @@ public class HenkiloSovellus extends Application {
   Parametreja käyttämällä ohjelmalle voisi kertoa esimerkiksi henkilöiden tallentamiseen ja lataamiseen käytetyn tiedoston nimen tai vaikkapa verkko-osoitteen.
 </p>
 
-<% partial 'partials/exercise', locals: { name: 'Käyttäjän otsikko' } do %>
+<% partial 'partials/exercise', locals: { name: 'Käyttäjän otsikko', model_solution: '54634' } do %>
 
   <p>
     Kirjoita ohjelma, joka kysyy tekstikäyttöliittymässä käyttäjältä sovelluksen otsikkoa. Kun käyttäjä syöttää otsikon tekstikäyttöliittymään ja painaa enter, käyttäjälle näytetään graafinen käyttöliittymä, jonka otsikkona on käyttäjän syöttämä otsikko.
   </p>
 
   <p>
-    Huomaa, että tässä tehtävässä ei ole automaattisia testejä. Palauta sovellus kun se toimii toivotulla tavalla.
+    Huomaa, että tässä tehtävässä ei ole automaattisia testejä. Palauta sovellus kun se toimii tehtävänannossa kuvatulla tavalla.
   </p>
 
 <% end %>
@@ -1120,7 +1120,7 @@ public class HenkiloSovellus extends Application {
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Useampi Näkymä' } do %>
+<% partial 'partials/exercise', locals: { name: 'Useampi Näkymä', model_solution: '54635' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan UseampiNakyma sovellus, joka sisältää kolme erillistä näkymää. Näkymät ovat seuraavat:
@@ -1246,7 +1246,7 @@ public class HenkiloSovellus extends Application {
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Tervehtijä' } do %>
+<% partial 'partials/exercise', locals: { name: 'Tervehtijä', model_solution: '54636' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan TervehtijaSovellus sovellus, jossa on kaksi näkymää. Ensimmäisessä näkymässä on tekstikenttä, jolla kysytään käyttäjän nimeä. Toisessa näkymässä käyttäjälle näytetään tervehdysteksti. Tervehdystekstin tulee olla muotoa "Tervetuloa nimi!", missä nimen paikalle tulee käyttäjän kirjoittama nimi.
@@ -1363,7 +1363,7 @@ public class HenkiloSovellus extends Application {
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Vitsi' } do %>
+<% partial 'partials/exercise', locals: { name: 'Vitsi', model_solution: '54637' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan VitsiSovellus sovellus, jota käytetään yhden vitsin selittämiseen. Sovellus tarjoaa kolme nappia sisältävän valikon sekä näitä nappeja painamalla näytettävät sisällöt. Ensimmäinen nappi (teksti "Vitsi") näyttää vitsiin liittyvän kysymyksen, toinen nappi (teksti "Vastaus") näyttää vitsin kysymykseen liittyvän vastauksen, ja kolmas nappi (teksti "Selitys") näyttää vitsin selityksen.
@@ -1651,7 +1651,7 @@ public class HenkiloSovellus extends Application {
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Sanojen harjoittelua' } do %>
+<% partial 'partials/exercise', locals: { name: 'Sanojen harjoittelua', model_solution: '54638' } do %>
 
   <p>
     Tässä tehtävässä laadit edellä olevaa materiaalia noudattaen sanojen harjoitteluun tarkoitetun sovelluksen. Sovelluksen tulee käynnistyä kun luokan SanaharjoitteluSovellus main-metodi suoritetaan.
@@ -1672,13 +1672,13 @@ public class HenkiloSovellus extends Application {
   </p>
 
   <p>
-    Sovelluksessa ei ole automaattisia testejä -- palauta tehtävä kun sovellus toimii oikein.
+    Sovelluksessa ei ole automaattisia testejä -- palauta tehtävä kun sovellus toimii tehtävänannossa kuvatulla tavalla. Esimerkkiratkaisuun on hahmoteltu ensiaskeleita myös mahdollisesta tilastotoiminnallisuudesta, mikä ei kuitenkaan ole oleellista tehtävän tavoitteiden kannalta.
   </p>
 
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Ristinolla (3 osaa)' } do %>
+<% partial 'partials/exercise', locals: { name: 'Ristinolla (3 osaa)', model_solution: '54639' } do %>
 
   <p>
     Tässä tehtävässä toteutat 3x3-kokoisen ristinollapelin. Tehtävä on jaettu kolmeen osaan: ensin luodaan käyttöliittymän osat, sitten nappien toiminnallisuus, ja lopuksi mahdollisuus pelin loppuun pelaamiseen.
@@ -1726,6 +1726,10 @@ nappi.setFont(Font.font("Monospaced", 40));
 
   <p>
     Lisää peliin toiminnallisuus, missä pelin voi pelata loppuun. Peli loppuu jos toinen pelaajista saa kolme samaa merkkiä riviin (pysty, vaaka, vino). Pelin loppuminen tulee ilmaista siten, että ylälaidassa on teksti "Loppu!". Tämän jälkeen pelin jatkaminen ei enää onnistu.
+  </p>
+
+  <p>
+    Tehtävän testit eivät ole kattavimmat. Pyri tekemään ohjelma ilman suurta testeihin tukeutumista.
   </p>
 
 <% end %>
