@@ -152,17 +152,23 @@ RKP	5.6	5.2	4.7	4.7	5.1	5.3	5.0	5.4	5.1	5.2	4.7
 <% partial 'partials/code_highlight' do %>
 @Override
 public void start(Stage ikkuna) {
+    // luodaan kaaviossa käytettävät x- ja y-akselit
     NumberAxis xAkseli = new NumberAxis();
     NumberAxis yAkseli = new NumberAxis();
-    xAkseli.setLabel("Vuosi");
 
+    // asetetaan akseleille nimet
+    xAkseli.setLabel("Vuosi");
     yAkseli.setLabel("Suhteellinen kannatus (%)");
 
+    // luodaan viivakaavio. Viivakaavion arvot annetaan numeroina
+    // ja se käyttää aiemmin luotuja x- ja y-akseleita
     LineChart&lt;Number, Number&gt; viivakaavio = new LineChart&lt;&gt;(xAkseli, yAkseli);
     viivakaavio.setTitle("Suhteellinen kannatus vuosina 1968-2008");
 
+    // luodaan viivakaavioon lisättävä datajoukko
     XYChart.Series rkpData = new XYChart.Series();
     rkpData.setName("RKP");
+    // lisätään datajoukkoon yksittäisiä pisteitä
     rkpData.getData().add(new XYChart.Data(1968, 5.6));
     rkpData.getData().add(new XYChart.Data(1972, 5.2));
     rkpData.getData().add(new XYChart.Data(1976, 4.7));
@@ -175,8 +181,10 @@ public void start(Stage ikkuna) {
     rkpData.getData().add(new XYChart.Data(2004, 5.2));
     rkpData.getData().add(new XYChart.Data(2008, 4.7));
 
+    // lisätään datajoukko viivakaavioon
     viivakaavio.getData().add(rkpData);
 
+    // näytetään viivakaavio
     Scene nakyma = new Scene(viivakaavio, 640, 480);
     ikkuna.setScene(nakyma);
     ikkuna.show();
@@ -191,6 +199,7 @@ public void start(Stage ikkuna) {
 <% partial 'partials/code_highlight' do %>
 @Override
 public void start(Stage ikkuna) {
+  // luodaan kaaviossa käytettävät x- ja y-akselit
     <strong>NumberAxis xAkseli = new NumberAxis(1968, 2008, 4);</strong>
     // .. muu ohjelmakoodi pysyy samana
 <% end %>
@@ -202,17 +211,23 @@ public void start(Stage ikkuna) {
 <% partial 'partials/code_highlight' do %>
 @Override
 public void start(Stage ikkuna) {
+    // luodaan kaaviossa käytettävät x- ja y-akselit
     NumberAxis xAkseli = new NumberAxis(1968, 2008, 4);
     NumberAxis yAkseli = new NumberAxis();
-    xAkseli.setLabel("Vuosi");
 
+    // asetetaan akseleille nimet
+    xAkseli.setLabel("Vuosi");
     yAkseli.setLabel("Suhteellinen kannatus (%)");
 
+    // luodaan viivakaavio. Viivakaavion arvot annetaan numeroina
+    // ja se käyttää aiemmin luotuja x- ja y-akseleita
     LineChart&lt;Number, Number&gt; viivakaavio = new LineChart&lt;&gt;(xAkseli, yAkseli);
     viivakaavio.setTitle("Suhteellinen kannatus vuosina 1968-2008");
 
+    // luodaan viivakaavioon lisättävä datajoukko
     XYChart.Series rkpData = new XYChart.Series();
     rkpData.setName("RKP");
+    // lisätään datajoukkoon yksittäisiä pisteitä
     rkpData.getData().add(new XYChart.Data(1968, 5.6));
     rkpData.getData().add(new XYChart.Data(1972, 5.2));
     rkpData.getData().add(new XYChart.Data(1976, 4.7));
@@ -225,8 +240,13 @@ public void start(Stage ikkuna) {
     rkpData.getData().add(new XYChart.Data(2004, 5.2));
     rkpData.getData().add(new XYChart.Data(2008, 4.7));
 
+    // lisätään datajoukko viivakaavioon
+    viivakaavio.getData().add(rkpData);
+
+    // luodaan toinen viivakaavioon lisättävä datajoukko
     XYChart.Series vihreatData = new XYChart.Series();
     vihreatData.setName("VIHR");
+    // lisätään datajoukkoon yksittäisiä pisteitä
     vihreatData.getData().add(new XYChart.Data(1984, 2.8));
     vihreatData.getData().add(new XYChart.Data(1988, 2.3));
     vihreatData.getData().add(new XYChart.Data(1992, 6.9));
@@ -235,8 +255,10 @@ public void start(Stage ikkuna) {
     vihreatData.getData().add(new XYChart.Data(2004, 7.4));
     vihreatData.getData().add(new XYChart.Data(2008, 8.9));
 
-    viivakaavio.getData().add(rkpData);
+    // lisätään datajoukko viivakaavioon
     viivakaavio.getData().add(vihreatData);
+
+    // näytetään viivakaavio
     Scene nakyma = new Scene(viivakaavio, 640, 480);
     ikkuna.setScene(nakyma);
     ikkuna.show();
