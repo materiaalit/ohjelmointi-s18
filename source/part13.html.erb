@@ -286,20 +286,23 @@ Map&lt;String, Map&lt;Integer, Double&gt;&gt; arvot = // luotu muualla
 
 // käydään puolueet läpi ja lisätään ne kaavioon
 arvot.keySet().stream().forEach(puolue -&gt; {
+    // jokaiselle puolueelle luodaan oma datajoukko
     XYChart.Series data = new XYChart.Series();
     data.setName(puolue);
 
+    // datajoukkoon lisätään puolueen pisteet
     arvot.get(puolue).entrySet().stream().forEach(pari -&gt; {
         data.getData().add(new XYChart.Data(pari.getKey(), pari.getValue()));
     });
 
+    // ja datajoukko lisätään kaavioon
     viivakaavio.getData().add(data);
 });
 <% end %>
 
 
 
-<% partial 'partials/exercise', locals: { name: 'Shanghai', model_solution: '54643' } do %>
+<% partial 'partials/exercise', locals: { name: 'Shanghai', model_solution: '54915' } do %>
 
   <p>
     Yliopistoja vertaillaan vuosittain. Eräs kansainvälisesti tunnistettu arvioijataho on Shanghai Ranking Consultancy, joka julkaisee vuosittain listan kansainvälisesti tunnistetuista yliopistoista. Lista sisältää myös yliopiston sijan maailmanlaajuisessa vertailussa. Helsingin yliopiston sijoitus on vuosina 2007-2017 ollut seuraava:
@@ -333,7 +336,7 @@ arvot.keySet().stream().forEach(puolue -&gt; {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Puolueet', model_solution: '54644' } do %>
+<% partial 'partials/exercise', locals: { name: 'Puolueet', model_solution: '54916' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan PuolueetSovellus ohjelma, joka näyttää puolueiden suhteellisen kannatuksen vuosina 1968-2008. Käytössä on edellisissä esimerkeissä käytetty data, joka löytyy tiedostosta "puoluedata.tsv".
@@ -368,7 +371,7 @@ KOK
   <% end %>
 
   <p>
-    Merkkijonomuodossa olevan desimaaliluvun muuntaminen desimaaliluvuksi onnistuu luokan Double metodilla parseDouble. Esim. <code>Double.parseDouble("16.1");</code>
+    Merkkijonomuodossa olevan desimaaliluvun muuntaminen desimaaliluvuksi onnistuu luokan Double metodilla valueOf. Esim. <code>Double.valueOf("16.1");</code>
   </p>
 
   <p>
@@ -387,7 +390,7 @@ KOK
 
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Säästölaskuri (3 osaa)', model_solution: '54645' } do %>
+<% partial 'partials/exercise', locals: { name: 'Säästölaskuri (3 osaa)', model_solution: '54917' } do %>
 
   <p>
     Toteutetaan tässä tehtävässä sovellus, jota käytetään säästämiseen liittyvien mahdollisten tuottojen tarkasteluun. Laskuri tarjoaa mahdollisuuden sekä kuukausittaisen säästön määrittelyyn että vuosittaisen koron määrittelyyn, ja näyttää säästösumman kasvun kolmenkymmenen vuoden aikana yli.
@@ -561,7 +564,7 @@ public void start(Stage ikkuna) {
 <% end %>
 
 
-<% partial 'partials/exercise', locals: { name: 'Pyöräilijätilastot', model_solution: '54647' } do %>
+<% partial 'partials/exercise', locals: { name: 'Pyöräilijätilastot', model_solution: '54919' } do %>
 
   <p>
     Tehtäväpohjassa tulee mukana valmis sovellus, jota on käytetty pyöräilijätilastojen näyttöön viivakaaviona. Muokkaa sovellusta siten, että sovellus käyttää viivakaavion sijaan  pylväskaaviota. Kaikki viitteet viivakaavioon tulee poistaa muokkauksen yhteydessä.
@@ -784,7 +787,7 @@ if (keskiarvo.getData().size() &gt; 100) {
 </p>
 
 
-<% partial 'partials/exercise', locals: { name: 'Hymiö', model_solution: '54640' } do %>
+<% partial 'partials/exercise', locals: { name: 'Hymiö', model_solution: '54920' } do %>
 
   <p>
     Luo tehtäväpohjassa olevaan luokkaan graafinen käyttöliittymä. Lisää graafiseen käyttöliittymään asettelusta vastaava BorderPane-olio. Lisää BorderPanen keskellä Canvas-olio. Piirrä tämän jälkeen Canvas-olioon liittyvän GraphicsContext-olion avulla hymiö. Käytä taustan värinä valkoista (Color.WHITE) ja hymiön värinä mustaa (Color.BLACK). 
@@ -941,7 +944,7 @@ if (keskiarvo.getData().size() &gt; 100) {
 
 <p>&nbsp;</p>
 
-<% partial 'partials/exercise', locals: { name: 'Kollaasi (3 osaa)', model_solution: '54641' } do %>
+<% partial 'partials/exercise', locals: { name: 'Kollaasi (3 osaa)', model_solution: '54921' } do %>
 
   <p>
     Andy Warhol tuli tutuksi kuvakollaaseista, joissa yksi tai useampi kuva toistui useampaan otteeseen esimerkiksi eri väreissä.
@@ -1066,7 +1069,7 @@ leike.play();
   }
 <% end %>
 
-<% partial 'partials/exercise', locals: { name: 'Hurraa', model_solution: '54642' } do %>
+<% partial 'partials/exercise', locals: { name: 'Hurraa', model_solution: '54922' } do %>
 
   <p>
     Tehtäväpohjan juurikansiossa on tiedosto <code>Applause-Yannick_Lemieux.wav</code>, joka sisältää hurrausäänen. Tehtävänäsi on luoda sovellus, missä on "Hurraa"-nappi. Kun käyttäjä painaa nappia, sovelluksen tulee soittaa edellä mainittu äänitiedosto.
