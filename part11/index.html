@@ -747,7 +747,7 @@ false
 </h3>
 
 <p>
-  Luodaan luokka <code>Lista</code>. Listarakenne sisältää geneerisen taulukon -- eli taulukon, jonka alkioiden tyyppi määräytyy ajonaikaisesti tyyppiparametreista. Asetetaan taulukon alkukooksi <code>10</code>. Taulukko luodaan object tyyppisenä ja muunnetaan geneerisen tyyppiseksi <code>(T[]) new Object[10];</code> -- tämä tehdään, sillä kutsu <code>new T[10];</code> ei ainakaan toistaiseksi toimi Javassa.
+  Luodaan luokka <code>Lista</code>. Listarakenne sisältää geneerisen taulukon -- eli taulukon, jonka alkioiden tyyppi määräytyy ajonaikaisesti tyyppiparametreista. Asetetaan taulukon alkukooksi <code>10</code>. Taulukko luodaan object-tyyppisenä ja muunnetaan geneerisen tyyppiseksi <code>(T[]) new Object[10];</code> -- tämä tehdään, sillä kutsu <code>new T[10];</code> ei ainakaan toistaiseksi toimi Javassa.
 </p>
 
 <pre class="sh_java code-highlight"><code>public class Lista&lt;T&gt; {
@@ -827,7 +827,7 @@ at tietorakenteita.Ohjelma.main(Ohjelma.java:8)
 </p>
 
 <p>
-  Uuden taulukon koko määräytyy Javassa kaavalla <code>vanhakoko + vanhaKoko / 2</code>. Hyödynnetään samaa kaavaa omassa toteutuksessamme. Luodaan kasvattamista varten erillinen metodi <code>kasvata</code>, joka on vain luokan omien metodien käytössä (eli sillä on <code>private</code>-näkyvyys).
+  Uuden taulukon koko määräytyy Javassa kaavalla <code>vanhaKoko + vanhaKoko / 2</code>. Hyödynnetään samaa kaavaa omassa toteutuksessamme. Luodaan kasvattamista varten erillinen metodi <code>kasvata</code>, joka on vain luokan omien metodien käytössä (eli sillä on <code>private</code>-näkyvyys).
 </p>
 
 <pre class="sh_java code-highlight"><code>private void kasvata() {
@@ -956,7 +956,7 @@ true
 </code></pre>
 
 <p>
-  Yllä oleva lähestymistapa on kuitenkin ongelmallinen, sillä se jättää listalle "tyhjiä" kohtia, jonka lisäksi esimerkiksi edellä esitetty etsiminen ei enää.
+  Yllä oleva lähestymistapa on kuitenkin ongelmallinen, sillä se jättää listalle "tyhjiä" kohtia, jonka lisäksi esimerkiksi edellä esitetty etsiminen ei enää toimi.
 </p>
 
 <p>
