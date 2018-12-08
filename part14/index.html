@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ohjelmoinnin perusteet ja Ohjelmoinnin jatkokurssi, syksy 2018 | Osa 14</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-9fe27d3a.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/pdf-slideshow-cdn/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part1.html&gt;')">Osa 1</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part2/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part2.html&gt;')">Osa 2</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part3/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part3.html&gt;')">Osa 3</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part4/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part4.html&gt;')">Osa 4</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part5/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part5.html&gt;')">Osa 5</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part6.html&gt;')">Osa 6</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7.html&gt;')">Osa 7</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part7-x/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part7-x.html&gt;')">Osa 7.X</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part8/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part8.html&gt;')">Osa 8</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part9/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part9.html&gt;')">Osa 9</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part10/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part10.html&gt;')">Osa 10</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part11/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part11.html&gt;')">Osa 11</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part12/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part12.html&gt;')">Osa 12</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part13/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part13.html&gt;')">Osa 13</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part14.html&gt;')">Osa 14</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../part14-x/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=part14-x.html&gt;')">Osa 14.X</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://tmc.mooc.fi" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Palautukset</span>
+      <i class="fa fa-arrow-circle-up hidden-lg-up"></i>
+    </a>
+
+    <a href="https://t.me/ohjelmointi_s18" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-comments hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+            <div class="exercise-list">
+  <div class="exercise-list__header">
+    Tehtävät
+  </div>
+
+  <div class="exercise-list__content" id="exercise-list"></div>
+
+    <div class="exercise-list__quiznator">
+      <div class="quiznator-dashboard"></div>
+
+    </div>
+</div>
+
+
+          <div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Neljännentoista osan tavoitteet
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tunnet menetelmiä simulaatioiden luomiseen ja kertaat kaksiulotteisten taulukkojen käyttöä. Tiedät, että muiden kirjoittamia kirjastoja voi käyttää osana omia ohjemia.  Kertaat käsitettä yksikkötesti ja tunnet pääpiirteittäin käsitteen testikattavuus.
+  </p>
+
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Simulaatiot ja toistuva piirtäminen
+
+</h1>
+
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tiedät mitä simulaatiot ovat.
+    </li>
+    <li>
+      Kertaat kaksiulotteisten taulukoiden käyttöä.
+    </li>
+    <li>
+      Harjoittelet piirtämistä Canvas-elementille.
+    </li>
+    <li>
+      Osaat luoda kaksiulotteisiin taulukoihin perustuvia simulaatioita.
+    </li>
+    <li>
+      Tunnet yleisiä sääntöjä simulaatioiden toteuttamiseen.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  Tietokonesimulaatioita käytetään tosielämän ilmiöiden mallintamiseen tietokoneella. Simulaation toteutus sisältää ilmiötä kuvaavan mallin luomisen (esimerkiksi säämalli) sekä mallin ajamisen eli simuloinnin. Tutustumme tässä muutamaan klassiseen tietokonesimulaatioon, jotka käyttävät kaksiulotteista taulukkoa. 
+</p>
+
+
+<h2 class="material-heading">
+    Lyhyt kertaus kaksiulotteisista taulukoista
+
+</h2>
+
+<p>
+  Kaksiulotteiset taulukot esitellään muuttujatyypin sekä sitä seuraavan kahden hakasulun avulla (<em>tyyppi[][]</em>). Tätä seuraa muuttujan nimi. Taulukot ovat olioita, joten ne luodaan <code>new</code>komennolla muodossa <code>new <em>tyyppi</em>[<em>rivit</em>][<em></em>]</code>, missä rivit ja sarakkeet ovat kokonaisluja.
+</p>
+
+<pre class="sh_java code-highlight"><code>double[][] taulukko = new double[5][10];
+</code></pre>
+
+<p>
+  Yllä luomme viisirivisen ja kymmensarakkeisen taulukon, jonka jokainen solu sisältää liukuluvun. Taulukon läpikäynti onnistuu for-toistolauseella. 
+</p>
+
+<pre class="sh_java code-highlight"><code>double[][] taulukko = new double[5][10];
+System.out.println("rivi, sarake, arvo");
+for (int rivi = 0; rivi < taulukko.length; rivi++) {
+    for (int sarake = 0; sarake < taulukko[y].length; sarake++) {
+        double arvo = taulukko[rivi][sarake];
+        System.out.println("" + rivi + ", " + sarake + ", " + arvo);
+    }
+}
+</code></pre>
+
+<p>
+  Yllä näytetään miten taulukon arvoihin päästään käsiksi. Taulukon arvojen asetus tapahtuu samalla tavalla. Alla olevassa esimerkissä taulukkon rivin 1 sarakkeeseen 2 asetetaan arvo <code>4.2</code>.
+</p>
+
+<pre class="sh_java code-highlight"><code>double[][] taulukko = new double[5][10];
+taulukko[1][2] = 4.2;
+</code></pre>
+
+<h2 class="material-heading">
+    Piirtäminen ja Canvas
+
+</h2>
+
+
+<p>
+  Canvas-luokka tarjoaa piirtoalustan, johon voi piirtää Canvas-oliosta saatavan GraphicsContext-olion avulla. Animaatioissa ja simulaatioissa halutaan tyypillisesti piirtää jatkuvasti. Jatkuvasti piirtäminen -- tai oikeammin tietyn aikavälin jälkeen uudelleen piirtäminen -- tapahtuu <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html" target="_blank" rel="noopener">AnimationTimer</a>-luokan avulla. AnimationTimer-luokka määrittelee metodin <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html#handle-long-" target="_blank" rel="noopener">handle</a>, joka luokkaa käyttävän ohjelmoijan tulee toteuttaa. Metodi saa parametrina nykyhetken nanosekunteina, jonka avulla voidaan vaikuttaa piirtovälien pituuteen. Samaa kuvaa ei esimerkiksi kannata piirtää käyttäjälle tuhatta kertaa sekunnissa, mutta toisaalta nopeasti liikkuvan kuvan päivittäminen käyttäjälle esimerkiksi kerran sekunnissa ei sekään ole toivottua.
+</p>
+
+<p>
+  Alla olevassa esimerkissä on ohjelma, jossa piirretään satunnaiseen kohtaan piste kymmenen kertaa sekunnissa.
+</p>
+
+<pre class="sh_java code-highlight"><code>// pakkaus..
+
+import java.util.Random;
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+public class AnimaationAlku extends Application {
+
+    @Override
+    public void start(Stage ikkuna) {
+
+        Canvas piirtoalusta = new Canvas(320, 240);
+        GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+        piirturi.setFill(Color.BLACK);
+
+        BorderPane asettelu = new BorderPane();
+        asettelu.setCenter(piirtoalusta);
+
+        Random arpoja = new Random();
+
+        new AnimationTimer() {
+            long edellinen = 0;
+
+            @Override
+            public void handle(long nykyhetki) {
+                if (nykyhetki - edellinen < 100000000) {
+                    return;
+                }
+
+                int x = arpoja.nextInt(310);
+                int y = arpoja.nextInt(230);
+
+                piirturi.fillOval(x, y, 10, 10);
+
+                this.edellinen = nykyhetki;
+            }
+        }.start();
+
+        Scene nakyma = new Scene(asettelu);
+
+        ikkuna.setScene(nakyma);
+        ikkuna.show();
+    }
+
+    public static void main(String[] args) {
+        launch(AnimaationAlku.class);
+    }
+}
+</code></pre>
+
+<p>
+  Ohjelma toimii käynnistyessään seuraavasti. Huomaathan, että pisteet ovat satunnaisia, joten oma kokeilusi tuskin tuottaa täsmälleen samanlaista tulosta.
+</p>
+
+<img src="../img/material/gui-animaatio-aa57b253.gif" alt="Edellinen ohjelma toiminnassa. Kuvaan ilmestyy kymmenen pistettä sekunnissa."/>
+
+<p>&nbsp;</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Piirto-ohjelma</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjaan on toteutettu graafinen sovellus, joka sisältää kaksiulotteisen taulukon. Tehtävänäsi on muuttaa sovelluksen toimintaa siten, että kun käyttäjä painaa hiirtä sovelluksessa tai liikuttaa hiirtä kun nappi on pohjassa, ikkunaan piirretään.
+  </p>
+
+  <p>
+    Tee tätä varten kaksi asiaa: (1) muuta sovelluksessa olevan taulukon "piirrettava" arvoja sopivasti kun käyttäjä käyttää hiirtä, ja (2) piirrä komentoa <code>piirturi.fillRect(x, y, 2, 2)</code> käyttäen ne alkiot, joiden arvo on 1. Käytä koordinaatteina x, y taulukon indeksejä.
+  </p>
+
+  <p>
+    Kun sovellus toimii, voit käyttää sitä vaikkapa seuraavanlaisen taideteoksen tekemiseen. Tehtävässä ei ole testejä eli palauta se vasta kun sovellus toimii toivotulla tavalla.
+  </p>
+
+  <img src="../img/exercises/06-14-piirturi-ok-c83b2ab7.png" />
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/55196/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+<p>
+  Silloin tällöin ohjelma halutaan toteuttaa siten, että uusi tila piirretään aina edellisen tilanteen päälle. Tällöin tapana on tyhjentää ruutu ennen uutta piirtämistä. Tämä onnistuu lisäämällä edelliseen ohjelmaan rivi <code>piirturi.clearRect(0, 0, 320, 240);</code> ennen handle-metodissa olevaa piirtokomentoa. Komento tyhjentäisi kohdasta (0, 0) lähtien 320 pikseliä leveän ja 240 pikseliä korkean suunnikkaan.
+</p>
+
+<h2 class="material-heading">
+    Game of Life
+
+</h2>
+
+<p>
+  <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank">Game of Life</a> on yksi klassisimpia tietokonesimulaatioita. Se toteutetaan kaksiulotteisen taulukon avulla, ja se noudattaa seuraavia sääntöjä:
+</p>
+
+<ol>
+  <li>
+    Jos elävän solun naapureina on alle kaksi elävää solua, se kuolee alikansoituksen takia.
+  </li>
+  <li>
+    Jos elävän solun naapureina on kaksi tai kolme elävää solua, se jää henkiin.
+  </li>
+  <li>
+    Jos elävän solun naapureina on yli kolme elävää solua, se kuolee ylikansoituksen takia.
+  </li>
+  <li>
+    Jos kuolleen solun naapureina on tasan kolme elävää solua, se syntyy eli muuttuu eläväksi.
+  </li>
+</ol>
+
+<p>
+  Naapurit ovat soluun koskettavia soluja. Naapuri koskettaa solua joko reunasta, (pohjoinen, itä, etelä, länsi) tai kulmasta (koillinen, kaakko, lounas, luode). 
+</p>
+
+<p>
+  Game of Life ei sisällä liikkumissääntöjä, mutta se silti luo tilanteita, missä erilaiset hahmot liikkuvat ruudulla. Alla olevalla videolla John Conway kertoo Game of Lifen kehittämisestä.
+</p>
+
+<p>
+  <div class="videoWrapper">
+  <div class="embedded-youtube-video" data-id="R9Plq-D1gEk"></div>
+</div>
+
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Game of Life (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä toteutetaan oleellisilta osin Game of Life-pelin säännöt. Toteutusta varten tehtäväpohjassa on luokka GameOfLife, joka sisältää kaksiulotteisen taulukon, sekä luokka GameOfLifeSovellus, jota voidaan käyttää pelin visualisointiin.
+  </p>
+
+  <h2>Elossa olevien naapurien lukumäärä</h2>
+
+  <p>
+    Täydennä luokassa GameOfLife olevaa metodia <code>public int elossaOleviaNaapureita(int[][] taulukko, int x, int y)</code> siten, että se laskee annetun x, y -koordinaatin elossa olevien naapureiden lukumäärän. Naapuri on elossa jos sen arvo on 1.
+  </p>
+
+  <p>
+    Naapureita ovat kaikki ne alkiot, jotka ovat kulman tai sivun kautta yhteydessä alkioon.
+  </p>
+
+  <p>
+    Huomaa, että metodin tulee varoa ArrayIndexOutOfBounds-virhettä. Indeksissä -1 ei esimerkiksi voi olla ketään. Vastaavasti taulukon leveyden tai korkeuden yli ei voi mennä (esim. <code>taulukko[taulukko.length][0]</code> tai <code>taulukko[0][taulukko[0].length]</code>).
+  </p>
+
+  <p>
+    Voit kokeilla metodiasi muunmuassa seuraavilla esimerkeillä.
+  </p>
+
+<pre class="sh_java code-highlight"><code>GameOfLife gol = new GameOfLife(3, 3);
+
+int[][] taulukko = new int[3][3];
+taulukko[0][0] = 1;
+taulukko[0][1] = 1;
+taulukko[1][1] = 1;
+taulukko[2][2] = 1;
+
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 0));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
+</code></pre>
+
+<pre class="sample-output">2
+3
+3
+1
+</pre>
+
+<pre class="sh_java code-highlight"><code>GameOfLife gol = new GameOfLife(4, 4);
+
+int[][] taulukko = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 0, 1, 0}, {0, 1, 0, 1}};
+
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 0, 0));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 1, 1));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 2, 2));
+System.out.println(gol.elossaOleviaNaapureita(taulukko, 3, 3));
+</code></pre>
+
+<pre class="sample-output">3
+7
+5
+1
+</pre>
+
+
+  <h2>Kehittyminen</h2>
+
+  <p>
+    Täydennä seuraavaksi GameOfLife-luokan metodia <code>public void kehity()</code> siten, että se käy yhden Game of Life -pelin askeleen.
+  </p>
+
+  <p>
+    Toteuta toiminnallisuus niin, että luot toisen taulukon, jonka koko on sama kuin alkuperäisen taulukon. Käy tämän jälkeen alkuperäistä taulukkoa läpi alkio alkiolta siten, että seuraat seuraavia sääntöjä:
+  </p>
+
+  <ol>
+    <li>
+      Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on alle kaksi elävää naapuria, kopioon asetetaan alkion arvoksi 0.
+    </li>
+    <li>
+      Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on kaksi tai kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.
+    </li>
+    <li>
+      Jos alkuperäisen taulukon alkion arvo on 1 ja sillä on yli kolme elävää naapuria, kopioon asetetaan alkion arvoksi 0.
+    </li>
+    <li>
+      Jos alkuperäisen taulukon alkion arvo on 0 ja sillä on tasan kolme elävää naapuria, kopioon asetetaan alkion arvoksi 1.
+    </li>
+  </ol>
+
+  <p>
+    Käytä naapureiden lukumäärän selvittämisessä edellisessä osassa tehtyä metodia. Kun olet käynyt koko taulukon läpi, vaihda kopio taulukon paikalle.
+  </p>
+
+  <p>
+    Kokeile tämän jälkeen sovelluksen toimintaa graafisen käyttöliittymän kautta. Sovelluksen pitäisi käynnistyä -- yksi mahdollinen hetkellinen tila on seuraavanlainen.
+  </p>
+
+  <img src="../img/exercises/06-15-gameoflife-4ad85c50.png" width="600"/>
+  
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/55197/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Miksi taulukosta tehtiin kopio?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Game of Life -tehtävässä taulukosta tehtiin kopio, johon laskettiin sääntöjä noudattaen Game of Life -simulaation seuraavan tilanteen arvot. Mikäli taulukosta ei olisi tehty kopiota ja laskenta olisi tapahtunut suoraan alkuperäiseen taulukkoon, muuttaisivat välitulokset ohjelman toimintaa.
+  </p>
+
+
+  </div>
+</div>
+
+
+
+<h2 class="material-heading">
+    Schellingin malli
+
+</h2>
+
+<p>
+  <a href="https://en.wikipedia.org/wiki/Thomas_Schelling" target="_blank" rel="noopener">Thomas Schelling</a> on yhdysvaltalainen taloustieteilijä, joka esitti samankaltaisuuden hyväksyntää (tai toisaalta syrjintää) selittävän mallin. Malli perustuu ajatukselle, että ihmiset pysyvät paikallaan mikäli heillä on naapureina tarpeeksi samanmielisiä ihmisiä -- käänteisesti, ihmiset muuttavat pois mikäli he eivät ole tyytyväisiä naapureihinsa.
+</p>
+
+<p>
+  Tutustutaan mallin toimintaan tehtävän avulla.
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Schelling (2 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä pohditaan Schellingin mallia sekä kehitetään siihen liittyvää simulaatio-ohjelmaa.
+  </p>
+
+  <p>
+    Simulaation suoritus alkaa tilanteesta, missä ihmiset ovat asetettu satunnaisesti asumaan.
+  </p>
+
+  <img src="../img/exercises/schelling-alku-509a7d06.png" alt="Tilanne, missä ihmiset asuvat satunnaisesti."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kun simulaatio etenee, päädytään ennen pitkää tilanteeseen, missä samankaltaiset ihmiset ovat muuttaneet samankaltaisten ihmisten luo.
+  </p>
+
+  <img src="../img/exercises/schelling-loppu-f58926b6.png" alt="Ihmiset ovat muuttaneet sopivampiin paikkoihin."/>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Tehtäväpohjan mukana tulevasta ohjelmasta puuttuu muutamia oleellisia toiminnallisuuksia: (1) kartan tyhjennys, (2) tyhjien paikkojen etsiminen, sekä (3) tyytymättömien henkilöiden tunnistaminen. Tutustu tehtäväpohjan ohjelmaan ennen aloittamista.
+  </p>
+
+  <p> 
+    Siinä missä Game of Life -tehtävässä maailmaa kuvaava taulukko oli upotettu osaksi mallia (luokka GameOfLife), tässä tehtävässä taulukko on eriytetty erilliseksi luokakseen.
+  </p>
+
+
+  <h2>Kartan tyhjentäminen ja tyhjien paikkojen etsiminen</h2>
+
+  <p>
+    Malli käyttää kaksiulotteista taulukkoa. Kohdassa (x, y) oleva arvo 0 kuvaa tyhjää paikkaa ja luvut 1-5 kuvaavat eri ryhmiä.
+  </p>
+
+  <p>
+    Toteuta ensin luokan <code>Eriytymismalli</code> metodiin <code>public void tyhjenna()</code> toiminnallisuus, joka asettaa jokaisen solun arvoksi 0.
+  </p>
+
+  <p>
+    Lisää tämän jälkeen metodiin <code>public ArrayList&lt;Piste&gt; tyhjatPaikat()</code> toiminnallisuus, joka tunnistaa tyhjät paikat (solut, joissa on arvo 0), luo jokaisesta Piste-olion, ja palauttaa ne listana. Huomaa, että käytössä olevassa hajautustaulussa ensimmäinen ulottuvuus kuvaa x-koordinaattia, ja toinen y-koordinaattia (taulukko.hae(x, y)).
+  </p>
+
+
+  <h2>Tyytymättömien hakeminen</h2>
+
+  <p>
+    Mallille voidaan asettaa parametri <code>tyytyvaisyysraja</code>. Tyytyväisyysrajalla kuvataan samaan ryhmään kuuluvien naapureiden minimimäärää, millä henkilö on tyytyväinen sijaintiinsa. Jos ruudussa (x, y) olevan henkilön naapureista on samankaltaisia yhtä paljon tai yli <code>tyytyvaisyysraja</code>n, on henkilö tyytyväinen. Muissa tapauksissa henkilö on tyytymätön.
+  </p>
+
+  <p>
+    Naapureista tulee tarkastella kaikkia ruudun vieressä olevia ruutuja. Alueen ulkopuolella olevat ruudut (esim. -1, 0) tulee käsitellä tyhjänä ruutuna (ei samankaltainen).
+  </p>
+
+  <p>
+    Toteuta metodi <code>public ArrayList&lt;Piste&gt; haeTyytymattomat()</code>, joka palauttaa tyytymättömät listana.
+  </p>
+
+  <p>
+    <em>
+      Vaikka karttamme on suorakulmio, voisi sen yhtä hyvin piirtää vaikkapa Helsingin muotoiseksi. Osa alueesta voisi olla myös esimerkiksi vettä, johon ei voisi muuttaa ymym.
+    </em>
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/55198/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Yleisiä sääntöjä simulaation toteuttamiseen
+
+</h2>
+
+<p>
+  Simulaatioita toteuttaessa on muutamia yleisiä sääntöjä. Simulaatio perustuu jonkinlaiseen malliin, joka on kuvaus (tosielämän) ilmiöstä. Tämä kuvaus on tyypillisesti vaillinainen, sillä ilmiön oleelliset osat pyritään irrottamaan muista oleellisista osista.
+</p>
+
+<p>
+  Kun ilmiötä mallinnetaan, kannattaa aloittaa muutamasta muuttujasta. Esimerkiksi rokotteiden hyötyjä ja haittoja voisi tarkastella ensin pitämällä kirjaa (1) rokotetuista, (2) rokottamattomista, ja (3) sairastuneista. Yksinkertaisessa mallissa rokottamattomista satunnaiset sairastuvat, jonka lisäksi sairastuneiden vieressä olevat saattavat sairastua jonkinlaisella todennäköisyydellä. Tämä todennäköisyys riippuu taudista, ja se kannattaisi määritellä parametrina mallille -- aivan kuten se, kuinka lähellä taudille altistuvan tulee olla jotta tauti voi tarttua.
+</p>
+
+<p>
+  Kun mallista on olemassa yksinkertainen versio, voi sitä täydentää. Rokotemallissa mukaan voisi tuoda tiedon tervehtymisestä -- sairaat tervehtyvät tietyllä todennäköisyydellä, sekä tiedon jälkitaudeista -- esimerkiksi noin 5% tuhkarokkoon sairastuneista saa keuhkokuumeen, joista osalla tauti saattaa johtaa kuolemaan. Mallia voisi jatkaa esimerkiksi lisäämällä tiedon henkilöiden iästä -- taudit vaikuttavat eri ikäisiin eri tavalla: luonnollisesti myös rokottamattomat vauvat ovat joillekin taudeille alttiimpia. 
+</p>
+
+<p>
+  Rokotemallin totetus jääköön kuitenkin harrastuneisuuden varaan. 
+</p>
+
+<p>
+  Yksinkertaisella mallilla aloittaminen sekä sen täydentäminen on ensimmäinen sääntö simulaatioiden toteuttamiseen. Toinen sääntö on käyttöliittymän ja mallin eriyttäminen. Edellä nähdyissä tehtävissä graafinen käyttöliittymä oli erillään mallista -- mikäli mallit olisivat olleet osana käyttöliittymää, olisi niiden ylläpito ja muokkaaminen ollut monimutkaisempaa. 
+</p>
+
+<p>
+  Kolmas sääntö liittyy mallin jakamisen osiin tarvittaessa. Malleissa, joissa seuraava askel on riippuvainen edellisestä askeleesta on mahdollisuus siihen, että seuraavan vaiheen laskenta vaikuttaa edelliseen vaiheeseen. Esimerkiksi, mikäli Game of Lifessä olisi käytetty vain yhtä taulukkoa mallin ylläpitoon, ei sovellus toimisi halutulla tavalla sillä taulukkoon lisättävät uudet juuri lasketut arvot vaikuttaisivat niiden viereisten arvojen laskentaan. 
+</p>
+
+<p>
+  Tarkemmin ottaen, edellä kuvatut säännöt eivät rajaudu simulaatioiden rakentamiseen vaan ne ovat yleisiä ohjelmistojen kehittämiseen liittyviä sääntöjä. Olemme koko kurssin ajan pyrkineet lähtemään liikenteeseen pienestä ratkaisten aina yhden ongelman kerrallaan. Vastaavasti olemme pyrkineet tilanteeseen, missä sovelluslogiikka ja käyttöliittymä on erillään. Tämä mahdollistaa sekä sovelluslogiikan siirtämisen toiseen käyttöliittymään että käyttöliittymän helpomman muokkaamiseen. Samalla tavalla myös ohjelmistoja jaetaan pienempiin osiin, jolloin vältetään virheiden tekemistä ja helpotetaan sovellusten testaamista.
+</p>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Hiekkaranta (3 osaa)</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä luodaan <a href="https://en.wikipedia.org/wiki/Falling-sand_game" target="_blank" rel="noopener">falling sand game</a>-tyyppinen sovellus, jota käytetään erilaisten aineiden simulointiin. Ohjelmassamme simuloidaan hiekan ja veden käyttäytymistä. Lopullisen sovelluksen toiminta on seuraavanlainen.
+  </p>
+
+  <img src="../img/material/gui-simulaatio-255a7179.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    <em>
+      Tehtävässä käytetään <code>enum</code>-tyyppistä luokkaa <code>Tyyppi</code>. Javassa ohjelmoija voi määritellä rajatulle määrälle käsitteitä <code>enum</code>-tyyppisen luokan, jossa näille käsitteille annetaan nimi. Luokka on seuraavanlainen.
+    </em>
+  </p>
+
+<pre class="sh_java code-highlight"><code>package hiekkaranta;
+
+public enum Tyyppi {
+    TYHJA, METALLI, HIEKKA, VESI;
+}
+</code></pre>
+
+  <p>
+    Enum-muuttujia käytetään esimerkiksi seuraavasti.
+  </p>
+
+<pre class="sh_java code-highlight"><code>Tyyppi t = Tyyppi.TYHJA;
+if (t == Tyyppi.TYHJA) {
+    System.out.println("Tyhjää täynnä.");
+}
+
+if (t == Tyyppi.HIEKKA) {
+    System.out.println("Hiekalta näyttää.");
+}
+
+Tyyppi[] taulukko = new Tyyppi[10];
+taulukko[0] = Tyyppi.VESI;
+System.out.println(taulukko.length);
+</code></pre>
+
+  <p>
+    Tehtäväpohjassa on annettu valmiina käyttöliittymä simulaatiolle. Käyttöliittymä sisältää piirtoalustana käytetyn Canvas-olion sekä simulaatioon lisättävien elementtien valintaan käytetyt napit. 
+  </p>
+
+  <h2>Simulaation alkupalat</h2>
+
+  <p>
+    Täydennä pakkauksen hiekkaranta luokkaa Simulaatio seuraavasti. Luokalla Simulaatio tulee olla seuraavat konstruktorit ja metodit. Käytä luokassa hyödyksi valmista enum-luokkaa Tyyppi, ja toteuta simulaation sisäinen tiedon esitys kaksiulotteisena taulukkona <code>Tyyppi[][]</code>.
+  </p>
+
+  <ul>
+    <li>
+      Konstruktori <code>public Simulaatio(int leveys, int korkeus)</code> luo annetun levyisen ja korkuisen simulaation. Jokaisen kohdan arvon tulee olla aluksi <code>Tyyppi.TYHJA</code>.
+    </li>
+    <li>
+      Metodi <code>public void lisaa(int x, int y, Tyyppi tyyppi</code> asettaa annettuun kohtaan annetun tyyppisen elementin. Tyyppi on joko <code>Tyyppi.TYHJA</code>, <code>Tyyppi.METALLI</code>, <code>Tyyppi.HIEKKA</code> tai <code>Tyyppi.VESI</code>. 
+    </li>
+    <li>
+      Metodi <code>public Tyyppi sisalto(int x, int y)</code> palauttaa annetussa kohdassa olevan sisällön. Vastaus on joko Tyyppi.TYHJA, Tyyppi.METALLI, Tyyppi.HIEKKA tai Tyyppi.VESI. Jos kohtaan ei ole lisätty mitään arvoa, tyyppi on Tyyppi.TYHJA. Jos käyttäjä kysyy tietoa alueen ulkopuolelta, palauta Tyyppi.METALLI.
+    </li>
+    <li>
+      Metodi <code>public void paivita()</code> päivittää simulaatiota yhden askeleen. Päivitystoiminnallisuuden toteutus aloitetaan tehtävän myöhemmissä osassa.
+    </li>
+  </ul>
+
+  <p>
+    Kun metodit toimivat, sovelluksen toiminta on seuraava.
+  </p>
+
+  <img src="../img/material/gui-simulaatio-metalli-10acd4e0.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <h2>Hiekka</h2>
+
+  <p>
+    Muokkaa Simulaatio-luokan metodia paivita. Metodin paivita tulee toimia siten, että se tarkistaa jokaiselle hiekkaa sisältävälle kohdalle kohdan alla olevat kolme vaihtoehtoa (lounas, etelä, kaakko). Jos joku vaihtoehdoista on tyhjä, hiekka siirretään alaspäin tyhjään kohtaan. Mikäli useampi kuin yksi em vaihtoehdoista on tyhjiä, tee valinta satunnaisesti tyhjien vaihtoehtojen välillä.
+  </p>
+
+  <p>
+    Satunnaisuutta saat Random-luokan avulla.
+  </p>
+
+  <p>
+    Huom! Toteuta simulaatio siten, että y-koordinaatti on "käänteinen". Simulaation sisällä y-koordinaatin kasvatus tarkoittaa alaspäin menoa, ja toisaalta y-koordinaatin pienennys ylöspäin menoa. Tämä auttaa piirtämisessä, sillä piirtäessä y-koordinaatti kasvaa alaspäin mennessä.
+  </p>
+
+  <img src="../img/material/gui-simulaatio-metalli-ja-hiekka-411da1d8.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta. Kuvassa hiekka toimii metallin kanssa." />
+  
+  <p>
+    &nbsp;
+  </p>
+
+  <h2>Vesi</h2>
+
+  <p>
+    Muokkaa tämän jälkeen Simulaatio-luokan metodia paivita siten, että se siirtää kutsun yhteydessä vettä alaspäin <em>jos</em> joku veden alapuolella olevista kohdista (lounas, etelä, kaakko) on tyhjä. Jos yksikään kohdista ei ole tyhjiä, mutta jommalla kummalla laidalla on sijaa, siirretään vettä sivulle.
+  </p>
+
+  <p>
+    Muokkaa loputa sovellusta siten, että hiekka syrjäyttää veden. Kun lisäät hiekkaa, veden tulee siis väistää hiekkaa. Toteuta väistäminen siten, että hiekka ja vesi vaihtaa paikkaansa.
+  </p>
+  
+  <img src="../img/material/gui-simulaatio-255a7179.gif" alt="Esimerkki hiekkaranta-simulaation toiminnasta." />
+
+  <p>
+    &nbsp;
+  </p>
+
+  <p>
+    Kun olet saanut kaikki neljännentoista osan tehtävät valmiiksi, voit palauta tähän tehtävään ja lähteä toteuttamaan uusia toiminnallisuuksia. Miten toteuttaisit esimerkiksi laavan?
+  </p>
+
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/55199/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Maven ja kolmannen osapuolen kirjastot
+
+</h1>
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Tunnet käsitteen kirjasto ja tiedät muutamia kolmannen osapuolen kirjastoja.
+    </li>
+    <li>
+      Tiedät mistä kirjastoja voi etsiä.
+    </li>
+    <li>
+      Toteutat sovelluksen, joka hyödyntää kolmannen osapuolen kirjastoa.
+    </li>
+    <li>
+      Tiedät että sovelluksia voi paketoida ja jakaa muille, ja että jaetut sovellukset eivät vaadi ohjelmointiympäristöä toimiakseen.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  Kurssin ohjelmointitehtävät on tehty NetBeans-nimisessä ohjelmointiympäristössä, johon on lisätty tehtävien lataamiseen ja palauttamiseen tarkoitettu Test My Code -liitännäinen. Kurssilla käytetyt tehtäväpohjat eivät kuitenkaan ole millään tavalla NetBeans tai Test My Code -riippuvaisia, vaan niitä voi käyttää muissakin ohjelmointiympäristöissä. 
+</p>
+
+<p>
+  Tehtäväpohjissa käytetään <a href="https://maven.apache.org/" target="_blank">Maven</a>-nimistä työvälinettä, joka tarjoaa apuvälineitä ohjelmien suorittamiseen ja hallintaan. Maven määrää projektiemme rakenteen -- tämän takia jokaisen projektin juuressa on <code>pom.xml</code>-niminen tiedosto ja lähdekoodimme sijaitsevat <code>src</code>-nimisen kansion alla. Kansiossa <code>src</code> on tyypillisesti kaksi kansiota, toinen on <code>main</code>, joka sisältää projektin lähdekoodit ym, ja toinen <code>test</code>, joka sisältää ohjelman testaamiseen käytettävät lähdekoodit kuten yksikkötestit.
+</p>
+
+<p>
+  Mavenin etu on se, että se auttaa apukirjastojen lataamisessa. Apukirjastot ovat muiden kirjoittamaa lähdekoodia, joka on paketoitu kaikkien käytettäväksi. Esimerkiksi yksikkötestaukseen on käytetty JUnit-nimistä kirjastoa. Valmiita kirjastoja on hyvin moneen lähtöön. Esimerkiksi osoiteessa <a href="https://mvnrepository.com/" target="_blank">https://mvnrepository.com/</a> olevan hakukoneen kautta voi löytää yli 10 miljoonaa kirjastoa -- moni näistä on tosin saman kirjaston eri versioita.
+</p>
+
+<p>
+  Hakukoneesta löytyy esimerkiksi tietokantojen käyttöön sekä vaikkapa telegram-bottien kirjoittamiseen tarkoitettuja kirjastoja. Tutustutaan näihin seuraavaksi lyhyesti.
+</p>
+
+
+<h2 class="material-heading">
+    Tietokannan käyttö
+
+</h2>
+
+<p>
+  Tietokannat, tai oikeastaan tietokannanhallintajärjestelmät, ovat välineitä tiedon hallintaan. Tutustumme näihin tarkemmin kurssilla Tietokantojen perusteet (TKT10004). Tarkastellaan lyhyesti tietokantaa käyttävän sovelluksen rakentamista.
+</p>
+
+<p>
+  Osoitteesta <a href="https://mvnrepository.com/" target="_blank">https://mvnrepository.com/</a> löytyy useita kirjastoja tietokantojen käyttöön. Otamme esimerkinomaisesti käyttöömme <a href="http://www.h2database.com/html/main.html" target="_blank">H2</a>-nimisen tietokannanhallintajärjestelmän. Tämä onnistuu tässä esimerkiksi lisäämällä tiedoston <code>pom.xml</code> sisällä olevalle <code>&lt;dependencies&gt;</code>- ja <code>&lt;/dependencies&gt;</code> -elementtien rajaamalle kirjastoriippuvuuksia sisältävälle alueelle H2-tietokannanhallintajärjestelmän kuvaavan kirjaston, kuten alla.
+</p>
+
+<pre class="sh_java code-highlight"><code>&lt;!-- muuta sisältöä --&gt;
+
+&lt;dependencies&gt;
+  &lt;!-- muita kirjastoja --&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+    &lt;artifactId&gt;h2&lt;/artifactId&gt;
+    &lt;version&gt;1.4.197&lt;/version&gt;
+  &lt;/dependency&gt;
+
+  &lt;!-- muita kirjastoja --&gt;
+&lt;/dependencies&gt;
+
+&lt;!-- muuta sisältöä --&gt;
+</code></pre>
+
+<p>
+  Tehtäväpohjassa tämä on tehty valmiiksi. Kun kirjastoriippuvuus on lisätty osaksi projektia, ovat sen tarjoamat luokat projektissa käytettävissä. Seuraavassa tehtävässä hyödynnät valmiiksi edellä kuvattua riippuvuutta ja toteutat tietokantaa käyttävän sovelluksen. 
+</p>
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Tietokanta</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tehtäväpohjassa tulee sovellus, johon on lisätty riippuvuus H2-nimiseen tietokantaan. Sovelluksessa on seuraavat neljä luokkaa:
+  </p>
+  
+  <ul>
+    <li>
+      <code>Todo</code>: tehtävää tehtävää kuvaava luokka. Jokaisella tehtävällä on numeerinen tunnus (id), nimi, kuvaus sekä tieto siitä onko tehtävä tehty. 
+    </li> 
+    <li>
+      <code>TodoDao</code>: tehtävien tietokantaan tallentamiseen käytettävä luokka, sana "dao" on lyhenne sanasta "data access object". Luokka tarjoaa metodit tehtävien listaamiseen, lisäämiseen, tehdyksi asettamiseen sekä poistamiseen. Tehdyksi asettaminen ja poistaminen tapahtuu numeerisen tunnuksen perusteella. Luokan konstruktori saa parametrinaan käytettävän tietokannan osoitteen.
+    </li> 
+    <li>
+      <code>Kayttoliittyma</code>: tehtävien tietokantaan tallentamiseen käytettävä luokka. Luokka tarjoaa metodit tehtävien listaamiseen, lisäämiseen, tehdyksi asettamiseen sekä poistamiseen. Tehdyksi asettaminen ja poistaminen tapahtuu numeerisen tunnuksen perusteella. Luokan konstruktori saa parametrina käytettävän tietokannan osoitteen.
+    </li> 
+    <li>
+      <code>Ohjelma</code>: sovelluksen käynnistämiseen tarkoitettu luokka.
+    </li> 
+  </ul>
+
+  <p>
+    Tässä tehtävässä tarkoituksenasi on muokata käyttöliittymää siten, että sovelluksen käyttäjällä on mahdollisuus tehtävien lisäämiseen, listaamiseen, tehdyksi asettamiseen sekä poistamiseen. Älä muokkaa luokkia <code>Todo</code>, <code>TodoDao</code> tai <code>Ohjelma</code>.
+  </p>
+
+  <p>
+    Odotettu sovelluksen toiminta on seuraava:
+  </p>
+
+<pre class="sample-output">Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">1</font>
+Listataan tietokannan tiedot
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">2</font>
+Lisätään tehtävää
+Syötä nimi
+<font color="red">koodaa</font>
+Syötä kuvaus
+<font color="red">koodaa paljon</font>
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">2</font>
+Lisätään tehtävää
+Syötä nimi
+<font color="red">tee ruokaa</font>
+Syötä kuvaus
+<font color="red">riisipuuroa</font>
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">1</font>
+Listataan tietokannan tiedot
+Todo{id=1, nimi=koodaa, kuvaus=koodaa paljon, valmis=false}
+Todo{id=2, nimi=tee ruokaa, kuvaus=riisipuuroa, valmis=false}
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">3</font>
+
+Mikä asetetaan tehdyksi (syötä id)?
+<font color="red">2</font>
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">1</font>
+Listataan tietokannan tiedot
+Todo{id=1, nimi=koodaa, kuvaus=koodaa paljon, valmis=false}
+Todo{id=2, nimi=tee ruokaa, kuvaus=riisipuuroa, valmis=true}
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">4</font>
+
+Mikä poistetaan (syötä id)?
+<font color="red">2</font>
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">1</font>
+Listataan tietokannan tiedot
+Todo{id=1, nimi=koodaa, kuvaus=koodaa paljon, valmis=false}
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">3</font>
+
+Mikä asetetaan tehdyksi (syötä id)?
+<font color="red">1</font>
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">1</font>
+Listataan tietokannan tiedot
+Todo{id=1, nimi=koodaa, kuvaus=koodaa paljon, valmis=true}
+
+Syötä komento:
+1) listaa
+2) lisää
+3) aseta tehdyksi
+4) poista
+x) lopeta
+&gt; <font color="red">x</font>
+Kiitos!
+</pre>
+
+  <p>
+    Toteuttamasi tekstikäyttöliittymä ei oikeastaan poikkea millään tavalla aiemmin toteuttamistamme tekstikäyttöliittymistä. Toisin kuin ennen, nyt tieto vain tallennetaan tietokantaan: <em>tallennetut tiedot ovat sovelluksen käytössä myös seuraavan käynnistyksen yhteydessä. 
+    </em>
+  </p>
+  
+
+
+        <hr/>
+
+        Tehtävään on olemassa esimerkkiratkaisu <a href="https://tmc.mooc.fi/" target="_blank" rel="noopener">Test My Code</a> -järjestelmässä. Esimerkkiratkaisua voi käyttää oman oppimisen tukena, ja se on tarkasteltavissa jo ennen kuin olet saanut tehtävän valmiiksi. Esimerkkiratkaisuun pääset käsiksi <a href="https://tmc.mooc.fi/exercises/55200/solution" target="_blank" rel="noopener">täältä</a>. Huomaathan, että tehtävän voi ratkaista monella tapaa, ja tässä annettu esimerkkiratkaisu on näistä vain yksi.
+
+    </div>
+  </div>
+</div>
+
+
+<h2 class="material-heading">
+    Telegrambotti
+
+</h2>
+
+<p>
+  Kuten todettu, Mavenin avulla löytyy merkittävä määrä kirjastoja, joita voi käyttää osana omia sovelluksia. Hakemalla osoitteesta <a href="https://mvnrepository.com/" target="_blank">https://mvnrepository.com/</a> sanaa telegram, löytää mm. <a href="https://github.com/rubenlagus/TelegramBots" target="_blank">TelegramBots</a>-kirjaston Telegram-bottien tekemiseen. 
+</p>
+
+<p>
+  Telegrambotit ovat ohjelmia, jotka reagoivat telegramissa lähetettyihin viesteihin ja esimerkiksi kertovat vitsejä. Bottien tekeminen on kuitenkin tämän kurssin osaamistavoitteiden ulkopuolella. Samalla, kurssin aikana opitut taidot auttavat olemassaolevien oppaiden lukemisessa ja opiskelussa. Mikäli haluat oppia tekemään Telegrambotin, lue osoitteessa <a href="https://github.com/rubenlagus/TelegramBots/wiki/Getting-Started" target="_blank">https://github.com/rubenlagus/TelegramBots/wiki/Getting-Started</a> oleva opas. Muista aloittaa pienestä!
+</p>
+
+
+<h2 class="material-heading">
+    Sovellusten paketointi
+
+</h2>
+
+<p>
+  Sovelluksemme ovat tähän mennessä toimineet vain ohjelmointiympäristössä. Tämä ei kuitenkaan ole käytännössä totta, sillä ohjelman käynnistäminen ohjelmointiympäristössä vastaa melko vahvasti sen käynnistämistä ohjelmointiympäristön ulkopuolella. Voimme määritellä luokan, jossa olevaa metodia <code>public static void main</code> käytetään ohjelman käynnistämiseen. 
+</p>
+
+<p>
+  Oracle tarjoaa <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/javapackager.html" target="_blank" norel></a>-työvälineen sovellusten paketointia varten. Osoitteessa <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/packager.html" target="_blank" norel>https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/packager.html</a> on ohjeita välineen käyttöön.
+</p>
+
+<p>
+  Edellä mainittuja ohjeita seuraamalla voit tehdä luomistasi ohjelmista versiot, joita voit jakaa myös muille. Ohjeiden käyttämä kirjasto on paketoitu myös Mavenin käyttöön ns. liitännäiseksi, kts. <a href="https://github.com/javafx-maven-plugin/javafx-maven-plugin" target="_blank">https://github.com/javafx-maven-plugin/javafx-maven-plugin</a>
+</p>
+
+<h2 class="material-heading">
+    Muut ympäristöt
+
+</h2>
+
+<p>
+  Java on yksi maailman eniten käytetyistä ohjelmointikielistä ja sitä käytetään myös mm. Android-kännyköissä. Kurssin aikana harjoittelemamme käyttöliittymien luomistekniikka ei ole rajoitettu vain työpöytäsovelluksiin, vaikka JavaFX onkin niihin ensisijaisesti suunnattu. Mikäli haluat siirtää JavaFX-sovelluksia kännykkään, on sitä varten luotu <a href="http://docs.gluonhq.com/javafxports/" target="_blank">JavaFXPorts</a>-projekti. JavaFXPorts-projektin avulla voit tehdä mobiilisovelluksia JavaFX-kirjastoa käyttäen. Osoitteessa <a href="http://docs.gluonhq.com/javafxports/" target="_blank">http://docs.gluonhq.com/javafxports/</a> on tähän lisää ohjeistusta.
+</p>
+
+<p>
+  Mobiilisovellusten kehittämisestä enemmän kiinnostuneiden kannattaa tutustua Androidin sovelluskehittäjille luomaan sivustoon, joka löytyy osoitteessa <a href="https://developer.android.com/guide/" target="_blank">https://developer.android.com/guide/</a>. Käymäsi ohjelmoinnin perusteet ja ohjelmoinnin jatkokurssi antaa näihin hyvän lähtökohdan. Vastaavasti, mikäli yksinkertaisten (mobiili)pelien kehittäminen kiinnostaa, tutustu esimerkiksi <a href="https://github.com/AlmasB/FXGL/wiki" target="_blank">FXGL  </a>-kirjastoon.
+</p>
+
+
+<h1 class="material-heading">
+    Vielä muutamia juttuja testaamisesta
+
+</h1>
+
+
+<div class="learning-objectives">
+  <div class="learning-objectives__header">
+    <i class="fa fa-user-graduate learning-objectives__icon"></i>Oppimistavoitteet
+  </div>
+
+  <div class="learning-objectives__body">
+    
+  <ul>
+    <li>
+      Kertaat ohjelmistojen testausta.
+    </li>
+    <li>
+      Tunnet käsitteen testikattavuus.
+    </li>
+  </ul>
+
+
+  </div>
+</div>
+
+<p>
+  Olemme harjoitelleet aiemmin yksikkötestausta: Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien kuten luokkien ja niiden tarjoamien metodien testaamista. Luokkien ja metodien rakenteen suunnittelussa käytettävän ohjesäännön -- jokaisella metodilla ja luokalla tulee olla yksi selkeä vastuu -- noudattamisen tai siitä poikkeamisen huomaa testejä kirjoittaessa. Mitä useampi vastuu metodilla on, sitä monimutkaisempi testi on. Jos laaja sovellus on kirjoitettu yksittäiseen metodiin, on testien kirjoittaminen sitä varten erittäin haastavaa ellei jopa mahdotonta. Vastaavasti, jos sovellus on pilkottu selkeisiin luokkiin ja metodeihin, on testienkin kirjoittaminen suoraviivaista.
+</p>
+
+<p>
+  Yksikkötestien hyvyyttä voi miettiä <em>testikattavuuden</em> kannalta. Testikattavuudella tarkoitetaan sitä,   kuinka hyvin testit käsittelevät ohjelman eri suorituspolut eli kaikki vaihtoehtoiset polut miten ohjelman suoritus voi edetä.
+</p>
+
+<p>
+  Alla olevassa metodissa on kaksi vaihtoehtoista suorituspolkua. Mikäli metodille annetaan parametrina luku, joka on pienempi kuin kymmenen, palauttaa metodi merkkijonon "alle kymmenen". Toisaalta, mikäli metodille annetaan parametrina luku, joka on kymmenen tai suurempi, metodi palauttaa merkkijonon "kymmenen tai yli".
+</p>
+
+<pre class="sh_java code-highlight"><code>public class Esimerkki {
+    public static String testattava(int luku) {
+        if (luku &lt; 10) {
+            return "alle kymmenen";
+        } else {
+            return "kymmenen tai yli";
+        }
+    }
+}
+</code></pre>
+
+<p>
+  Alla olevan testiluokan kattavuus ei ole kovin hyvä. Alla tarkastellaan vain toista edellisen esimerkin suorituspoluista.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class EsimerkkiTest {
+
+    @Test
+    public void testaaAlleKymmenen() {
+        assertEquals("alle kymmenen", Esimerkki.testattava(1));
+    }
+}
+</code></pre>
+
+<p>
+  Parempi vaihtoehto olisi testata kumpikin suorituspolku, eli tilanteet missä metodi saa parametriksi luvun, jonka arvo on pienempi kuin 10, sekä luvun, jonka arvo on yli 10. Alla olevassa testiluokassa testikattavuus on hyvä.
+</p>
+
+
+<pre class="sh_java code-highlight"><code>public class EsimerkkiTest {
+
+    @Test
+    public void testaaAlleKymmenen() {
+        assertEquals("alle kymmenen", Esimerkki.testattava(1));
+    }
+
+    @Test
+    public void testaaYliKymmenen() {
+        assertEquals("kymmenen tai yli", Esimerkki.testattava(100));
+    }
+}
+</code></pre>
+
+
+<p>
+  Kun tarkastelemme testejä, eivät niiden syötteet ole kuitenkaan ideaalit. Mikäli ohjelmassa on tietyn rajan tai arvon olemassaoloa tarkasteleva ehto (yllä esimerkissä raja on 10), kannattaa testissa tarkastella ehdon toimivuutta juuri rajalla. Tapauksessamme raja on 10, ja testien pitäisi käsitellä ainakin syötteitä 9 ja 10. Tällaisia raja-arvoja kutsutaan "corner caseiksi", eli kohdiksi, joissa ohjelman toiminnallisuuden pitäisi muuttua. Alla olevassa testiesimerkissä käsitellään juurikin ohjelman corner caset.
+</p>
+
+<pre class="sh_java code-highlight"><code>public class EsimerkkiTest {
+
+    @Test
+    public void testaaAlleKymmenen() {
+        assertEquals("alle kymmenen", Esimerkki.testattava(9));
+    }
+
+    @Test
+    public void testaaAlleKymmenen() {
+        assertEquals("kymmenen tai yli", Esimerkki.testattava(10));
+    }
+}
+</code></pre>
+
+
+<div class="exercise">
+  <div class="exercise__header">
+    <a data-toggle="collapse" class="exercise__toggle">
+      <i class="fa fa-pencil-alt exercise__icon"></i>
+      <h1 class="exercise__heading">Testausta</h1>
+
+      <i class="fa fa-caret-down exercise__arrow"></i>
+    </a>
+  </div>
+
+  <div class="collapse">
+    <div class="exercise__body">
+      
+  <p>
+    Tässä tehtävässä harjoittelet ohjelman kirjoittamista sekä sen testaamista.
+  </p>
+
+  <p>
+    Erään alakoulun luokka 4B keräsi viikon ajan pulloja leirikoulun rahoittamista varten. Kirjoita ohjelma, jolla voidaan luoda tilastoja kerätyistä pulloista, sekä ohjelmalle testit. Ohjelma tulee toteuttaa tehtäväpohjan luokan <code>Ohjelma</code> metodiin <code>public static String suorita(Scanner lukija)</code>. Testit tulee toteuttaa tehtäväpohjan luokkaan <code>OhjelmaTest</code>.
+  </p>
+
+  <p>
+    Ohjelmalle syötetään ensin kunkin oppilaan keräämien pullojen lukumäärät, jotka on erotettu rivinvaihdoilla. Pullojen lukumäärien syöttämisen lopettaminen ilmoitetaan luvulla -1. Kun pullojen lukumäärät on syötetty, ohjelman tulee selvittää pulloja keränneiden oppilaiden lukumäärä, kerättyjen pullojen lukumäärä, sekä keskimääräinen kerättyjen pullojen lukumäärä. Metodin <code>suorita</code> tulee <em>palauttaa</em> merkkijono, joka sisältää ohjelman tulostuksen.
+  </p>
+
+  <p>
+    Syötteessä saattaa olla negatiivisia lukuja, jotka ovat virhesyötteitä -- näitä ei tule ottaa huomioon.
+  </p>
+
+  <p>
+    Alla esimerkkejä ohjelman toiminnasta.
+  </p>
+
+<pre class="sh_java code-highlight"><code>System.out.println(Ohjelma.suorita(new Scanner("3\n2\n1\n-1\n")));
+</code></pre>
+  
+<pre class="sample-output">Pulloja: 6
+Oppilaita: 3
+Keskiarvo: 2.0
+</pre>
+
+<pre class="sh_java code-highlight"><code>System.out.println(Ohjelma.suorita(new Scanner("1\n0\n-55\n-1\n")));
+</code></pre>
+  
+<pre class="sample-output">Pulloja: 1
+Oppilaita: 2
+Keskiarvo: 0.5
+</pre>
+
+  <p>
+    Mikäli kerättyjä pulloja ei ole lainkaan, ilmoita ettei keskiarvoa voi laskea.
+  </p>
+
+<pre class="sh_java code-highlight"><code>System.out.println(Ohjelma.suorita(new Scanner("-55\n-1\n")));
+</code></pre>
+  
+<pre class="sample-output">Pulloja: 0
+Oppilaita: 0
+Keskiarvoa ei voida laskea
+</pre>
+
+  <p>
+    Huom! Ohjelman toiminnallisuuden lisäksi tehtävässä tulee kirjoittaa ohjelmalle testit. Automaattisia testejä tai mallivastausta tehtävässä ei ole, eli palauta ohjelma kun sekä ohjelma että siihen toteuttamasi testit toimivat kattavasti. Otathan huomioon myös ns corner caset.
+  </p>
+  
+
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Yhteenveto
+
+</h1>
+
+<p>
+  Materiaalin neljännessätoista osassa eli ohjelmoinnin jatkokurssin viimeisessä osassa tarkasteltiin simulaatioiden luomista kaksiulotteisten taulukoiden avulla. Tämän lisäksi tutustuttiin kolmannen osapuolen kirjastojen käyttöön ja kerrattiin yksikkötestausta.
+</p>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Mitä seuraavaksi?
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Tämän kurssin jälkeen on hyvä aloittaa kurssit Tietokantojen perusteet sekä Tietorakenteet ja algoritmit. Kurssin tietokantojen perusteet jälkeen kannattaa ottaa kurssi Ohjelmistotekniikka. Muistathan, että kurssin Tietorakenteet ja algoritmit esitietovaatimuksena on kurssi Johdatus yliopistomatematiikkaan.
+  </p>
+
+
+  </div>
+</div>
+
+<div class="quiznator-plugin" data-quiz-id="5c0a3a295695f73da1f7774b"></div>
+
+
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+    <div class="improvement">
+<a href="../report_issue/" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    Ilmoita virhe
+</a><a href="../edit_page/?path=part14.html" target="_blank" rel="noopener" class="btn btn-primary">    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+    Muokkaa sivua
+</a>  <a href="https://github.com/materiaalit/ohjelmointi-s18" class="footer__github-link" target="_blank" rel="noopener">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
+
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu mooc.fi -käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta mooc.fi -käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus tai sähköpostiosoite</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus tai sähköpostiosoite"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-s18">
+                Ohjelmoinnin perusteet, syksy 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-s18">
+                Ohjelmoinnin jatkokurssi, syksy 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.mooc.fi/javascripts/plugin-loader.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="../javascripts/scripts-77d48b13.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script src='https://materiaalit.github.io/pdf-slideshow-cdn/app.js'></script>
+      <script>
+        window.loadYoutube()
+      </script>
+    <script>
+      window.initPdfSlideshow('../pdf.worker.min-7be35925.js');
+    </script>
+  </body>
+</html>
